@@ -15,19 +15,31 @@ namespace Store.Memory
             products.Add(new Product(3, "beef", "cherkizovo", "meet", 30m, ""));
             products.Add(new Product(4, "pork", "hunter row", "meet", 40m, ""));
         }
-        public List<Product> GetAllByCategory(string Category)
+        
+
+        public Product GetAllById(int id)
         {
-            throw new NotImplementedException();
+            return products.Single(product => product.Id == id);
+        }
+
+        public List<Product> GetAllByPrice(decimal minPrice, decimal maxPrice)
+        {
+            return products.Where(product => product.Price >= minPrice && product.Price <= maxPrice).ToList();
+        }
+
+        public List<Product> GetAllByCategory(string сategory)
+        {
+            return products.Where(item => item.Category.Contains(сategory)).ToList();
         }
 
         public List<Product> GetAllByManufacture(string manufacture)
         {
-            throw new NotImplementedException();
+            return products.Where(product => product.Manufacture.Contains(manufacture)).ToList();
         }
 
         public List<Product> GetAllByTitle(string title)
         {
-            throw new NotImplementedException();
+            return products.Where(product => product.Title.Contains(title)).ToList();
         }
     }
 }

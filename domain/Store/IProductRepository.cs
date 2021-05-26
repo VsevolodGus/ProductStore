@@ -8,10 +8,14 @@ namespace Store
 {
     public interface IProductRepository
     {
+        Product GetAllById(int id);
+
         List<Product> GetAllByManufacture(string manufacture);
 
         List<Product> GetAllByTitle(string title);
 
-        List<Product> GetAllByCategory(string Category);
+        List<Product> GetAllByCategory(string сategory);
+
+        List<Product> GetAllByPrice(decimal minPrice, decimal maxPrice);
     }
 }
