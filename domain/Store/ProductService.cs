@@ -15,9 +15,16 @@ namespace Store
             this.products = products;
         }
 
+        public Product GetById(int id)
+        {
+            var product = products.GetAllById(id);
+            
+            return product;
+        }
+
         public List<Product> GetAllByQuery(string query)
         {
-           List<Product> list = products.GetAllByTitle(query)
+           var list = products.GetAllByTitle(query)
                                    .Union(products.GetAllByManufacture(query))
                                    .Union(products.GetAllByCategory(query)).Distinct().ToList();
 
@@ -26,7 +33,7 @@ namespace Store
 
         public List<Product> GetAllByIntervalPrice(decimal minPrice, decimal maxPrice)
         {
-            List<Product> list = products.GetAllByPrice(minPrice, maxPrice);
+            var list = products.GetAllByPrice(minPrice, maxPrice);
 
             return list;
         }

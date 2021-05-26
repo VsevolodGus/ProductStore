@@ -6,10 +6,11 @@ namespace Store.Memory
 {
     public class ProductRepository : IProductRepository
     {
-        private readonly List<Product> products;
-
+        private readonly List<Product> products = new List<Product>();
         public ProductRepository()
         {
+            products = new List<Product>();
+
             products.Add(new Product(1, "eggs", "red price", "eggs", 10m, ""));
             products.Add(new Product(2, "bread", "alma", "bakery", 20m, ""));
             products.Add(new Product(3, "beef", "cherkizovo", "meet", 30m, ""));
@@ -39,7 +40,8 @@ namespace Store.Memory
 
         public List<Product> GetAllByTitle(string title)
         {
-            return products.Where(product => product.Title.Contains(title)).ToList();
+            var list = products.Where(product => product.Title.Contains(title)).ToList();
+            return list;
         }
     }
 }

@@ -1,7 +1,6 @@
-﻿using System;
-
-namespace Store
+﻿namespace Store
 {
+
     public class Product
     {
         public int Id { get; }

@@ -1,0 +1,25 @@
+﻿@model List<Product>
+
+<table class="table table-sm table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Номер</th>
+            <th scope="col">Название</th>
+            <th scope="col">Производитель</th>
+            <th scope="col">Цена</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for(int i=0; i<Model.Count; i++)
+        {
+            <tr>
+                <td>@(i+1)</td>
+                <td><a href="@Url.Action("InfoProduct","Info",new { id = Model[i].Id })">@Model[i].Title</a></td>
+                <td>@Model[i].Manufacture</td>
+                <td>@Model[i].Price</td>
+            </tr>
+        }
+    </tbody>
+
+
+</table>
