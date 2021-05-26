@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace Store.Memory
@@ -11,10 +10,10 @@ namespace Store.Memory
         {
             products = new List<Product>();
 
-            products.Add(new Product(1, "eggs", "red price", "eggs", 10m, ""));
-            products.Add(new Product(2, "bread", "alma", "bakery", 20m, ""));
-            products.Add(new Product(3, "beef", "cherkizovo", "meet", 30m, ""));
-            products.Add(new Product(4, "pork", "hunter row", "meet", 40m, ""));
+            //products.Add(new Product(1, "eggs", "red price", "eggs", 10m, ""));
+            //products.Add(new Product(2, "bread", "alma", "bakery", 20m, ""));
+            //products.Add(new Product(3, "beef", "cherkizovo", "meet", 30m, ""));
+            //products.Add(new Product(4, "pork", "hunter row", "meet", 40m, ""));
         }
         
 
@@ -33,9 +32,9 @@ namespace Store.Memory
             return products.Where(item => item.Category.Contains(сategory)).ToList();
         }
 
-        public List<Product> GetAllByManufacture(string manufacture)
+        public List<Product> GetAllByManufacture(string title)
         {
-            return products.Where(product => product.Manufacture.Contains(manufacture)).ToList();
+            return products.Where(product => product.Manufacture.Title.Contains(title)).ToList();
         }
 
         public List<Product> GetAllByTitle(string title)

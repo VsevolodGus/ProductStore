@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoreProduct.Web", "Web\Sto
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{89522C0D-1CFD-4682-ABF2-F3255FA5E190}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manufacture", "domain\Manufacture\Manufacture.csproj", "{CDB97ECE-E3DF-413F-B8D8-BBAFE449CC71}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Manufacture", "domain\Manufacture\Store.Manufacture.csproj", "{CDB97ECE-E3DF-413F-B8D8-BBAFE449CC71}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

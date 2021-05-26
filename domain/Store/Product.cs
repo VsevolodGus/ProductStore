@@ -1,4 +1,6 @@
-﻿namespace Store
+﻿using StoreManufacture;
+
+namespace Store
 {
 
     public class Product
@@ -7,7 +9,7 @@
 
         public string Title { get; }
 
-        public string Manufacture { get; }
+        public Manufacture Manufacture { get; }
 
         public string Category { get; }
 
@@ -15,7 +17,7 @@
 
         public string Description { get; }
 
-        public Product(int id, string title,string manufacture,string category, decimal price, string description)
+        public Product(int id, string title,Manufacture manufacture,string category, decimal price, string description)
         {
             Id = id;
             Title = title;

@@ -1,7 +1,7 @@
 ﻿@model Product
 
 <p><strong>Название:</strong>@Model.Title</p>
-<p><strong>Производитель:</strong><a>@Model.Manufacture</a></p>
+<p><strong>Производитель:</strong><a href="@Url.Action("InfoManufactures", "Info", new { id = Model.Manufacture.Id })">@Model.Manufacture.Title</a></p>
 <p><strong>Категория:</strong><a>@Model.Category</a></p>
 <p><strong>Цена:</strong>@Model.Price</p>
 <p><strong>Описание:</strong>@Model.Description</p>

@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Store
 {
@@ -25,8 +22,9 @@ namespace Store
         public List<Product> GetAllByQuery(string query)
         {
            var list = products.GetAllByTitle(query)
-                                   .Union(products.GetAllByManufacture(query))
-                                   .Union(products.GetAllByCategory(query)).Distinct().ToList();
+                                   .Union(products.GetAllByCategory(query))
+                                   .Distinct()
+                                   .ToList();
 
             return list;
         }
