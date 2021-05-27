@@ -7,15 +7,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "domain", "domain", "{F0ED35
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "infastructure", "infastructure", "{D16CCFA7-F738-4D7A-B146-A9658B2C1E6C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Store.Product", "domain\Store\Store.Product.csproj", "{9CD21EAE-1792-45FA-A065-E9AC9CD22C3F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Store", "domain\Store\Store.csproj", "{9CD21EAE-1792-45FA-A065-E9AC9CD22C3F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Store.Memory", "infastrucrture\Store.Memory\Store.Memory.csproj", "{C56F12B9-E535-4A39-9627-FA4EE01DD1F5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoreProduct.Web", "Web\StoreProduct.Web\StoreProduct.Web.csproj", "{56299E8D-09F8-4E70-A34D-6E79B5F8CEFF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StoreProduct.Web", "Web\StoreProduct.Web\StoreProduct.Web.csproj", "{56299E8D-09F8-4E70-A34D-6E79B5F8CEFF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{89522C0D-1CFD-4682-ABF2-F3255FA5E190}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Manufacture", "domain\Manufacture\Store.Manufacture.csproj", "{CDB97ECE-E3DF-413F-B8D8-BBAFE449CC71}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Store.Manufacture", "domain\Manufacture\Store.Manufacture.csproj", "{CDB97ECE-E3DF-413F-B8D8-BBAFE449CC71}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
