@@ -1,15 +1,11 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Store;
 using Store.Memory;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
 
 namespace StoreProduct.Web
 {
@@ -27,6 +23,7 @@ namespace StoreProduct.Web
         {
             services.AddControllersWithViews();
 
+            services.AddSingleton<ManufactureRepository>();
             services.AddSingleton<IProductRepository, ProductRepository>();
             services.AddSingleton<ProductService>();
         }

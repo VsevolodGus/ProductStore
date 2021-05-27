@@ -1,18 +1,15 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Store;
-using StoreManufacture;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Store.Memory;
+
 
 namespace StoreProduct.Web.Controllers
 {
     public class InfoController : Controller
     {
         private readonly ProductService productService;
-        private readonly IManufactureRerpository manufactureRepository;
-        public InfoController(ProductService productService, IManufactureRerpository manufactureRepository)
+        private readonly ManufactureRepository manufactureRepository;
+        public InfoController(ProductService productService, ManufactureRepository manufactureRepository)
         {
             this.productService = productService;
             this.manufactureRepository = manufactureRepository;
@@ -27,7 +24,7 @@ namespace StoreProduct.Web.Controllers
 
         public IActionResult InfoManufactures(int id)
         {
-            var manufacture = manufactureRepository.GetById(id); 
+            var manufacture = manufactureRepository.GetById(id);
 
             return View("InfoManufacture", manufacture);
         }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using StoreManufacture;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Store.Memory
@@ -10,12 +11,12 @@ namespace Store.Memory
         {
             products = new List<Product>();
 
-            //products.Add(new Product(1, "eggs", "red price", "eggs", 10m, ""));
-            //products.Add(new Product(2, "bread", "alma", "bakery", 20m, ""));
-            //products.Add(new Product(3, "beef", "cherkizovo", "meet", 30m, ""));
-            //products.Add(new Product(4, "pork", "hunter row", "meet", 40m, ""));
+            products.Add(new Product(1, "eggs", new Manufacture(1, "red price", "", "", "", ""), "eggs", 10m, ""));
+            products.Add(new Product(2, "bread", new Manufacture(2, "alma", "", "", "", ""), "bakery", 20m, ""));
+            products.Add(new Product(3, "beef", new Manufacture(3, "cherkizovo", "", "", "", ""), "meet", 30m, ""));
+            products.Add(new Product(4, "pork", new Manufacture(4, "hunter row", "", "", "", ""), "meet", 40m, ""));
         }
-        
+
 
         public Product GetAllById(int id)
         {

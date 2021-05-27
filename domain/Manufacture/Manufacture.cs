@@ -4,7 +4,7 @@
     {
         public int Id { get; }
 
-        public string Title {get;} 
+        public string Title { get; }
 
         public string NumberPhone { get; }
 
@@ -15,7 +15,7 @@
         public string Description { get; }
 
 
-        public Manufacture(int id,string title, string numberPhone,string email ,string addres,string description)
+        public Manufacture(int id, string title, string numberPhone, string email, string addres, string description)
         {
             Id = id;
             Title = title;

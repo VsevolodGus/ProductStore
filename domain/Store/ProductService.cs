@@ -15,16 +15,16 @@ namespace Store
         public Product GetById(int id)
         {
             var product = products.GetAllById(id);
-            
+
             return product;
         }
 
         public List<Product> GetAllByQuery(string query)
         {
-           var list = products.GetAllByTitle(query)
-                                   .Union(products.GetAllByCategory(query))
-                                   .Distinct()
-                                   .ToList();
+            var list = products.GetAllByTitle(query)
+                                    .Union(products.GetAllByCategory(query))
+                                    .Distinct()
+                                    .ToList();
 
             return list;
         }

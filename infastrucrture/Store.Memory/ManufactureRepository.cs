@@ -4,17 +4,18 @@ using System.Linq;
 
 namespace Store.Memory
 {
-    public class RepositoryManufacture : IManufactureRerpository
+    public class ManufactureRepository : IManufactureRerpository
     {
         private readonly List<Manufacture> manufactures;
 
-        public RepositoryManufacture()
+        public ManufactureRepository()
         {
             manufactures = new List<Manufacture>();
 
-            manufactures.Add(new Manufacture(1, "","", "", "", ""));
-            manufactures.Add(new Manufacture(2, "","", "", "", ""));
-            manufactures.Add(new Manufacture(3, "","", "", "", ""));
+            manufactures.Add(new Manufacture(1, "red price", "", "", "weqw", ""));
+            manufactures.Add(new Manufacture(2, "alma", "", "", "qwer", ""));
+            manufactures.Add(new Manufacture(3, "cherkizovo", "", "", "qdswer", ""));
+            manufactures.Add(new Manufacture(4, "hunter row", "", "", "qwqrdff", ""));
 
         }
         public Manufacture GetById(int id)
