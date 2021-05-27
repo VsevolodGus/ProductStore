@@ -18,5 +18,10 @@ namespace StoreProduct.Web.Controllers
 
             return View(products);
         }
+
+        public IActionResult AgainIndex(List<Product> products)
+        {
+            return View("Index", products);
+        }
     }
 }

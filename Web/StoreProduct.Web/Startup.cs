@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Store;
 using Store.Memory;
-
+using System;
 
 namespace StoreProduct.Web
 {
@@ -22,10 +22,18 @@ namespace StoreProduct.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddDistributedMemoryCache();
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(30);
+                options.Cookie.IsEssential = true;
+                options.Cookie.HttpOnly = true;
+            });
 
-            services.AddSingleton<ManufactureRepository>();
+            services.AddSingleton<IOrderRepository, OrderRepository>();
             services.AddSingleton<IProductRepository, ProductRepository>();
             services.AddSingleton<ProductService>();
+            services.AddSingleton<ManufactureRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,6 +55,8 @@ namespace StoreProduct.Web
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {
