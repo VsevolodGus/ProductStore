@@ -99,5 +99,48 @@ namespace StoreProduct.Web.Controllers
 
             return RedirectToAction("InfoProduct", "Info", product);
         }
+
+        [HttpPost]
+        public IActionResult RemoveItem(int id)
+        {
+            (Order order, Cart cart) = GetCreateOrderAndCart();
+
+            if (order.GetItemById(id).Count <= 1)
+                RemoveProduct(id);
+
+            order.RemoveOrderItem(id);
+
+            SaveOrderAndCart(order, cart);
+
+            if (HttpContext.Session.TryGetCart(out Cart resultCart))
+            {
+                var resultOrder = orderRepository.GetById(resultCart.OrderId);
+                OrderModel model = Map(resultOrder);
+
+                return View("Index", model);
+            }
+
+            return View("Empty");
+        }
+
+        [HttpPost]
+        public IActionResult RemoveProduct(int id)
+        {
+            (Order order, Cart cart) = GetCreateOrderAndCart();
+
+            order.RemoveFullOrderItem(id);
+
+            SaveOrderAndCart(order, cart);
+
+            if (HttpContext.Session.TryGetCart(out Cart resultCart))
+            {
+                var resultOrder = orderRepository.GetById(resultCart.OrderId);
+                OrderModel model = Map(resultOrder);
+
+                return View("Index",model);
+            }
+
+            return View("Empty");
+        }
     }
 }
