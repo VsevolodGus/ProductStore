@@ -1,0 +1,49 @@
+﻿@model OrderModel
+
+<table class="table table-sm table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">№</th>
+            <th scope="col">Название</th>
+            <th scope="col">Производитель</th>
+            <th scope="col">Количество</th>
+            <th scope="col">Цена</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = 0; i < Model.Items.Count; i++)
+        {
+            <tr>
+                <td class="text-right">@(i+1)</td>
+                <td><a href="@Url.Action("InfoProduct","Info",new { id = Model.Items[i].Id }))">@Model.Items[i].Title</a></td>
+                <td><a href="@Url.Action("InfoManufacture","Info",new { id = Model.Items[i].Manufacturer.Id })">@Model.Items[i].Manufacturer.Title</a></td>
+                <td class="text-center">@Model.Items[i].Count</td>
+                <td class="text-right">@Model.Items[i].Price</td>
+                <td class="form-in">
+                    <form class="col-form-inline" action="" method="post">
+                        <input type="hidden" value="@Model.Items[i].Id" />
+                        <button class="btn btn-danger" type="submit">Удалить</button>
+                    </form>
+                </td>
+                <td class="form-in">
+                    <form class="col-form-inline" action="" method="post">
+                        <input type="hidden" value="@Model.Items[i].Id" />
+                        <button class="btn btn-danger" type="submit">Удалить всё</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3">Итого</td>
+            <td class="text-center">@Model.TotalCount</td>
+            <td class="text-right">@Model.TotalPrice</td>
+        </tr>
+    </tfoot>
+</table>
+
+<form>
+    <button class="btn btn-success">Оформить заказ</button>
+</form>
+

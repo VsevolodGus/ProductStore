@@ -49,5 +49,14 @@ namespace Store.Memory
         {
             return this.GetAllByManufacture(manufactures.GetById(id).Title);
         }
+
+        public List<Product> GetAllByIds(IEnumerable<int> productIds)
+        {
+            var productsList = from product in products
+                               join productId in productIds on product.Id equals productId
+                               select product;
+
+            return productsList.ToList();
+        }
     }
 }

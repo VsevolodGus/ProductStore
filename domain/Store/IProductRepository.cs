@@ -6,6 +6,8 @@ namespace Store
     {
         Product GetAllById(int id);
 
+        List<Product> GetAllByIds(IEnumerable<int> productIds);
+
         List<Product> GetAllByManufacture(string title);
 
         List<Product> GetAllByTitle(string title);

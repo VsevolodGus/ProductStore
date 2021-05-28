@@ -20,12 +20,40 @@ namespace StoreProduct.Web.Controllers
             this.orderRepository = orderRepository;
         }
 
+
+        private OrderModel Map(Order order)
+        {
+            var productIds = order.Items.Select(item => item.ProductId);
+            var products = productRepository.GetAllByIds(productIds);
+            var itemModels = from item in order.Items
+                             join product in products on item.ProductId equals product.Id
+                             select new OrderItemModel
+                             {
+                                 Id = product.Id,
+                                 Title = product.Title,
+                                 Manufacturer = product.Manufacture,
+                                 Count = item.Count,
+                                 Price = item.Price,
+                             };
+
+            return new OrderModel
+            {
+                Id = order.Id,
+                Items = itemModels.ToList(),
+                TotalCount = order.TotalCount,
+                TotalPrice = order.TotalPrice,
+            };
+        }
+
         [HttpGet]
         public IActionResult Index()
         {
-            if (!HttpContext.Session.TryGetCart(out Cart cart))
+            if (HttpContext.Session.TryGetCart(out Cart cart))
             {
-                return View("Index","Home");
+                var order = orderRepository.GetById(cart.OrderId);
+                OrderModel model = Map(order);
+
+                return View(model);
             }
 
             return View("Empty");
