@@ -18,13 +18,10 @@
                 <td><a href="@Url.Action("InfoManufactures","Info", new { id = Model[i].Manufacture.Id })" >@Model[i].Manufacture.Title</a></td>
                 <td>@Model[i].Price</td>
                 <td>
-
-                    <form action="@Url.Action("AddItem","Order",new{ products = Model })" method="post">
-                        <input type="hidden" name="products" value="@Model" />
-                        <input type="hidden" name="id" value="@Model[i].Id" />
-                        <button class=" btn btn-success" type="submit" >Добавить в корзину</button>
+                    <form action="@Url.Action("InfoProduct","Info")">
+                        <input type="hidden" name="id" value="@Model[i].Id"/>
+                        <button class="btn btn-success" type="submit">Подробнее о продукте</button>
                     </form>
-
                 </td>
             </tr>
         }

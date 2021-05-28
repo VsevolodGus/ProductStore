@@ -6,6 +6,7 @@ namespace Store.Memory
 {
     public class ProductRepository : IProductRepository
     {
+        private readonly IManufactureRerpository manufactures = new ManufactureRepository();
         private readonly List<Product> products = new List<Product>();
         public ProductRepository()
         {
@@ -33,15 +34,20 @@ namespace Store.Memory
             return products.Where(item => item.Category.Contains(сategory)).ToList();
         }
 
-        public List<Product> GetAllByManufacture(string title)
+        public List<Product> GetAllByManufacture(string manufacture)
         {
-            return products.Where(product => product.Manufacture.Title.Contains(title)).ToList();
+            return products.Where(product => product.Manufacture.Title.Contains(manufacture)).ToList();
         }
 
         public List<Product> GetAllByTitle(string title)
         {
             var list = products.Where(product => product.Title.Contains(title)).ToList();
             return list;
+        }
+
+        public List<Product> GetAllByIdManufacture(int id)
+        {
+            return this.GetAllByManufacture(manufactures.GetById(id).Title);
         }
     }
 }

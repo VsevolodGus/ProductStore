@@ -10,3 +10,7 @@
     </a>
 </p>
 <p><strong>Описание:</strong>@Model.Description</p>
+<form action="@Url.Action("AllProductsManufactures","Search")">
+    <input type="hidden" name="idManufacture" value="@Model.Id"/>
+    <button class="btn btn-success" type="submit">Все товары производителя</button>
+</form>

@@ -13,5 +13,8 @@ namespace Store
         List<Product> GetAllByCategory(string сategory);
 
         List<Product> GetAllByPrice(decimal minPrice, decimal maxPrice);
+
+        List<Product> GetAllByIdManufacture(int id);
+
     }
 }

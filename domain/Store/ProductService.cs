@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using StoreManufacture;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Store
@@ -17,6 +18,11 @@ namespace Store
             var product = products.GetAllById(id);
 
             return product;
+        }
+
+        public List<Product> GetAllByIdManufacture(int id)
+        {
+            return products.GetAllByIdManufacture(id);
         }
 
         public List<Product> GetAllByQuery(string query)

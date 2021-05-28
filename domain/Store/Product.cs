@@ -27,5 +27,6 @@ namespace Store
             Description = description;
         }
 
+        public Product() { }
     }
 }

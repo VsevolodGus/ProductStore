@@ -8,6 +8,7 @@ namespace StoreProduct.Web.Controllers
     public class SearchController : Controller
     {
         private readonly ProductService productService;
+
         public SearchController(ProductService productService)
         {
             this.productService = productService;
@@ -19,9 +20,11 @@ namespace StoreProduct.Web.Controllers
             return View(products);
         }
 
-        public IActionResult AgainIndex(List<Product> products)
+       public IActionResult AllProductsManufactures(int IdManufacture)
         {
-            return View("Index", products);
+            var products = new List<Product>(productService.GetAllByIdManufacture(IdManufacture));
+            
+            return View("Index",products); 
         }
     }
 }
