@@ -30,7 +30,7 @@ namespace StoreTest
         }
 
         [Fact]
-        public void OrderItem_WithPositiveCount_ThrowArgumentException()
+        public void OrderItem_WithPositiveCount_Create()
         {
             int count = 1;
 

@@ -66,7 +66,7 @@ namespace Store
             if (product == null)
                 throw new ArgumentNullException("when adding order, passing null product");
             else if(count <= 0)
-                throw new ArgumentNullException("when adding order, passing no correct count");
+                throw new ArgumentException("when adding order, passing no correct count");
 
 
             int index = items.FindIndex(item => item.ProductId == product.Id);
