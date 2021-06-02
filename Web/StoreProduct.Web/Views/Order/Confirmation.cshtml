@@ -1,0 +1,31 @@
+﻿@model ConfimationModel
+@{
+    ViewData["Title"] = "Подтвверждение заказа";
+}
+
+<h1>Подтверждение мобильного</h1>
+
+<form action="" method="post">
+    <input type="hidden" name="id" value="@Model.OrderId"/>
+    <input type="hidden" name="cellPhone" value="@Model.CellPhone" />
+
+    <div>
+        <label for="code">Код подтверждения</label>
+        <input class="form-control" type="text" />
+
+    </div>
+
+    <button class="btn btn-success" type="submit">Проверить</button>
+</form>
+
+<form action="" method="post">
+    <input type="hidden" name="id" value="@Model.OrderId" />
+    
+    <div class="form-group">
+        <label>Мобильный телефон</label>
+        <input class="form-control" type="text" />
+
+    </div>
+
+    <button class="btn btn-success" type="submit">Повторить код</button>
+</form>

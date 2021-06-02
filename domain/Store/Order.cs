@@ -9,6 +9,9 @@ namespace Store
         private readonly List<OrderItem> items;
 
         public int Id { get; set; }
+
+        public string CellPhone { get; set; }
+
         public int TotalCount => items.Sum(item => item.Count);
 
         public decimal TotalPrice => items.Sum(item => item.Count * item.Price);

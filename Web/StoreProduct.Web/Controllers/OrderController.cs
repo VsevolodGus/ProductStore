@@ -1,10 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Store;
 using StoreProduct.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using System.Text.RegularExpressions;
 
 namespace StoreProduct.Web.Controllers
 {
@@ -86,6 +87,15 @@ namespace StoreProduct.Web.Controllers
             HttpContext.Session.Set(cart);
         }
 
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        /// 
+
         [HttpPost]
         public IActionResult AddItem(int id)
         {
@@ -141,6 +151,45 @@ namespace StoreProduct.Web.Controllers
             }
 
             return View("Empty");
+        }
+
+        //////////////////////////////////////////////
+        //////////////////////////////////////////////
+        ///
+        
+        private bool IsValideCellPhone(string cellPhone)
+        {
+            if (cellPhone == null)
+                return false;
+
+            return Regex.IsMatch(cellPhone, @"\+79\d{2}-\d{3}-\d{2}-\d{2}")
+                    || Regex.IsMatch(cellPhone, @"89\d{2}-\d{3}-\d{2}-\d{2}")
+                    || Regex.IsMatch(cellPhone, @"\+\d{11}")
+                    || Regex.IsMatch(cellPhone, @"\d{11}");
+        }
+
+        public IActionResult SendConfirmation(int id, string cellPhone)
+        {
+            var order = orderRepository.GetById(id);
+            var model = Map(order);
+
+            if (!IsValideCellPhone(cellPhone))
+            {
+                model.Errors[cellPhone] = "Номер телефона должен соответсвовать формату +79876543210";
+             
+                return View("Index", model);
+            }
+
+            int code = 2002;
+            HttpContext.Session.SetInt32(cellPhone,code);
+
+
+            return View("Confirmation",
+                        new ConfimationModel
+                        {
+                            OrderId = id,
+                            CellPhone = cellPhone,
+                        }) ;
         }
     }
 }
