@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Store;
 using StoreProduct.Web.Models;
-using System;
+using Store.Messages;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -13,12 +13,15 @@ namespace StoreProduct.Web.Controllers
     {
         private readonly IProductRepository productRepository;
         private readonly IOrderRepository orderRepository;
+        private readonly INotificationService notificationService;
 
         public OrderController(IProductRepository productRepository,
-                               IOrderRepository orderRepository)
+                               IOrderRepository orderRepository,
+                               INotificationService notificationService)
         {
             this.productRepository = productRepository;
             this.orderRepository = orderRepository;
+            this.notificationService = notificationService;
         }
 
 
@@ -89,12 +92,6 @@ namespace StoreProduct.Web.Controllers
 
 
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        /// 
 
         [HttpPost]
         public IActionResult AddItem(int id)
@@ -155,7 +152,7 @@ namespace StoreProduct.Web.Controllers
 
         //////////////////////////////////////////////
         //////////////////////////////////////////////
-        ///
+        //////////////////////////////////////////////
         
         private bool IsValideCellPhone(string cellPhone)
         {
@@ -182,7 +179,7 @@ namespace StoreProduct.Web.Controllers
 
             int code = 2002;
             HttpContext.Session.SetInt32(cellPhone,code);
-
+            notificationService.SendConfirmationCode(cellPhone, code);
 
             return View("Confirmation",
                         new ConfimationModel
@@ -191,5 +188,49 @@ namespace StoreProduct.Web.Controllers
                             CellPhone = cellPhone,
                         }) ;
         }
+
+        public IActionResult Confirmate(int id, string cellPhone, int code)
+        {
+            int? storecode = HttpContext.Session.GetInt32(cellPhone);
+
+            if (storecode == null)
+            {
+                return View("Confirmation",
+                        new ConfimationModel
+                        {
+                            OrderId = id,
+                            CellPhone = cellPhone,
+                            Errors = new Dictionary<string, string>
+                            {
+                                {"code", "Пустой код, повторите отправку" }
+                            },
+                        });
+            }
+
+            if (storecode != code)
+            {
+                return View("Confirmation",
+                        new ConfimationModel
+                        {
+                            OrderId = id,
+                            CellPhone = cellPhone,
+                            Errors = new Dictionary<string, string>
+                            {
+                                {"code", "Неверный код, повторите попытку" }
+                            },
+                        });
+            }
+
+            var order = orderRepository.GetById(id);
+            order.CellPhone = cellPhone;
+            orderRepository.Update(order);
+
+            HttpContext.Session.Remove(cellPhone);
+            
+            //var model = new 
+
+            return View ("/Views/Home/Index.cshtml");
+        }
+
     }
 }

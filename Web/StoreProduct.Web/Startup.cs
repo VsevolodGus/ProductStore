@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Store;
 using Store.Memory;
+using Store.Messages;
 using System;
 
 namespace StoreProduct.Web
@@ -32,6 +33,7 @@ namespace StoreProduct.Web
 
             services.AddSingleton<IOrderRepository, OrderRepository>();
             services.AddSingleton<IProductRepository, ProductRepository>();
+            services.AddSingleton<INotificationService, DebugNotificationService>();
             services.AddSingleton<ProductService>();
             services.AddSingleton<ManufactureRepository>();
         }

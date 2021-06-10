@@ -13,23 +13,20 @@ namespace Store.Memory
         {
             using(var db = new StoreContext())
             {
-                db.Products.Add(new Product( "яйца", manufactures.GetById(1), "яйцв", 10m, "куринные яйца, категории C0"));
-                db.Products.Add(new Product( "хлеб", manufactures.GetById(2), "выпечка", 20m, "хлебо-булочные изделия"));
-                db.Products.Add(new Product( "говядина", manufactures.GetById(3), "мясо", 30m, "мясо из говядины и телятины"));
-                db.Products.Add(new Product( "свинина", manufactures.GetById(4), "мясо", 40m, "мясо из свинины"));
+                //db.Products.Add(new Product("яйца", manufactures.GetById(1), "яйца", 10m, "куринные яйца, категории C0"));
+                //db.Products.Add(new Product("хлеб", manufactures.GetById(2), "выпечка", 20m, "хлебо-булочные изделия"));
+                //db.Products.Add(new Product("говядина", manufactures.GetById(3), "мясо", 30m, "мясо из говядины и телятины"));
+                //db.Products.Add(new Product("свинина", manufactures.GetById(4), "мясо", 40m, "мясо из свинины"));
 
                 db.SaveChanges();
 
                 products = db.Products.ToList();
 
-                int i = 0;
-                i++;
+                foreach(var e in products)
+                {
+                    e.Manufacture = manufactures.GetById(e.IdMaker);
+                }
             }
-
-            //products.Add(new Product(1, "eggs", new Maker(1, "red price", "", "", "", ""), "eggs", 10m, ""));
-            //products.Add(new Product(2, "bread", new Maker(2, "alma", "", "", "", ""), "bakery", 20m, ""));
-            //products.Add(new Product(3, "beef", new Maker(3, "cherkizovo", "", "", "", ""), "meet", 30m, ""));
-            //products.Add(new Product(4, "pork", new Maker(4, "hunter row", "", "", "", ""), "meet", 40m, ""));
         }
 
 
@@ -56,7 +53,7 @@ namespace Store.Memory
 
         public List<Product> GetAllByTitle(string title)
         {
-            var list = products.Where(product => product.Title.Contains(title)).ToList();
+            var list = products.Where(product => product.Title == title).ToList();
             return list;
         }
 
