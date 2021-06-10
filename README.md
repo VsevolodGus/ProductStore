@@ -5,5 +5,6 @@
  - **C#**
  - **ASP.NET MVC**
  - **Entity Framework Core**
+ - **Unit test**
  - **MS SQL**
  - **HTML**
