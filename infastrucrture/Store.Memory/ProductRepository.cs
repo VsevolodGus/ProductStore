@@ -1,6 +1,7 @@
 ﻿using StoreManufacture;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace Store.Memory
 {
@@ -10,12 +11,25 @@ namespace Store.Memory
         private readonly List<Product> products = new List<Product>();
         public ProductRepository()
         {
-            products = new List<Product>();
+            using(var db = new StoreContext())
+            {
+                db.Products.Add(new Product( "яйца", manufactures.GetById(1), "яйцв", 10m, "куринные яйца, категории C0"));
+                db.Products.Add(new Product( "хлеб", manufactures.GetById(2), "выпечка", 20m, "хлебо-булочные изделия"));
+                db.Products.Add(new Product( "говядина", manufactures.GetById(3), "мясо", 30m, "мясо из говядины и телятины"));
+                db.Products.Add(new Product( "свинина", manufactures.GetById(4), "мясо", 40m, "мясо из свинины"));
 
-            products.Add(new Product(1, "eggs", new Maker(1, "red price", "", "", "", ""), "eggs", 10m, ""));
-            products.Add(new Product(2, "bread", new Maker(2, "alma", "", "", "", ""), "bakery", 20m, ""));
-            products.Add(new Product(3, "beef", new Maker(3, "cherkizovo", "", "", "", ""), "meet", 30m, ""));
-            products.Add(new Product(4, "pork", new Maker(4, "hunter row", "", "", "", ""), "meet", 40m, ""));
+                db.SaveChanges();
+
+                products = db.Products.ToList();
+
+                int i = 0;
+                i++;
+            }
+
+            //products.Add(new Product(1, "eggs", new Maker(1, "red price", "", "", "", ""), "eggs", 10m, ""));
+            //products.Add(new Product(2, "bread", new Maker(2, "alma", "", "", "", ""), "bakery", 20m, ""));
+            //products.Add(new Product(3, "beef", new Maker(3, "cherkizovo", "", "", "", ""), "meet", 30m, ""));
+            //products.Add(new Product(4, "pork", new Maker(4, "hunter row", "", "", "", ""), "meet", 40m, ""));
         }
 
 
@@ -37,6 +51,7 @@ namespace Store.Memory
         public List<Product> GetAllByManufacture(string manufacture)
         {
             return products.Where(product => product.Manufacture.Title.Contains(manufacture)).ToList();
+            //throw new NotImplementedException();
         }
 
         public List<Product> GetAllByTitle(string title)

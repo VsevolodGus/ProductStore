@@ -9,7 +9,9 @@ namespace Store
 
         public string Title { get; }
 
-        public Maker Manufacture { get; }
+        public Maker Manufacture { get; set; }
+
+        public int IdMaker { get; }
 
         public string Category { get; }
 
@@ -23,10 +25,20 @@ namespace Store
             Title = title;
             Category = category;
             Manufacture = manufacture;
+            IdMaker = Manufacture.Id;
             Price = price;
             Description = description;
         }
 
+        public Product(string title, Maker manufacture, string category, decimal price, string description)
+        {
+            Title = title;
+            Category = category;
+            Manufacture = manufacture;
+            IdMaker = Manufacture.Id;
+            Price = price;
+            Description = description;
+        }
         public Product() { }
     }
 }
