@@ -9,7 +9,7 @@ namespace Store
 
         public string Title { get; }
 
-        public Manufacture Manufacture { get; }
+        public Maker Manufacture { get; }
 
         public string Category { get; }
 
@@ -17,7 +17,7 @@ namespace Store
 
         public string Description { get; }
 
-        public Product(int id, string title, Manufacture manufacture, string category, decimal price, string description)
+        public Product(int id, string title, Maker manufacture, string category, decimal price, string description)
         {
             Id = id;
             Title = title;

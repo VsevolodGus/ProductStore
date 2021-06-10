@@ -4,26 +4,26 @@ using System.Linq;
 
 namespace Store.Memory
 {
-    public class ManufactureRepository : IManufactureRerpository
+    public class ManufactureRepository : IMakerRerpository
     {
-        private readonly List<Manufacture> manufactures;
+        private readonly List<Maker> manufactures;
 
         public ManufactureRepository()
         {
-            manufactures = new List<Manufacture>();
+            manufactures = new List<Maker>();
 
-            manufactures.Add(new Manufacture(1, "red price", "", "", "weqw", ""));
-            manufactures.Add(new Manufacture(2, "alma", "", "", "qwer", ""));
-            manufactures.Add(new Manufacture(3, "cherkizovo", "", "", "qdswer", ""));
-            manufactures.Add(new Manufacture(4, "hunter row", "", "", "qwqrdff", ""));
+            manufactures.Add(new Maker(1, "red price", "", "", "weqw", ""));
+            manufactures.Add(new Maker(2, "alma", "", "", "qwer", ""));
+            manufactures.Add(new Maker(3, "cherkizovo", "", "", "qdswer", ""));
+            manufactures.Add(new Maker(4, "hunter row", "", "", "qwqrdff", ""));
 
         }
-        public Manufacture GetById(int id)
+        public Maker GetById(int id)
         {
             return manufactures.Single(item => item.Id == id);
         }
 
-        public Manufacture GetByTitle(string title)
+        public Maker GetByTitle(string title)
         {
             return manufactures.Single(item => item.Title == title);
         }

@@ -1,4 +1,4 @@
-﻿@model Manufacture
+﻿@model Maker
 
 <p><strong>Название:</strong>@Model.Title</p>
 <p><strong>Контактные данные:</strong></p>
@@ -10,7 +10,7 @@
     </a>
 </p>
 <p><strong>Описание:</strong>@Model.Description</p>
-<form action="@Url.Action("AllProductsManufactures","Search")">
+<form action="@Url.Action("AllProductsMakers","Search")">
     <input type="hidden" name="idManufacture" value="@Model.Id"/>
     <button class="btn btn-success" type="submit">Все товары производителя</button>
 </form>

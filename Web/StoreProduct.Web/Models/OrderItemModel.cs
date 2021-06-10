@@ -10,7 +10,7 @@ namespace StoreProduct.Web.Models
 
         public int Count { get; set; }
 
-        public Manufacture Manufacturer { get; set; }
+        public Maker Manufacturer { get; set; }
 
         public decimal Price { get; set; }
     }

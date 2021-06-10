@@ -20,7 +20,7 @@ namespace StoreProduct.Web.Controllers
             return View(products);
         }
 
-       public IActionResult AllProductsManufactures(int IdManufacture)
+       public IActionResult AllProductsMakers(int IdManufacture)
         {
             var products = new List<Product>(productService.GetAllByIdManufacture(IdManufacture));
             

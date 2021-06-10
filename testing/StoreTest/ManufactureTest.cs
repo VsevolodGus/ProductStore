@@ -8,7 +8,7 @@ namespace StoreTest
         public void IsNumberPhone_CorrectNumber_Variant1_True()
         {
             string number = "+7917-362-09-02";
-            var x = new Manufacture(1, "", number, "", "", "");
+            var x = new Maker(1, "", number, "", "", "");
 
             Assert.Equal("+7917-362-09-02", x.NumberPhone);
         }
@@ -18,7 +18,7 @@ namespace StoreTest
         {
             string number = "8917-362-09-02";
 
-            var x = new Manufacture(1, "", number, "", "", "");
+            var x = new Maker(1, "", number, "", "", "");
 
             Assert.Equal("8917-362-09-02", x.NumberPhone);
         }
@@ -28,7 +28,7 @@ namespace StoreTest
         {
             string number = "12412352424232r-qwf324sd-09-02";
 
-            var x = new Manufacture(1, "", number, "", "", "");
+            var x = new Maker(1, "", number, "", "", "");
 
             Assert.Equal("", x.NumberPhone);
         }
@@ -38,7 +38,7 @@ namespace StoreTest
         {
             string email = "gusakseva8@gmail.com";
 
-            var x = new Manufacture(1, "", "", email, "", "");
+            var x = new Maker(1, "", "", email, "", "");
  
             Assert.Equal("gusakseva8@gmail.com", x.Email);
         }
@@ -48,7 +48,7 @@ namespace StoreTest
         {
             string email = "gusadfgssakseva8@asdfgddsfdfgmail.c2321324om";
 
-            var x = new Manufacture(1, "", "", email, "", "");
+            var x = new Maker(1, "", "", email, "", "");
 
             Assert.Equal("", x.Email);
         }

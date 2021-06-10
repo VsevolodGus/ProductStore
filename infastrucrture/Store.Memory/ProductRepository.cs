@@ -6,16 +6,16 @@ namespace Store.Memory
 {
     public class ProductRepository : IProductRepository
     {
-        private readonly IManufactureRerpository manufactures = new ManufactureRepository();
+        private readonly IMakerRerpository manufactures = new ManufactureRepository();
         private readonly List<Product> products = new List<Product>();
         public ProductRepository()
         {
             products = new List<Product>();
 
-            products.Add(new Product(1, "eggs", new Manufacture(1, "red price", "", "", "", ""), "eggs", 10m, ""));
-            products.Add(new Product(2, "bread", new Manufacture(2, "alma", "", "", "", ""), "bakery", 20m, ""));
-            products.Add(new Product(3, "beef", new Manufacture(3, "cherkizovo", "", "", "", ""), "meet", 30m, ""));
-            products.Add(new Product(4, "pork", new Manufacture(4, "hunter row", "", "", "", ""), "meet", 40m, ""));
+            products.Add(new Product(1, "eggs", new Maker(1, "red price", "", "", "", ""), "eggs", 10m, ""));
+            products.Add(new Product(2, "bread", new Maker(2, "alma", "", "", "", ""), "bakery", 20m, ""));
+            products.Add(new Product(3, "beef", new Maker(3, "cherkizovo", "", "", "", ""), "meet", 30m, ""));
+            products.Add(new Product(4, "pork", new Maker(4, "hunter row", "", "", "", ""), "meet", 40m, ""));
         }
 
 

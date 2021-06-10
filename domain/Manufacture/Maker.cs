@@ -1,9 +1,14 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.RegularExpressions;
 
 
 namespace StoreManufacture
 {
-    public class Manufacture
+    //[Keyless]
+
+    [Table("ProductMaker")]
+    public class Maker
     {
         public int Id { get; }
 
@@ -15,10 +20,13 @@ namespace StoreManufacture
 
         public string Addres { get; }
 
+
         public string Description { get; }
 
+        public Maker()
+        {}
 
-        public Manufacture(int id, string title, string numberPhone, string email, string addres, string description)
+        public Maker(int id, string title, string numberPhone, string email, string addres, string description)
         {
             Id = id;
             Title = title;
@@ -36,7 +44,25 @@ namespace StoreManufacture
             Addres = addres;
             Description = description;
         }
+        
+        public Maker( string title, string numberPhone, string email, string addres, string description)
+        {
+            Title = title;
 
+            if (IsNumberPhone(numberPhone))
+                NumberPhone = numberPhone;
+            else
+                NumberPhone = "";
+
+            if (IsEmail(email))
+                Email = email;
+            else
+                Email = "";
+
+            Addres = addres;
+            Description = description;
+        }
+       
         public static bool IsNumberPhone(string number)
         {
             return Regex.IsMatch(number, @"\+79\d{2}-\d{3}-\d{2}-\d{2}")
