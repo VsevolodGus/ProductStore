@@ -8,13 +8,14 @@ namespace Store
     {
         private readonly List<OrderItem> items;
 
+        public OrderDelivery Delivery { get; set; }
         public int Id { get; set; }
 
         public string CellPhone { get; set; }
 
         public int TotalCount => items.Sum(item => item.Count);
 
-        public decimal TotalPrice => items.Sum(item => item.Count * item.Price);
+        public decimal TotalPrice => items.Sum(item => item.Count * item.Price) + (Delivery?.Amount ?? 0m);
 
         public Order(int id, IEnumerable<OrderItem> items)
         {

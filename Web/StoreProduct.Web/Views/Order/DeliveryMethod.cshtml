@@ -5,17 +5,17 @@
 
 <h1>Способ доставки</h1>
 
-<form>
-    <input class="hidden" name="id" value="@Model.OrderId"/>
-    <div>
+<form action="@Url.Action("StartDelivery","Order")">
+    <input type="hidden" name="id" value="@Model.OrderId"/>
+    <div class="form-group">
         <label form="code">Способ доставки:</label>
         <select class="form-control" name="uniquecode">
             @foreach(var e in Model.Method)
             {
-                <option value="@Model.Method.Keys">@Model.Method.Values</option>
+                <option value="@e.Key">@e.Value</option>
             }
         </select>
     </div>
 
-    <button class="btn btn-succes" type="submit">Далее</button>
+    <button type="submit" class="btn btn-success" >Далее</button>
 </form> 

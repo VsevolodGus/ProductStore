@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 
-
 namespace Store.Contract
 {
     public interface IDeliveryService
@@ -11,7 +10,7 @@ namespace Store.Contract
 
         Form CreateForm(Order order);
 
-        Form MoveNextForm(Order order, int step, IReadOnlyDictionary<string, string> values);
+        Form MoveNextForm(int orderId, int step, IReadOnlyDictionary<string, string> values);
 
         OrderDelivery GetDelivery(Form form);
 

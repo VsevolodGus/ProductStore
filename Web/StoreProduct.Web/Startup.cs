@@ -3,10 +3,11 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
 using Store;
 using Store.Memory;
 using Store.Messages;
-using System;
+using Store.Contract;
 
 namespace StoreProduct.Web
 {
@@ -34,8 +35,10 @@ namespace StoreProduct.Web
             services.AddSingleton<IOrderRepository, OrderRepository>();
             services.AddSingleton<IProductRepository, ProductRepository>();
             services.AddSingleton<INotificationService, DebugNotificationService>();
+            services.AddSingleton<IDeliveryService, DeliveryLocations>();
             services.AddSingleton<ProductService>();
             services.AddSingleton<ManufactureRepository>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

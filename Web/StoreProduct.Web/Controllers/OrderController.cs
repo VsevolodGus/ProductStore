@@ -1,11 +1,12 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Store;
-using StoreProduct.Web.Models;
-using Store.Messages;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using Store;
+using Store.Contract;
+using Store.Messages;
+using StoreProduct.Web.Models;
 
 namespace StoreProduct.Web.Controllers
 {
@@ -14,14 +15,16 @@ namespace StoreProduct.Web.Controllers
         private readonly IProductRepository productRepository;
         private readonly IOrderRepository orderRepository;
         private readonly INotificationService notificationService;
-
+        private readonly IEnumerable<IDeliveryService> deliveryServices;
         public OrderController(IProductRepository productRepository,
                                IOrderRepository orderRepository,
-                               INotificationService notificationService)
+                               INotificationService notificationService,
+                               IEnumerable<IDeliveryService> deliveryServices)
         {
             this.productRepository = productRepository;
             this.orderRepository = orderRepository;
             this.notificationService = notificationService;
+            this.deliveryServices = deliveryServices;
         }
 
 
@@ -226,10 +229,39 @@ namespace StoreProduct.Web.Controllers
             orderRepository.Update(order);
 
             HttpContext.Session.Remove(cellPhone);
-            
-            //var model = new 
 
-            return View ("/Views/Home/Index.cshtml");
+            var model = new DeliveryModel
+            {
+                OrderId = id,
+                Method = deliveryServices.ToDictionary(service => service.UniqueCode,
+                                                       service => service.Title),
+            };
+
+            return View ("DeliveryMethod",model);
+        }
+
+
+        //////////////////////////////////////////////
+        //////////////////////////////////////////////
+        //////////////////////////////////////////////
+        
+        ///офромление заказа, по этапам, выбор места доставки заказа в одну из предложенных точек 
+
+        [HttpPost]
+        public IActionResult StartDelivery(int id, string uniqueCode)
+        {
+            var deliveryService = deliveryServices.Single(service => service.UniqueCode == uniqueCode);
+            var order = orderRepository.GetById(id);
+
+            var form = deliveryService.CreateForm(order);
+                        
+            return View("DeliveryStep",form);
+        }
+
+        [HttpPost]
+        public IActionResult NextDelivery()
+        {
+            return View();
         }
 
     }

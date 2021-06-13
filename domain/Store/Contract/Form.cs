@@ -16,7 +16,7 @@ namespace Store.Contract
 
         public IReadOnlyList<Field> Fields { get; }
 
-        public Form(string uniqueCode, int orderId, int step, bool isFinal,IReadOnlyList<Field> fields)
+        public Form(string uniqueCode, int orderId, int step, bool isFinal,IEnumerable<Field> fields)
         {
             if (uniqueCode == null)
                 throw new ArgumentNullException(nameof(uniqueCode));
