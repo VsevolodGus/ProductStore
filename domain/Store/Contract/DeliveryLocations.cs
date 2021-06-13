@@ -44,11 +44,48 @@ namespace Store.Contract
             if (order == null)
                 throw new ArgumentNullException(nameof(order));
 
-            return new Form(UniqueCode, order.Id, 1, false, 
-                            new[] { new SelectionField("Город", "city", "1", cites) });
+            return new Form(UniqueCode, order.Id, 1, false, new[]
+            {
+                new SelectionField("Город", "city", "1", cites),
+            });
         }
 
-        public OrderDelivery GetDelivery(Form form)
+        public Form MoveNextForm(int orderId, int step, IReadOnlyDictionary<string, string> values)
+        {
+            if (step == 1)
+            {
+                if (values["city"] == "1")
+                {
+                    return new Form(UniqueCode, orderId, 2, false, new Field[]
+                        {
+                            new HiddenField("Город", "city", "1"),
+                            new SelectionField("Постамат", "postamate", "1",locations["1"]),
+                        });
+                }
+                else if (values["city"] == "2")
+                {
+                    return new Form(UniqueCode, orderId, 2, false, new Field[]
+                        {
+                            new HiddenField("Город", "city", "2"),
+                            new SelectionField("Постамат", "postamate", "4",locations["2"]),
+                        });
+                }
+                else
+                    throw new InvalidOperationException("Invalid postamate city.");
+            }
+            else if (step == 2)
+            {
+                return new Form(UniqueCode, orderId, 3, true, new Field[]
+                {
+                    new HiddenField("Город", "city", values["city"]),
+                    new HiddenField("Постамат", "postamate", values["postamate"]),
+                });
+            }
+            else
+                throw new InvalidOperationException("Invalid postamate step.");
+        }
+
+    public OrderDelivery GetDelivery(Form form)
         {
             if (UniqueCode != form.UniqueCode || !form.IsFinal)
                 throw new ArgumentException("Invalid form");
@@ -68,38 +105,7 @@ namespace Store.Contract
 
             var description = $"Город:{cityName}\n Постамат:{postamateName}";
 
-            return new OrderDelivery(UniqueCode,description,150m,parametrs);
-        }
-
-        public Form MoveNextForm(int orderId, int step, IReadOnlyDictionary<string, string> values)
-        {
-            if (step == 1)
-            {
-                if (values["city"] == "1")
-                    return new Form(UniqueCode,orderId,2,false,new Field[]
-                    {
-                        new HiddenField("Город", "city", "1"),
-                        new SelectionField("Постамат", "postamate", "1", locations["1"])
-                    });
-                else if (values["city"] == "2")
-                    return new Form(UniqueCode, orderId, 2, false, new Field[]
-                    {
-                        new HiddenField("Город", "city", "2"),
-                        new SelectionField("Постамат", "postamate", "2", locations["2"]),
-                    });
-                else
-                    throw new ArgumentException("Invalid postamate city");
-            }
-            else if (step == 2)
-            {
-                return new Form(UniqueCode, orderId, 3, true, new Field[]
-                {
-                    new HiddenField("Город", "city", values["city"]),
-                    new HiddenField("Постамат", "postamate", values["postamate"]),
-                });
-            }
-            else
-                throw new ArgumentException("Invalid value step");
+            return new OrderDelivery(UniqueCode, description, 150m, parametrs);
         }
     }
 }

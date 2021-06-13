@@ -257,12 +257,25 @@ namespace StoreProduct.Web.Controllers
                         
             return View("DeliveryStep",form);
         }
+          //return View("/Views/Home/Index.cshtml");
 
         [HttpPost]
-        public IActionResult NextDelivery()
+        public IActionResult NextDelivery(int id, string uniqueCode, int step, Dictionary<string, string> values)
         {
-            return View();
-        }
+            var delivereService = deliveryServices.Single(service => service.UniqueCode == uniqueCode);
 
+            var form = delivereService.MoveNextForm(id, step, values);
+
+            if (form.IsFinal)
+            {
+                var order = orderRepository.GetById(id);
+                order.Delivery = delivereService.GetDelivery(form);
+                orderRepository.Update(order);
+
+                return View("/Views/Home/Index.cshtml");
+            }
+
+            return View("DeliveryStep", form);
+        }
     }
 }

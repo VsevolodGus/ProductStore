@@ -29,6 +29,7 @@ namespace Store.Contract
 
             UniqueCode = uniqueCode;
             OrderId = orderId;
+            Step = step;
             IsFinal = isFinal;
             Fields = fields.ToList() ;
 

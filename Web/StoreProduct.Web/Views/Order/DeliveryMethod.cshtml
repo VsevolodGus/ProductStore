@@ -5,7 +5,7 @@
 
 <h1>Способ доставки</h1>
 
-<form action="@Url.Action("StartDelivery","Order")">
+<form action="@Url.Action("StartDelivery")" method="post">
     <input type="hidden" name="id" value="@Model.OrderId"/>
     <div class="form-group">
         <label form="code">Способ доставки:</label>
