@@ -1,14 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Store.Memory
 {
     public class OrderRepository : IOrderRepository
     {
         private readonly List<Order> orders = new List<Order>();
+
+        public OrderRepository()
+        {
+            // if(JSON != null)
+            // 
+            // чтение JSON -> парсинг JSON -> созранение информации в orders
+        }
+
         public Order Create()
         {
             int nextId = orders.Count + 1;
@@ -26,7 +31,7 @@ namespace Store.Memory
 
         public void Update(Order order)
         {
-            ;
+            // здесь должна быть перезапись json файла с обновленнными данными
         }
     }
 }

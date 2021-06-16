@@ -11,6 +11,7 @@
         public Cart(int id)
         {
             OrderId = id;
+            
             TotalCount = 0;
             TotalPrice = 0m;
         }

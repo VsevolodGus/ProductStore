@@ -244,7 +244,7 @@ namespace StoreProduct.Web.Controllers
         //////////////////////////////////////////////
         //////////////////////////////////////////////
         //////////////////////////////////////////////
-        
+
         ///офромление заказа, по этапам, выбор места доставки заказа в одну из предложенных точек 
 
         [HttpPost]
@@ -254,10 +254,10 @@ namespace StoreProduct.Web.Controllers
             var order = orderRepository.GetById(id);
 
             var form = deliveryService.CreateForm(order);
-                        
-            return View("DeliveryStep",form);
+
+            return View("DeliveryStep", form);
         }
-          //return View("/Views/Home/Index.cshtml");
+        //return View("/Views/Home/Index.cshtml");
 
         [HttpPost]
         public IActionResult NextDelivery(int id, string uniqueCode, int step, Dictionary<string, string> values)
@@ -272,10 +272,13 @@ namespace StoreProduct.Web.Controllers
                 order.Delivery = delivereService.GetDelivery(form);
                 orderRepository.Update(order);
 
-                return View("/Views/Home/Index.cshtml");
+
+                return View("Finish");
             }
 
             return View("DeliveryStep", form);
         }
     }
 }
+
+

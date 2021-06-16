@@ -16,7 +16,7 @@ namespace Store
         public int TotalCount => items.Sum(item => item.Count);
 
         public decimal TotalPrice => items.Sum(item => item.Count * item.Price) + (Delivery?.Amount ?? 0m);
-
+            
         public Order(int id, IEnumerable<OrderItem> items)
         {
             if (items == null)
@@ -53,6 +53,8 @@ namespace Store
                 items[index].Count -= 1;
             else 
                 items.RemoveAt(index);
+
+            // items[index].SaveChanges()
         }
 
         public void RemoveFullOrderItem(int id)
