@@ -30,9 +30,9 @@ namespace Store.Memory
         }
 
 
-        public Product GetAllById(int id)
+        public Product GetById(int id)
         {
-            return products.Single(product => product.Id == id);
+            return products.First(product => product.Id == id);
         }
 
         public List<Product> GetAllByPrice(decimal minPrice, decimal maxPrice)
@@ -48,7 +48,6 @@ namespace Store.Memory
         public List<Product> GetAllByManufacture(string manufacture)
         {
             return products.Where(product => product.Manufacture.Title.Contains(manufacture)).ToList();
-            //throw new NotImplementedException();
         }
 
         public List<Product> GetAllByTitle(string title)

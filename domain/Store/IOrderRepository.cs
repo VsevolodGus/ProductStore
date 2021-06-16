@@ -14,5 +14,6 @@ namespace Store
 
         void Update(Order order);
 
+        void SendFile();
     }
 }

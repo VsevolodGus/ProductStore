@@ -101,11 +101,12 @@ namespace StoreProduct.Web.Controllers
         {
             (Order order, Cart cart) = GetCreateOrderAndCart();
 
-            var product = productRepository.GetAllById(id);
+            var product = productRepository.GetById(id);
 
             order.AddOrUpdate(product, 1);
 
             SaveOrderAndCart(order,cart);
+            orderRepository.Update(order);
 
             return RedirectToAction("InfoProduct", "Info", product);
         }
@@ -121,6 +122,7 @@ namespace StoreProduct.Web.Controllers
             order.RemoveOrderItem(id);
 
             SaveOrderAndCart(order, cart);
+            orderRepository.Update(order);
 
             if (HttpContext.Session.TryGetCart(out Cart resultCart))
             {
@@ -141,6 +143,7 @@ namespace StoreProduct.Web.Controllers
             order.RemoveFullOrderItem(id);
 
             SaveOrderAndCart(order, cart);
+            orderRepository.Update(order);
 
             if (HttpContext.Session.TryGetCart(out Cart resultCart))
             {
@@ -272,7 +275,7 @@ namespace StoreProduct.Web.Controllers
                 order.Delivery = delivereService.GetDelivery(form);
                 orderRepository.Update(order);
 
-
+                orderRepository.SendFile();
                 return View("Finish");
             }
 

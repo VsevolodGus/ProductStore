@@ -14,7 +14,7 @@ namespace Store
 
         public Product GetById(int id)
         {
-            var product = products.GetAllById(id);
+            var product = products.GetById(id);
 
             return product;
         }

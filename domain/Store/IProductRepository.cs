@@ -4,7 +4,7 @@ namespace Store
 {
     public interface IProductRepository
     {
-        Product GetAllById(int id);
+        Product GetById(int id);
 
         List<Product> GetAllByIds(IEnumerable<int> productIds);
 
