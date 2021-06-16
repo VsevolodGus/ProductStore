@@ -2,7 +2,6 @@
 using Store;
 using System.Collections.Generic;
 
-
 namespace StoreProduct.Web.Controllers
 {
     public class SearchController : Controller
@@ -13,6 +12,8 @@ namespace StoreProduct.Web.Controllers
         {
             this.productService = productService;
         }
+
+        // получение из репозитория список продуктов по запросу и вывод данных на страницу
         public IActionResult Index(string query)
         {
             var products = new List<Product>(productService.GetAllByQuery(query));
@@ -20,6 +21,7 @@ namespace StoreProduct.Web.Controllers
             return View(products);
         }
 
+        // получение списка продуктов определнного производителя, по Id Maker/Manifacture
        public IActionResult AllProductsMakers(int IdManufacture)
         {
             var products = new List<Product>(productService.GetAllByIdManufacture(IdManufacture));

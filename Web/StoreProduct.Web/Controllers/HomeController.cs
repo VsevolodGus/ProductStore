@@ -3,7 +3,6 @@ using Microsoft.Extensions.Logging;
 using StoreProduct.Web.Models;
 using System.Diagnostics;
 
-
 namespace StoreProduct.Web.Controllers
 {
     public class HomeController : Controller
@@ -16,11 +15,6 @@ namespace StoreProduct.Web.Controllers
         }
 
         public IActionResult Index()
-        {
-            return View();
-        }
-
-        public IActionResult Privacy()
         {
             return View();
         }

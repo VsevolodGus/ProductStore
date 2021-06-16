@@ -275,6 +275,7 @@ namespace StoreProduct.Web.Controllers
                 order.Delivery = delivereService.GetDelivery(form);
                 orderRepository.Update(order);
 
+                // отправление данных и переход к финишной странице
                 orderRepository.SendFile();
                 return View("Finish");
             }
