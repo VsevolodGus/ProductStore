@@ -4,11 +4,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ProductStore.Web.Contract;
-using SberKassa;
 using Store;
 using Store.Contract;
 using Store.Memory;
 using Store.Messages;
+using Store.SberKassa;
 using System;
 
 namespace StoreProduct.Web
@@ -74,11 +74,6 @@ namespace StoreProduct.Web
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
-
-                endpoints.MapAreaControllerRoute(
-                   name: "sber.kassa",
-                   areaName: "SberKassa",
-                   pattern: "SberKassa/{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

@@ -306,7 +306,7 @@ namespace StoreProduct.Web.Controllers
 
             var webContractorService = webContractServices.SingleOrDefault(service => service.UniqueCode == uniqueCode);
             if (webContractorService != null)
-                return Redirect(webContractorService.GetUri);
+                return View("/Views/Sber/Index.cshtml");
 
             return View("PaymentStep", form);
         }
@@ -323,12 +323,20 @@ namespace StoreProduct.Web.Controllers
                 var order = orderRepository.GetById(id);
                 order.Payment = payemntService.GetPayment(form);
                 orderRepository.Update(order);
-                HttpContext.Session.RemoveCart();
 
+                HttpContext.Session.RemoveCart();
                 return View("Finish");
             }
 
             return View("PaymentStep", form);
+        }
+
+        public IActionResult Finish()
+        {
+            HttpContext.Session.RemoveCart();
+            orderRepository.SendFile();
+            
+            return View();
         }
     }
 }
