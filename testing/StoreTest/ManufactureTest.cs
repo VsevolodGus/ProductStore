@@ -1,4 +1,4 @@
-﻿using StoreManufacture;
+﻿using Store;
 using Xunit;
 namespace StoreTest
 {

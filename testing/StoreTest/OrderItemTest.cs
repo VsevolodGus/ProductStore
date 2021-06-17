@@ -6,9 +6,6 @@ namespace StoreTest
 {
     public class OrderItemTest
     {
-        // template title test =>
-        // (title class)_(test condition)_(result)
-
         [Fact]
         public void OrderItem_WithZeroCount_ThrowArgumentException()
         {
