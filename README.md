@@ -3,7 +3,7 @@
 
 ## Технологии
  - **C#**
- - **ASP.NET MVC**
+ - **ASP.NET Core MVC**
  - **Entity Framework Core**
  - **Unit test**
  - **MS SQL**
