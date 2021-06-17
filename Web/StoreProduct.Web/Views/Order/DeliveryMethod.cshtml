@@ -10,7 +10,7 @@
     <div class="form-group">
         <label form="code">Способ доставки:</label>
         <select class="form-control" name="uniquecode">
-            @foreach(var e in Model.Method)
+            @foreach(var e in Model.Methods)
             {
                 <option value="@e.Key">@e.Value</option>
             }

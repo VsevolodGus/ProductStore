@@ -1,4 +1,5 @@
-﻿using StoreManufacture;
+﻿
+using Store;
 
 namespace StoreProduct.Web.Models
 {

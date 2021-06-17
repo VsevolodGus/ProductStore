@@ -3,11 +3,13 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
+using ProductStore.Web.Contract;
+using SberKassa;
 using Store;
+using Store.Contract;
 using Store.Memory;
 using Store.Messages;
-using Store.Contract;
+using System;
 
 namespace StoreProduct.Web
 {
@@ -32,12 +34,16 @@ namespace StoreProduct.Web
                 options.Cookie.HttpOnly = true;
             });
 
-            services.AddSingleton<IOrderRepository, OrderRepository>();
             services.AddSingleton<IProductRepository, ProductRepository>();
+            services.AddSingleton<IMakerRepository, MakerRepository>();
+            services.AddSingleton<IOrderRepository, OrderRepository>();
             services.AddSingleton<INotificationService, DebugNotificationService>();
             services.AddSingleton<IDeliveryService, DeliveryLocations>();
+            services.AddSingleton<IPaymentService, CashPaymentService>();
+            services.AddSingleton<IPaymentService, SberKassaPaymentService>();
+            services.AddSingleton<IWebContractorService, SberKassaPaymentService>();
             services.AddSingleton<ProductService>();
-            services.AddSingleton<ManufactureRepository>();
+            
 
         }
 
@@ -68,6 +74,11 @@ namespace StoreProduct.Web
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+                endpoints.MapAreaControllerRoute(
+                   name: "sber.kassa",
+                   areaName: "SberKassa",
+                   pattern: "SberKassa/{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

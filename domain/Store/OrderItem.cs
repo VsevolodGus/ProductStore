@@ -12,7 +12,7 @@ namespace Store
         public int Count
         {
             get => count;
-            set 
+            set
             {
                 ThrowExceptionForNoCorrectCount(value);
 

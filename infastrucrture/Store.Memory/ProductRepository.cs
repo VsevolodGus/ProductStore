@@ -1,16 +1,15 @@
-﻿using StoreManufacture;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace Store.Memory
 {
     public class ProductRepository : IProductRepository
     {
-        private readonly IMakerRerpository manufactures = new ManufactureRepository();
+        private readonly IMakerRepository manufactures = new MakerRepository();
         private readonly List<Product> products = new List<Product>();
         public ProductRepository()
         {
-            using(var db = new StoreContext())
+            using (var db = new StoreContext())
             {
                 //db.Products.Add(new Product("яйца", manufactures.GetById(1), "яйца", 10m, "куринные яйца, категории C0"));
                 //db.Products.Add(new Product("хлеб", manufactures.GetById(2), "выпечка", 20m, "хлебо-булочные изделия"));
@@ -21,7 +20,7 @@ namespace Store.Memory
 
                 products = db.Products.ToList();
 
-                foreach(var e in products)
+                foreach (var e in products)
                 {
                     e.Manufacture = manufactures.GetById(e.IdMaker);
                 }

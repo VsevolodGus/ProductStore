@@ -6,6 +6,6 @@ namespace StoreProduct.Web.Models
     {
         public int OrderId { get; set; }
 
-        public Dictionary<string,string> Method { get; set; }
+        public Dictionary<string, string> Methods { get; set; }
     }
 }

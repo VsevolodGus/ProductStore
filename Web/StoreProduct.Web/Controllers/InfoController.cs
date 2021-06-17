@@ -1,15 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Store;
-using StoreManufacture
-
 
 namespace StoreProduct.Web.Controllers
 {
     public class InfoController : Controller
     {
         private readonly ProductService productService;
-        private readonly IMakerRerpository manufactureRepository;
-        public InfoController(ProductService productService, IMakerRerpository manufactureRepository)
+        private readonly IMakerRepository manufactureRepository;
+        public InfoController(ProductService productService, IMakerRepository manufactureRepository)
         {
             this.productService = productService;
             this.manufactureRepository = manufactureRepository;

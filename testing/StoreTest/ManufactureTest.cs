@@ -1,5 +1,5 @@
-﻿using Xunit;
-using StoreManufacture;
+﻿using StoreManufacture;
+using Xunit;
 namespace StoreTest
 {
     public class ManufactureTest
@@ -39,7 +39,7 @@ namespace StoreTest
             string email = "gusakseva8@gmail.com";
 
             var x = new Maker(1, "", "", email, "", "");
- 
+
             Assert.Equal("gusakseva8@gmail.com", x.Email);
         }
 

@@ -2,10 +2,8 @@
 using System.Text.RegularExpressions;
 
 
-namespace StoreManufacture
+namespace Store
 {
-    //[Keyless]
-
     [Table("ProductMaker")]
     public class Maker
     {
@@ -18,7 +16,6 @@ namespace StoreManufacture
         public string Email { get; }
 
         public string Addres { get; }
-
 
         public string Description { get; }
 

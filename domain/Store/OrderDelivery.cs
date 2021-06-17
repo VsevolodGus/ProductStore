@@ -11,10 +11,10 @@ namespace Store
 
         public decimal Amount { get; }
 
-        public IReadOnlyDictionary<string,string> Parametrs { get; }
+        public IReadOnlyDictionary<string, string> Parametrs { get; }
 
         public OrderDelivery(string uniqueCode, string description, decimal amount,
-                                IReadOnlyDictionary<string,string> parametrs)
+                                IReadOnlyDictionary<string, string> parametrs)
         {
             if (string.IsNullOrWhiteSpace(uniqueCode))
                 throw new ArgumentException(nameof(uniqueCode));

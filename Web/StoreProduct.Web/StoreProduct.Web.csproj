@@ -5,8 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\contractBank\SberKassa\SberKassa.csproj" />
     <ProjectReference Include="..\..\domain\Store\Store.csproj" />
     <ProjectReference Include="..\..\infastrucrture\Store.Memory\Store.Memory.csproj" />
+    <ProjectReference Include="..\IWebContractService\ProductStore.Web.Contract\ProductStore.Web.Contract.csproj" />
   </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties /></VisualStudio></ProjectExtensions>
 
 </Project>

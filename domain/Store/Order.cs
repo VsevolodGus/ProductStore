@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
-using System;
 
 namespace Store
 {
@@ -8,7 +8,6 @@ namespace Store
     {
         private readonly List<OrderItem> items;
 
-        public OrderDelivery Delivery { get; set; }
         public int Id { get; set; }
 
         public string CellPhone { get; set; }
@@ -16,7 +15,11 @@ namespace Store
         public int TotalCount => items.Sum(item => item.Count);
 
         public decimal TotalPrice => items.Sum(item => item.Count * item.Price) + (Delivery?.Amount ?? 0m);
-            
+
+        public OrderDelivery Delivery { get; set; }
+        
+        public OrderPayment Payment { get; set; }
+        
         public Order(int id, IEnumerable<OrderItem> items)
         {
             if (items == null)
@@ -38,7 +41,7 @@ namespace Store
 
             if (index == -1)
                 throw new ArgumentException($"Not found OrderItrem with {id} in the Order");
-            
+
             return items[index];
         }
 
@@ -51,10 +54,8 @@ namespace Store
 
             if (items[index].Count > 1)
                 items[index].Count -= 1;
-            else 
+            else
                 items.RemoveAt(index);
-
-            // items[index].SaveChanges()
         }
 
         public void RemoveFullOrderItem(int id)
@@ -71,7 +72,7 @@ namespace Store
         {
             if (product == null)
                 throw new ArgumentNullException("when adding order, passing null product");
-            else if(count <= 0)
+            else if (count <= 0)
                 throw new ArgumentException("when adding order, passing no correct count");
 
 

@@ -1,18 +1,17 @@
-﻿using StoreManufacture;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace Store.Memory
 {
-    public class ManufactureRepository : IMakerRerpository
+    public class MakerRepository : IMakerRepository
     {
         private readonly List<Maker> manufactures;
 
-        public ManufactureRepository()
+        public MakerRepository()
         {
             //manufactures = new List<Maker>();
 
-            using(var db = new StoreContext())
+            using (var db = new StoreContext())
             {
 
                 //db.Makers.Add(new Maker("Красная Цена", "8937-216-76-11", "",

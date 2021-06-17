@@ -1,8 +1,6 @@
-﻿using System;
+﻿using Store;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Store;
 using Xunit;
 namespace StoreTest
 {
@@ -74,7 +72,7 @@ namespace StoreTest
 
             int id = 0;
 
-            Assert.Throws<ArgumentException>(()=>
+            Assert.Throws<ArgumentException>(() =>
             {
                 order.GetItemById(id);
             });
@@ -207,12 +205,12 @@ namespace StoreTest
                 new OrderItem(2,1,0m),
             });
 
-            Product product = new Product(1,"",null,"",0m,"");
+            Product product = new Product(1, "", null, "", 0m, "");
             int count = 0;
 
             Assert.Throws<ArgumentException>(() =>
             {
-                order.AddOrUpdate(product,count);
+                order.AddOrUpdate(product, count);
             });
         }
 

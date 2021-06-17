@@ -1,6 +1,4 @@
-﻿using StoreManufacture;
-
-namespace Store
+﻿namespace Store
 {
 
     public class Product

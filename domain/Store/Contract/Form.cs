@@ -16,11 +16,11 @@ namespace Store.Contract
 
         public IReadOnlyList<Field> Fields { get; }
 
-        public Form(string uniqueCode, int orderId, int step, bool isFinal,IEnumerable<Field> fields)
+        public Form(string uniqueCode, int orderId, int step, bool isFinal, IEnumerable<Field> fields)
         {
             if (uniqueCode == null)
                 throw new ArgumentNullException(nameof(uniqueCode));
-            
+
             if (step < 1)
                 throw new ArgumentNullException(nameof(step));
 
@@ -31,7 +31,7 @@ namespace Store.Contract
             OrderId = orderId;
             Step = step;
             IsFinal = isFinal;
-            Fields = fields.ToList() ;
+            Fields = fields.ToList();
 
         }
     }

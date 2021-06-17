@@ -22,11 +22,11 @@ namespace StoreProduct.Web.Controllers
         }
 
         // получение списка продуктов определнного производителя, по Id Maker/Manifacture
-       public IActionResult AllProductsMakers(int IdManufacture)
+        public IActionResult AllProductsMakers(int IdManufacture)
         {
             var products = new List<Product>(productService.GetAllByIdManufacture(IdManufacture));
-            
-            return View("Index",products); 
+
+            return View("Index", products);
         }
     }
 }

@@ -7,6 +7,7 @@ using Store;
 using Store.Contract;
 using Store.Messages;
 using StoreProduct.Web.Models;
+using ProductStore.Web.Contract;
 
 namespace StoreProduct.Web.Controllers
 {
@@ -16,15 +17,22 @@ namespace StoreProduct.Web.Controllers
         private readonly IOrderRepository orderRepository;
         private readonly INotificationService notificationService;
         private readonly IEnumerable<IDeliveryService> deliveryServices;
+        private readonly IEnumerable<IPaymentService> paymentServices;
+        private readonly IEnumerable<IWebContractorService> webContractServices;
+
         public OrderController(IProductRepository productRepository,
                                IOrderRepository orderRepository,
                                INotificationService notificationService,
-                               IEnumerable<IDeliveryService> deliveryServices)
+                               IEnumerable<IDeliveryService> deliveryServices,
+                               IEnumerable<IPaymentService> paymentServices,
+                               IEnumerable<IWebContractorService> webContractServices)
         {
             this.productRepository = productRepository;
             this.orderRepository = orderRepository;
             this.notificationService = notificationService;
             this.deliveryServices = deliveryServices;
+            this.paymentServices = paymentServices;
+            this.webContractServices = webContractServices;
         }
 
 
@@ -105,7 +113,7 @@ namespace StoreProduct.Web.Controllers
 
             order.AddOrUpdate(product, 1);
 
-            SaveOrderAndCart(order,cart);
+            SaveOrderAndCart(order, cart);
             orderRepository.Update(order);
 
             return RedirectToAction("InfoProduct", "Info", product);
@@ -150,7 +158,7 @@ namespace StoreProduct.Web.Controllers
                 var resultOrder = orderRepository.GetById(resultCart.OrderId);
                 OrderModel model = Map(resultOrder);
 
-                return View("Index",model);
+                return View("Index", model);
             }
 
             return View("Empty");
@@ -159,7 +167,7 @@ namespace StoreProduct.Web.Controllers
         //////////////////////////////////////////////
         //////////////////////////////////////////////
         //////////////////////////////////////////////
-        
+
         private bool IsValideCellPhone(string cellPhone)
         {
             if (cellPhone == null)
@@ -179,12 +187,12 @@ namespace StoreProduct.Web.Controllers
             if (!IsValideCellPhone(cellPhone))
             {
                 model.Errors[cellPhone] = "Номер телефона должен соответсвовать формату +79876543210";
-             
+
                 return View("Index", model);
             }
 
             int code = 2002;
-            HttpContext.Session.SetInt32(cellPhone,code);
+            HttpContext.Session.SetInt32(cellPhone, code);
             notificationService.SendConfirmationCode(cellPhone, code);
 
             return View("Confirmation",
@@ -192,7 +200,7 @@ namespace StoreProduct.Web.Controllers
                         {
                             OrderId = id,
                             CellPhone = cellPhone,
-                        }) ;
+                        });
         }
 
         public IActionResult Confirmate(int id, string cellPhone, int code)
@@ -236,11 +244,11 @@ namespace StoreProduct.Web.Controllers
             var model = new DeliveryModel
             {
                 OrderId = id,
-                Method = deliveryServices.ToDictionary(service => service.UniqueCode,
+                Methods = deliveryServices.ToDictionary(service => service.UniqueCode,
                                                        service => service.Title),
             };
 
-            return View ("DeliveryMethod",model);
+            return View("DeliveryMethod", model);
         }
 
 
@@ -260,7 +268,6 @@ namespace StoreProduct.Web.Controllers
 
             return View("DeliveryStep", form);
         }
-        //return View("/Views/Home/Index.cshtml");
 
         [HttpPost]
         public IActionResult NextDelivery(int id, string uniqueCode, int step, Dictionary<string, string> values)
@@ -276,11 +283,52 @@ namespace StoreProduct.Web.Controllers
                 orderRepository.Update(order);
 
                 // отправление данных и переход к финишной странице
-                orderRepository.SendFile();
-                return View("Finish");
+                var model = new DeliveryModel
+                {
+                    OrderId = id,
+                    Methods = paymentServices.ToDictionary(service => service.UniqueCode,
+                                                       service => service.Title),
+                };
+                return View("PaymentMethod", model);
             }
 
             return View("DeliveryStep", form);
+        }
+
+        // оформление оплаты 
+        [HttpPost]
+        public IActionResult StartPayment(int id, string uniqueCode)
+        {
+            var paymentService = paymentServices.Single(service => service.UniqueCode == uniqueCode);
+            var order = orderRepository.GetById(id);
+
+            var form = paymentService.CreateForm(order);
+
+            var webContractorService = webContractServices.SingleOrDefault(service => service.UniqueCode == uniqueCode);
+            if (webContractorService != null)
+                return Redirect(webContractorService.GetUri);
+
+            return View("PaymentStep", form);
+        }
+
+        [HttpPost]
+        public IActionResult NextPayment(int id, string uniqueCode, int step, Dictionary<string, string> values)
+        {
+            var payemntService = paymentServices.Single(service => service.UniqueCode == uniqueCode);
+
+            var form = payemntService.MoveNextForm(id, step);
+
+            if (form.IsFinal)
+            {
+                var order = orderRepository.GetById(id);
+                order.Payment = payemntService.GetPayment(form);
+                orderRepository.Update(order);
+                HttpContext.Session.RemoveCart();
+
+                return View("Finish");
+            }
+
+            return View("PaymentStep", form);
         }
     }
 }

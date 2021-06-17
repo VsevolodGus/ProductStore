@@ -1,12 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using StoreManufacture;
 
 namespace Store.Memory
 {
     class StoreContext : DbContext
     {
         public DbSet<Maker> Makers { get; set; }
-        
+
         public DbSet<Product> Products { get; set; }
         public StoreContext()
         {
@@ -39,7 +38,7 @@ namespace Store.Memory
                     eb.Property(v => v.IdMaker).HasColumnName("Manufacture");
                     eb.Property(v => v.Price).HasColumnName("PriceProduct");
                     eb.Property(v => v.Description).HasColumnName("Description");
-                    
+
                     eb.Ignore(v => v.Manufacture);
                 });
         }

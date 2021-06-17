@@ -3,12 +3,12 @@ using System;
 using Xunit;
 
 namespace StoreTest
-{ 
+{
     public class OrderItemTest
-    {          
+    {
         // template title test =>
         // (title class)_(test condition)_(result)
-        
+
         [Fact]
         public void OrderItem_WithZeroCount_ThrowArgumentException()
         {
@@ -37,8 +37,8 @@ namespace StoreTest
             var orderitem = new OrderItem(1, count, 0m);
 
             Assert.Equal(1, orderitem.ProductId);
-            Assert.Equal(count,orderitem.Count);
-            Assert.Equal(0m,orderitem.Price);
+            Assert.Equal(count, orderitem.Count);
+            Assert.Equal(0m, orderitem.Price);
         }
 
         [Fact]

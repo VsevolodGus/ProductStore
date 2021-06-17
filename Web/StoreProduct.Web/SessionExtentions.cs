@@ -32,10 +32,10 @@ namespace StoreProduct.Web
 
         public static bool TryGetCart(this ISession session, out Cart value)
         {
-            if (session.TryGetValue(key,out byte[] buffer))
+            if (session.TryGetValue(key, out byte[] buffer))
             {
-                using(var stream = new MemoryStream(buffer))
-                using(var reader = new BinaryReader(stream, Encoding.UTF8,true))
+                using (var stream = new MemoryStream(buffer))
+                using (var reader = new BinaryReader(stream, Encoding.UTF8, true))
                 {
                     var orderId = reader.ReadInt32();
                     var totalCount = reader.ReadInt32();
@@ -43,7 +43,7 @@ namespace StoreProduct.Web
 
                     value = new Cart(orderId)
                     {
-                        TotalCount = totalCount, 
+                        TotalCount = totalCount,
                         TotalPrice = totalPrice,
                     };
 
