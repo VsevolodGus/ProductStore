@@ -14,7 +14,7 @@ namespace Store
 
         public int TotalCount => items.Sum(item => item.Count);
 
-        public decimal TotalPrice => items.Sum(item => item.Count * item.Price) + (Delivery?.Amount ?? 0m);
+        public decimal TotalPrice => items.Sum(item => item.Count * item.Price) + (Delivery?.PriceDelivery ?? 0m);
 
         public OrderDelivery Delivery { get; set; }
         

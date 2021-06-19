@@ -1,4 +1,4 @@
-﻿@model List<Product>
+﻿@model List<ProductModel>
 
 <table class="table table-sm table-striped">
     <thead class="thead-dark">
@@ -14,18 +14,16 @@
         {
             <tr>
                 <td>@(i+1)</td>
-                <td><a href="@Url.Action("InfoProduct","Info",new { id = Model[i].Id })">@Model[i].Title</a></td>
-                <td><a href="@Url.Action("InfoManufactures","Info", new { id = Model[i].Manufacture.Id })" >@Model[i].Manufacture.Title</a></td>
+                <td><a href="@Url.Action("InfoProduct","Info",new { id = Model[i].ProductId})">@Model[i].ProductTitle</a></td>
+                <td><a href="@Url.Action("InfoManufactures","Info", new { id = Model[i].MakerId})" >@Model[i].MakerTitle</a></td>
                 <td>@Model[i].Price</td>
                 <td>
                     <form action="@Url.Action("InfoProduct","Info")">
-                        <input type="hidden" name="id" value="@Model[i].Id"/>
+                        <input type="hidden" name="id" value="@Model[i].ProductId"/>
                         <button class="btn btn-success" type="submit">Подробнее о продукте</button>
                     </form>
                 </td>
             </tr>
         }
     </tbody>
-    
-
 </table>

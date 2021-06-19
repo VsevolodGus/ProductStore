@@ -7,9 +7,9 @@ namespace Store.Memory
         public DbSet<Maker> Makers { get; set; }
 
         public DbSet<Product> Products { get; set; }
+        
         public StoreContext()
         {
-            //Database.EnsureDeleted();
             Database.EnsureCreated();
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -38,8 +38,6 @@ namespace Store.Memory
                     eb.Property(v => v.IdMaker).HasColumnName("Manufacture");
                     eb.Property(v => v.Price).HasColumnName("PriceProduct");
                     eb.Property(v => v.Description).HasColumnName("Description");
-
-                    eb.Ignore(v => v.Manufacture);
                 });
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -47,5 +45,4 @@ namespace Store.Memory
             optionsBuilder.UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB;Initial Catalog=ProductStoreDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
         }
     }
-    //Server=(localdb)\\mssqllocaldb;Database=ProductStoreDB;Trusted_Connection=True;
 }

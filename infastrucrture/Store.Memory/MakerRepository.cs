@@ -9,8 +9,6 @@ namespace Store.Memory
 
         public MakerRepository()
         {
-            //manufactures = new List<Maker>();
-
             using (var db = new StoreContext())
             {
 

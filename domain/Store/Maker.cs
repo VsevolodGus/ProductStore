@@ -1,7 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.RegularExpressions;
 
-
 namespace Store
 {
     [Table("ProductMaker")]

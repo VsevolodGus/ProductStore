@@ -29,8 +29,8 @@ namespace Store
             var list = products.GetAllByTitle(query)
                                     .Union(products.GetAllByCategory(query))
                                     .Union(products.GetAllByManufacture(query))
-                                    .Distinct()
-                                    .ToList();
+                                    ?.Distinct()
+                                    ?.ToList();
 
             return list;
         }

@@ -1,15 +1,15 @@
+using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using ProductStore.Web.Contract;
 using Store;
-using Store.Contract;
 using Store.Memory;
+using Store.Contract;
 using Store.Messages;
 using Store.SberKassa;
-using System;
+using ProductStore.Web.Contract;
 
 namespace StoreProduct.Web
 {
