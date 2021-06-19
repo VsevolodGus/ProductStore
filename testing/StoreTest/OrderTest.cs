@@ -206,7 +206,7 @@ namespace StoreTest
                 new OrderItem(2,1,0m),
             });
 
-            Product product = new Product(1, "", null, "", 0m, "");
+            Product product = new Product(1, "", 0, "", 0m, "");
             int count = 0;
 
             Assert.Throws<ArgumentException>(() =>
@@ -224,7 +224,7 @@ namespace StoreTest
                 new OrderItem(2,1,0m),
             });
 
-            Product product = new Product(1, "", null, "", 0m, "");
+            Product product = new Product(1, "", 0, "", 0m, "");
             int count = -10;
 
             Assert.Throws<ArgumentException>(() =>
@@ -243,7 +243,7 @@ namespace StoreTest
                 new OrderItem(2,1,0m),
             });
 
-            Product product = new Product(id, "", null, "", 0m, "");
+            Product product = new Product(id, "", 0, "", 0m, "");
             int count = 10;
 
             order.AddOrUpdate(product, count);
@@ -261,7 +261,7 @@ namespace StoreTest
                 new OrderItem(2,1,0m),
             });
 
-            Product product = new Product(id, "", null, "", 0m, "");
+            Product product = new Product(id, "", 0, "", 0m, "");
             int count = 10;
 
             order.AddOrUpdate(product, count);

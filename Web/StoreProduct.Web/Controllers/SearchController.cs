@@ -7,10 +7,13 @@ namespace StoreProduct.Web.Controllers
     public class SearchController : Controller
     {
         private readonly ProductService productService;
+        private readonly IMakerRepository makerRepository;
 
-        public SearchController(ProductService productService)
+        public SearchController(ProductService productService,
+                                IMakerRepository makerRepository)
         {
             this.productService = productService;
+            this.makerRepository = makerRepository;
         }
 
         // получение из репозитория список продуктов по запросу и вывод данных на страницу
@@ -19,6 +22,7 @@ namespace StoreProduct.Web.Controllers
             var products = new List<Product>(productService.GetAllByQuery(query));
 
             return View(products);
+            
         }
 
         // получение списка продуктов определнного производителя, по Id Maker/Manifacture

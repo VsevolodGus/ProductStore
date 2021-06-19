@@ -5,30 +5,33 @@ namespace Store
 {
     public class ProductService
     {
-        private readonly IProductRepository products;
+        private readonly IProductRepository productRepository;
+        private readonly IMakerRepository makerRepository;
 
-        public ProductService(IProductRepository products)
+        public ProductService(IProductRepository productRepository,
+                              IMakerRepository makerRepository)
         {
-            this.products = products;
+            this.productRepository = productRepository;
+            this.makerRepository = makerRepository;
         }
 
         public Product GetById(int id)
         {
-            var product = products.GetById(id);
+            var product = productRepository.GetById(id);
 
             return product;
         }
 
         public List<Product> GetAllByIdManufacture(int id)
         {
-            return products.GetAllByIdManufacture(id);
+            return productRepository.GetAllByIdManufacture(id);
         }
 
         public List<Product> GetAllByQuery(string query)
         {
-            var list = products.GetAllByTitle(query)
-                                    .Union(products.GetAllByCategory(query))
-                                    .Union(products.GetAllByManufacture(query))
+            var list = productRepository.GetAllByTitle(query)
+                                    .Union(productRepository.GetAllByCategory(query))
+                                    .Union(productRepository.GetAllByManufacture(query))
                                     .Distinct()
                                     .ToList();
 
@@ -37,7 +40,7 @@ namespace Store
 
         public List<Product> GetAllByIntervalPrice(decimal minPrice, decimal maxPrice)
         {
-            var list = products.GetAllByPrice(minPrice, maxPrice);
+            var list = productRepository.GetAllByPrice(minPrice, maxPrice);
 
             return list;
         }

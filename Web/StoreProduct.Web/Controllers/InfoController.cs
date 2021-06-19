@@ -17,8 +17,9 @@ namespace StoreProduct.Web.Controllers
         public IActionResult InfoProduct(int id)
         {
             var product = productService.GetById(id);
+            var maker = manufactureRepository.GetById(product.IdMaker);
 
-            return View("InfoProduct", product);
+            return View("InfoProduct", (product,maker));
         }
 
         // получание производителя из репозитория и вывод его полей, запрос по Id
