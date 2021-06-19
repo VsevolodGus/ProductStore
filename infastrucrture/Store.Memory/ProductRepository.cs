@@ -15,7 +15,8 @@ namespace Store.Memory
                 //db.Products.Add(new Product("хлеб", manufactures.GetById(2), "выпечка", 20m, "хлебо-булочные изделия"));
                 //db.Products.Add(new Product("говядина", manufactures.GetById(3), "мясо", 30m, "мясо из говядины и телятины"));
                 //db.Products.Add(new Product("свинина", manufactures.GetById(4), "мясо", 40m, "мясо из свинины"));
-                //db.SaveChanges();
+
+                db.SaveChanges();
 
                 products = db.Products.ToList();
 
@@ -44,8 +45,7 @@ namespace Store.Memory
 
         public List<Product> GetAllByManufacture(string manufacture)
         {
-            return products.Where(product => manufactures.GetById(product.IdMaker).Title.Contains(manufacture))
-                           .ToList();
+            return products.Where(product => product.Manufacture.Title.Contains(manufacture)).ToList();
         }
 
         public List<Product> GetAllByTitle(string title)

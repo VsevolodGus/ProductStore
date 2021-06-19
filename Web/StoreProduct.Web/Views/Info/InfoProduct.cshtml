@@ -1,11 +1,11 @@
-﻿@model (Product,Maker)
+﻿@model Product
 
-<p><strong>Название:</strong>@Model.Item1.Title</p>
-<p><strong>Производитель:</strong><a href="@Url.Action("InfoManufactures", "Info", new { id = Model.Item1.IdMaker })">@Model.Item2.Title</a></p>
-<p><strong>Категория:</strong><a>@Model.Item1.Category</a></p>
-<p><strong>Цена:</strong>@Model.Item1.Price</p>
-<p><strong>Описание:</strong>@Model.Item1.Description</p>
+<p><strong>Название:</strong>@Model.Title</p>
+<p><strong>Производитель:</strong><a href="@Url.Action("InfoManufactures", "Info", new { id = Model.Manufacture.Id })">@Model.Manufacture.Title</a></p>
+<p><strong>Категория:</strong><a>@Model.Category</a></p>
+<p><strong>Цена:</strong>@Model.Price</p>
+<p><strong>Описание:</strong>@Model.Description</p>
 <form action="@Url.Action("AddItem","Order")" method="post">
-    <input type="hidden" name="id" value="@Model.Item1.Id" />
+    <input type="hidden" name="id" value="@Model.Id" />
     <button class=" btn btn-success" type="submit">Добавить в корзину</button>
 </form>

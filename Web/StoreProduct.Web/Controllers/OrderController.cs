@@ -15,7 +15,6 @@ namespace StoreProduct.Web.Controllers
     {
         private readonly IProductRepository productRepository;
         private readonly IOrderRepository orderRepository;
-        private readonly IMakerRepository makerRepository;
         private readonly INotificationService notificationService;
         private readonly IEnumerable<IDeliveryService> deliveryServices;
         private readonly IEnumerable<IPaymentService> paymentServices;
@@ -23,7 +22,6 @@ namespace StoreProduct.Web.Controllers
 
         public OrderController(IProductRepository productRepository,
                                IOrderRepository orderRepository,
-                               IMakerRepository makerRepository,
                                INotificationService notificationService,
                                IEnumerable<IDeliveryService> deliveryServices,
                                IEnumerable<IPaymentService> paymentServices,
@@ -31,7 +29,6 @@ namespace StoreProduct.Web.Controllers
         {
             this.productRepository = productRepository;
             this.orderRepository = orderRepository;
-            this.makerRepository = makerRepository;
             this.notificationService = notificationService;
             this.deliveryServices = deliveryServices;
             this.paymentServices = paymentServices;
@@ -49,7 +46,7 @@ namespace StoreProduct.Web.Controllers
                              {
                                  Id = product.Id,
                                  Title = product.Title,
-                                 Manufacturer = makerRepository.GetById(product.IdMaker),
+                                 Manufacturer = product.Manufacture,
                                  Count = item.Count,
                                  Price = item.Price,
                              };

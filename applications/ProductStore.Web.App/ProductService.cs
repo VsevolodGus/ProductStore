@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using Store;
+using System.Collections.Generic;
 using System.Linq;
 
-namespace Store
+namespace ProductStore.Web.App
 {
     public class ProductService
     {
@@ -24,7 +25,7 @@ namespace Store
             return products.GetAllByIdManufacture(id);
         }
 
-        public List<Product> GetAllByQuery(string query)
+        public IReadOnlyCollection<Product> GetAllByQuery(string query)
         {
             var list = products.GetAllByTitle(query)
                                     .Union(products.GetAllByCategory(query))
@@ -40,6 +41,18 @@ namespace Store
             var list = products.GetAllByPrice(minPrice, maxPrice);
 
             return list;
+        }
+
+        private ProductModel Map(Product product)
+        {
+            return new ProductModel
+            {
+                Id = product.Id,
+                Title = product.Title,
+                IdMaker = product.IdMaker,
+                Description = product.Description,
+                Price = product.Price,
+            };
         }
     }
 }
