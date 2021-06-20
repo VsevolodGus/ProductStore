@@ -50,7 +50,7 @@ namespace StoreProduct.Web.Controllers
                                  Id = product.Id,
                                  Title = product.Title,
                                  MakerId = product.IdMaker,
-                                 MakerTitile = makerRepository.GetById(product.IdMaker).Title, 
+                                 MakerTitle = makerRepository.GetById(product.IdMaker).Title, 
                                  Count = item.Count,
                                  Price = item.Price,
                              };
@@ -115,12 +115,15 @@ namespace StoreProduct.Web.Controllers
 
             var product = productRepository.GetById(id);
 
-            order.AddOrUpdate(product, 1);
+            if (order.Items.TryGet(id, out OrderItem orderItem))
+                orderItem.Count += 1;
+            else
+                order.Items.Add(product.Id, product.Price, 1);
 
             SaveOrderAndCart(order, cart);
             orderRepository.Update(order);
 
-            return RedirectToAction("InfoProduct", "Info", product);
+            return RedirectToAction("InfoProduct", "Search", product);
         }
 
         [HttpPost]
@@ -128,10 +131,7 @@ namespace StoreProduct.Web.Controllers
         {
             (Order order, Cart cart) = GetCreateOrderAndCart();
 
-            if (order.GetItemById(id).Count <= 1)
-                RemoveProduct(id);
-
-            order.RemoveOrderItem(id);
+            order.Items.RemoveItem(id);
 
             SaveOrderAndCart(order, cart);
             orderRepository.Update(order);
@@ -152,7 +152,7 @@ namespace StoreProduct.Web.Controllers
         {
             (Order order, Cart cart) = GetCreateOrderAndCart();
 
-            order.RemoveFullOrderItem(id);
+            order.Items.RemoveProduct(id);
 
             SaveOrderAndCart(order, cart);
             orderRepository.Update(order);

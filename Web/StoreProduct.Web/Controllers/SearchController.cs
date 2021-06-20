@@ -46,8 +46,55 @@ namespace StoreProduct.Web.Controllers
         public IActionResult AllProductsMakers(int IdManufacture)
         {
             var products = new List<Product>(productService.GetAllByIdManufacture(IdManufacture));
+            if (products == null || products.Count == 0)
+                return View("EmptySearch");
 
-            return View("Index", products);
+            var model = new List<ProductModel>();
+
+            foreach (var product in products)
+            {
+                model.Add(new ProductModel
+                {
+                    ProductId = product.Id,
+                    MakerId = product.IdMaker,
+                    ProductTitle = product.Title,
+                    MakerTitle = makerRepository.GetById(product.IdMaker).Title,
+                    Category = product.Category,
+                    Price = product.Price,
+                    Description = product.Description
+                });
+            }
+
+            return View("Index", model);
+        }
+
+
+
+        // получание продукта из репозитория и вывод его полей, запрос по Id
+        public IActionResult InfoProduct(int id)
+        {
+            var product = productService.GetById(id);
+
+            var model = new ProductModel
+            {
+                ProductId = product.Id,
+                MakerId = product.IdMaker,
+                ProductTitle = product.Title,
+                MakerTitle = makerRepository.GetById(product.IdMaker).Title,
+                Category = product.Category,
+                Price = product.Price,
+                Description = product.Description
+            };
+
+            return View("InfoProduct", model);
+        }
+
+        // получание производителя из репозитория и вывод его полей, запрос по Id
+        public IActionResult InfoManufacture(int id)
+        {
+            var manufacture = makerRepository.GetById(id);
+
+            return View("InfoManufacture", manufacture);
         }
     }
 }

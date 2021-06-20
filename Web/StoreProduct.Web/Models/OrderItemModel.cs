@@ -13,7 +13,7 @@ namespace StoreProduct.Web.Models
 
         public int MakerId { get; set; }
 
-        public string MakerTitile { get; set; }
+        public string MakerTitle { get; set; }
 
         public decimal Price { get; set; }
     }
