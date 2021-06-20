@@ -14,11 +14,11 @@
         {
             <tr>
                 <td>@(i+1)</td>
-                <td><a href="@Url.Action("InfoProduct","Search",new { id = Model[i].ProductId})">@Model[i].ProductTitle</a></td>
-                <td><a href="@Url.Action("InfoManufacture","Search", new { id = Model[i].MakerId})" >@Model[i].MakerTitle</a></td>
+                <td><a href="@Url.Action("InfoProduct","Info",new { id = Model[i].ProductId})">@Model[i].ProductTitle</a></td>
+                <td><a href="@Url.Action("InfoManufacture","Info", new { id = Model[i].MakerId})" >@Model[i].MakerTitle</a></td>
                 <td>@Model[i].Price</td>
                 <td>
-                    <form action="@Url.Action("InfoProduct","Search")">
+                    <form action="@Url.Action("InfoProduct","Info")">
                         <input type="hidden" name="id" value="@Model[i].ProductId"/>
                         <button class="btn btn-success" type="submit">Подробнее о продукте</button>
                     </form>

@@ -123,7 +123,7 @@ namespace StoreProduct.Web.Controllers
             SaveOrderAndCart(order, cart);
             orderRepository.Update(order);
 
-            return RedirectToAction("InfoProduct", "Search", product);
+            return RedirectToAction("InfoProduct", "Info", product);
         }
 
         [HttpPost]

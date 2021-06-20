@@ -15,8 +15,8 @@
         {
         <tr>
             <td class="text-right">@(i+1)</td>
-            <td><a  href="@Url.Action("InfoProduct","Search", new { id = Model.Items[i].Id })">@Model.Items[i].Title</a></td>
-            <td><a href="@Url.Action("InfoManufacture","Search",new { id = Model.Items[i].MakerId })">@Model.Items[i].MakerTitle</a></td>
+            <td><a  href="@Url.Action("InfoProduct","Info", new { id = Model.Items[i].Id })">@Model.Items[i].Title</a></td>
+            <td><a href="@Url.Action("InfoManufacture","Info",new { id = Model.Items[i].MakerId })">@Model.Items[i].MakerTitle</a></td>
             <td class="text-center">@Model.Items[i].Count</td>
             <td class="text-right">@Model.Items[i].Price</td>
             <td class="form-in">
