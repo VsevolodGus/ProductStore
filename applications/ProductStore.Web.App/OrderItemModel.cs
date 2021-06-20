@@ -8,7 +8,9 @@
 
         public int Count { get; set; }
 
-        public int IdMaker { get; set; }
+        public int MakerId { get; set; }
+
+        public string MakerTitle { get; set; }
 
         public decimal Price { get; set; }
     }

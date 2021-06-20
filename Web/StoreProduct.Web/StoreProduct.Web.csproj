@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\applications\ProductStore.Web.App\ProductStore.Web.App.csproj" />
     <ProjectReference Include="..\..\contractbank\Store.SberKassa\Store.SberKassa.csproj" />
     <ProjectReference Include="..\..\domain\Store\Store.csproj" />
     <ProjectReference Include="..\..\infastrucrture\Store.Memory\Store.Memory.csproj" />

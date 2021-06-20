@@ -8,6 +8,7 @@ using Store.Contract;
 using Store.Messages;
 using StoreProduct.Web.Models;
 using ProductStore.Web.Contract;
+using ProductStore.Web.App;
 
 namespace StoreProduct.Web.Controllers
 {

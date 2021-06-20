@@ -7,51 +7,56 @@ namespace ProductStore.Web.App
     public class ProductService
     {
         private readonly IProductRepository products;
+        private IMakerRepository makerRepository;
 
-        public ProductService(IProductRepository products)
+        public ProductService(IProductRepository products,
+                              IMakerRepository makerRepository)
         {
             this.products = products;
+            this.makerRepository = makerRepository;
         }
 
-        public Product GetById(int id)
+        public ProductModel GetById(int id)
         {
             var product = products.GetById(id);
 
-            return product;
+            return Map(product);
         }
 
-        public List<Product> GetAllByIdManufacture(int id)
+        public List<ProductModel> GetAllByIdManufacture(int id)
         {
-            return products.GetAllByIdManufacture(id);
+            return products.GetAllByIdManufacture(id).Select(Map).ToList();
         }
 
-        public IReadOnlyCollection<Product> GetAllByQuery(string query)
+        public List<ProductModel> GetAllByQuery(string query)
         {
             var list = products.GetAllByTitle(query)
                                     .Union(products.GetAllByCategory(query))
                                     .Union(products.GetAllByManufacture(query))
-                                    .Distinct()
-                                    .ToList();
+                                    ?.Distinct()
+                                    ?.ToList();
 
-            return list;
+            return list.Select(Map).ToList();
         }
 
-        public List<Product> GetAllByIntervalPrice(decimal minPrice, decimal maxPrice)
+        public List<ProductModel> GetAllByIntervalPrice(decimal minPrice, decimal maxPrice)
         {
             var list = products.GetAllByPrice(minPrice, maxPrice);
 
-            return list;
+            return list.Select(Map).ToList();
         }
 
         private ProductModel Map(Product product)
         {
             return new ProductModel
             {
-                Id = product.Id,
-                Title = product.Title,
-                IdMaker = product.IdMaker,
-                Description = product.Description,
+                ProductId = product.Id,
+                MakerId = product.IdMaker,
+                ProductTitle = product.Title,
+                MakerTitle = makerRepository.GetById(product.IdMaker).Title,
+                Category = product.Category,
                 Price = product.Price,
+                Description = product.Description
             };
         }
     }

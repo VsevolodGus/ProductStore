@@ -2,14 +2,18 @@
 {
     public class ProductModel
     {
-        public int Id { get; set; }
+        public int ProductId { get; set; }
 
-        public int IdMaker{ get; set; }
+        public int MakerId { get; set; }
 
-        public string Title { get; set; }
+        public string ProductTitle { get; set; }
 
-        public string Description { get; set; }
+        public string MakerTitle { get; set; }
+
+        public string Category { get; set; }
 
         public decimal Price { get; set; }
+
+        public string Description { get; set; }
     }
 }
