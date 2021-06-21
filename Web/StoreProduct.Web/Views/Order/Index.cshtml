@@ -44,15 +44,14 @@
 </table>
 
 
-<form action="@Url.Action("SendConfirmation","Order")">
-    <input type="hidden" name="id" value="@Model.Id" />
-    <label for="cellPhone">Номер телефона</label>
-    <input  class ="form-group" type="text" name="cellPhone" />
+<form action="@Url.Action(nameof(OrderController.SendConfirmation))" method="post">
     <div>
+        <label for="cellPhone">Номер телефона</label>
+        <input class="form-group" type="text" name="cellPhone" value="+79876543210" />
         @if (Model.Errors.ContainsKey("cellPhone"))
-            {
-                <small class="text-danger">@Model.Errors["cellPhone"]</small>
-            }
+        {
+            <small class="text-danger">@Model.Errors["cellPhone"]</small>
+        }
     </div>
     
     

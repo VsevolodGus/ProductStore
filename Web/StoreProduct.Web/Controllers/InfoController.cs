@@ -7,13 +7,12 @@ namespace StoreProduct.Web.Controllers
     public class InfoController : Controller
     {
         private readonly ProductService productService;
-        private readonly IMakerRepository makerRepository;
-
+        private readonly MakerService makerService;
         public InfoController(ProductService productService,
-                              IMakerRepository makerRepository)
+                              MakerService makerService)
         {
             this.productService = productService;
-            this.makerRepository = makerRepository;
+            this.makerService = makerService;
         }
 
         // получание продукта из репозитория и вывод его полей, запрос по Id
@@ -28,7 +27,7 @@ namespace StoreProduct.Web.Controllers
         // получание производителя из репозитория и вывод его полей, запрос по Id
         public IActionResult InfoManufacture(int id)
         {
-            var manufacture = makerRepository.GetById(id);
+            var manufacture = makerService.GetById(id);
 
             return View("InfoManufacture", manufacture);
         }

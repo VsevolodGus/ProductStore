@@ -27,6 +27,7 @@ namespace StoreProduct.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddHttpContextAccessor();
             services.AddDistributedMemoryCache();
             services.AddSession(options =>
             {
@@ -44,7 +45,8 @@ namespace StoreProduct.Web
             services.AddSingleton<IPaymentService, SberKassaPaymentService>();
             services.AddSingleton<IWebContractorService, SberKassaPaymentService>();
             services.AddSingleton<ProductService>();
-            
+            services.AddSingleton<MakerService>();
+            services.AddSingleton<OrderService>();
 
         }
 

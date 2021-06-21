@@ -1,16 +1,15 @@
-﻿@model DeliveryModel
+﻿@model IReadOnlyDictionary<string, string>
 @{ 
     ViewData["Title"] = "Выбор способа доставки";
 }
 
 <h1>Способ доставки</h1>
 
-<form action="@Url.Action("StartDelivery")" method="post">
-    <input type="hidden" name="id" value="@Model.OrderId"/>
+<form action="@Url.Action(nameof(OrderController.StartDelivery))" method="post">
     <div class="form-group">
         <label form="code">Способ доставки:</label>
-        <select class="form-control" name="uniquecode">
-            @foreach(var e in Model.Methods)
+        <select class="form-control" name="serviceName">
+            @foreach(var e in Model)
             {
                 <option value="@e.Key">@e.Value</option>
             }

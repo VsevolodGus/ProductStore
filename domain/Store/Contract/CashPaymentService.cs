@@ -1,33 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
 
+
 namespace Store.Contract
 {
     public class CashPaymentService : IPaymentService
     {
-        public string UniqueCode => "Cash";
+        public string Name => "Cash";
 
         public string Title => "Оплата наличными";
 
-        public Form CreateForm(Order order)
+        public Form FirstForm(Order order)
         {
-            return new Form(UniqueCode, order.Id, 1, false, new Field[0]);
+            return Form.CreateFirst(Name)
+                       .AddParameter("orderId", order.Id.ToString());
         }
 
         public OrderPayment GetPayment(Form form)
         {
-            if (form.UniqueCode != UniqueCode || !form.IsFinal)
+            if (form.ServiceName != Name || !form.IsFinal)
                 throw new InvalidOperationException("Invalid payment form.");
 
-            return new OrderPayment(UniqueCode, "Оплата наличными", new Dictionary<string, string>());
+            return new OrderPayment(Name, "Оплата наличными", form.Parameters);
         }
 
-        public Form MoveNextForm(int orderId, int step)
+
+        public Form NextForm(int step, IReadOnlyDictionary<string, string> values)
         {
             if (step != 1)
-                throw new InvalidOperationException("Invalid cash step.");
+                throw new ArgumentException(nameof(step));
 
-            return new Form(UniqueCode, orderId, 2, true, new Field[0]);
+            return Form.CreateLast(Name, step + 1, values);
         }
     }
 }
