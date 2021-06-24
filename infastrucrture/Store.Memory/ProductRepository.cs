@@ -5,7 +5,7 @@ namespace Store.Memory
 {
     public class ProductRepository : IProductRepository
     {
-        private readonly IMakerRepository manufactures = new MakerRepository();
+        private readonly IMakerRepository makerRepository = new MakerRepository();
         private readonly List<Product> products = new List<Product>();
         public ProductRepository()
         {
@@ -18,14 +18,8 @@ namespace Store.Memory
                 //db.SaveChanges();
 
                 products = db.Products.ToList();
-
-                foreach (var e in products)
-                {
-                    e.Manufacture = manufactures.GetById(e.IdMaker);
-                }
             }
         }
-
 
         public Product GetById(int id)
         {
@@ -44,19 +38,17 @@ namespace Store.Memory
 
         public List<Product> GetAllByManufacture(string manufacture)
         {
-            return products.Where(product => manufactures.GetById(product.IdMaker).Title.Contains(manufacture))
-                           .ToList();
+            return products.Where(product => makerRepository.GetById(product.IdMaker).Title.Contains(manufacture)).ToList();
         }
 
         public List<Product> GetAllByTitle(string title)
         {
-            var list = products.Where(product => product.Title == title).ToList();
-            return list;
+            return products.Where(product => product.Title == title).ToList();
         }
 
         public List<Product> GetAllByIdManufacture(int id)
         {
-            return this.GetAllByManufacture(manufactures.GetById(id).Title);
+            return GetAllByManufacture(makerRepository.GetById(id).Title);
         }
 
         public List<Product> GetAllByIds(IEnumerable<int> productIds)

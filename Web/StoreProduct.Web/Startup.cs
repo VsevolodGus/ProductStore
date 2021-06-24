@@ -1,15 +1,17 @@
+using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using ProductStore.Web.Contract;
 using Store;
-using Store.Contract;
 using Store.Memory;
+using Store.Contract;
 using Store.Messages;
-using Store.SberKassa;
-using System;
+using ProductStore.Web.Contract;
+using ProductStore.Web.App;
+using ProductSotre.SberKassa;
+using ProductStore.YandexKassa;
 
 namespace StoreProduct.Web
 {
@@ -26,6 +28,7 @@ namespace StoreProduct.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddHttpContextAccessor();
             services.AddDistributedMemoryCache();
             services.AddSession(options =>
             {
@@ -43,7 +46,8 @@ namespace StoreProduct.Web
             services.AddSingleton<IPaymentService, SberKassaPaymentService>();
             services.AddSingleton<IWebContractorService, SberKassaPaymentService>();
             services.AddSingleton<ProductService>();
-            
+            services.AddSingleton<MakerService>();
+            services.AddSingleton<OrderService>();
 
         }
 
@@ -71,6 +75,10 @@ namespace StoreProduct.Web
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute(
+                    name: "areas",
+                    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");

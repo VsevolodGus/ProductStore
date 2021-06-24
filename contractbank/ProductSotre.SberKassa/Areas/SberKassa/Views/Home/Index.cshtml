@@ -1,0 +1,15 @@
+﻿@using ProductSotre.SberKassa.Areas.SberKassa.Models
+@using ProductSotre.SberKassa.Areas.SberKassa.Controllers
+@model ExampleModel
+
+@{
+    ViewData["Title"] = "Яндекс.Касса";
+}
+
+<h1>Cбер.Касса</h1>
+
+<form action="@Url.Action(nameof(HomeController.Callback), "Home")" method="post">
+    <input type="hidden" name="orderId" value="@Model.OrderId" />
+    <input type="hidden" name="returnUri" value="@Model.ReturnUri" />
+    <button type="submit" class="btn btn-success">Оплатить</button>
+</form>

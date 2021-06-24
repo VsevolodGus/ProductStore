@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ProductStore.Web.App;
 using Store;
 
 namespace StoreProduct.Web.Controllers
@@ -6,26 +7,27 @@ namespace StoreProduct.Web.Controllers
     public class InfoController : Controller
     {
         private readonly ProductService productService;
-        private readonly IMakerRepository manufactureRepository;
-        public InfoController(ProductService productService, IMakerRepository manufactureRepository)
+        private readonly MakerService makerService;
+        public InfoController(ProductService productService,
+                              MakerService makerService)
         {
             this.productService = productService;
-            this.manufactureRepository = manufactureRepository;
+            this.makerService = makerService;
         }
 
         // получание продукта из репозитория и вывод его полей, запрос по Id
         public IActionResult InfoProduct(int id)
         {
-            var product = productService.GetById(id);
-            var maker = manufactureRepository.GetById(product.IdMaker);
+            var model = productService.GetById(id);
 
-            return View("InfoProduct", (product,maker));
+
+            return View("InfoProduct", model);
         }
 
         // получание производителя из репозитория и вывод его полей, запрос по Id
-        public IActionResult InfoManufactures(int id)
+        public IActionResult InfoManufacture(int id)
         {
-            var manufacture = manufactureRepository.GetById(id);
+            var manufacture = makerService.GetById(id);
 
             return View("InfoManufacture", manufacture);
         }

@@ -1,7 +1,4 @@
-﻿
-using Store;
-
-namespace StoreProduct.Web.Models
+﻿namespace ProductStore.Web.App
 {
     public class OrderItemModel
     {
@@ -11,7 +8,9 @@ namespace StoreProduct.Web.Models
 
         public int Count { get; set; }
 
-        public Maker Manufacturer { get; set; }
+        public int MakerId { get; set; }
+
+        public string MakerTitle { get; set; }
 
         public decimal Price { get; set; }
     }

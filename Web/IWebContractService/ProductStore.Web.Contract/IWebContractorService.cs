@@ -1,9 +1,12 @@
-﻿namespace ProductStore.Web.Contract
+﻿using System;
+using System.Collections.Generic;
+
+namespace ProductStore.Web.Contract
 {
     public interface IWebContractorService
     {
-        string UniqueCode { get; }
+        string Name { get; }
 
-        string GetUri { get; }
+        Uri StartSession(IReadOnlyDictionary<string, string> parameters, Uri returnUri);
     }
 }

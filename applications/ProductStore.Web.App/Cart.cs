@@ -1,4 +1,4 @@
-﻿namespace StoreProduct.Web.Models
+﻿namespace ProductStore.Web.App
 {
     public class Cart
     {
@@ -8,12 +8,11 @@
 
         public decimal TotalPrice;
 
-        public Cart(int id)
+        public Cart(int id, int totalCount, decimal totalPrice)
         {
             OrderId = id;
-
-            TotalCount = 0;
-            TotalPrice = 0m;
+            TotalCount = totalCount;
+            TotalPrice = totalPrice;
         }
     }
 }

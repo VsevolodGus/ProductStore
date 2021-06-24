@@ -9,8 +9,6 @@ namespace Store.Memory
 
         public MakerRepository()
         {
-            //manufactures = new List<Maker>();
-
             using (var db = new StoreContext())
             {
 
@@ -22,27 +20,11 @@ namespace Store.Memory
                 //    "Москва 125047 Лесная улица 5Б, бизнес - центр «Белая площадь», 12 - й этаж", ""));
                 //db.Makers.Add(new Maker("Мясницкий ряд", " +7495-411-33-41", " zakupki@kolbasa.ru",
                 //    "Транспортный проезд д.7 г. Одинцово Московская область", ""));
-                //db.SaveChanges();
+
+                db.SaveChanges();
 
                 manufactures = db.Makers.ToList();
-
-                if (manufactures == null)
-                    manufactures = new List<Maker>();
             }
-        }
-
-        public List<Maker> GetAllByIds(IEnumerable<int> makerIds)
-        {
-            var makerList = from product in manufactures
-                            join productId in makerIds on product.Id equals productId
-                            select product;
-
-            return makerList.ToList();
-        }
-
-        public List<Maker> GetAllByTitlePath(string titlepath)
-        {
-            return manufactures.Where(maker => maker.Title.Contains(titlepath)).ToList();
         }
 
         public Maker GetById(int id)

@@ -5,7 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\contractbank\Store.SberKassa\Store.SberKassa.csproj" />
+    <ProjectReference Include="..\..\applications\ProductStore.Web.App\ProductStore.Web.App.csproj" />
+    <ProjectReference Include="..\..\contractbank\ProductSotre.SberKassa\ProductSotre.SberKassa.csproj" />
+    <ProjectReference Include="..\..\contractbank\ProductStore.YandexKassa\ProductStore.YandexKassa.csproj" />
     <ProjectReference Include="..\..\domain\Store\Store.csproj" />
     <ProjectReference Include="..\..\infastrucrture\Store.Memory\Store.Memory.csproj" />
     <ProjectReference Include="..\IWebContractService\ProductStore.Web.Contract\ProductStore.Web.Contract.csproj" />

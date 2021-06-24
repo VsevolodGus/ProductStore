@@ -9,11 +9,11 @@ namespace Store
 
         public string Description { get; }
 
-        public decimal Amount { get; }
+        public decimal PriceDelivery { get; }
 
         public IReadOnlyDictionary<string, string> Parametrs { get; }
 
-        public OrderDelivery(string uniqueCode, string description, decimal amount,
+        public OrderDelivery(string uniqueCode, string description, decimal priceDelivery,
                                 IReadOnlyDictionary<string, string> parametrs)
         {
             if (string.IsNullOrWhiteSpace(uniqueCode))
@@ -23,7 +23,7 @@ namespace Store
 
             UniqueCode = uniqueCode;
             Description = description;
-            Amount = amount;
+            PriceDelivery = priceDelivery;
             Parametrs = parametrs;
         }
     }

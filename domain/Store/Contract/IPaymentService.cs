@@ -4,13 +4,13 @@ namespace Store.Contract
 {
     public interface IPaymentService
     {
-        string UniqueCode { get; }
+        string Name { get; }
 
         string Title { get; }
 
-        Form CreateForm(Order order);
+        Form FirstForm(Order order);
 
-        Form MoveNextForm(int orderId, int step);
+        Form NextForm(int step, IReadOnlyDictionary<string, string> values);
 
         OrderPayment GetPayment(Form form);
     }

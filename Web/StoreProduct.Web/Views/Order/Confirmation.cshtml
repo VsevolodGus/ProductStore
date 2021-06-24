@@ -1,33 +1,35 @@
-﻿@model ConfimationModel
+﻿@model OrderModel
 @{
     ViewData["Title"] = "Подтвверждение заказа";
 }
 
 <h1>Подтверждение мобильного</h1>
 
-<form action="@Url.Action("Confirmate","Order")" method="post">
-    <input type="hidden" name="id" value="@Model.OrderId"/>
+<form action="@Url.Action(nameof(OrderController.ConfirmCellPhone))" method="post">
     <input type="hidden" name="cellPhone" value="@Model.CellPhone" />
-
-    <div>
+    
+    <div class="form-group">
         <label for="code">Код подтверждения</label>
         <input class="form-control" type="text" name="code" placeholder="0000" />
-        @if(Model.Errors.ContainsKey("code"))
-            {
-                <small class="form-text text-danger">@Model.Errors["code"]</small>
-            }
+        @if (Model.Errors.ContainsKey("code"))
+        {
+            <small class="form-text text-danger">@Model.Errors["code"]</small>
+        }
     </div>
 
     <button class="btn btn-success" type="submit">Проверить</button>
 </form>
 
 
+<p>Если на ваш номер SMS не пришла в течение минуты, проверьте правильность номера и повторите отправку кода.</p>
+
+
 <form action="@Url.Action("SendConfirmation")" method="post">
-    <input type="hidden" name="id" value="@Model.OrderId" />
-    
+    <input type="hidden" name="id" value="@Model.Id" />
+
     <div class="form-group">
         <label>Мобильный телефон</label>
-        <input class="form-control" type="text" name="cellPhone"/>
+        <input class="form-control" type="text" name="cellPhone" />
 
     </div>
 
