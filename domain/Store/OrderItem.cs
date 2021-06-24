@@ -1,37 +1,66 @@
-﻿using System;
+﻿using Store.Data;
+using System;
 
 namespace Store
 {
     public class OrderItem
     {
-        public int ProductId;
+        private readonly OrderItemDto dto;
 
-        private int count;
+        public int ProductId => dto.ProductId;
 
         public int Count
         {
-            get => count;
+            get => dto.Count;
             set
             {
                 ThrowExceptionForNoCorrectCount(value);
 
-                count = value;
+                dto.Count = value;
             }
         }
 
-        public decimal Price;
-
-        public OrderItem(int id, int count, decimal price)
+        public decimal Price
         {
-            ProductId = id;
-            Count = count;
-            Price = price;
+            get => dto.Price;
+            set => dto.Price = value;
+        }
+
+        public OrderItem(OrderItemDto dto)
+        {
+            this.dto = dto;
         }
 
         private static void ThrowExceptionForNoCorrectCount(int count)
         {
             if (count <= 0)
                 throw new ArgumentException("no correct value count");
+        }
+
+        public static class DtoFactory
+        {
+            public static OrderItemDto Create(OrderDto order, int productId, int count, decimal price)
+            {
+                ThrowExceptionForNoCorrectCount(count);
+
+                if (order == null)
+                    throw new ArgumentNullException("is order null");
+
+                return new OrderItemDto
+                {
+                    ProductId = productId,
+                    Count = count,
+                    Price = price,
+                    Order = order
+                };
+            }
+        }
+
+        public static class Mapper
+        {
+            public static OrderItem Map(OrderItemDto dto) => new OrderItem(dto);
+
+            public static OrderItemDto Map(OrderItem orderItem) => orderItem.dto;
         }
     }
 }

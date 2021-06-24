@@ -12,6 +12,10 @@ namespace Store.Data
 
         public string DeliveryDescription { get; set; }
 
+        public decimal DeliveryPrice { get; set; }
+
+        public Dictionary<string, string> DeliveryParameters { get; set; }
+
         public string PaymentUniqueCode { get; set; }
 
         public string PaymentDescription { get; set; }
