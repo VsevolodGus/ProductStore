@@ -1,0 +1,2 @@
+OriginalString = "https://localhost:44338/SberKassa/?orderId=1&returnUri=https%3A%2F%2Flocalhost%3A44338%2FOrder%2FNextPayment"
+SberKassa\Areas\SberKassa\Home\Index

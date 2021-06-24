@@ -1,0 +1,18 @@
+﻿@using ProductSotre.SberKassa.Areas.SberKassa.Models
+@model ExampleModel
+@{
+    ViewData["Title"] = "Заказ оплачен";
+}
+
+<h1>Сбер.Касса</h1>
+
+<p>
+    Заказ оплачен, чтобы завершить оформление нажмите кнопку <em>Перейти на глвную страницу</em>
+</p>
+
+<form action="@Model.ReturnUri" method="post">
+    <input type="hidden" name="serviceName" value="SberKassa" />
+    <input type="hidden" name="step" value="1" />
+    <input type="hidden" name="values[orderId]" value="@Model.OrderId" />
+    <button type="submit" class="btn btn-success">Перейти на глвную страницу</button>
+</form>

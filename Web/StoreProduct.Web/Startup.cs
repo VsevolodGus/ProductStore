@@ -8,9 +8,10 @@ using Store;
 using Store.Memory;
 using Store.Contract;
 using Store.Messages;
-using Store.SberKassa;
 using ProductStore.Web.Contract;
 using ProductStore.Web.App;
+using ProductSotre.SberKassa;
+using ProductStore.YandexKassa;
 
 namespace StoreProduct.Web
 {
@@ -74,6 +75,10 @@ namespace StoreProduct.Web
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute(
+                    name: "areas",
+                    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");

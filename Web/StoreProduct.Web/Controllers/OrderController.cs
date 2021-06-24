@@ -6,6 +6,7 @@ using Store.Contract;
 using ProductStore.Web.Contract;
 using ProductStore.Web.App;
 using System;
+using StoreProduct.Web.Models;
 
 namespace StoreProduct.Web.Controllers
 {
@@ -159,9 +160,11 @@ namespace StoreProduct.Web.Controllers
             var returnUri = GetReturnUri(nameof(NextPayment));
             var redirectUri = webContractorService.StartSession(form.Parameters, returnUri);
 
-            return View("/Views/Sber/Index.cshtml");
+            return Redirect(redirectUri.ToString());
         }
-
+        //{https://localhost:44305/YandexKassa/?orderId=2&returnUri=https%3A%2F%2Flocalhost%3A44305%2FOrder%2FNextPayment}
+        //{https://localhost:44338/SberKassa/?orderId=1&returnUri=https%3A%2F%2Flocalhost%3A44338%2FOrder%2FNextPayment}
+        
         [HttpPost]
         public IActionResult NextPayment(string serviceName, int step, Dictionary<string, string> values)
         {
