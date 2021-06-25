@@ -2,16 +2,16 @@
 {
     public class MakerDto
     {
-        public int Id { get; }
+        public int Id { get; set; }
 
-        public string Title { get; }
+        public string Title { get; set; }
 
-        public string NumberPhone { get; }
+        public string NumberPhone { get; set; }
 
-        public string Email { get; }
+        public string Email { get; set; }
 
-        public string Addres { get; }
+        public string Addres { get; set; }
 
-        public string Description { get; }
+        public string Description { get; set; }
     }
 }

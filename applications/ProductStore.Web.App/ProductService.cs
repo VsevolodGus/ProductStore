@@ -33,8 +33,7 @@ namespace ProductStore.Web.App
             var list = products.GetAllByTitle(query)
                                     .Union(products.GetAllByCategory(query))
                                     .Union(products.GetAllByManufacture(query))
-                                    ?.Distinct()
-                                    ?.ToList();
+                                    ?.Distinct();
 
             return list.Select(Map).ToList();
         }

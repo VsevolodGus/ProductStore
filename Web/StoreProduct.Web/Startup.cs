@@ -37,6 +37,8 @@ namespace StoreProduct.Web
                 options.Cookie.HttpOnly = true;
             });
 
+            services.AddEfRepositories(Configuration.GetConnectionString("Store"));
+
             services.AddSingleton<IProductRepository, ProductRepository>();
             services.AddSingleton<IMakerRepository, MakerRepository>();
             services.AddSingleton<IOrderRepository, OrderRepository>();

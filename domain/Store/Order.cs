@@ -81,7 +81,7 @@ namespace Store
 
         public static class DtoFactory
         {
-            public static OrderDto Create() => new OrderDto;
+            public static OrderDto Create() => new OrderDto();
         }
 
 
