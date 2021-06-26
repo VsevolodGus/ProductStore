@@ -9,10 +9,12 @@ using System.Linq;
 
 namespace Store.Memory
 {
-    internal class StoreDbContext : DbContext
+    public class StoreDbContext : DbContext
     {
 
         public DbSet<ProductDto> Products { get; set; }
+
+        public DbSet<MakerDto> MakerDto { get; set; }
 
         public DbSet<OrderDto> Orders { get; set; }
 
@@ -51,8 +53,7 @@ namespace Store.Memory
                         .IsRequired();
 
                 action.Property(dto => dto.IdMaker)
-                        .IsRequired()
-                        .HasColumnType("MakerToProduct");
+                        .IsRequired();
 
                 action.Property(dto => dto.Price)
                         .HasColumnType("money");

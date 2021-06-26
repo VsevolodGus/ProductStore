@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,17 +9,26 @@ namespace Store.Memory
 {
     public class OrderRepository : IOrderRepository
     {
-        private readonly List<Order> orders = new List<Order>();
-        private readonly string path = $"{Environment.CurrentDirectory}\\OrderReposytory.json";
+        private readonly DbContextFactory dbContextFactory;
+        //private readonly string path = $"{Environment.CurrentDirectory}\\OrderReposytory.json";
 
-        public OrderRepository()
+        public OrderRepository(DbContextFactory dbContextFactory)
         {
+            this.dbContextFactory = dbContextFactory;
+        }
+        public Order Create()
+        {
+            var dbContext = dbContextFactory.Create(typeof(OrderRepository));
+
+            var dto = Order.DtoFactory.Create();
+            dbContext.Orders.Add(dto);
+            dbContext.SaveChanges();
+
             //var fileExists = File.Exists(path);
             //if (!fileExists)
             //{
             //    File.CreateText(path).Dispose();
             //}
-
             //using (StreamReader reader = File.OpenText(path))
             //{
             //    var fileText = reader.ReadToEnd();
@@ -26,29 +36,30 @@ namespace Store.Memory
             //    if (orders == null)
             //        orders = new List<Order>();
             //}
-        }
-        public Order Create()
-        {
-            int nextId = orders.Count + 1;
-            //var order = new Order(nextId, new OrderItem[0]);
-
-            //orders.Add(order);
-
-            return null;
+            return Order.Mapper.Map(dto);
         }
 
         public Order GetById(int id)
         {
-            return orders.Single(order => order.Id == id);
+            var dbContext = dbContextFactory.Create(typeof(OrderRepository));
+
+            var dto = dbContext.Orders
+                               .Include(order => order.Items)
+                               .Single(order => order.Id == id);
+
+            return Order.Mapper.Map(dto);
         }
 
         public void Update(Order order)
         {
+            var dbContext = dbContextFactory.Create(typeof(OrderRepository));
             //using (StreamWriter writer = File.CreateText(path))
             //{
             //    string output = JsonConvert.SerializeObject(orders);
             //    writer.Write(output);
             //}
+
+            dbContext.SaveChanges();
         }
 
         public void SendFile()
@@ -61,3 +72,6 @@ namespace Store.Memory
         }
     }
 }
+
+
+

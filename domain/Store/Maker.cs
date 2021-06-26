@@ -72,5 +72,12 @@ namespace Store
         {
             return Regex.IsMatch(email, @"^[a-z0-9_-]+[a-z0-9_-]@[a-z]{2,20}.[a-z]{2,4}$");
         }
+
+        public static class Mapper
+        {
+            public static Maker Map(MakerDto dto) => new Maker(dto);
+
+            public static MakerDto Map(Maker domain) => domain.dto;
+        }
     }
 }

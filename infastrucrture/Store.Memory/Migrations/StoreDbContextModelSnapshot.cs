@@ -167,8 +167,8 @@ namespace Store.Memory.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("IdMaker")
-                        .HasColumnType("MakerToProduct");
+                    b.Property<int>("ManufactureId")
+                        .HasColumnType("int");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("money");
@@ -188,7 +188,7 @@ namespace Store.Memory.Migrations
                             Id = 1,
                             Category = "яйца",
                             Description = "куринные яйца, категории C0",
-                            IdMaker = 1,
+                            ManufactureId = 1,
                             Price = 30m,
                             Title = "яйца"
                         },
@@ -197,7 +197,7 @@ namespace Store.Memory.Migrations
                             Id = 2,
                             Category = "выпечка",
                             Description = "хлебо-булочные изделия",
-                            IdMaker = 2,
+                            ManufactureId = 2,
                             Price = 20m,
                             Title = "хлеб"
                         },
@@ -206,7 +206,7 @@ namespace Store.Memory.Migrations
                             Id = 3,
                             Category = "мясо",
                             Description = "мясо из говядины и телятины",
-                            IdMaker = 3,
+                            ManufactureId = 3,
                             Price = 30m,
                             Title = "говядина"
                         },
@@ -215,7 +215,7 @@ namespace Store.Memory.Migrations
                             Id = 4,
                             Category = "мясо",
                             Description = "мясо из свинины",
-                            IdMaker = 4,
+                            ManufactureId = 4,
                             Price = 40m,
                             Title = "свинина"
                         });

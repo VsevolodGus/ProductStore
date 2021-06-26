@@ -44,6 +44,7 @@ namespace Store
                 dto.Category = value;
             }
         }
+
         public decimal Price 
         {
             get => dto.Price;

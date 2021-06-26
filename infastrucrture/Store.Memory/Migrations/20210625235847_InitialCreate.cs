@@ -7,7 +7,7 @@ namespace Store.Memory.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "MakerDto",
+                name: "Makers",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -50,7 +50,7 @@ namespace Store.Memory.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    IdMaker = table.Column<int>(type: "MakerToProduct", nullable: false),
+                    IdMaker = table.Column<int>(type: "int", nullable: false),
                     Category = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Price = table.Column<decimal>(type: "money", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true)
@@ -113,7 +113,7 @@ namespace Store.Memory.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "MakerDto");
+                name: "Makers");
 
             migrationBuilder.DropTable(
                 name: "OrderItems");

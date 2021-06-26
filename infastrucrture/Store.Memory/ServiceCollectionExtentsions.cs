@@ -2,9 +2,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Store.Memory
 {
@@ -20,6 +17,8 @@ namespace Store.Memory
                 ServiceLifetime.Transient
             );
 
+            services.AddScoped<Dictionary<Type,StoreDbContext>>();
+            services.AddSingleton<DbContextFactory>();
             services.AddSingleton<IProductRepository, ProductRepository>();
             services.AddSingleton<IMakerRepository, MakerRepository>();
             services.AddSingleton<IOrderRepository, OrderRepository>();
