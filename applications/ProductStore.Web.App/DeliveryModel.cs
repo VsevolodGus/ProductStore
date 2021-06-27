@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace StoreProduct.Web.Models
+namespace ProductStore.Web.App
 {
     public class DeliveryModel
     {
