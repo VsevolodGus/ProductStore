@@ -39,9 +39,6 @@ namespace StoreProduct.Web
 
             services.AddEfRepositories(Configuration.GetConnectionString("Store"));
 
-            services.AddSingleton<IProductRepository, ProductRepository>();
-            services.AddSingleton<IMakerRepository, MakerRepository>();
-            services.AddSingleton<IOrderRepository, OrderRepository>();
             services.AddSingleton<INotificationService, DebugNotificationService>();
             services.AddSingleton<IDeliveryService, DeliveryLocations>();
             services.AddSingleton<IPaymentService, CashPaymentService>();

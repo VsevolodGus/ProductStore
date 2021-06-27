@@ -79,6 +79,7 @@ namespace ProductStore.Web.App
                 TotalCount = order.TotalCount,
                 TotalPrice = order.TotalPrice,
                 DeliveryDescription = order.Delivery?.Description,
+                DeliveryPrice = order.Delivery?.PriceDelivery,
                 PaymentDescription = order.Payment?.Description
             };
 

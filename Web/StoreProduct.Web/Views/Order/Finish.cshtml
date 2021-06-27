@@ -1,11 +1,56 @@
-﻿@{
+﻿@model OrderModel
+
+@{
     ViewData["Title"] = "Заказ оформлен";
 }
 
-<p>
-    Заказ офромлен. Мы собираем его , для передачи службы доставки
-    Ожидайте увеомления
-</p>
+<table class="table table-sm table-striped">
+    <thead class="thead-light">
+        <tr>
+            <th scope="col">№</th>
+            <th scope="col">Название</th>
+            <th scope="col">Производитель</th>
+            <th scope="col">Количество</th>
+            <th scope="col">Цена за шт.</th>
+            <th scope="col">Цена</th>
+            <th scope="col">Оплата доставки</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @for (int i = 0; i < Model.Items.Count; i++)
+        {
+            <tr>
+                <td>@(i+1)</td>
+                <td><a href="@Url.Action(nameof(InfoController.InfoProduct), new { id = Model.Items[i].Id })">@Model.Items[i].Title</a></td>
+                <td><a href="@Url.Action(nameof(InfoController.InfoManufacture),new { id = Model.Items[i].MakerId })">@Model.Items[i].MakerTitle</a></td>
+                <td>@Model.Items[i].Count</td>
+                <td>@Model.Items[i].Price</td>
+                <td>@(Model.Items[i].Count * Model.Items[i].Price)</td>
+            </tr>
+        }
+    </tbody>
+
+    <tfoot>
+        <tr>
+            <td>Итого</td>
+            <td>@Model.TotalCount</td>
+            <td>@(Model.TotalPrice - Model.DeliveryPrice)</td>
+        </tr>
+    </tfoot>
+</table>
+
+
+<strong>Доставка</strong>
+<pre>
+    @Model.DeliveryDescription
+    Оплата доставки: @Model.DeliveryPrice
+</pre>
+
+<strong>Оплата</strong>
+<pre>
+    @Model.PaymentDescription
+</pre>
 
 <p>
     <a href="@Url.Action("Index","Home")">Вернуться в магазин</a>.

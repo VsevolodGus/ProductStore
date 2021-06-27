@@ -41,7 +41,7 @@ namespace StoreProduct.Web.Controllers
         public IActionResult AddItem(int id)
         {
             orderService.AddProduct(id, 1);
-            
+
             return RedirectToAction("InfoProduct", "Info", new { id = id });
         }
 
@@ -163,7 +163,7 @@ namespace StoreProduct.Web.Controllers
         }
         //{https://localhost:44305/YandexKassa/?orderId=2&returnUri=https%3A%2F%2Flocalhost%3A44305%2FOrder%2FNextPayment}
         //{https://localhost:44338/SberKassa/?orderId=1&returnUri=https%3A%2F%2Flocalhost%3A44338%2FOrder%2FNextPayment}
-        
+
         [HttpPost]
         public IActionResult NextPayment(string serviceName, int step, Dictionary<string, string> values)
         {
@@ -177,13 +177,6 @@ namespace StoreProduct.Web.Controllers
             var model = orderService.SetPayment(payment);
 
             return View("Finish", model);
-        }
-
-        public IActionResult Finish()
-        {
-            HttpContext.Session.RemoveCart();
-
-            return View();
         }
     }
 }
