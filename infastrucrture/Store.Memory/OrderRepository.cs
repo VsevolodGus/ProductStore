@@ -1,9 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+using System.Threading.Tasks;
 
 namespace Store.Memory
 {
@@ -16,13 +13,13 @@ namespace Store.Memory
         {
             this.dbContextFactory = dbContextFactory;
         }
-        public Order Create()
+        public async  Task<Order> CreateAsync()
         {
             var dbContext = dbContextFactory.Create(typeof(OrderRepository));
 
             var dto = Order.DtoFactory.Create();
             dbContext.Orders.Add(dto);
-            dbContext.SaveChanges();
+            await dbContext.SaveChangesAsync();
 
             //var fileExists = File.Exists(path);
             //if (!fileExists)
@@ -39,18 +36,18 @@ namespace Store.Memory
             return Order.Mapper.Map(dto);
         }
 
-        public Order GetById(int id)
+        public async Task<Order> GetByIdAsync(int id)
         {
             var dbContext = dbContextFactory.Create(typeof(OrderRepository));
 
-            var dto = dbContext.Orders
+            var dto = await dbContext.Orders
                                .Include(order => order.Items)
-                               .Single(order => order.Id == id);
+                               .SingleAsync(order => order.Id == id);
 
             return Order.Mapper.Map(dto);
         }
 
-        public void Update(Order order)
+        public async Task UpdateAsync(Order order)
         {
             var dbContext = dbContextFactory.Create(typeof(OrderRepository));
             //using (StreamWriter writer = File.CreateText(path))
@@ -59,11 +56,15 @@ namespace Store.Memory
             //    writer.Write(output);
             //}
 
-            dbContext.SaveChanges();
+            await dbContext.SaveChangesAsync();
         }
 
-        public void SendFile()
+        public async Task SendFile()
         {
+            var dbContext = dbContextFactory.Create(typeof(OrderRepository));
+            
+            await dbContext.SaveChangesAsync();
+
             //using (StreamWriter writer = File.CreateText(path))
             //{
             //    writer.Dispose();

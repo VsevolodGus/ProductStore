@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProductStore.Web.App;
-using Store;
+using System.Threading.Tasks;
 
 namespace StoreProduct.Web.Controllers
 {
@@ -16,10 +16,9 @@ namespace StoreProduct.Web.Controllers
         }
 
         // получание продукта из репозитория и вывод его полей, запрос по Id
-        public IActionResult InfoProduct(int id)
+        public async Task<IActionResult> InfoProduct(int id)
         {
-            var model = productService.GetById(id);
-
+            var model = await productService.GetByIdAsync(id);
 
             return View("InfoProduct", model);
         }

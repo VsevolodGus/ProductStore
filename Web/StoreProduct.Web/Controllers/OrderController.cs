@@ -7,6 +7,7 @@ using ProductStore.Web.Contract;
 using ProductStore.Web.App;
 using System;
 using StoreProduct.Web.Models;
+using System.Threading.Tasks;
 
 namespace StoreProduct.Web.Controllers
 {
@@ -29,34 +30,35 @@ namespace StoreProduct.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            if (orderService.TryGetModel(out OrderModel model))
+            var (hasValue, model) = await orderService.TryGetModelAsync();
+            if (hasValue)
                 return View(model);
 
             return View("Empty");
         }
 
         [HttpPost]
-        public IActionResult AddItem(int id)
+        public async Task<IActionResult> AddItem(int id)
         {
-            orderService.AddProduct(id, 1);
+            await orderService.AddProductAsync(id, 1);
 
             return RedirectToAction("InfoProduct", "Info", new { id = id });
         }
 
         [HttpPost]
-        public IActionResult RemoveItem(int id)
+        public async Task<IActionResult> RemoveItem(int id)
         {
-            var model = orderService.RemoveItem(id);
+            var model = await orderService.RemoveItemAsync(id);
 
             return View("Index", model);
         }
 
         [HttpPost]
-        public IActionResult RemoveProduct(int id)
+        public async Task<IActionResult> RemoveProduct(int id)
         {
-            var model = orderService.RemoveFullProduct(id);
+            var model = await orderService .RemoveFullProductAsync(id);
 
             return View("Index", model);
         }
@@ -67,17 +69,17 @@ namespace StoreProduct.Web.Controllers
         //////////////////////////////////////////////
 
         [HttpPost]
-        public IActionResult SendConfirmation(int id, string cellPhone)
+        public async Task<IActionResult> SendConfirmation(int id, string cellPhone)
         {
-            var model = orderService.SendConfirmation(cellPhone);
+            var model = await orderService.SendConfirmationAsync(cellPhone);
 
             return View("Confirmation", model);
         }
 
         [HttpPost]
-        public IActionResult ConfirmCellPhone(string cellPhone, int code)
+        public async Task<IActionResult> ConfirmCellPhone(string cellPhone, int code)
         {
-            var model = orderService.ConfirmCellPhone(cellPhone, code);
+            var model = await orderService.ConfirmCellPhoneAsync(cellPhone, code);
 
             if (model.Errors.Count > 0)
                 return View("Confirmation", model);
@@ -110,10 +112,10 @@ namespace StoreProduct.Web.Controllers
         //офромление заказа, по этапам, выбор места доставки заказа в одну из предложенных точек 
 
         [HttpPost]
-        public IActionResult StartDelivery(string serviceName)
+        public async Task<IActionResult> StartDelivery(string serviceName)
         {
             var deliveryService = deliveryServices.Single(service => service.Name == serviceName);
-            var order = orderService.GetOrder();
+            var order = await orderService.GetOrderAsync();
             var form = deliveryService.FirstForm(order);
 
             var webContractorService = webContractServices.SingleOrDefault(service => service.Name == serviceName);
@@ -127,7 +129,7 @@ namespace StoreProduct.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult NextDelivery(string serviceName, int step, Dictionary<string, string> values)
+        public async Task<IActionResult> NextDelivery(string serviceName, int step, Dictionary<string, string> values)
         {
             var deliveryService = deliveryServices.Single(service => service.Name == serviceName);
 
@@ -136,7 +138,7 @@ namespace StoreProduct.Web.Controllers
                 return View("DeliveryStep", form);
 
             var delivery = deliveryService.GetDelivery(form);
-            orderService.SetDelivery(delivery);
+            await orderService.SetDeliveryAsync(delivery);
 
             var paymentMethods = paymentServices.ToDictionary(service => service.Name,
                                                               service => service.Title);
@@ -146,10 +148,10 @@ namespace StoreProduct.Web.Controllers
 
         // оформление оплаты 
         [HttpPost]
-        public IActionResult StartPayment(string serviceName)
+        public async Task<IActionResult> StartPayment(string serviceName)
         {
             var paymentService = paymentServices.Single(service => service.Name == serviceName);
-            var order = orderService.GetOrder();
+            var order = await orderService.GetOrderAsync();
             var form = paymentService.FirstForm(order);
 
             var webContractorService = webContractServices.SingleOrDefault(service => service.Name == serviceName);
@@ -161,11 +163,10 @@ namespace StoreProduct.Web.Controllers
 
             return Redirect(redirectUri.ToString());
         }
-        //{https://localhost:44305/YandexKassa/?orderId=2&returnUri=https%3A%2F%2Flocalhost%3A44305%2FOrder%2FNextPayment}
-        //{https://localhost:44338/SberKassa/?orderId=1&returnUri=https%3A%2F%2Flocalhost%3A44338%2FOrder%2FNextPayment}
+        
 
         [HttpPost]
-        public IActionResult NextPayment(string serviceName, int step, Dictionary<string, string> values)
+        public async Task<IActionResult> NextPayment(string serviceName, int step, Dictionary<string, string> values)
         {
             var paymentService = paymentServices.Single(service => service.Name == serviceName);
 
@@ -174,7 +175,7 @@ namespace StoreProduct.Web.Controllers
                 return View("PaymentStep", form);
 
             var payment = paymentService.GetPayment(form);
-            var model = orderService.SetPayment(payment);
+            var model = await orderService.SetPaymentAsync(payment);
 
             return View("Finish", model);
         }

@@ -1,19 +1,20 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Store
 {
     public interface IProductRepository
     {
-        Product GetById(int id);
+        Task<Product> GetByIdAsync(int id);
 
-        List<Product> GetAllByIds(IEnumerable<int> productIds);
+        Task<List<Product>> GetAllByIdsAsync(IEnumerable<int> productIds);
 
-        List<Product> GetAllByManufacture(string title);
+        Task<List<Product>> GetAllByManufactureAsync(string title);
 
-        List<Product> GetAllByTitle(string title);
+        Task<List<Product>> GetAllByTitleAsync(string title);
 
-        List<Product> GetAllByCategory(string сategory);
+        Task<List<Product>> GetAllByCategoryAsync(string сategory);
 
-        List<Product> GetAllByIdManufacture(int id);
+        Task<List<Product>> GetAllByIdManufactureAsync(int id);
     }
 }

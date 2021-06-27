@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Store
 {
@@ -6,8 +7,8 @@ namespace Store
     {
         Maker GetById(int id);
 
-        Maker GetByTitle(string title);
+        Task<Maker> GetByTitleAsync(string title);
 
-        List<Maker> GetAllByTitle(string title);
+        Task<List<Maker>> GetAllByTitleAsync(string title);
     }
 }

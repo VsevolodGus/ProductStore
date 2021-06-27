@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Store.Memory
 {
@@ -13,11 +15,13 @@ namespace Store.Memory
             this.dbContextFactory = dbContextFactory;
         }
 
-        public List<Maker> GetAllByTitle(string title)
+        public async Task<List<Maker>> GetAllByTitleAsync(string title)
         {
             var dbContext = dbContextFactory.Create(typeof(MakerRepository));
 
-            var list = dbContext.Makers.Where(maker => maker.Title.Contains(title));
+            var list = await dbContext.Makers
+                                      .Where(maker => maker.Title.Contains(title))
+                                      .ToListAsync(); ;
 
             return list.Select(Maker.Mapper.Map)
                        .ToList();
@@ -27,16 +31,18 @@ namespace Store.Memory
         {
             var dbContext = dbContextFactory.Create(typeof(MakerRepository));
 
-            var maker = dbContext.Makers.Single(m => m.Id == id);
+            var maker = dbContext.Makers
+                                 .Single(m => m.Id == id);
 
             return Maker.Mapper.Map(maker);
         }
 
-        public Maker GetByTitle(string title)
+        public async Task<Maker>  GetByTitleAsync(string title)
         {
             var dbContext = dbContextFactory.Create(typeof(MakerRepository));
 
-            var maker = dbContext.Makers.Single(m => m.Title.Contains(title));
+            var maker = await dbContext.Makers
+                                       .SingleAsync(m => m.Title.Contains(title));
 
             return Maker.Mapper.Map(maker);
         }

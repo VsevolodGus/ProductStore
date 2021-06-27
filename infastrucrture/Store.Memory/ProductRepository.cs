@@ -1,5 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Store.Memory
 {
@@ -14,63 +17,75 @@ namespace Store.Memory
             this.makerRepository = makerRepository;
             this.dbContextFactory = dbContextFactory;
         }
-        public List<Product> GetAllByCategory(string сategory)
+        public async Task<List<Product>> GetAllByCategoryAsync(string сategory)
         {
             var dbContext = dbContextFactory.Create(typeof(ProductRepository));
 
-            var list = dbContext.Products.Where(product => product.Category.Contains(сategory));
+            var list = await  dbContext.Products
+                                       .Where(product => product.Category.Contains(сategory))
+                                       .ToListAsync();
 
             return list.Select(Product.Mapper.Map)
                        .ToList();
         }
 
-        public List<Product> GetAllByIdManufacture(int id)
+        public async Task<List<Product>> GetAllByIdManufactureAsync(int id)
         {
             var dbContext = dbContextFactory.Create(typeof(ProductRepository));
 
-            var list = dbContext.Products.Where(product => product.IdMaker == id);
+            var list = await dbContext.Products
+                                      .Where(product => product.IdMaker == id)
+                                      .ToListAsync();
 
             return list.Select(Product.Mapper.Map)
                        .ToList();
         }
 
-        public List<Product> GetAllByIds(IEnumerable<int> productIds)
+        public async Task<List<Product>> GetAllByIdsAsync(IEnumerable<int> productIds)
         {
             var dbContext = dbContextFactory.Create(typeof(ProductRepository));
-            
-            var list = dbContext.Products.Where(product => productIds.Contains(product.Id));
+
+            var list = await dbContext.Products
+                                      .Where(product => productIds.Contains(product.Id))
+                                      .ToListAsync();
 
             return list.Select(Product.Mapper.Map)
                        .ToList();
         }
 
-        public List<Product> GetAllByManufacture(string title)
+        public async Task<List<Product>> GetAllByManufactureAsync(string title)
         {
-            var listMaker = makerRepository.GetAllByTitle(title);
+            var listMaker = await makerRepository.GetAllByTitleAsync(title);
             var idsMakers = listMaker.Select(maker => maker.Id);
 
             var dbContextProduct = dbContextFactory.Create(typeof(ProductRepository));
-            var ProductList = dbContextProduct.Products.Where(product => idsMakers.Contains(product.Id));
+            var ProductList = await dbContextProduct.Products
+                                                    .Where(product => idsMakers.Contains(product.Id))
+                                                    .ToListAsync();
 
             return ProductList.Select(Product.Mapper.Map)
                        .ToList();
         }
 
-        public List<Product> GetAllByTitle(string title)
+        public async Task<List<Product>> GetAllByTitleAsync(string title)
         {
             var dbContext = dbContextFactory.Create(typeof(ProductRepository));
             
-            var list = dbContext.Products.Where(product => product.Title.Contains(title));
+            var list = await dbContext.Products
+                                      .Where(product => product.Title.Contains(title))
+                                      .ToListAsync();
 
             return list.Select(Product.Mapper.Map)
                        .ToList();
         }
 
-        public Product GetById(int id)
+
+        public async Task<Product> GetByIdAsync(int id)
         {
             var dbContext = dbContextFactory.Create(typeof(ProductRepository));
 
-            var product = dbContext.Products.Single(product => product.Id ==id);
+            var product = await dbContext.Products
+                                         .SingleAsync(product => product.Id == id);
 
             return Product.Mapper.Map(product);
         }

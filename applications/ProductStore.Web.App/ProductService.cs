@@ -1,13 +1,14 @@
 ﻿using Store;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace ProductStore.Web.App
 {
     public class ProductService
     {
         private readonly IProductRepository products;
-        private IMakerRepository makerRepository;
+        private readonly IMakerRepository makerRepository;
 
         public ProductService(IProductRepository products,
                               IMakerRepository makerRepository)
@@ -16,24 +17,32 @@ namespace ProductStore.Web.App
             this.makerRepository = makerRepository;
         }
 
-        public ProductModel GetById(int id)
+        public async Task<ProductModel> GetByIdAsync(int id)
         {
-            var product = products.GetById(id);
+            var product = await products.GetByIdAsync(id);
 
             return Map(product);
         }
 
-        public List<ProductModel> GetAllByIdManufacture(int id)
+        public async Task<List<ProductModel>> GetAllByIdManufactureAsync(int id)
         {
-            return products.GetAllByIdManufacture(id).Select(Map).ToList();
+            var list = await products.GetAllByIdManufactureAsync(id);
+
+
+            return list.Select(Map).ToList();
         }
 
-        public List<ProductModel> GetAllByQuery(string query)
+        public async Task<List<ProductModel>> GetAllByQueryAsync(string query)
         {
-            var list = products.GetAllByTitle(query)
-                                    .Union(products.GetAllByCategory(query))
-                                    .Union(products.GetAllByManufacture(query))
-                                    ?.Distinct();
+            var listByTitle = await products.GetAllByTitleAsync(query);
+            var listByCategory = await products.GetAllByCategoryAsync(query);
+            var listByManufacture = await products.GetAllByManufactureAsync(query);
+
+
+            var list = listByTitle.Union(listByCategory)
+                                  .Union(listByManufacture)
+                                  .Distinct();
+
 
             return list.Select(Map).ToList();
         }
