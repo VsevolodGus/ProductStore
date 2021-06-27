@@ -56,6 +56,7 @@ namespace Store
             set => dto.Description = value;
         }
 
+        public Maker() { }
         public Maker(MakerDto dto)
         {
             this.dto = dto;

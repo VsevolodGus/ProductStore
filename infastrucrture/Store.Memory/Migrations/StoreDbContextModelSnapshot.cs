@@ -46,7 +46,7 @@ namespace Store.Memory.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("MakerDto");
+                    b.ToTable("Makers");
 
                     b.HasData(
                         new

@@ -40,7 +40,6 @@ namespace StoreProduct.Web.Controllers
         [HttpPost]
         public IActionResult AddItem(int id)
         {
-
             orderService.AddProduct(id, 1);
             
             return RedirectToAction("InfoProduct", "Info", new { id = id });

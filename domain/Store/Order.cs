@@ -26,14 +26,14 @@ namespace Store
 
         public int TotalCount => Items.Sum(item => item.Count);
 
-        public decimal TotalPrice => Items.Sum(item => item.Count * item.Price) + (Delivery?.PriceDelivery ?? 0m);
-
+        public decimal TotalPrice => Items.Sum(item => item.Count * item.Price) + 
+                                                            (Delivery?.PriceDelivery ?? 0m);
         public OrderDelivery Delivery 
         { 
             get
             {
                 if (dto.DeliveryUniqueCode == null)
-                    throw new ArgumentNullException(nameof(dto.DeliveryUniqueCode));
+                    return null;
 
                 return new OrderDelivery(dto.DeliveryUniqueCode, 
                                          dto.DeliveryDescription,
@@ -56,8 +56,8 @@ namespace Store
         { 
             get
             {
-                if (dto.DeliveryUniqueCode == null)
-                    throw new ArgumentNullException(nameof(dto.DeliveryUniqueCode) + "for GET Payment Order");
+                if (dto.PaymentUniqueCode == null)
+                    return null;
 
                 return new OrderPayment(dto.PaymentUniqueCode, 
                                         dto.PaymentDescription,
@@ -77,6 +77,8 @@ namespace Store
         public Order(OrderDto dto)
         {
             this.dto = dto;
+
+            Items = new OrderItemCollection(this.dto);
         }
 
         public static class DtoFactory

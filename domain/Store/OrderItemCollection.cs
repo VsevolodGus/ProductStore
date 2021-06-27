@@ -57,19 +57,20 @@ namespace Store
             throw new InvalidOperationException("Product not found");
         }
 
-        public OrderItem Add(int productId, decimal price, int count)
+        public OrderItem Add(int bookId, decimal price, int count)
         {
-            if (TryGet(productId, out OrderItem orderItem))
-                throw new InvalidOperationException("Product already exists");
+            if (TryGet(bookId, out OrderItem orderItem))
+                throw new InvalidOperationException("Book already exists.");
 
-            var orderItemDto = OrderItem.DtoFactory.Create(orderDto, productId, count, price);
+            var orderItemDto = OrderItem.DtoFactory.Create(orderDto, bookId, count, price);
             orderDto.Items.Add(orderItemDto);
 
-            orderItem = OrderItem.Mapper.Map(orderItemDto); 
+            orderItem = OrderItem.Mapper.Map(orderItemDto);
             items.Add(orderItem);
 
             return orderItem;
         }
+
 
         // удаление целого пункта заказа
         public void RemoveProduct(int productId)

@@ -8,8 +8,10 @@ namespace Store.Memory
         private readonly IMakerRepository makerRepository;
         private readonly DbContextFactory dbContextFactory;
 
-        public ProductRepository(DbContextFactory dbContextFactory)
+        public ProductRepository( IMakerRepository makerRepository,
+                                  DbContextFactory dbContextFactory)
         {
+            this.makerRepository = makerRepository;
             this.dbContextFactory = dbContextFactory;
         }
         public List<Product> GetAllByCategory(string сategory)
@@ -44,13 +46,13 @@ namespace Store.Memory
 
         public List<Product> GetAllByManufacture(string title)
         {
-            var dbContext = dbContextFactory.Create(typeof(ProductRepository));
+            var listMaker = makerRepository.GetAllByTitle(title);
+            var idsMakers = listMaker.Select(maker => maker.Id);
 
-            var list = dbContext.Products.Where(product => 
-                                                          makerRepository.GetById(product.Id)
-                                                                                            .Title.Contains(title));
+            var dbContextProduct = dbContextFactory.Create(typeof(ProductRepository));
+            var ProductList = dbContextProduct.Products.Where(product => idsMakers.Contains(product.Id));
 
-            return list.Select(Product.Mapper.Map)
+            return ProductList.Select(Product.Mapper.Map)
                        .ToList();
         }
 

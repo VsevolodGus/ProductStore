@@ -14,7 +14,7 @@ namespace Store.Memory
 
         public DbSet<ProductDto> Products { get; set; }
 
-        public DbSet<MakerDto> MakerDto { get; set; }
+        public DbSet<MakerDto> Makers { get; set; }
 
         public DbSet<OrderDto> Orders { get; set; }
 

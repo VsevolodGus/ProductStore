@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Store.Memory
 {
@@ -11,12 +12,23 @@ namespace Store.Memory
         {
             this.dbContextFactory = dbContextFactory;
         }
+
+        public List<Maker> GetAllByTitle(string title)
+        {
+            var dbContext = dbContextFactory.Create(typeof(MakerRepository));
+
+            var list = dbContext.Makers.Where(maker => maker.Title.Contains(title));
+
+            return list.Select(Maker.Mapper.Map)
+                       .ToList();
+        }
+
         public Maker GetById(int id)
         {
             var dbContext = dbContextFactory.Create(typeof(MakerRepository));
 
-            var  maker = dbContext.MakerDto.Single(m => m.Id == id);
-            
+            var maker = dbContext.Makers.Single(m => m.Id == id);
+
             return Maker.Mapper.Map(maker);
         }
 
@@ -24,7 +36,7 @@ namespace Store.Memory
         {
             var dbContext = dbContextFactory.Create(typeof(MakerRepository));
 
-            var maker = dbContext.MakerDto.Single(m => m.Title.Contains(title));
+            var maker = dbContext.Makers.Single(m => m.Title.Contains(title));
 
             return Maker.Mapper.Map(maker);
         }
