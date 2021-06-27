@@ -1,19 +1,27 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Store.Data;
+
 
 namespace Store
 {
     public class OrderItemCollection : IReadOnlyCollection<OrderItem>
     {
+        private readonly OrderDto orderDto;
         private readonly List<OrderItem> items;
 
-        public OrderItemCollection(IEnumerable<OrderItem> items)
+        public OrderItemCollection(OrderDto orderDto)
         {
-            if (items == null)
-                throw new ArgumentNullException(nameof(items));
+            if (orderDto== null)
+                throw new ArgumentNullException(nameof(orderDto));
 
-            this.items = new List<OrderItem>(items);
+            this.orderDto = orderDto;
+
+            items = orderDto.Items
+                                .Select(OrderItem.Mapper.Map)
+                                .ToList();
         }
 
         public int Count => items.Count;
@@ -49,16 +57,20 @@ namespace Store
             throw new InvalidOperationException("Product not found");
         }
 
-        public OrderItem Add(int productId, decimal price, int count)
+        public OrderItem Add(int bookId, decimal price, int count)
         {
-            if (TryGet(productId, out OrderItem orderItem))
-                throw new InvalidOperationException("Product already exists");
+            if (TryGet(bookId, out OrderItem orderItem))
+                throw new InvalidOperationException("Book already exists.");
 
-            orderItem = new OrderItem(productId, count, price);
+            var orderItemDto = OrderItem.DtoFactory.Create(orderDto, bookId, count, price);
+            orderDto.Items.Add(orderItemDto);
+
+            orderItem = OrderItem.Mapper.Map(orderItemDto);
             items.Add(orderItem);
 
             return orderItem;
         }
+
 
         // удаление целого пункта заказа
         public void RemoveProduct(int productId)

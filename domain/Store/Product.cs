@@ -1,29 +1,94 @@
-﻿namespace Store
+﻿using Store.Data;
+using System;
+
+namespace Store
 {
     public class Product
     {
-        public int Id { get; }
+        private readonly ProductDto dto;
 
-        public string Title { get; }
+        public int Id => dto.Id;
 
-        public int IdMaker { get; }
-
-        public string Category { get; }
-
-        public decimal Price { get; }
-
-        public string Description { get; }
-
-        public Product(int id, string title,int makerId, string category, decimal price, string description)
+        public string Title 
         {
-            Id = id;
-            Title = title;
-            Category = category;
-            IdMaker = makerId;
-            Price = price;
-            Description = description;
+            get => dto.Title;
+            set
+            {
+                if (string.IsNullOrEmpty(value) || string.IsNullOrWhiteSpace(value))
+                    throw new ArgumentException("no correct TitleProduct from DB");
+
+                dto.Title = value;
+            }
+        }
+        
+        public int IdMaker 
+        {
+            get => dto.IdMaker;
+            set
+            {
+                if (value > 0)
+                    dto.IdMaker = value;
+
+                throw new ArgumentException("no correct IdMaker from DB");
+            }
         }
 
-        public Product() { }
+        public string Category
+        {
+            get => dto.Category;
+            set
+            {
+                if (string.IsNullOrEmpty(value) || string.IsNullOrWhiteSpace(value))
+                    throw new ArgumentException("no correct Catefory from DB");
+
+                dto.Category = value;
+            }
+        }
+
+        public decimal Price 
+        {
+            get => dto.Price;
+            set => dto.Price = value;
+        }
+
+        public string Description 
+        {
+            get => dto.Description;
+            set => dto.Description = value;
+        }
+
+        internal Product(ProductDto dto) 
+        {
+            this.dto = dto;
+        }
+
+        public static class DtoFactory
+        {
+            public static ProductDto Create(int idMaker,
+                                         string category,
+                                         string title,
+                                         string description,
+                                         decimal price)
+            {
+                if (string.IsNullOrWhiteSpace(title))
+                    throw new ArgumentException(nameof(title));
+
+                return new ProductDto
+                {
+                    IdMaker = idMaker,
+                    Title = title.Trim(),
+                    Category = category.Trim(),
+                    Description = description,
+                    Price = price
+                };
+            }
+        }
+
+        public static class Mapper
+        {
+            public static Product Map(ProductDto dto) => new Product(dto);
+
+            public static ProductDto Map(Product domain) => domain.dto;
+        }
     }
 }

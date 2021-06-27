@@ -100,6 +100,7 @@ namespace ProductStore.Web.App
 
             AddOrUpdateProduct(order, productId, count);
             UpdateSession(order);
+            orderRepository.Update(order);
 
             return Map(order);
         }
