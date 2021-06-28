@@ -11,7 +11,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-light bg-white">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Продуктовый магазин</a>
-                <form class="form-inline my-2 my-lg-0" action="@Url.Action("Index", "Search")">
+                <form class="form-inline my-2 my-lg-0" action="@Url.Action(nameof(SearchController.Index), "Search")">
                     <input class="form-control mr-sm-4" placeholder="Введите текст" name="query"/>
                     <button class="btn btn-outline-info my-2 my-sm-3" type="submit">Поиск</button>
                 </form>
@@ -21,11 +21,11 @@
                     @{
                         if (Context.Session.TryGetCart(out Cart cart) && cart.TotalCount > 0)
                         {
-                            <a href="@Url.Action("Index","Order")">Товаров @cart.TotalCount на сумму @cart.TotalPrice</a>
+                            <a href="@Url.Action(nameof(OrderController.Index),"Order")">Товаров @cart.TotalCount на сумму @cart.TotalPrice</a>
                         }
                         else
                         {
-                            <a href="@Url.Action("Index","Order")">Корзина пуста</a>
+                            <a href="@Url.Action(nameof(OrderController.Index),"Order")">Корзина пуста</a>
                         }
                     }
                 </span>

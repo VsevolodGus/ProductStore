@@ -1,12 +1,10 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using System.Collections.Generic;
 using Store.Contract;
 using ProductStore.Web.Contract;
 using ProductStore.Web.App;
 using System;
-using StoreProduct.Web.Models;
 using System.Threading.Tasks;
 
 namespace StoreProduct.Web.Controllers

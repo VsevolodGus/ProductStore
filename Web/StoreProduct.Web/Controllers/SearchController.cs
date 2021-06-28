@@ -25,7 +25,7 @@ namespace StoreProduct.Web.Controllers
         }
 
         // получение списка продуктов определнного производителя, по Id Maker/Manifacture
-        public async Task<IActionResult> AllProductsMakers(int IdManufacture)
+        public async Task<IActionResult> GetAllProductsMakers(int IdManufacture)
         {
             var model = new List<ProductModel>( await productService.GetAllByIdManufactureAsync(IdManufacture));
             if (model == null || model.Count == 0)
