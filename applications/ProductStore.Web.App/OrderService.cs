@@ -46,7 +46,8 @@ namespace ProductStore.Web.App
         {
             if (Session.TryGetCart(out Cart cart))
             {
-                var order = await orderRepository.GetByIdAsync(cart.OrderId);
+                var order = await orderRepository.GetOrderFromCashAsync();
+
                 return (true, order);
             }
 
@@ -184,7 +185,7 @@ namespace ProductStore.Web.App
 
         private readonly PhoneNumberUtil phoneNumberUtil = PhoneNumberUtil.GetInstance();
 
-        internal bool TryFormatPhone(string cellPhone, out string formattedPhone)
+        private bool TryFormatPhone(string cellPhone, out string formattedPhone)
         {
             try
             {
@@ -243,7 +244,9 @@ namespace ProductStore.Web.App
             order.Payment = payment;
             
             await orderRepository.UpdateAsync(order);
+            
             Session.RemoveCart();
+            await orderRepository.SendFileAsync(Order.Mapper.Map(order));
 
             return await MapAsync(order);
         }

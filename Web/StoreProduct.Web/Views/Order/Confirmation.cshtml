@@ -24,7 +24,7 @@
 <p>Если на ваш номер SMS не пришла в течение минуты, проверьте правильность номера и повторите отправку кода.</p>
 
 
-<form action="@Url.Action("SendConfirmation")" method="post">
+<form action="@Url.Action(nameof(OrderController.SendConfirmation))" method="post">
     <input type="hidden" name="id" value="@Model.Id" />
 
     <div class="form-group">

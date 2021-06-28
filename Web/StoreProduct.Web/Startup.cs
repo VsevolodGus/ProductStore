@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Store;
 using Store.Memory;
 using Store.Contract;
 using Store.Messages;
@@ -12,6 +11,7 @@ using ProductStore.Web.Contract;
 using ProductStore.Web.App;
 using ProductSotre.SberKassa;
 using ProductStore.YandexKassa;
+
 
 namespace StoreProduct.Web
 {

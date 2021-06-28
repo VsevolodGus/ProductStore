@@ -1,5 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
+using Store.Data;
+using System;
+using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Store.Memory
@@ -7,69 +11,83 @@ namespace Store.Memory
     public class OrderRepository : IOrderRepository
     {
         private readonly DbContextFactory dbContextFactory;
-        //private readonly string path = $"{Environment.CurrentDirectory}\\OrderReposytory.json";
+        private readonly string path = $"{Environment.CurrentDirectory}\\OrderCash.json";
 
         public OrderRepository(DbContextFactory dbContextFactory)
         {
             this.dbContextFactory = dbContextFactory;
         }
-        public async  Task<Order> CreateAsync()
-        {
-            var dbContext = dbContextFactory.Create(typeof(OrderRepository));
+        public async Task<Order> CreateAsync()
+        { 
+            var order = Order.DtoFactory.Create();
 
-            var dto = Order.DtoFactory.Create();
-            dbContext.Orders.Add(dto);
-            await dbContext.SaveChangesAsync();
+            if (!File.Exists(path))
+            {
+                File.CreateText(path).Dispose();
+            }
+            using (StreamReader reader = File.OpenText(path))
+            {
+                var fileText = await reader.ReadToEndAsync();
+                var orderDto = JsonConvert.DeserializeObject<OrderDto>(fileText);
 
-            //var fileExists = File.Exists(path);
-            //if (!fileExists)
-            //{
-            //    File.CreateText(path).Dispose();
-            //}
-            //using (StreamReader reader = File.OpenText(path))
-            //{
-            //    var fileText = reader.ReadToEnd();
-            //    orders = JsonConvert.DeserializeObject<List<Order>>(fileText);
-            //    if (orders == null)
-            //        orders = new List<Order>();
-            //}
-            return Order.Mapper.Map(dto);
+                if (orderDto != null)
+                {
+                    order = orderDto;
+                    orderDto.DeliveryUniqueCode = null;
+                    orderDto.DeliveryDescription = null;
+                    orderDto.DeliveryParameters = null;
+                    orderDto.DeliveryPrice = 0m;
+
+                    orderDto.PaymentDescription = null;
+                    orderDto.PaymentParametrs = null;
+                    orderDto.PaymentUniqueCode = null;
+                }
+            }
+
+            return Order.Mapper.Map(order);
         }
 
-        public async Task<Order> GetByIdAsync(int id)
+        public async Task<Order> GetOrderFromCashAsync()
         {
-            var dbContext = dbContextFactory.Create(typeof(OrderRepository));
+            var orderDto = Order.DtoFactory.Create();
 
-            var dto = await dbContext.Orders
-                               .Include(order => order.Items)
-                               .SingleAsync(order => order.Id == id);
+            using (StreamReader reader = File.OpenText(path))
+            {
+                var fileText = await reader.ReadToEndAsync();
+                orderDto = JsonConvert.DeserializeObject<OrderDto>(fileText);
+                
+                if (orderDto == null)
+                    orderDto = Order.DtoFactory.Create();
+                
+            }
 
-            return Order.Mapper.Map(dto);
+            return Order.Mapper.Map(orderDto);
         }
 
         public async Task UpdateAsync(Order order)
         {
-            var dbContext = dbContextFactory.Create(typeof(OrderRepository));
-            //using (StreamWriter writer = File.CreateText(path))
-            //{
-            //    string output = JsonConvert.SerializeObject(orders);
-            //    writer.Write(output);
-            //}
+            using (StreamWriter writer = File.CreateText(path))
+            {
+                string output = JsonConvert.SerializeObject(Order.Mapper.Map(order), Formatting.None,
+                                                new JsonSerializerSettings()
+                                                {
+                                                    ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                                                });
 
-            await dbContext.SaveChangesAsync();
+                await writer.WriteAsync(output);
+            }
         }
 
-        public async Task SendFile()
+        public async Task SendFileAsync(OrderDto dto)
         {
             var dbContext = dbContextFactory.Create(typeof(OrderRepository));
-            
             await dbContext.SaveChangesAsync();
 
-            //using (StreamWriter writer = File.CreateText(path))
-            //{
-            //    writer.Dispose();
-            //    writer.Write(string.Empty);
-            //}
+            using (StreamWriter writer = File.CreateText(path))
+            {
+                writer.Dispose();
+                writer.Write(string.Empty);
+            }
         }
     }
 }

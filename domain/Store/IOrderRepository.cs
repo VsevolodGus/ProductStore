@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using Store.Data;
+using System.Threading.Tasks;
 
 namespace Store
 {
@@ -6,10 +7,10 @@ namespace Store
     {
         Task<Order> CreateAsync();
 
-        Task<Order> GetByIdAsync(int id);
+        Task<Order> GetOrderFromCashAsync();
 
         Task UpdateAsync(Order order);
 
-        Task SendFile();
+        Task SendFileAsync(OrderDto dto);
     }
 }
