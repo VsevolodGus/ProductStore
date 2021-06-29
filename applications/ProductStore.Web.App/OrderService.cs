@@ -244,9 +244,11 @@ namespace ProductStore.Web.App
             order.Payment = payment;
             
             await orderRepository.UpdateAsync(order);
-            
-            Session.RemoveCart();
+
             await orderRepository.SendFileAsync(Order.Mapper.Map(order));
+            Session.RemoveCart();
+
+            notificationService.StrtProcces(order);
 
             return await MapAsync(order);
         }
