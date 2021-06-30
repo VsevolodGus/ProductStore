@@ -15,9 +15,9 @@ namespace Store.Messages
         {
             using (var client = new SmtpClient())
             {
-                var message = new MailMessage("gusakseva8@gmail.com", "gusakseva8@gmail.com")
+                var message = new MailMessage("gusakseva8@gmail.com", order.Email)
                 {
-                    Subject = "Заказ №" + order.Id.ToString()
+                    Subject = "Заказ отправлен"
                 };
 
                 var builder = new StringBuilder();

@@ -53,8 +53,17 @@
             <small class="text-danger">@Model.Errors["cellPhone"]</small>
         }
     </div>
+
+    <div>
+        <label for="email">Электронная почта</label>
+        <input class="form-group" type="text" name="email" value="gusakseva8@gmail.com" />
+        @if(Model.Errors.ContainsKey("email"))
+        {
+            <small class="text-danger">@Model.Errors["email"]</small>
+        }
+    </div>
     
-    
+
     <button class="btn btn-success">Оформить заказ</button> 
 </form>
 

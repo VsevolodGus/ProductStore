@@ -30,6 +30,7 @@ namespace Store.Memory.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CellPhone = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
+                    Email = table.Column<string> (type: "nvarchar(50)", maxLength: 50, nullable: true),
                     DeliveryUniqueCode = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: true),
                     DeliveryDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeliveryPrice = table.Column<decimal>(type: "money", nullable: false),

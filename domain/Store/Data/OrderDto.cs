@@ -8,6 +8,8 @@ namespace Store.Data
 
         public string CellPhone { get; set; }
 
+        public string Email { get; set; }
+
         public string DeliveryUniqueCode { get; set; }
 
         public string DeliveryDescription { get; set; }
