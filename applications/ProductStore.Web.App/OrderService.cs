@@ -232,15 +232,17 @@ namespace ProductStore.Web.App
 
         private static bool TryFormatEmail(string email)
         {
-            return Regex.IsMatch(email, @"^[a-zA-Z0-9]+\@[a-z]{2,10}\.[a-z]{2,5}");
+            return Regex.IsMatch(email, @"^[a-zA-Z0-9]+\@[a-z]{2,10}\.[a-z]{2,5}$");
         }
 
         public async Task<OrderModel> ConfirmCellPhoneAsync(string cellPhone, int confirmationCode)
         {
             int? storeCode = Session.GetInt32(cellPhone);
-            
-            var model = new OrderModel();
-            model.CellPhone = cellPhone;
+
+            var model = new OrderModel
+            {
+                CellPhone = cellPhone
+            };
 
             if (storeCode == null)
             {

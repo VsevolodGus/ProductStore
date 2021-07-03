@@ -15,8 +15,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StoreProduct.Web", "Web\Sto
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{89522C0D-1CFD-4682-ABF2-F3255FA5E190}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "testing", "testing", "{708B7011-9E14-4D64-8C79-C1CBCD613B2D}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductStore.Web.Contract", "Web\IWebContractService\ProductStore.Web.Contract\ProductStore.Web.Contract.csproj", "{6E656206-2001-494C-89E3-6FEE4E537D87}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "contractBank", "contractBank", "{8A4D272A-13BF-4159-B6D6-061CF45ACE5F}"
@@ -33,6 +31,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductSotre.SberKassa", "contractbank\ProductSotre.SberKassa\ProductSotre.SberKassa.csproj", "{6AC17114-1971-43A5-B302-465C98E993D4}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductStore.YandexKassa", "contractbank\ProductStore.YandexKassa\ProductStore.YandexKassa.csproj", "{1A331DFB-A2F6-451C-85BD-B016B0E9EA59}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoreTest", "StoreTest\StoreTest.csproj", "{DACC15C8-0394-4F29-A543-90E799DB2DCA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -128,6 +128,18 @@ Global
 		{1A331DFB-A2F6-451C-85BD-B016B0E9EA59}.Release|x64.Build.0 = Release|Any CPU
 		{1A331DFB-A2F6-451C-85BD-B016B0E9EA59}.Release|x86.ActiveCfg = Release|Any CPU
 		{1A331DFB-A2F6-451C-85BD-B016B0E9EA59}.Release|x86.Build.0 = Release|Any CPU
+		{DACC15C8-0394-4F29-A543-90E799DB2DCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DACC15C8-0394-4F29-A543-90E799DB2DCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DACC15C8-0394-4F29-A543-90E799DB2DCA}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{DACC15C8-0394-4F29-A543-90E799DB2DCA}.Debug|x64.Build.0 = Debug|Any CPU
+		{DACC15C8-0394-4F29-A543-90E799DB2DCA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{DACC15C8-0394-4F29-A543-90E799DB2DCA}.Debug|x86.Build.0 = Debug|Any CPU
+		{DACC15C8-0394-4F29-A543-90E799DB2DCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DACC15C8-0394-4F29-A543-90E799DB2DCA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DACC15C8-0394-4F29-A543-90E799DB2DCA}.Release|x64.ActiveCfg = Release|Any CPU
+		{DACC15C8-0394-4F29-A543-90E799DB2DCA}.Release|x64.Build.0 = Release|Any CPU
+		{DACC15C8-0394-4F29-A543-90E799DB2DCA}.Release|x86.ActiveCfg = Release|Any CPU
+		{DACC15C8-0394-4F29-A543-90E799DB2DCA}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -140,6 +152,7 @@ Global
 		{281E6872-B9E7-4F60-961D-2AE5E7A80505} = {837C6C69-81B0-4BF9-AA7C-122E107370C9}
 		{6AC17114-1971-43A5-B302-465C98E993D4} = {8A4D272A-13BF-4159-B6D6-061CF45ACE5F}
 		{1A331DFB-A2F6-451C-85BD-B016B0E9EA59} = {8A4D272A-13BF-4159-B6D6-061CF45ACE5F}
+		{DACC15C8-0394-4F29-A543-90E799DB2DCA} = {F0ED359B-40F4-4C84-9AC5-8B9007717946}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {48A30998-A284-42D1-AC9D-04C13131B8E2}
