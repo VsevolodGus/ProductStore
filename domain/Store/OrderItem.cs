@@ -34,7 +34,7 @@ namespace Store
         private static void ThrowExceptionForNoCorrectCount(int count)
         {
             if (count <= 0)
-                throw new ArgumentException("no correct value count");
+                throw new ArgumentOutOfRangeException("no correct value count");
         }
 
         public static class DtoFactory

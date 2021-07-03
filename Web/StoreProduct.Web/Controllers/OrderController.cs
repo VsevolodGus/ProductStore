@@ -7,6 +7,7 @@ using ProductStore.Web.App;
 using System;
 using System.Threading.Tasks;
 
+
 namespace StoreProduct.Web.Controllers
 {
     public class OrderController : Controller
@@ -67,13 +68,23 @@ namespace StoreProduct.Web.Controllers
         //////////////////////////////////////////////
 
         [HttpPost]
-        public async Task<IActionResult> SendConfirmation(int id, string cellPhone)
+        public async Task<IActionResult> SendConfirmation(string cellPhone, string email)
         {
-            var model = await orderService.SendConfirmationAsync(cellPhone);
+            var model = await orderService.SendConfirmationAsync(cellPhone,email);
+
+            if (model.Errors.Count > 0)
+                return View("Index", model);
 
             return View("Confirmation", model);
         }
 
+        [HttpPost]
+        public async Task<IActionResult> AgainSendConfimation(string cellPhone)
+        {
+            var model = await orderService.AgainSendConfirmationAsync(cellPhone);
+
+            return View("Confirmation", model);
+        }
         [HttpPost]
         public async Task<IActionResult> ConfirmCellPhone(string cellPhone, int code)
         {

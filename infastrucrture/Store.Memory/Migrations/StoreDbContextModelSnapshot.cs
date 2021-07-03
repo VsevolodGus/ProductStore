@@ -98,6 +98,10 @@ namespace Store.Memory.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
+                    b.Property<string>("Email")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
                     b.Property<string>("DeliveryDescription")
                         .HasColumnType("nvarchar(max)");
 

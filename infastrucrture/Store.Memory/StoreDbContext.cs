@@ -177,9 +177,12 @@ namespace Store.Memory
                 action.Property(dto => dto.CellPhone)
                                 .HasMaxLength(20);
 
+                action.Property(dto => dto.Email)
+                                .HasMaxLength(50);
+
                 action.Property(dto => dto.DeliveryUniqueCode)
                                 .HasMaxLength(30);
-
+                
                 action.Property(dto => dto.DeliveryPrice)
                                 .HasColumnType("money");
 

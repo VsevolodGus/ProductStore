@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using Store;
 using Store.Messages;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace ProductStore.Web.App
 {
@@ -32,6 +33,7 @@ namespace ProductStore.Web.App
             this.httpContextAccessor = httpContextAccessor;
         }
 
+        
 
         public async Task<(bool hasValue, OrderModel model)> TryGetModelAsync()
         {
@@ -82,6 +84,7 @@ namespace ProductStore.Web.App
             };
 
         }
+
         internal async Task<IEnumerable<Product>> GetProductsAsync(Order order)
         {
             var bookIds = order.Items.Select(item => item.ProductId);
@@ -165,9 +168,37 @@ namespace ProductStore.Web.App
             return await MapAsync(order);
         }
 
-        public async Task<OrderModel> SendConfirmationAsync(string cellPhone)
+        
+
+        public async Task<OrderModel> SendConfirmationAsync(string cellPhone,string email)
         {
             var order = await GetOrderAsync();
+            order.Email = email;
+
+            var model = await MapAsync(order);
+
+            if (TryFormatPhone(cellPhone, out string formattedPhone))
+            {
+                var confirmationCode = 2002; // здесь должен быть генератор кодов
+                model.CellPhone = formattedPhone;
+                Session.SetInt32(formattedPhone, confirmationCode);
+                notificationService.SendConfirmationCode(formattedPhone, confirmationCode);
+            }
+            else
+                model.Errors["cellPhone"] = "Номер телефона не соответствует формату +79876543210";
+
+            if (email == null || !TryFormatEmail(email))
+                model.Errors["email"] = "Почта не соответствует формату  Brian@example.com";
+
+            await orderRepository.UpdateAsync(order);
+
+            return model;
+        }
+
+        public async Task<OrderModel> AgainSendConfirmationAsync(string cellPhone)
+        {
+            var order = await GetOrderAsync();
+
             var model = await MapAsync(order);
 
             if (TryFormatPhone(cellPhone, out string formattedPhone))
@@ -182,7 +213,6 @@ namespace ProductStore.Web.App
 
             return model;
         }
-
         private readonly PhoneNumberUtil phoneNumberUtil = PhoneNumberUtil.GetInstance();
 
         private bool TryFormatPhone(string cellPhone, out string formattedPhone)
@@ -200,21 +230,30 @@ namespace ProductStore.Web.App
             }
         }
 
+        private static bool TryFormatEmail(string email)
+        {
+            return Regex.IsMatch(email, @"^[a-zA-Z0-9]+\@[a-z]{2,10}\.[a-z]{2,5}$");
+        }
+
         public async Task<OrderModel> ConfirmCellPhoneAsync(string cellPhone, int confirmationCode)
         {
             int? storeCode = Session.GetInt32(cellPhone);
-            var model = new OrderModel();
+
+            var model = new OrderModel
+            {
+                CellPhone = cellPhone
+            };
 
             if (storeCode == null)
             {
-                model.Errors["cellPhone"] = "Что-то случилось. Попробуйте получить код ещё раз.";
+                model.Errors["code"] = "Что-то случилось. Попробуйте получить код ещё раз.";
 
                 return model;
             }    
 
             if(storeCode != confirmationCode)
             {
-                model.Errors["confirmationCode"] = "Невернвй код, проверьте код и попробуйте еще раз";
+                model.Errors["code"] = "Невернвй код, проверьте код и попробуйте еще раз";
 
                 return model;
             }
@@ -244,11 +283,19 @@ namespace ProductStore.Web.App
             order.Payment = payment;
             
             await orderRepository.UpdateAsync(order);
-            
-            Session.RemoveCart();
-            await orderRepository.SendFileAsync(Order.Mapper.Map(order));
 
+            await Finish();
+           
             return await MapAsync(order);
+        }
+
+        private async Task Finish()
+        {
+            var order = await GetOrderAsync();
+
+            await orderRepository.SendFileAsync(Order.Mapper.Map(order));            
+            Session.RemoveCart();
+            notificationService.StrtProcces(order);
         }
     }
 }

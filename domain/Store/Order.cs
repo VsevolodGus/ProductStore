@@ -21,6 +21,11 @@ namespace Store
             }
         }
 
+        public string Email
+        {
+            get;
+            set;
+        }
         public OrderItemCollection Items { get; set; }
 
         public int TotalCount => Items.Sum(item => item.Count);

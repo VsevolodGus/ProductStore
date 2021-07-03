@@ -1,9 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Store.Data;
 using System;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Store.Memory
@@ -17,6 +15,8 @@ namespace Store.Memory
         {
             this.dbContextFactory = dbContextFactory;
         }
+
+        // to do writting in cash brouser
         public async Task<Order> CreateAsync()
         { 
             var order = Order.DtoFactory.Create();

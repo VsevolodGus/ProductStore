@@ -1,6 +1,8 @@
-﻿using Store.Data;
+﻿using PhoneNumbers;
+using Store.Data;
 using System;
 using System.Text.RegularExpressions;
+
 
 namespace Store
 {
@@ -27,10 +29,10 @@ namespace Store
             get => dto.NumberPhone;
             set
             {
-                if (value == null || !IsNumberPhone(value))
+                if (value == null || !IsNumberPhone(value, out string cellPhone))
                     throw new ArgumentException("no correct numberphone for Maker"+ Id.ToString());
 
-                dto.NumberPhone = value;
+                dto.NumberPhone = cellPhone;
             }
         }
 
@@ -56,22 +58,33 @@ namespace Store
             set => dto.Description = value;
         }
 
-        public Maker() { }
         public Maker(MakerDto dto)
         {
             this.dto = dto;
         }
-        
 
-        private static bool IsNumberPhone(string number)
+        public  static  readonly PhoneNumberUtil phoneNumberUtil = PhoneNumberUtil.GetInstance();
+        public static bool IsNumberPhone(string cellPhone, out string formattedPhone)
         {
-            return Regex.IsMatch(number, @"\+7\d{3}-\d{3}-\d{2}-\d{2}")
-                   || Regex.IsMatch(number, @"8\d{3}-\d{3}-\d{2}-\d{2}");
+            try
+            {
+                var phoneNumber = phoneNumberUtil.Parse(cellPhone, "ru");
+                formattedPhone = phoneNumberUtil.Format(phoneNumber, PhoneNumberFormat.INTERNATIONAL);
+                return true;
+            }
+            catch (NumberParseException)
+            {
+                formattedPhone = null;
+                return false;
+            }
         }
 
-        private static bool IsEmail(string email)
+        public static bool IsEmail(string email)
         {
-            return Regex.IsMatch(email, @"^[a-z0-9_-]+[a-z0-9_-]@[a-z]{2,20}.[a-z]{2,4}$");
+            if (email == null)
+                return false;
+
+            return Regex.IsMatch(email, @"^[a-zA-Z0-9]+\@[a-z]{2,10}\.[a-z]{2,5}$");
         }
 
         public static class Mapper
