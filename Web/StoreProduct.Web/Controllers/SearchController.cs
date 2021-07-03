@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using ProductStore.Web.App;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace StoreProduct.Web.Controllers
 {
@@ -17,7 +18,7 @@ namespace StoreProduct.Web.Controllers
         // получение из репозитория список продуктов по запросу и вывод данных на страницу
         public async Task<IActionResult> Index(string query)
         {
-            var model = new List<ProductModel>( await productService.GetAllByQueryAsync(query));
+            var model = new List<ProductModel>(await productService.GetAllByQueryAsync(query));
             if (model == null || model.Count == 0)
                 return View("EmptySearch");
 

@@ -1,6 +1,7 @@
 ﻿using Store.Data;
 using System;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace Store
 {
@@ -23,9 +24,21 @@ namespace Store
 
         public string Email
         {
-            get;
-            set;
+            get => dto.Email;
+            set
+            {
+                if (value == null || !TryFormatEmail(value))
+                    throw new ArgumentException("no correct value for Email");
+                
+                dto.Email = value;
+            }
         }
+
+        public static bool TryFormatEmail(string email)
+        {
+            return Regex.IsMatch(email, @"^[a-zA-Z0-9]+\@[a-z]{2,15}\.[a-z]{2,5}$");
+        }
+
         public OrderItemCollection Items { get; set; }
 
         public int TotalCount => Items.Sum(item => item.Count);

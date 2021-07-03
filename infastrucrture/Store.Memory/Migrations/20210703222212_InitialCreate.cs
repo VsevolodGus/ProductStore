@@ -20,7 +20,7 @@ namespace Store.Memory.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_MakerDto", x => x.Id);
+                    table.PrimaryKey("PK_Makers", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -30,7 +30,7 @@ namespace Store.Memory.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CellPhone = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
-                    Email = table.Column<string> (type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     DeliveryUniqueCode = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: true),
                     DeliveryDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeliveryPrice = table.Column<decimal>(type: "money", nullable: false),
@@ -84,12 +84,12 @@ namespace Store.Memory.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "MakerDto",
+                table: "Makers",
                 columns: new[] { "Id", "Addres", "Description", "Email", "NumberPhone", "Title" },
                 values: new object[,]
                 {
-                    { 1, "ООО 'Красная Цена' Самара", "Название Красная Цена выбрано не случайно!", "", "8937-216-76-11", "Красная цена " },
-                    { 2, "ул.Комарова, д.41;", "У нас вы найдете экологически чистые продукты по приятным ценам", "", "8347-827-36-96", "АЛМА" },
+                    { 1, "ООО 'Красная Цена' Самара", "Название Красная Цена выбрано не случайно!", "redPrice@gmail.com", "8937-216-76-11", "Красная цена " },
+                    { 2, "ул.Комарова, д.41;", "У нас вы найдете экологически чистые продукты по приятным ценам", "alma@mail.ru", "8347-827-36-96", "АЛМА" },
                     { 3, "Транспортный проезд д.7 г. Одинцово Московская область", "Компания «Мясницкий ряд» основана в 2004 году на базе Первого Одинцовского мясокомбината. Наша компания активно растёт и развивается, регулярно расширяя ассортимент и повышая качество выпускаемой продукции.", "zakupki@kolbasa.ru", "+7495-411-33-41", "Мясницкий ряд" },
                     { 4, "Москва 125047 Лесная улица 5Б, бизнес - центр «Белая площадь», 12 - й этаж", "Мясное производство для нас не просто бизнес. Делать лучшие в стране продукты питания — наша страсть и призвание.", "sk@cherkizovo.com", "+7495-660-24-40", "Черкизово" }
                 });

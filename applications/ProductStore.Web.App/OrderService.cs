@@ -173,7 +173,7 @@ namespace ProductStore.Web.App
         public async Task<OrderModel> SendConfirmationAsync(string cellPhone,string email)
         {
             var order = await GetOrderAsync();
-            order.Email = email;
+            
 
             var model = await MapAsync(order);
 
@@ -187,9 +187,11 @@ namespace ProductStore.Web.App
             else
                 model.Errors["cellPhone"] = "Номер телефона не соответствует формату +79876543210";
 
-            if (email == null || !TryFormatEmail(email))
+            if (email == null || !Order.TryFormatEmail(email))
                 model.Errors["email"] = "Почта не соответствует формату  Brian@example.com";
-
+            
+            order.Email = email;
+            UpdateSession(order);
             await orderRepository.UpdateAsync(order);
 
             return model;
@@ -228,11 +230,6 @@ namespace ProductStore.Web.App
                 formattedPhone = null;
                 return false;
             }
-        }
-
-        private static bool TryFormatEmail(string email)
-        {
-            return Regex.IsMatch(email, @"^[a-zA-Z0-9]+\@[a-z]{2,10}\.[a-z]{2,5}$");
         }
 
         public async Task<OrderModel> ConfirmCellPhoneAsync(string cellPhone, int confirmationCode)

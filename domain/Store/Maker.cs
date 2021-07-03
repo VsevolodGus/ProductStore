@@ -38,11 +38,13 @@ namespace Store
 
         public string Email 
         {
-            get => dto.NumberPhone;
+            get => dto.Email;
             set
             {
                 if (value == null || !IsEmail(value))
                     throw new ArgumentException("no correct Email for Maker" + Id.ToString());
+
+                dto.Email = value;
             }
         }
 

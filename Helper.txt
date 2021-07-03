@@ -2,7 +2,3 @@
 {https://localhost:44338/SberKassa/?orderId=1&returnUri=https%3A%2F%2Flocalhost%3A44338%2FOrder%2FNextPayment}
 
 Update-DataBase -Project Store.Memory -StartupProject StoreProduct.Web
-
-Написать тесты
-Сохранение Email в бд
-исправить баги с проверкой номеров телефонов

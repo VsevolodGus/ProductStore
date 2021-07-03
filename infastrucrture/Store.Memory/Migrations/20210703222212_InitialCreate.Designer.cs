@@ -9,7 +9,7 @@ using Store.Memory;
 namespace Store.Memory.Migrations
 {
     [DbContext(typeof(StoreDbContext))]
-    [Migration("20210625235847_InitialCreate")]
+    [Migration("20210703222212_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -48,7 +48,7 @@ namespace Store.Memory.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("MakerDto");
+                    b.ToTable("Makers");
 
                     b.HasData(
                         new
@@ -56,7 +56,7 @@ namespace Store.Memory.Migrations
                             Id = 1,
                             Addres = "ООО 'Красная Цена' Самара",
                             Description = "Название Красная Цена выбрано не случайно!",
-                            Email = "",
+                            Email = "redPrice@gmail.com",
                             NumberPhone = "8937-216-76-11",
                             Title = "Красная цена "
                         },
@@ -65,7 +65,7 @@ namespace Store.Memory.Migrations
                             Id = 2,
                             Addres = "ул.Комарова, д.41;",
                             Description = "У нас вы найдете экологически чистые продукты по приятным ценам",
-                            Email = "",
+                            Email = "alma@mail.ru",
                             NumberPhone = "8347-827-36-96",
                             Title = "АЛМА"
                         },
@@ -112,6 +112,10 @@ namespace Store.Memory.Migrations
                     b.Property<string>("DeliveryUniqueCode")
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("PaymentDescription")
                         .HasColumnType("nvarchar(max)");
@@ -170,7 +174,7 @@ namespace Store.Memory.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("IdMaker")
-                        .HasColumnType("MakerToProduct");
+                        .HasColumnType("int");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("money");

@@ -54,7 +54,7 @@ namespace Store.Memory.Migrations
                             Id = 1,
                             Addres = "ООО 'Красная Цена' Самара",
                             Description = "Название Красная Цена выбрано не случайно!",
-                            Email = "",
+                            Email = "redPrice@gmail.com",
                             NumberPhone = "8937-216-76-11",
                             Title = "Красная цена "
                         },
@@ -63,7 +63,7 @@ namespace Store.Memory.Migrations
                             Id = 2,
                             Addres = "ул.Комарова, д.41;",
                             Description = "У нас вы найдете экологически чистые продукты по приятным ценам",
-                            Email = "",
+                            Email = "alma@mail.ru",
                             NumberPhone = "8347-827-36-96",
                             Title = "АЛМА"
                         },
@@ -98,10 +98,6 @@ namespace Store.Memory.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
-                    b.Property<string>("Email")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
                     b.Property<string>("DeliveryDescription")
                         .HasColumnType("nvarchar(max)");
 
@@ -114,6 +110,10 @@ namespace Store.Memory.Migrations
                     b.Property<string>("DeliveryUniqueCode")
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("PaymentDescription")
                         .HasColumnType("nvarchar(max)");
@@ -171,7 +171,7 @@ namespace Store.Memory.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ManufactureId")
+                    b.Property<int>("IdMaker")
                         .HasColumnType("int");
 
                     b.Property<decimal>("Price")
@@ -192,7 +192,7 @@ namespace Store.Memory.Migrations
                             Id = 1,
                             Category = "яйца",
                             Description = "куринные яйца, категории C0",
-                            ManufactureId = 1,
+                            IdMaker = 1,
                             Price = 30m,
                             Title = "яйца"
                         },
@@ -201,7 +201,7 @@ namespace Store.Memory.Migrations
                             Id = 2,
                             Category = "выпечка",
                             Description = "хлебо-булочные изделия",
-                            ManufactureId = 2,
+                            IdMaker = 2,
                             Price = 20m,
                             Title = "хлеб"
                         },
@@ -210,7 +210,7 @@ namespace Store.Memory.Migrations
                             Id = 3,
                             Category = "мясо",
                             Description = "мясо из говядины и телятины",
-                            ManufactureId = 3,
+                            IdMaker = 3,
                             Price = 30m,
                             Title = "говядина"
                         },
@@ -219,7 +219,7 @@ namespace Store.Memory.Migrations
                             Id = 4,
                             Category = "мясо",
                             Description = "мясо из свинины",
-                            ManufactureId = 4,
+                            IdMaker = 4,
                             Price = 40m,
                             Title = "свинина"
                         });

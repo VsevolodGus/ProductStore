@@ -121,7 +121,7 @@ namespace Store.Memory
                     {
                         Id = 1,
                         Title="Красная цена ",
-                        Email = "",
+                        Email = "redPrice@gmail.com",
                         NumberPhone = "8937-216-76-11",
                         Addres = "ООО 'Красная Цена' Самара",
                         Description = "Название Красная Цена выбрано не случайно!"
@@ -132,7 +132,7 @@ namespace Store.Memory
                     {
                         Id = 2,
                         Title = "АЛМА",
-                        Email = "",
+                        Email = "alma@mail.ru",
                         NumberPhone = "8347-827-36-96",
                         Addres = "ул.Комарова, д.41;",
                         Description = "У нас вы найдете экологически чистые продукты по приятным ценам"
