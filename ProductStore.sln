@@ -23,16 +23,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "applications", "application
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductStore.Web.App", "applications\ProductStore.Web.App\ProductStore.Web.App.csproj", "{281E6872-B9E7-4F60-961D-2AE5E7A80505}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9A9C170F-927F-47C1-96E0-E0702EC67ED2}"
-	ProjectSection(SolutionItems) = preProject
-		Helper.txt = Helper.txt
-	EndProjectSection
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductSotre.SberKassa", "contractbank\ProductSotre.SberKassa\ProductSotre.SberKassa.csproj", "{6AC17114-1971-43A5-B302-465C98E993D4}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductStore.YandexKassa", "contractbank\ProductStore.YandexKassa\ProductStore.YandexKassa.csproj", "{1A331DFB-A2F6-451C-85BD-B016B0E9EA59}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoreTest", "StoreTest\StoreTest.csproj", "{DACC15C8-0394-4F29-A543-90E799DB2DCA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StoreTest", "StoreTest\StoreTest.csproj", "{DACC15C8-0394-4F29-A543-90E799DB2DCA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

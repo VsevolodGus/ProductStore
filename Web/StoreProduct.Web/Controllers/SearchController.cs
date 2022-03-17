@@ -18,7 +18,7 @@ namespace StoreProduct.Web.Controllers
         // получение из репозитория список продуктов по запросу и вывод данных на страницу
         public async Task<IActionResult> Index(string query)
         {
-            var model = new List<ProductModel>(await productService.GetAllByQueryAsync(query));
+            var model = await productService.GetAllByQueryAsync(query);
             if (model == null || model.Count == 0)
                 return View("EmptySearch");
 
@@ -26,9 +26,9 @@ namespace StoreProduct.Web.Controllers
         }
 
         // получение списка продуктов определнного производителя, по Id Maker/Manifacture
-        public async Task<IActionResult> GetAllProductsMakers(int IdManufacture)
+        public async Task<IActionResult> GetAllProductsMakers(int queryMaker)
         {
-            var model = new List<ProductModel>( await productService.GetAllByIdManufactureAsync(IdManufacture));
+            var model = await productService.GetAllByIdMakerAsync(queryMaker);
             if (model == null || model.Count == 0)
                 return View("EmptySearch");
 

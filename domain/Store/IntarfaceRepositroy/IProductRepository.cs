@@ -15,6 +15,6 @@ namespace Store
 
         Task<List<Product>> GetAllByCategoryAsync(string сategory);
 
-        Task<List<Product>> GetAllByIdManufactureAsync(int id);
+        Task<List<Product>> GetAllByIdMakerAsync(int id);
     }
 }

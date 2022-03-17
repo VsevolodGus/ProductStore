@@ -29,7 +29,7 @@ namespace Store.Memory
                        .ToList();
         }
 
-        public async Task<List<Product>> GetAllByIdManufactureAsync(int id)
+        public async Task<List<Product>> GetAllByIdMakerAsync(int id)
         {
             var dbContext = dbContextFactory.Create(typeof(ProductRepository));
 

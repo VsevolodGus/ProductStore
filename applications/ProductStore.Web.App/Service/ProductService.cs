@@ -25,9 +25,9 @@ namespace ProductStore.Web.App
             return Map(product);
         }
 
-        public async Task<List<ProductModel>> GetAllByIdManufactureAsync(int id)
+        public async Task<List<ProductModel>> GetAllByIdMakerAsync(int id)
         {
-            var list = await products.GetAllByIdManufactureAsync(id);
+            var list = await products.GetAllByIdMakerAsync(id);
 
 
             return list.Select(Map).ToList();
