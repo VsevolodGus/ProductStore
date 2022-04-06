@@ -179,7 +179,7 @@ namespace ProductStore.Web.App
 
             if (TryFormatPhone(cellPhone, out string formattedPhone))
             {
-                var confirmationCode = 2002; // здесь должен быть генератор кодов
+                var confirmationCode = 1111; // здесь должен быть генератор кодов
                 model.CellPhone = formattedPhone;
                 Session.SetInt32(formattedPhone, confirmationCode);
                 notificationService.SendConfirmationCode(formattedPhone, confirmationCode);
