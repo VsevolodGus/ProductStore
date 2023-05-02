@@ -1,0 +1,2309 @@
+{\rtf1\ansi\ansicpg1252\uc1 \deff0\deflang1033\deflangfe1033
+{\fonttbl {\f0\froman\fcharset0\fprq2{\*\panose 02020603050405020304}Times New Roman;}
+{\f1\fswiss\fcharset0\fprq2{\*\panose 020b0604020202020204}Arial;}
+{\f2\fmodern\fcharset0\fprq1{\*\panose 02070309020205020404}Courier New;}
+{\f3\froman\fcharset2\fprq2{\*\panose 05050102010706020507}Symbol;}
+}
+{\colortbl;\red0\green0\blue0;\red0\green0\blue255;\red0\green255\blue255;\red0\green255\blue0;\red255\green0\blue255;\red255\green0\blue0;\red255\green255\blue0;\red255\green255\blue255;\red0\green0\blue128;\red0\green128\blue128;\red0\green128\blue0;\red128\green0\blue128;\red128\green0\blue0;\red128\green128\blue0;\red128\green128\blue128;\red192\green192\blue192;\red0\green128\blue0;\red96\green64\blue32;\rede0\green128\blue0;\red128\green0\blue0;\red128\green96\blue32;\red0\green32\blue128;\red0\green128\blue128;\red255\green0\blue255;\red0\green0\blue0;\red112\green0\blue112;\red255\green0\blue0;}
+{\stylesheet
+{\widctlpar\adjustright \fs20\cgrid \snext0 Normal;}
+{\paperw11900\paperh16840\margl1800\margr1800\margt1440\margb1440\gutter0\ltrsect}
+{\s1\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs36\kerning36\cgrid \sbasedon0 \snext0 heading 1;}
+{\s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid \sbasedon0 \snext0 heading 2;}
+{\s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid \sbasedon0 \snext0 heading 3;}
+{\s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid \sbasedon0 \snext0 heading 4;}{\*\cs10 \additive Default Paragraph Font;}
+{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid \sbasedon0 \snext0 heading 5;}{\*\cs10 \additive Default Paragraph Font;}
+{\s15\qc\sb240\sa60\widctlpar\outlinelevel0\adjustright \b\f1\fs32\kerning28\cgrid \sbasedon0 \snext15 Title;}
+{\s16\qc\sa60\widctlpar\outlinelevel1\adjustright \f1\cgrid \sbasedon0 \snext16 Subtitle;}
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid \sbasedon0 \snext17 BodyText;}
+{\s18\widctlpar\fs22\cgrid \sbasedon0 \snext18 DenseText;}
+{\s28\widctlpar\tqc\tx4320\tqr\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext28 header;}
+{\s29\widctlpar\tqc\tx4320\tqr\tx8640\qr\adjustright \fs20\cgrid \sbasedon0 \snext29 footer;}
+{\s30\li360\sa60\sb120\keepn\widctlpar\adjustright \b\f1\fs20\cgrid \sbasedon0 \snext30 GroupHeader;}
+{\s40\li0\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext41 Code Example 0;}
+{\s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext42 Code Example 1;}
+{\s42\li720\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext43 Code Example 2;}
+{\s43\li1080\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext44 Code Example 3;}
+{\s44\li1440\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext45 Code Example 4;}
+{\s45\li1800\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext46 Code Example 5;}
+{\s46\li2160\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext47 Code Example 6;}
+{\s47\li2520\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext48 Code Example 7;}
+{\s48\li2880\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext49 Code Example 8;}
+{\s49\li3240\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext50 Code Example 9;}
+{\s50\li3600\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext51 Code Example 10;}
+{\s51\li3960\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext52 Code Example 11;}
+{\s52\li4320\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext53 Code Example 12;}
+{\s53\li4680\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext53 Code Example 13;}
+{\s60\li0\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext61 List Continue 0;}
+{\s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext62 List Continue 1;}
+{\s62\li720\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext63 List Continue 2;}
+{\s63\li1080\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext64 List Continue 3;}
+{\s64\li1440\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext65 List Continue 4;}
+{\s65\li1800\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext66 List Continue 5;}
+{\s66\li2160\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext67 List Continue 6;}
+{\s67\li2520\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext68 List Continue 7;}
+{\s68\li2880\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext69 List Continue 8;}
+{\s69\li3240\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext70 List Continue 9;}
+{\s70\li3600\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext71 List Continue 10;}
+{\s71\li3960\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext72 List Continue 11;}
+{\s72\li4320\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext73 List Continue 12;}
+{\s73\li4680\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext73 List Continue 13;}
+{\s80\li0\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext81 DescContinue 0;}
+{\s81\li360\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext82 DescContinue 1;}
+{\s82\li720\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext83 DescContinue 2;}
+{\s83\li1080\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext84 DescContinue 3;}
+{\s84\li1440\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext85 DescContinue 4;}
+{\s85\li1800\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext86 DescContinue 5;}
+{\s86\li2160\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext87 DescContinue 6;}
+{\s87\li2520\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext88 DescContinue 7;}
+{\s88\li2880\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext89 DescContinue 8;}
+{\s89\li3240\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext90 DescContinue 9;}
+{\s90\li3600\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext91 DescContinue 10;}
+{\s91\li3960\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext92 DescContinue 11;}
+{\s92\li4320\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext93 DescContinue 12;}
+{\s93\li4680\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext93 DescContinue 13;}
+{\s100\li0\sa30\sb30\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext101 LatexTOC 0;}
+{\s101\li360\sa27\sb27\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext102 LatexTOC 1;}
+{\s102\li720\sa24\sb24\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext103 LatexTOC 2;}
+{\s103\li1080\sa21\sb21\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext104 LatexTOC 3;}
+{\s104\li1440\sa18\sb18\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext105 LatexTOC 4;}
+{\s105\li1800\sa15\sb15\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext106 LatexTOC 5;}
+{\s106\li2160\sa12\sb12\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext107 LatexTOC 6;}
+{\s107\li2520\sa9\sb9\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext108 LatexTOC 7;}
+{\s108\li2880\sa6\sb6\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext109 LatexTOC 8;}
+{\s109\li3240\sa3\sb3\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext110 LatexTOC 9;}
+{\s110\li3600\sa3\sb3\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext111 LatexTOC 10;}
+{\s111\li3960\sa3\sb3\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext112 LatexTOC 11;}
+{\s112\li4320\sa3\sb3\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext113 LatexTOC 12;}
+{\s113\li4680\sa3\sb3\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext113 LatexTOC 13;}
+{\s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext121 \sautoupd List Bullet 0;}
+{\s121\fi-360\li720\widctlpar\jclisttab\tx720{\*\pn \pnlvlbody\ilvl0\ls2\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext122 \sautoupd List Bullet 1;}
+{\s122\fi-360\li1080\widctlpar\jclisttab\tx1080{\*\pn \pnlvlbody\ilvl0\ls3\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext123 \sautoupd List Bullet 2;}
+{\s123\fi-360\li1440\widctlpar\jclisttab\tx1440{\*\pn \pnlvlbody\ilvl0\ls4\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext124 \sautoupd List Bullet 3;}
+{\s124\fi-360\li1800\widctlpar\jclisttab\tx1800{\*\pn \pnlvlbody\ilvl0\ls5\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext125 \sautoupd List Bullet 4;}
+{\s125\fi-360\li2160\widctlpar\jclisttab\tx2160{\*\pn \pnlvlbody\ilvl0\ls6\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext126 \sautoupd List Bullet 5;}
+{\s126\fi-360\li2520\widctlpar\jclisttab\tx2520{\*\pn \pnlvlbody\ilvl0\ls7\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext127 \sautoupd List Bullet 6;}
+{\s127\fi-360\li2880\widctlpar\jclisttab\tx2880{\*\pn \pnlvlbody\ilvl0\ls8\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext128 \sautoupd List Bullet 7;}
+{\s128\fi-360\li3240\widctlpar\jclisttab\tx3240{\*\pn \pnlvlbody\ilvl0\ls9\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext129 \sautoupd List Bullet 8;}
+{\s129\fi-360\li3600\widctlpar\jclisttab\tx3600{\*\pn \pnlvlbody\ilvl0\ls10\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext130 \sautoupd List Bullet 9;}
+{\s130\fi-360\li3960\widctlpar\jclisttab\tx3960{\*\pn \pnlvlbody\ilvl0\ls11\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext131 \sautoupd List Bullet 10;}
+{\s131\fi-360\li4320\widctlpar\jclisttab\tx4320{\*\pn \pnlvlbody\ilvl0\ls12\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext132 \sautoupd List Bullet 11;}
+{\s132\fi-360\li4680\widctlpar\jclisttab\tx4680{\*\pn \pnlvlbody\ilvl0\ls13\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext133 \sautoupd List Bullet 12;}
+{\s133\fi-360\li5040\widctlpar\jclisttab\tx5040{\*\pn \pnlvlbody\ilvl0\ls14\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext133 \sautoupd List Bullet 13;}
+{\s140\fi-360\li360\widctlpar\fs20\cgrid \sbasedon0 \snext141 \sautoupd List Enum 0;}
+{\s141\fi-360\li720\widctlpar\fs20\cgrid \sbasedon0 \snext142 \sautoupd List Enum 1;}
+{\s142\fi-360\li1080\widctlpar\fs20\cgrid \sbasedon0 \snext143 \sautoupd List Enum 2;}
+{\s143\fi-360\li1440\widctlpar\fs20\cgrid \sbasedon0 \snext144 \sautoupd List Enum 3;}
+{\s144\fi-360\li1800\widctlpar\fs20\cgrid \sbasedon0 \snext145 \sautoupd List Enum 4;}
+{\s145\fi-360\li2160\widctlpar\fs20\cgrid \sbasedon0 \snext146 \sautoupd List Enum 5;}
+{\s146\fi-360\li2520\widctlpar\fs20\cgrid \sbasedon0 \snext147 \sautoupd List Enum 6;}
+{\s147\fi-360\li2880\widctlpar\fs20\cgrid \sbasedon0 \snext148 \sautoupd List Enum 7;}
+{\s148\fi-360\li3240\widctlpar\fs20\cgrid \sbasedon0 \snext149 \sautoupd List Enum 8;}
+{\s149\fi-360\li3600\widctlpar\fs20\cgrid \sbasedon0 \snext150 \sautoupd List Enum 9;}
+{\s150\fi-360\li3960\widctlpar\fs20\cgrid \sbasedon0 \snext151 \sautoupd List Enum 10;}
+{\s151\fi-360\li4320\widctlpar\fs20\cgrid \sbasedon0 \snext152 \sautoupd List Enum 11;}
+{\s152\fi-360\li4680\widctlpar\fs20\cgrid \sbasedon0 \snext153 \sautoupd List Enum 12;}
+{\s153\fi-360\li5040\widctlpar\fs20\cgrid \sbasedon0 \snext153 \sautoupd List Enum 13;}
+}
+{\info 
+{\title {\comment Store }Store}
+{\comment Generated by doxygen 1.9.6.}
+{\creatim \yr2023\mo5\dy2\hr15\min56\sec51}
+}\pard\plain 
+\sectd\pgnlcrm
+{\footer \s29\widctlpar\tqc\tx4320\tqr\tx8640\qr\adjustright \fs20\cgrid {\chpgn}}
+\pard\plain \s16\qc\sa60\widctlpar\outlinelevel1\adjustright \f1\cgrid 
+\vertalc\qc\par\par\par\par\par\par\par
+\pard\plain \s15\qc\sb240\sa60\widctlpar\outlinelevel0\adjustright \b\f1\fs32\kerning28\cgrid 
+{\field\fldedit {\*\fldinst TITLE \\*MERGEFORMAT}{\fldrslt Store}}\par
+\pard\plain \s16\qc\sa60\widctlpar\outlinelevel1\adjustright \f1\cgrid 
+\par
+\par\par\par\par\par\par\par\par\par\par\par\par
+\pard\plain \s16\qc\sa60\widctlpar\outlinelevel1\adjustright \f1\cgrid 
+{\field\fldedit {\*\fldinst AUTHOR \\*MERGEFORMAT}{\fldrslt AUTHOR}}\par
+Version \par{\field\fldedit {\*\fldinst CREATEDATE \\*MERGEFORMAT}{\fldrslt Tue May 2 2023 }}\par
+\page\page\vertalt
+\pard\plain 
+\s1\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs36\kerning36\cgrid Table of Contents\par
+\pard\plain \par
+{\field\fldedit {\*\fldinst TOC \\f \\*MERGEFORMAT}{\fldrslt Table of contents}}\par
+\pard\plain 
+\sect \sbkpage \pgndec \pgnrestart
+\sect \sectd \sbknone
+{\footer \s29\widctlpar\tqc\tx4320\tqr\tx8640\qr\adjustright \fs20\cgrid {\chpgn}}
+
+\pard\plain \sect\sbkpage
+\s1\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs36\kerning36\cgrid 
+The MIT License (MIT){\tc \v The MIT License (MIT)}\par \pard\plain 
+{\bkmkstart AAAAAAAAGK}
+{\bkmkend AAAAAAAAGK}
+\par \pard\plain 
+{
+\pard\plain \s17\sa60\sb30\widctlpar\qj \fs22\cgrid {\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+Copyright J\'F6rn Zaefferer\par
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\par
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\par
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. \par
+}}
+
+\pard\plain \sect\sbkpage
+\s1\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs36\kerning36\cgrid 
+Namespace Index\par \pard\plain 
+{\tc \v Namespace Index}
+\pard\plain \s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+Package List\par \pard\plain 
+{
+\pard\plain \s17\sa60\sb30\widctlpar\qj \fs22\cgrid Here are the packages with brief descriptions (if available):}
+{
+\par
+\pard\plain \s101\li360\sa27\sb27\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid 
+{\b {\b AspNetCore} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAAAA \\*MERGEFORMAT}{\fldrslt pagenum}}
+\par
+{\b {\b StoreProduct} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAAEX \\*MERGEFORMAT}{\fldrslt pagenum}}
+\par
+{\b {\b StoreProduct.Web} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAAEY \\*MERGEFORMAT}{\fldrslt pagenum}}
+\par
+{\b {\b StoreProduct.Web.Controllers} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAAFH \\*MERGEFORMAT}{\fldrslt pagenum}}
+\par
+{\b {\b StoreProduct.Web.Models} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAAGG \\*MERGEFORMAT}{\fldrslt pagenum}}
+\par
+\par}
+\pard\plain \sect\sbkpage
+\s1\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs36\kerning36\cgrid 
+Hierarchical Index\par \pard\plain 
+{\tc \v Hierarchical Index}
+\pard\plain \s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+Class Hierarchy\par \pard\plain 
+{
+\pard\plain \s17\sa60\sb30\widctlpar\qj \fs22\cgrid This inheritance list is sorted roughly, but not completely, alphabetically:}
+{
+\par
+\pard\plain \s101\li360\sa27\sb27\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid 
+Controller
+{
+\par
+\pard\plain \s102\li720\sa24\sb24\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid 
+StoreProduct.Web.Controllers.HomeController\tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAAFI \\*MERGEFORMAT}{\fldrslt pagenum}}
+\par
+StoreProduct.Web.Controllers.InfoController\tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAAFL \\*MERGEFORMAT}{\fldrslt pagenum}}
+\par
+StoreProduct.Web.Controllers.OrderController\tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAAFP \\*MERGEFORMAT}{\fldrslt pagenum}}
+\par
+StoreProduct.Web.Controllers.SearchController\tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAAGC \\*MERGEFORMAT}{\fldrslt pagenum}}
+\par
+}\par
+StoreProduct.Web.Models.ErrorViewModel\tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAAGH \\*MERGEFORMAT}{\fldrslt pagenum}}
+\par
+StoreProduct.Web.Program\tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAAEZ \\*MERGEFORMAT}{\fldrslt pagenum}}
+\par
+global.MicrosoftAspNetCore.Mvc.Razor.RazorPage
+{
+\par
+\pard\plain \s102\li720\sa24\sb24\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid 
+AspNetCore.Views_Home_Index\tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAAAP \\*MERGEFORMAT}{\fldrslt pagenum}}
+\par
+AspNetCore.Views_Info_InfoManufacture\tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAAAW \\*MERGEFORMAT}{\fldrslt pagenum}}
+\par
+AspNetCore.Views_Info_InfoProduct\tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAABD \\*MERGEFORMAT}{\fldrslt pagenum}}
+\par
+AspNetCore.Views_Order_Confirmation\tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAABK \\*MERGEFORMAT}{\fldrslt pagenum}}
+\par
+AspNetCore.Views_Order_DeliveryMethod\tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAABR \\*MERGEFORMAT}{\fldrslt pagenum}}
+\par
+AspNetCore.Views_Order_DeliveryStep\tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAABY \\*MERGEFORMAT}{\fldrslt pagenum}}
+\par
+AspNetCore.Views_Order_Empty\tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAACF \\*MERGEFORMAT}{\fldrslt pagenum}}
+\par
+AspNetCore.Views_Order_Finish\tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAACM \\*MERGEFORMAT}{\fldrslt pagenum}}
+\par
+AspNetCore.Views_Order_Index\tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAACT \\*MERGEFORMAT}{\fldrslt pagenum}}
+\par
+AspNetCore.Views_Order_PaymentMethod\tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAADA \\*MERGEFORMAT}{\fldrslt pagenum}}
+\par
+AspNetCore.Views_Order_PaymentStep\tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAADH \\*MERGEFORMAT}{\fldrslt pagenum}}
+\par
+AspNetCore.Views_Search_EmptySearch\tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAADO \\*MERGEFORMAT}{\fldrslt pagenum}}
+\par
+AspNetCore.Views_Search_Index\tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAADV \\*MERGEFORMAT}{\fldrslt pagenum}}
+\par
+AspNetCore.Views_Shared_Error\tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAAEQ \\*MERGEFORMAT}{\fldrslt pagenum}}
+\par
+AspNetCore.Views_Shared__Layout\tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAAEC \\*MERGEFORMAT}{\fldrslt pagenum}}
+\par
+AspNetCore.Views_Shared__ValidationScriptsPartial\tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAAEJ \\*MERGEFORMAT}{\fldrslt pagenum}}
+\par
+AspNetCore.Views__ViewImports\tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAAAB \\*MERGEFORMAT}{\fldrslt pagenum}}
+\par
+AspNetCore.Views__ViewStart\tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAAAI \\*MERGEFORMAT}{\fldrslt pagenum}}
+\par
+}\par
+StoreProduct.Web.Startup\tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAAFC \\*MERGEFORMAT}{\fldrslt pagenum}}
+\par
+}
+\pard\plain \sect\sbkpage
+\s1\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs36\kerning36\cgrid 
+Class Index\par \pard\plain 
+{\tc \v Class Index}
+\pard\plain \s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+Class List\par \pard\plain 
+{
+\pard\plain \s17\sa60\sb30\widctlpar\qj \fs22\cgrid Here are the classes, structs, unions and interfaces with brief descriptions:}
+{
+\par
+\pard\plain \s101\li360\sa27\sb27\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid 
+{\b {\b StoreProduct.Web.Models.ErrorViewModel} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAAGH \\*MERGEFORMAT}{\fldrslt pagenum}}
+\par
+{\b {\b StoreProduct.Web.Controllers.HomeController} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAAFI \\*MERGEFORMAT}{\fldrslt pagenum}}
+\par
+{\b {\b StoreProduct.Web.Controllers.InfoController} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAAFL \\*MERGEFORMAT}{\fldrslt pagenum}}
+\par
+{\b {\b StoreProduct.Web.Controllers.OrderController} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAAFP \\*MERGEFORMAT}{\fldrslt pagenum}}
+\par
+{\b {\b StoreProduct.Web.Program} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAAEZ \\*MERGEFORMAT}{\fldrslt pagenum}}
+\par
+{\b {\b StoreProduct.Web.Controllers.SearchController} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAAGC \\*MERGEFORMAT}{\fldrslt pagenum}}
+\par
+{\b {\b StoreProduct.Web.Startup} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAAFC \\*MERGEFORMAT}{\fldrslt pagenum}}
+\par
+{\b {\b AspNetCore.Views__ViewImports} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAAAB \\*MERGEFORMAT}{\fldrslt pagenum}}
+\par
+{\b {\b AspNetCore.Views__ViewStart} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAAAI \\*MERGEFORMAT}{\fldrslt pagenum}}
+\par
+{\b {\b AspNetCore.Views_Home_Index} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAAAP \\*MERGEFORMAT}{\fldrslt pagenum}}
+\par
+{\b {\b AspNetCore.Views_Info_InfoManufacture} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAAAW \\*MERGEFORMAT}{\fldrslt pagenum}}
+\par
+{\b {\b AspNetCore.Views_Info_InfoProduct} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAABD \\*MERGEFORMAT}{\fldrslt pagenum}}
+\par
+{\b {\b AspNetCore.Views_Order_Confirmation} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAABK \\*MERGEFORMAT}{\fldrslt pagenum}}
+\par
+{\b {\b AspNetCore.Views_Order_DeliveryMethod} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAABR \\*MERGEFORMAT}{\fldrslt pagenum}}
+\par
+{\b {\b AspNetCore.Views_Order_DeliveryStep} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAABY \\*MERGEFORMAT}{\fldrslt pagenum}}
+\par
+{\b {\b AspNetCore.Views_Order_Empty} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAACF \\*MERGEFORMAT}{\fldrslt pagenum}}
+\par
+{\b {\b AspNetCore.Views_Order_Finish} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAACM \\*MERGEFORMAT}{\fldrslt pagenum}}
+\par
+{\b {\b AspNetCore.Views_Order_Index} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAACT \\*MERGEFORMAT}{\fldrslt pagenum}}
+\par
+{\b {\b AspNetCore.Views_Order_PaymentMethod} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAADA \\*MERGEFORMAT}{\fldrslt pagenum}}
+\par
+{\b {\b AspNetCore.Views_Order_PaymentStep} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAADH \\*MERGEFORMAT}{\fldrslt pagenum}}
+\par
+{\b {\b AspNetCore.Views_Search_EmptySearch} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAADO \\*MERGEFORMAT}{\fldrslt pagenum}}
+\par
+{\b {\b AspNetCore.Views_Search_Index} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAADV \\*MERGEFORMAT}{\fldrslt pagenum}}
+\par
+{\b {\b AspNetCore.Views_Shared__Layout} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAAEC \\*MERGEFORMAT}{\fldrslt pagenum}}
+\par
+{\b {\b AspNetCore.Views_Shared__ValidationScriptsPartial} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAAEJ \\*MERGEFORMAT}{\fldrslt pagenum}}
+\par
+{\b {\b AspNetCore.Views_Shared_Error} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAAEQ \\*MERGEFORMAT}{\fldrslt pagenum}}
+\par
+\par}
+\pard\plain \sect\sbkpage
+\s1\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs36\kerning36\cgrid 
+Namespace Documentation\par \pard\plain 
+\pard\plain \s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+AspNetCore Namespace Reference\par \pard\plain 
+{\tc\tcl2 \v AspNetCore}
+{\xe \v AspNetCore}
+{\bkmkstart AAAAAAAAAA}
+{\bkmkend AAAAAAAAAA}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Classes\par
+\pard\plain 
+
+{
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+class {\b Views__ViewImports}\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+class {\b Views__ViewStart}\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+class {\b Views_Home_Index}\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+class {\b Views_Info_InfoManufacture}\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+class {\b Views_Info_InfoProduct}\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+class {\b Views_Order_Confirmation}\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+class {\b Views_Order_DeliveryMethod}\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+class {\b Views_Order_DeliveryStep}\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+class {\b Views_Order_Empty}\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+class {\b Views_Order_Finish}\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+class {\b Views_Order_Index}\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+class {\b Views_Order_PaymentMethod}\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+class {\b Views_Order_PaymentStep}\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+class {\b Views_Search_EmptySearch}\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+class {\b Views_Search_Index}\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+class {\b Views_Shared__Layout}\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+class {\b Views_Shared__ValidationScriptsPartial}\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+class {\b Views_Shared_Error}\par
+}
+\par \pard\plain 
+
+\pard\plain \sect\sbkpage
+\s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+\pard\plain \s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+StoreProduct Namespace Reference\par \pard\plain 
+{\tc\tcl2 \v StoreProduct}
+{\xe \v StoreProduct}
+{\bkmkstart AAAAAAAAEX}
+{\bkmkend AAAAAAAAEX}
+\par \pard\plain 
+
+\pard\plain \sect\sbkpage
+\s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+\pard\plain \s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+StoreProduct.Web Namespace Reference\par \pard\plain 
+{\tc\tcl2 \v StoreProduct.Web}
+{\xe \v StoreProduct.Web}
+{\bkmkstart AAAAAAAAEY}
+{\bkmkend AAAAAAAAEY}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Classes\par
+\pard\plain 
+
+{
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+class {\b Program}\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+class {\b Startup}\par
+}
+\par \pard\plain 
+
+\pard\plain \sect\sbkpage
+\s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+\pard\plain \s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+StoreProduct.Web.Controllers Namespace Reference\par \pard\plain 
+{\tc\tcl2 \v StoreProduct.Web.Controllers}
+{\xe \v StoreProduct.Web.Controllers}
+{\bkmkstart AAAAAAAAFH}
+{\bkmkend AAAAAAAAFH}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Classes\par
+\pard\plain 
+
+{
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+class {\b HomeController}\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+class {\b InfoController}\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+class {\b OrderController}\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+class {\b SearchController}\par
+}
+\par \pard\plain 
+
+\pard\plain \sect\sbkpage
+\s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+\pard\plain \s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+StoreProduct.Web.Models Namespace Reference\par \pard\plain 
+{\tc\tcl2 \v StoreProduct.Web.Models}
+{\xe \v StoreProduct.Web.Models}
+{\bkmkstart AAAAAAAAGG}
+{\bkmkend AAAAAAAAGG}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Classes\par
+\pard\plain 
+
+{
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+class {\b ErrorViewModel}}
+
+\pard\plain \sect\sbkpage
+\s1\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs36\kerning36\cgrid 
+Class Documentation{\tc \v Class Documentation}
+\par \pard\plain 
+\pard\plain \s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+StoreProduct.Web.Models.ErrorViewModel Class Reference\par \pard\plain 
+{\tc\tcl2 \v StoreProduct.Web.Models.ErrorViewModel}
+{\xe \v StoreProduct.Web.Models.ErrorViewModel}
+{\bkmkstart AAAAAAAAGH}
+{\bkmkend AAAAAAAAGH}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Properties\par
+\pard\plain 
+
+{
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+string {\b RequestId}{\f2  [get, set]}{\bkmkstart AAAAAAAAGI}
+{\bkmkend AAAAAAAAGI}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+bool {\b ShowRequestId}{\f2  [get]}{\bkmkstart AAAAAAAAGJ}
+{\bkmkend AAAAAAAAGJ}
+\par
+}
+{\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
+The documentation for this class was generated from the following file:{\par
+\pard\plain \s121\fi-360\li720\widctlpar\jclisttab\tx720{\*\pn \pnlvlbody\ilvl0\ls2\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+Models/ErrorViewModel.cs\par
+}\par \pard\plain 
+
+\pard\plain \sect\sbkpage
+\s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+\pard\plain \s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+StoreProduct.Web.Controllers.HomeController Class Reference\par \pard\plain 
+{\tc\tcl2 \v StoreProduct.Web.Controllers.HomeController}
+{\xe \v StoreProduct.Web.Controllers.HomeController}
+{\bkmkstart AAAAAAAAFI}
+{\bkmkend AAAAAAAAFI}
+Inheritance diagram for StoreProduct.Web.Controllers.HomeController:{
+\pard\plain 
+\par\pard \qc {\field\flddirty {\*\fldinst INCLUDEPICTURE "class_store_product_1_1_web_1_1_controllers_1_1_home_controller.png" \\d \\*MERGEFORMAT}{\fldrslt IMAGE}}\par
+}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Public Member Functions\par
+\pard\plain 
+
+{
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+IActionResult {\b Index} (){\bkmkstart AAAAAAAAFJ}
+{\bkmkend AAAAAAAAFJ}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+IActionResult {\b Error} (){\bkmkstart AAAAAAAAFK}
+{\bkmkend AAAAAAAAFK}
+\par
+}
+{\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
+The documentation for this class was generated from the following file:{\par
+\pard\plain \s121\fi-360\li720\widctlpar\jclisttab\tx720{\*\pn \pnlvlbody\ilvl0\ls2\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+Controllers/HomeController.cs\par
+}\par \pard\plain 
+
+\pard\plain \sect\sbkpage
+\s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+\pard\plain \s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+StoreProduct.Web.Controllers.InfoController Class Reference\par \pard\plain 
+{\tc\tcl2 \v StoreProduct.Web.Controllers.InfoController}
+{\xe \v StoreProduct.Web.Controllers.InfoController}
+{\bkmkstart AAAAAAAAFL}
+{\bkmkend AAAAAAAAFL}
+Inheritance diagram for StoreProduct.Web.Controllers.InfoController:{
+\pard\plain 
+\par\pard \qc {\field\flddirty {\*\fldinst INCLUDEPICTURE "class_store_product_1_1_web_1_1_controllers_1_1_info_controller.png" \\d \\*MERGEFORMAT}{\fldrslt IMAGE}}\par
+}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Public Member Functions\par
+\pard\plain 
+
+{
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+{\b InfoController} (ProductService productService, MakerService makerService){\bkmkstart AAAAAAAAFM}
+{\bkmkend AAAAAAAAFM}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+async Task< IActionResult > {\b InfoProduct} (int id)\par
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid {\i {\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+\'D0\'BF\'D0\'BE\'D0\'BB\'D1\'83\'D1\'87\'D0\'B5\'D0\'BD\'D0\'B8\'D0\'B5 \'D0\'B4\'D0\'B0\'D0\'BD\'D0\'BD\'D1\'8B\'D1\'85 \'D0\'BE \'D0\'BF\'D1\'80\'D0\'BE\'D0\'B4\'D1\'83\'D0\'BA\'D1\'82\'D0\'B5 \'D0\'BF\'D0\'BE \'D0\'B8\'D0\'B4\'D0\'B5\'D0\'BD\'D1\'82\'D0\'B8\'D1\'84\'D0\'B8\'D0\'BA\'D0\'B0\'D1\'82\'D0\'BE\'D1\'80\'D1\'83 }{
+}\par
+}\par}
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+IActionResult {\b InfoManufacture} (int id)\par
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid {\i {\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+\'D0\'BF\'D0\'BE\'D0\'BB\'D1\'83\'D1\'87\'D0\'B5\'D0\'BD\'D0\'B8\'D0\'B5 \'D0\'B4\'D0\'B0\'D0\'BD\'D0\'BD\'D1\'8B\'D1\'85 \'D0\'BE \'D0\'BF\'D1\'80\'D0\'BE\'D0\'B8\'D0\'B7\'D0\'B2\'D0\'BE\'D0\'B4\'D0\'B8\'D1\'82\'D0\'B5\'D0\'BB\'D1\'8F \'D0\'BF\'D0\'BE \'D0\'B8\'D0\'B4\'D0\'B5\'D0\'BD\'D1\'82\'D0\'B8\'D1\'84\'D0\'B8\'D0\'BA\'D0\'B0\'D1\'82\'D0\'BE\'D1\'80\'D1\'83 }{
+}\par
+}\par}
+}
+{\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Member Function Documentation\par
+\pard\plain 
+{\xe \v InfoManufacture\:StoreProduct.Web.Controllers.InfoController}
+{\xe \v StoreProduct.Web.Controllers.InfoController\:InfoManufacture}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+IActionResult StoreProduct.Web.Controllers.InfoController.InfoManufacture (int  {\i id})}}
+\par
+{\bkmkstart AAAAAAAAFN}
+{\bkmkend AAAAAAAAFN}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+\par
+{
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+\'D0\'BF\'D0\'BE\'D0\'BB\'D1\'83\'D1\'87\'D0\'B5\'D0\'BD\'D0\'B8\'D0\'B5 \'D0\'B4\'D0\'B0\'D0\'BD\'D0\'BD\'D1\'8B\'D1\'85 \'D0\'BE \'D0\'BF\'D1\'80\'D0\'BE\'D0\'B8\'D0\'B7\'D0\'B2\'D0\'BE\'D0\'B4\'D0\'B8\'D1\'82\'D0\'B5\'D0\'BB\'D1\'8F \'D0\'BF\'D0\'BE \'D0\'B8\'D0\'B4\'D0\'B5\'D0\'BD\'D1\'82\'D0\'B8\'D1\'84\'D0\'B8\'D0\'BA\'D0\'B0\'D1\'82\'D0\'BE\'D1\'80\'D1\'83 }}\par
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+{\par
+{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
+Parameters\par}
+\pard\plain \s81\li360\widctlpar\ql\adjustright \fs20\cgrid \trowd \trgaph108\trleft426\tblind426\trbrdrt\brdrs\brdrw10\brdrcf15 \trbrdrl\brdrs\brdrw10\brdrcf15 \trbrdrb\brdrs\brdrw10\brdrcf15 \trbrdrr\brdrs\brdrw10\brdrcf15 \trbrdrh\brdrs\brdrw10\brdrcf15 \trbrdrv\brdrs\brdrw10\brdrcf15 
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx2187
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx8748
+\pard \widctlpar\intbl\adjustright
+{{\i id} \cell }{\'D0\'B8\'D0\'B4\'D0\'B5\'D0\'BD\'D1\'82\'D0\'B8\'D1\'84\'D0\'B8\'D0\'BA\'D0\'B0\'D1\'82\'D0\'BE\'D1\'80 \'D0\'BF\'D1\'80\'D0\'BE\'D0\'B8\'D0\'B7\'D0\'B2\'D0\'BE\'D0\'B4\'D0\'B8\'D1\'82\'D0\'B5\'D0\'BB\'D1\'8F\cell }
+{\row }
+}
+{{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
+Returns\par}\pard\plain \s82\li720\widctlpar\ql\adjustright \fs20\cgrid {\s17 \sa60 \sb30
+\'D1\'81\'D1\'82\'D1\'80\'D0\'B0\'D0\'BD\'D0\'B8\'D1\'86\'D0\'B0 \'D1\'81 \'D0\'B8\'D0\'BD\'D1\'84\'D0\'BE\'D1\'80\'D0\'BC\'D0\'B0\'D1\'86\'D0\'B8\'D0\'B5\'D0\'B9 \'D0\'BE \'D0\'BF\'D1\'80\'D0\'BE\'D0\'B8\'D0\'B7\'D0\'B2\'D0\'BE\'D0\'B4\'D0\'B8\'D1\'82\'D0\'B5\'D0\'BB\'D0\'B5\par
+}}}}
+{\xe \v InfoProduct\:StoreProduct.Web.Controllers.InfoController}
+{\xe \v StoreProduct.Web.Controllers.InfoController\:InfoProduct}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+async Task< IActionResult > StoreProduct.Web.Controllers.InfoController.InfoProduct (int  {\i id})}}
+\par
+{\bkmkstart AAAAAAAAFO}
+{\bkmkend AAAAAAAAFO}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+\par
+{
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+\'D0\'BF\'D0\'BE\'D0\'BB\'D1\'83\'D1\'87\'D0\'B5\'D0\'BD\'D0\'B8\'D0\'B5 \'D0\'B4\'D0\'B0\'D0\'BD\'D0\'BD\'D1\'8B\'D1\'85 \'D0\'BE \'D0\'BF\'D1\'80\'D0\'BE\'D0\'B4\'D1\'83\'D0\'BA\'D1\'82\'D0\'B5 \'D0\'BF\'D0\'BE \'D0\'B8\'D0\'B4\'D0\'B5\'D0\'BD\'D1\'82\'D0\'B8\'D1\'84\'D0\'B8\'D0\'BA\'D0\'B0\'D1\'82\'D0\'BE\'D1\'80\'D1\'83 }}\par
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+{\par
+{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
+Parameters\par}
+\pard\plain \s81\li360\widctlpar\ql\adjustright \fs20\cgrid \trowd \trgaph108\trleft426\tblind426\trbrdrt\brdrs\brdrw10\brdrcf15 \trbrdrl\brdrs\brdrw10\brdrcf15 \trbrdrb\brdrs\brdrw10\brdrcf15 \trbrdrr\brdrs\brdrw10\brdrcf15 \trbrdrh\brdrs\brdrw10\brdrcf15 \trbrdrv\brdrs\brdrw10\brdrcf15 
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx2187
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx8748
+\pard \widctlpar\intbl\adjustright
+{{\i id} \cell }{\'D0\'B8\'D0\'B4\'D0\'B5\'D0\'BD\'D1\'82\'D0\'B8\'D1\'84\'D0\'B8\'D0\'BA\'D0\'B0\'D1\'82\'D0\'BE\'D1\'80 \'D0\'BF\'D1\'80\'D0\'BE\'D0\'B4\'D1\'83\'D0\'BA\'D1\'82\'D0\'B0\cell }
+{\row }
+}
+{{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
+Returns\par}\pard\plain \s82\li720\widctlpar\ql\adjustright \fs20\cgrid {\s17 \sa60 \sb30
+\'D1\'81\'D1\'82\'D1\'80\'D0\'B0\'D0\'BD\'D0\'B8\'D1\'86\'D0\'B0 \'D1\'81 \'D0\'B8\'D0\'BD\'D1\'84\'D0\'BE\'D1\'80\'D0\'BC\'D0\'B0\'D1\'86\'D0\'B8\'D0\'B5\'D0\'B9 \'D0\'BE \'D0\'BF\'D1\'80\'D0\'BE\'D0\'B4\'D1\'83\'D0\'BA\'D1\'82\'D0\'B5\par
+}}}}
+{\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
+The documentation for this class was generated from the following file:{\par
+\pard\plain \s121\fi-360\li720\widctlpar\jclisttab\tx720{\*\pn \pnlvlbody\ilvl0\ls2\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+Controllers/InfoController.cs\par
+}\par \pard\plain 
+
+\pard\plain \sect\sbkpage
+\s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+\pard\plain \s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+StoreProduct.Web.Controllers.OrderController Class Reference\par \pard\plain 
+{\tc\tcl2 \v StoreProduct.Web.Controllers.OrderController}
+{\xe \v StoreProduct.Web.Controllers.OrderController}
+{\bkmkstart AAAAAAAAFP}
+{\bkmkend AAAAAAAAFP}
+Inheritance diagram for StoreProduct.Web.Controllers.OrderController:{
+\pard\plain 
+\par\pard \qc {\field\flddirty {\*\fldinst INCLUDEPICTURE "class_store_product_1_1_web_1_1_controllers_1_1_order_controller.png" \\d \\*MERGEFORMAT}{\fldrslt IMAGE}}\par
+}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Public Member Functions\par
+\pard\plain 
+
+{
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+{\b OrderController} (IEnumerable< IDeliveryService > deliveryServices, IEnumerable< IPaymentService > paymentServices, IEnumerable< IWebContractorService > webContractServices, OrderService orderService){\bkmkstart AAAAAAAAFQ}
+{\bkmkend AAAAAAAAFQ}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+async Task< IActionResult > {\b Index} ()\par
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid {\i {\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+\'D0\'9F\'D0\'BE\'D0\'BB\'D1\'83\'D1\'87\'D0\'B5\'D0\'BD\'D0\'B8\'D0\'B5 \'D1\'81\'D1\'82\'D1\'80\'D0\'B0\'D0\'BD\'D0\'B8\'D1\'86\'D1\'8B \'D0\'B7\'D0\'B0\'D0\'BA\'D0\'B0\'D0\'B7\'D0\'B0 }{
+}\par
+}\par}
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+async Task< IActionResult > {\b AddItem} (int id)\par
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid {\i {\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+\'D0\'94\'D0\'BE\'D0\'B1\'D0\'B0\'D0\'B2\'D0\'BB\'D0\'B5\'D0\'BD\'D0\'B8\'D0\'B5 \'D1\'8D\'D0\'BB\'D0\'B5\'D0\'BC\'D0\'B5\'D0\'BD\'D1\'82\'D0\'B0 \'D0\'B2 \'D0\'B7\'D0\'B0\'D0\'BA\'D0\'B0\'D0\'B7 }{
+}\par
+}\par}
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+async Task< IActionResult > {\b RemoveItem} (int id)\par
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid {\i {\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+\'D0\'A3\'D0\'B4\'D0\'B0\'D0\'BB\'D0\'B5\'D0\'BD\'D0\'B8\'D0\'B5 \'D1\'8D\'D0\'BB\'D0\'B5\'D0\'BC\'D0\'B5\'D0\'BD\'D1\'82\'D0\'B0 \'D0\'B8\'D0\'B7 \'D0\'B7\'D0\'B0\'D0\'BA\'D0\'B0\'D0\'B7\'D0\'B0 }{
+}\par
+}\par}
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+async Task< IActionResult > {\b RemoveProduct} (int id)\par
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid {\i {\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+\'D0\'A3\'D0\'B4\'D0\'B0\'D0\'BB\'D0\'B5\'D0\'BD\'D0\'B8\'D0\'B5 \'D0\'BF\'D0\'BE\'D0\'B7\'D0\'B8\'D1\'86\'D0\'B8\'D0\'B8 \'D0\'B8\'D0\'B7 \'D0\'B7\'D0\'B0\'D0\'BA\'D0\'B0\'D0\'B7\'D0\'B0 }{
+}\par
+}\par}
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+async Task< IActionResult > {\b SendConfirmation} (string cellPhone, string email)\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+async Task< IActionResult > {\b AgainSendConfimation} (string cellPhone)\par
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid {\i {\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+\'D0\'9F\'D0\'BE\'D0\'B2\'D1\'82\'D0\'BE\'D1\'80\'D0\'BD\'D0\'BE\'D0\'B5 \'D0\'BE\'D1\'82\'D0\'BF\'D1\'80\'D0\'B0\'D0\'B2\'D0\'BA\'D0\'B0 \'D0\'BA\'D0\'BE\'D0\'B4\'D0\'B0 }{
+}\par
+}\par}
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+async Task< IActionResult > {\b ConfirmCellPhone} (string cellPhone, int code)\par
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid {\i {\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+\'D0\'9F\'D0\'BE\'D0\'B4\'D1\'82\'D0\'B2\'D0\'B5\'D1\'80\'D0\'B6\'D0\'B4\'D0\'B5\'D0\'BD\'D0\'B8\'D0\'B5 \'D0\'BD\'D0\'BE\'D0\'BC\'D0\'B5\'D1\'80\'D0\'B0 \'D1\'82\'D0\'B5\'D0\'BB\'D0\'B5\'D1\'84\'D0\'BE\'D0\'BD\'D0\'B0 }{
+}\par
+}\par}
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+async Task< IActionResult > {\b StartDelivery} (string serviceName)\par
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid {\i {\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+\'D0\'BE\'D1\'84\'D0\'BE\'D1\'80\'D0\'BC\'D0\'BB\'D0\'B5\'D0\'BD\'D0\'B8\'D0\'B5 \'D0\'B7\'D0\'B0\'D0\'BA\'D0\'B0\'D0\'B7\'D0\'B0, \'D0\'BF\'D0\'BE \'D1\'8D\'D1\'82\'D0\'B0\'D0\'BF\'D0\'B0\'D0\'BC, \'D0\'B2\'D1\'8B\'D0\'B1\'D0\'BE\'D1\'80 \'D0\'BC\'D0\'B5\'D1\'81\'D1\'82\'D0\'B0 \'D0\'B4\'D0\'BE\'D1\'81\'D1\'82\'D0\'B0\'D0\'B2\'D0\'BA\'D0\'B8 \'D0\'B7\'D0\'B0\'D0\'BA\'D0\'B0\'D0\'B7\'D0\'B0 \'D0\'B2 \'D0\'BE\'D0\'B4\'D0\'BD\'D1\'83 \'D0\'B8\'D0\'B7 \'D0\'BF\'D1\'80\'D0\'B5\'D0\'B4\'D0\'BB\'D0\'BE\'D0\'B6\'D0\'B5\'D0\'BD\'D0\'BD\'D1\'8B\'D1\'85 \'D1\'82\'D0\'BE\'D1\'87\'D0\'B5\'D0\'BA }{
+}\par
+}\par}
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+async Task< IActionResult > {\b NextDelivery} (string serviceName, int step, Dictionary< string, string > values)\par
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid {\i {\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+\'D0\'9F\'D0\'BE\'D1\'8D\'D1\'82\'D0\'B0\'D0\'BF\'D0\'BD\'D0\'BE\'D0\'B5 \'D0\'BE\'D1\'84\'D0\'BE\'D1\'80\'D0\'BC\'D0\'BB\'D0\'B5\'D0\'BD\'D0\'B8\'D0\'B5 \'D0\'B4\'D0\'BE\'D1\'81\'D1\'82\'D0\'B0\'D0\'B2\'D0\'BA\'D0\'B8 \'D0\'B7\'D0\'B0\'D0\'BA\'D0\'B0\'D0\'B7\'D0\'B0 }{
+}\par
+}\par}
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+async Task< IActionResult > {\b StartPayment} (string serviceName)\par
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid {\i {\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+\'D0\'BD\'D0\'B0\'D1\'87\'D0\'B0\'D0\'BB\'D0\'BE \'D0\'B2\'D1\'8B\'D0\'B1\'D0\'BE\'D1\'80\'D0\'B0 \'D1\'81\'D0\'BF\'D0\'BE\'D1\'81\'D0\'BE\'D0\'B1\'D0\'B0 \'D0\'BE\'D0\'BF\'D0\'BB\'D0\'B0\'D1\'82\'D1\'8B \'D0\'B7\'D0\'B0\'D0\'BA\'D0\'B0\'D0\'B7\'D0\'B0 }{
+}\par
+}\par}
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+async Task< IActionResult > {\b NextPayment} (string serviceName, int step, Dictionary< string, string > values)\par
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid {\i {\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+\'D0\'9F\'D0\'BE\'D1\'8D\'D1\'82\'D0\'B0\'D0\'BF\'D0\'BD\'D0\'BE\'D0\'B5 \'D0\'BE\'D1\'84\'D0\'BE\'D1\'80\'D0\'BC\'D0\'BB\'D0\'B5\'D0\'BD\'D0\'B8\'D0\'B5 \'D0\'BE\'D0\'BF\'D0\'BB\'D0\'B0\'D1\'82\'D1\'8B \'D0\'B7\'D0\'B0\'D0\'BA\'D0\'B0\'D0\'B7\'D0\'B0 }{
+}\par
+}\par}
+}
+{\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Member Function Documentation\par
+\pard\plain 
+{\xe \v AddItem\:StoreProduct.Web.Controllers.OrderController}
+{\xe \v StoreProduct.Web.Controllers.OrderController\:AddItem}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+async Task< IActionResult > StoreProduct.Web.Controllers.OrderController.AddItem (int  {\i id})}}
+\par
+{\bkmkstart AAAAAAAAFR}
+{\bkmkend AAAAAAAAFR}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+\par
+{
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+\'D0\'94\'D0\'BE\'D0\'B1\'D0\'B0\'D0\'B2\'D0\'BB\'D0\'B5\'D0\'BD\'D0\'B8\'D0\'B5 \'D1\'8D\'D0\'BB\'D0\'B5\'D0\'BC\'D0\'B5\'D0\'BD\'D1\'82\'D0\'B0 \'D0\'B2 \'D0\'B7\'D0\'B0\'D0\'BA\'D0\'B0\'D0\'B7 }}\par
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+{\par
+{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
+Parameters\par}
+\pard\plain \s81\li360\widctlpar\ql\adjustright \fs20\cgrid \trowd \trgaph108\trleft426\tblind426\trbrdrt\brdrs\brdrw10\brdrcf15 \trbrdrl\brdrs\brdrw10\brdrcf15 \trbrdrb\brdrs\brdrw10\brdrcf15 \trbrdrr\brdrs\brdrw10\brdrcf15 \trbrdrh\brdrs\brdrw10\brdrcf15 \trbrdrv\brdrs\brdrw10\brdrcf15 
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx2187
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx8748
+\pard \widctlpar\intbl\adjustright
+{{\i id} \cell }{\'D0\'B8\'D0\'B4\'D0\'B5\'D0\'BD\'D1\'82\'D0\'B8\'D1\'84\'D0\'B8\'D0\'BA\'D0\'B0\'D1\'82\'D0\'BE\'D1\'80 \'D0\'B4\'D0\'BE\'D0\'B1\'D0\'B0\'D0\'B2\'D0\'BB\'D1\'8F\'D0\'B5\'D0\'BC\'D0\'BE\'D0\'B3\'D0\'BE \'D0\'BF\'D1\'80\'D0\'BE\'D0\'B4\'D1\'83\'D0\'BA\'D1\'82\'D0\'B0 \'D0\'BF\'D1\'80\'D0\'BE\'D0\'B4\'D1\'83\'D0\'BA\'D1\'82\'D0\'B0\cell }
+{\row }
+}
+{{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
+Returns\par}\pard\plain \s82\li720\widctlpar\ql\adjustright \fs20\cgrid {\s17 \sa60 \sb30
+\'D1\'81\'D1\'82\'D1\'80\'D0\'B0\'D0\'BD\'D0\'B8\'D1\'86\'D0\'B0 \'D0\'B8\'D0\'BD\'D1\'84\'D0\'BE\'D1\'80\'D0\'BC\'D0\'B0\'D1\'86\'D0\'B8\'D0\'B8\par
+}}}}
+{\xe \v AgainSendConfimation\:StoreProduct.Web.Controllers.OrderController}
+{\xe \v StoreProduct.Web.Controllers.OrderController\:AgainSendConfimation}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+async Task< IActionResult > StoreProduct.Web.Controllers.OrderController.AgainSendConfimation (string  {\i cellPhone})}}
+\par
+{\bkmkstart AAAAAAAAFS}
+{\bkmkend AAAAAAAAFS}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+\par
+{
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+\'D0\'9F\'D0\'BE\'D0\'B2\'D1\'82\'D0\'BE\'D1\'80\'D0\'BD\'D0\'BE\'D0\'B5 \'D0\'BE\'D1\'82\'D0\'BF\'D1\'80\'D0\'B0\'D0\'B2\'D0\'BA\'D0\'B0 \'D0\'BA\'D0\'BE\'D0\'B4\'D0\'B0 }}\par
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+{\par
+{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
+Parameters\par}
+\pard\plain \s81\li360\widctlpar\ql\adjustright \fs20\cgrid \trowd \trgaph108\trleft426\tblind426\trbrdrt\brdrs\brdrw10\brdrcf15 \trbrdrl\brdrs\brdrw10\brdrcf15 \trbrdrb\brdrs\brdrw10\brdrcf15 \trbrdrr\brdrs\brdrw10\brdrcf15 \trbrdrh\brdrs\brdrw10\brdrcf15 \trbrdrv\brdrs\brdrw10\brdrcf15 
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx2187
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx8748
+\pard \widctlpar\intbl\adjustright
+{{\i cellPhone} \cell }{\'D0\'BD\'D0\'BE\'D0\'BC\'D0\'B5\'D1\'80 \'D1\'82\'D0\'B5\'D0\'BB\'D0\'B5\'D1\'84\'D0\'BE\'D0\'BD\'D0\'B0\cell }
+{\row }
+}
+{{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
+Returns\par}\pard\plain \s82\li720\widctlpar\ql\adjustright \fs20\cgrid {\s17 \sa60 \sb30
+\'D1\'81\'D1\'82\'D1\'80\'D0\'B0\'D0\'BD\'D0\'B8\'D1\'86\'D0\'B0 \'D0\'BF\'D0\'BE\'D0\'B4\'D1\'82\'D0\'B2\'D0\'B5\'D1\'80\'D0\'B6\'D0\'B4\'D0\'B5\'D0\'BD\'D0\'B8\'D1\'8F\par
+}}}}
+{\xe \v ConfirmCellPhone\:StoreProduct.Web.Controllers.OrderController}
+{\xe \v StoreProduct.Web.Controllers.OrderController\:ConfirmCellPhone}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+async Task< IActionResult > StoreProduct.Web.Controllers.OrderController.ConfirmCellPhone (string  {\i cellPhone}, int  {\i code})}}
+\par
+{\bkmkstart AAAAAAAAFT}
+{\bkmkend AAAAAAAAFT}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+\par
+{
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+\'D0\'9F\'D0\'BE\'D0\'B4\'D1\'82\'D0\'B2\'D0\'B5\'D1\'80\'D0\'B6\'D0\'B4\'D0\'B5\'D0\'BD\'D0\'B8\'D0\'B5 \'D0\'BD\'D0\'BE\'D0\'BC\'D0\'B5\'D1\'80\'D0\'B0 \'D1\'82\'D0\'B5\'D0\'BB\'D0\'B5\'D1\'84\'D0\'BE\'D0\'BD\'D0\'B0 }}\par
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+{\par
+{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
+Parameters\par}
+\pard\plain \s81\li360\widctlpar\ql\adjustright \fs20\cgrid \trowd \trgaph108\trleft426\tblind426\trbrdrt\brdrs\brdrw10\brdrcf15 \trbrdrl\brdrs\brdrw10\brdrcf15 \trbrdrb\brdrs\brdrw10\brdrcf15 \trbrdrr\brdrs\brdrw10\brdrcf15 \trbrdrh\brdrs\brdrw10\brdrcf15 \trbrdrv\brdrs\brdrw10\brdrcf15 
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx2187
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx8748
+\pard \widctlpar\intbl\adjustright
+{{\i cellPhone} \cell }{\'D0\'BD\'D0\'BE\'D0\'BC\'D0\'B5\'D1\'80 \'D1\'82\'D0\'B5\'D0\'BB\'D0\'B5\'D1\'84\'D0\'BE\'D0\'BD\'D0\'B0\cell }
+{\row }
+\trowd \trgaph108\trleft426\tblind426\trbrdrt\brdrs\brdrw10\brdrcf15 \trbrdrl\brdrs\brdrw10\brdrcf15 \trbrdrb\brdrs\brdrw10\brdrcf15 \trbrdrr\brdrs\brdrw10\brdrcf15 \trbrdrh\brdrs\brdrw10\brdrcf15 \trbrdrv\brdrs\brdrw10\brdrcf15 
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx2187
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx8748
+\pard \widctlpar\intbl\adjustright
+{{\i code} \cell }{\'D0\'BA\'D0\'BE\'D0\'B4\cell }
+{\row }
+}
+{{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
+Returns\par}\pard\plain \s82\li720\widctlpar\ql\adjustright \fs20\cgrid {\s17 \sa60 \sb30
+\'D1\'81\'D0\'BB\'D0\'B5\'D0\'B4\'D1\'83\'D1\'8E\'D1\'89\'D0\'B8\'D0\'B9 \'D1\'8D\'D1\'82\'D0\'B0\'D0\'BF \'D0\'B7\'D0\'B0\'D0\'BA\'D0\'B0\'D0\'B7\'D0\'B0, \'D0\'B8\'D0\'BB\'D0\'B8 \'D1\'81\'D1\'82\'D1\'80\'D0\'B0\'D0\'BD\'D0\'B8\'D1\'86\'D0\'B0 \'D0\'BF\'D0\'BE\'D0\'B2\'D1\'82\'D0\'BE\'D1\'80\'D0\'BD\'D0\'BE\'D0\'B3\'D0\'BE \'D0\'B2\'D0\'B2\'D0\'BE\'D0\'B4\'D0\'B0 \'D0\'BA\'D0\'BE\'D0\'B4\'D0\'B0\par
+}}}}
+{\xe \v Index\:StoreProduct.Web.Controllers.OrderController}
+{\xe \v StoreProduct.Web.Controllers.OrderController\:Index}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+async Task< IActionResult > StoreProduct.Web.Controllers.OrderController.Index ()}}
+\par
+{\bkmkstart AAAAAAAAFU}
+{\bkmkend AAAAAAAAFU}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+\par
+{
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+\'D0\'9F\'D0\'BE\'D0\'BB\'D1\'83\'D1\'87\'D0\'B5\'D0\'BD\'D0\'B8\'D0\'B5 \'D1\'81\'D1\'82\'D1\'80\'D0\'B0\'D0\'BD\'D0\'B8\'D1\'86\'D1\'8B \'D0\'B7\'D0\'B0\'D0\'BA\'D0\'B0\'D0\'B7\'D0\'B0 }}\par
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+\par
+{{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
+Returns\par}\pard\plain \s82\li720\widctlpar\ql\adjustright \fs20\cgrid {\s17 \sa60 \sb30
+\'D1\'81\'D1\'82\'D1\'80\'D0\'B0\'D0\'BD\'D0\'B8\'D1\'86\'D0\'B0 \'D0\'B7\'D0\'B0\'D0\'BA\'D0\'B0\'D0\'B7\'D0\'B0\par
+}}}}
+{\xe \v NextDelivery\:StoreProduct.Web.Controllers.OrderController}
+{\xe \v StoreProduct.Web.Controllers.OrderController\:NextDelivery}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+async Task< IActionResult > StoreProduct.Web.Controllers.OrderController.NextDelivery (string  {\i serviceName}, int  {\i step}, Dictionary< string, string >  {\i values})}}
+\par
+{\bkmkstart AAAAAAAAFV}
+{\bkmkend AAAAAAAAFV}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+\par
+{
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+\'D0\'9F\'D0\'BE\'D1\'8D\'D1\'82\'D0\'B0\'D0\'BF\'D0\'BD\'D0\'BE\'D0\'B5 \'D0\'BE\'D1\'84\'D0\'BE\'D1\'80\'D0\'BC\'D0\'BB\'D0\'B5\'D0\'BD\'D0\'B8\'D0\'B5 \'D0\'B4\'D0\'BE\'D1\'81\'D1\'82\'D0\'B0\'D0\'B2\'D0\'BA\'D0\'B8 \'D0\'B7\'D0\'B0\'D0\'BA\'D0\'B0\'D0\'B7\'D0\'B0 }}\par
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+{\par
+{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
+Parameters\par}
+\pard\plain \s81\li360\widctlpar\ql\adjustright \fs20\cgrid \trowd \trgaph108\trleft426\tblind426\trbrdrt\brdrs\brdrw10\brdrcf15 \trbrdrl\brdrs\brdrw10\brdrcf15 \trbrdrb\brdrs\brdrw10\brdrcf15 \trbrdrr\brdrs\brdrw10\brdrcf15 \trbrdrh\brdrs\brdrw10\brdrcf15 \trbrdrv\brdrs\brdrw10\brdrcf15 
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx2187
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx8748
+\pard \widctlpar\intbl\adjustright
+{{\i serviceName} \cell }{\'D0\'B8\'D0\'BC\'D1\'8F \'D1\'81\'D0\'B5\'D1\'80\'D0\'B2\'D0\'B8\'D1\'81\'D0\'B0\cell }
+{\row }
+\trowd \trgaph108\trleft426\tblind426\trbrdrt\brdrs\brdrw10\brdrcf15 \trbrdrl\brdrs\brdrw10\brdrcf15 \trbrdrb\brdrs\brdrw10\brdrcf15 \trbrdrr\brdrs\brdrw10\brdrcf15 \trbrdrh\brdrs\brdrw10\brdrcf15 \trbrdrv\brdrs\brdrw10\brdrcf15 
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx2187
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx8748
+\pard \widctlpar\intbl\adjustright
+{{\i step} \cell }{\'D0\'BD\'D0\'BE\'D0\'BC\'D0\'B5\'D1\'80 \'D1\'88\'D0\'B0\'D0\'B3\'D0\'B0\cell }
+{\row }
+\trowd \trgaph108\trleft426\tblind426\trbrdrt\brdrs\brdrw10\brdrcf15 \trbrdrl\brdrs\brdrw10\brdrcf15 \trbrdrb\brdrs\brdrw10\brdrcf15 \trbrdrr\brdrs\brdrw10\brdrcf15 \trbrdrh\brdrs\brdrw10\brdrcf15 \trbrdrv\brdrs\brdrw10\brdrcf15 
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx2187
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx8748
+\pard \widctlpar\intbl\adjustright
+{{\i values} \cell }{\'D1\'80\'D0\'BE\'D0\'B4\'D0\'B8\'D1\'82\'D0\'B5\'D0\'BB\'D1\'8C\'D1\'81\'D0\'BA\'D0\'B8\'D0\'B5 \'D0\'B7\'D0\'BD\'D0\'B0\'D1\'87\'D0\'B5\'D0\'BD\'D0\'B8\'D1\'8F\cell }
+{\row }
+}
+{{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
+Returns\par}\pard\plain \s82\li720\widctlpar\ql\adjustright \fs20\cgrid {\s17 \sa60 \sb30
+\'D1\'81\'D1\'82\'D1\'80\'D0\'B0\'D0\'BD\'D0\'B8\'D1\'86\'D0\'B0 \'D0\'BE\'D1\'84\'D0\'BE\'D1\'80\'D0\'BC\'D0\'BB\'D0\'B5\'D0\'BD\'D0\'B8\'D1\'8F \'D0\'B4\'D0\'BE\'D1\'81\'D1\'82\'D0\'B0\'D0\'B2\'D0\'BA\'D0\'B8\par
+}}}}
+{\xe \v NextPayment\:StoreProduct.Web.Controllers.OrderController}
+{\xe \v StoreProduct.Web.Controllers.OrderController\:NextPayment}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+async Task< IActionResult > StoreProduct.Web.Controllers.OrderController.NextPayment (string  {\i serviceName}, int  {\i step}, Dictionary< string, string >  {\i values})}}
+\par
+{\bkmkstart AAAAAAAAFW}
+{\bkmkend AAAAAAAAFW}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+\par
+{
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+\'D0\'9F\'D0\'BE\'D1\'8D\'D1\'82\'D0\'B0\'D0\'BF\'D0\'BD\'D0\'BE\'D0\'B5 \'D0\'BE\'D1\'84\'D0\'BE\'D1\'80\'D0\'BC\'D0\'BB\'D0\'B5\'D0\'BD\'D0\'B8\'D0\'B5 \'D0\'BE\'D0\'BF\'D0\'BB\'D0\'B0\'D1\'82\'D1\'8B \'D0\'B7\'D0\'B0\'D0\'BA\'D0\'B0\'D0\'B7\'D0\'B0 }}\par
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+{\par
+{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
+Parameters\par}
+\pard\plain \s81\li360\widctlpar\ql\adjustright \fs20\cgrid \trowd \trgaph108\trleft426\tblind426\trbrdrt\brdrs\brdrw10\brdrcf15 \trbrdrl\brdrs\brdrw10\brdrcf15 \trbrdrb\brdrs\brdrw10\brdrcf15 \trbrdrr\brdrs\brdrw10\brdrcf15 \trbrdrh\brdrs\brdrw10\brdrcf15 \trbrdrv\brdrs\brdrw10\brdrcf15 
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx2187
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx8748
+\pard \widctlpar\intbl\adjustright
+{{\i serviceName} \cell }{\'D0\'B8\'D0\'BC\'D1\'8F \'D1\'81\'D0\'B5\'D1\'80\'D0\'B2\'D0\'B8\'D1\'81\'D0\'B0\cell }
+{\row }
+\trowd \trgaph108\trleft426\tblind426\trbrdrt\brdrs\brdrw10\brdrcf15 \trbrdrl\brdrs\brdrw10\brdrcf15 \trbrdrb\brdrs\brdrw10\brdrcf15 \trbrdrr\brdrs\brdrw10\brdrcf15 \trbrdrh\brdrs\brdrw10\brdrcf15 \trbrdrv\brdrs\brdrw10\brdrcf15 
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx2187
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx8748
+\pard \widctlpar\intbl\adjustright
+{{\i step} \cell }{\'D0\'BD\'D0\'BE\'D0\'BC\'D0\'B5\'D1\'80 \'D1\'88\'D0\'B0\'D0\'B3\'D0\'B0\cell }
+{\row }
+\trowd \trgaph108\trleft426\tblind426\trbrdrt\brdrs\brdrw10\brdrcf15 \trbrdrl\brdrs\brdrw10\brdrcf15 \trbrdrb\brdrs\brdrw10\brdrcf15 \trbrdrr\brdrs\brdrw10\brdrcf15 \trbrdrh\brdrs\brdrw10\brdrcf15 \trbrdrv\brdrs\brdrw10\brdrcf15 
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx2187
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx8748
+\pard \widctlpar\intbl\adjustright
+{{\i values} \cell }{\'D1\'80\'D0\'BE\'D0\'B4\'D0\'B8\'D1\'82\'D0\'B5\'D0\'BB\'D1\'8C\'D1\'81\'D0\'BA\'D0\'B8\'D0\'B5 \'D0\'B7\'D0\'BD\'D0\'B0\'D1\'87\'D0\'B5\'D0\'BD\'D0\'B8\'D1\'8F\cell }
+{\row }
+}
+{{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
+Returns\par}\pard\plain \s82\li720\widctlpar\ql\adjustright \fs20\cgrid {\s17 \sa60 \sb30
+\'D1\'81\'D1\'82\'D1\'80\'D0\'B0\'D0\'BD\'D0\'B8\'D1\'86\'D0\'B0 \'D0\'BE\'D1\'84\'D0\'BE\'D1\'80\'D0\'BC\'D0\'BB\'D0\'B5\'D0\'BD\'D0\'B8\'D1\'8F \'D0\'BE\'D0\'BF\'D0\'BB\'D0\'B0\'D1\'82\'D1\'8B\par
+}}}}
+{\xe \v RemoveItem\:StoreProduct.Web.Controllers.OrderController}
+{\xe \v StoreProduct.Web.Controllers.OrderController\:RemoveItem}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+async Task< IActionResult > StoreProduct.Web.Controllers.OrderController.RemoveItem (int  {\i id})}}
+\par
+{\bkmkstart AAAAAAAAFX}
+{\bkmkend AAAAAAAAFX}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+\par
+{
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+\'D0\'A3\'D0\'B4\'D0\'B0\'D0\'BB\'D0\'B5\'D0\'BD\'D0\'B8\'D0\'B5 \'D1\'8D\'D0\'BB\'D0\'B5\'D0\'BC\'D0\'B5\'D0\'BD\'D1\'82\'D0\'B0 \'D0\'B8\'D0\'B7 \'D0\'B7\'D0\'B0\'D0\'BA\'D0\'B0\'D0\'B7\'D0\'B0 }}\par
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+{\par
+{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
+Parameters\par}
+\pard\plain \s81\li360\widctlpar\ql\adjustright \fs20\cgrid \trowd \trgaph108\trleft426\tblind426\trbrdrt\brdrs\brdrw10\brdrcf15 \trbrdrl\brdrs\brdrw10\brdrcf15 \trbrdrb\brdrs\brdrw10\brdrcf15 \trbrdrr\brdrs\brdrw10\brdrcf15 \trbrdrh\brdrs\brdrw10\brdrcf15 \trbrdrv\brdrs\brdrw10\brdrcf15 
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx2187
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx8748
+\pard \widctlpar\intbl\adjustright
+{{\i id} \cell }{\'D0\'B8\'D0\'B4\'D0\'B5\'D0\'BD\'D1\'82\'D0\'B8\'D1\'84\'D0\'B8\'D0\'BA\'D0\'B0\'D1\'82\'D0\'BE\'D1\'80 \'D1\'8D\'D0\'BB\'D0\'B5\'D0\'BC\'D0\'B5\'D0\'BD\'D1\'82\'D0\'B0\cell }
+{\row }
+}
+{{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
+Returns\par}\pard\plain \s82\li720\widctlpar\ql\adjustright \fs20\cgrid {\s17 \sa60 \sb30
+\'D1\'81\'D1\'82\'D1\'80\'D0\'B0\'D0\'BD\'D0\'B8\'D1\'86\'D0\'B0 \'D0\'BF\'D1\'80\'D0\'BE\'D1\'81\'D0\'BC\'D0\'BE\'D1\'82\'D1\'80\'D0\'B0 \'D0\'B7\'D0\'B0\'D0\'BA\'D0\'B0\'D0\'B7\'D0\'B0\par
+}}}}
+{\xe \v RemoveProduct\:StoreProduct.Web.Controllers.OrderController}
+{\xe \v StoreProduct.Web.Controllers.OrderController\:RemoveProduct}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+async Task< IActionResult > StoreProduct.Web.Controllers.OrderController.RemoveProduct (int  {\i id})}}
+\par
+{\bkmkstart AAAAAAAAFY}
+{\bkmkend AAAAAAAAFY}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+\par
+{
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+\'D0\'A3\'D0\'B4\'D0\'B0\'D0\'BB\'D0\'B5\'D0\'BD\'D0\'B8\'D0\'B5 \'D0\'BF\'D0\'BE\'D0\'B7\'D0\'B8\'D1\'86\'D0\'B8\'D0\'B8 \'D0\'B8\'D0\'B7 \'D0\'B7\'D0\'B0\'D0\'BA\'D0\'B0\'D0\'B7\'D0\'B0 }}\par
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+{\par
+{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
+Parameters\par}
+\pard\plain \s81\li360\widctlpar\ql\adjustright \fs20\cgrid \trowd \trgaph108\trleft426\tblind426\trbrdrt\brdrs\brdrw10\brdrcf15 \trbrdrl\brdrs\brdrw10\brdrcf15 \trbrdrb\brdrs\brdrw10\brdrcf15 \trbrdrr\brdrs\brdrw10\brdrcf15 \trbrdrh\brdrs\brdrw10\brdrcf15 \trbrdrv\brdrs\brdrw10\brdrcf15 
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx2187
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx8748
+\pard \widctlpar\intbl\adjustright
+{{\i id} \cell }{\'D0\'B8\'D0\'B4\'D0\'B5\'D0\'BD\'D1\'82\'D0\'B8\'D1\'84\'D0\'B8\'D0\'BA\'D0\'B0\'D1\'82\'D0\'BE\'D1\'80 \'D0\'BF\'D1\'80\'D0\'BE\'D0\'B4\'D1\'83\'D0\'BA\'D1\'82\'D0\'B0 \'D0\'B4\'D0\'BB\'D1\'8F \'D1\'83\'D0\'B4\'D0\'B0\'D0\'BB\'D0\'B5\'D0\'BD\'D0\'B8\'D1\'8F \'D0\'B8\'D0\'B7 \'D0\'B7\'D0\'B0\'D0\'BA\'D0\'B0\'D0\'B7\'D0\'B0\cell }
+{\row }
+}
+{{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
+Returns\par}\pard\plain \s82\li720\widctlpar\ql\adjustright \fs20\cgrid {\s17 \sa60 \sb30
+\'D1\'81\'D1\'82\'D1\'80\'D0\'B0\'D0\'BD\'D0\'B8\'D1\'86\'D0\'B0 \'D0\'BF\'D1\'80\'D0\'BE\'D1\'81\'D0\'BC\'D0\'BE\'D1\'82\'D1\'80\'D0\'B0 \'D0\'B7\'D0\'B0\'D0\'BA\'D0\'B0\'D0\'B7\'D0\'B0\par
+}}}}
+{\xe \v SendConfirmation\:StoreProduct.Web.Controllers.OrderController}
+{\xe \v StoreProduct.Web.Controllers.OrderController\:SendConfirmation}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+async Task< IActionResult > StoreProduct.Web.Controllers.OrderController.SendConfirmation (string  {\i cellPhone}, string  {\i email})}}
+\par
+{\bkmkstart AAAAAAAAFZ}
+{\bkmkend AAAAAAAAFZ}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+{\par
+{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
+Parameters\par}
+\pard\plain \s81\li360\widctlpar\ql\adjustright \fs20\cgrid \trowd \trgaph108\trleft426\tblind426\trbrdrt\brdrs\brdrw10\brdrcf15 \trbrdrl\brdrs\brdrw10\brdrcf15 \trbrdrb\brdrs\brdrw10\brdrcf15 \trbrdrr\brdrs\brdrw10\brdrcf15 \trbrdrh\brdrs\brdrw10\brdrcf15 \trbrdrv\brdrs\brdrw10\brdrcf15 
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx2187
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx8748
+\pard \widctlpar\intbl\adjustright
+{{\i cellPhone} \cell }{\cell }
+{\row }
+\trowd \trgaph108\trleft426\tblind426\trbrdrt\brdrs\brdrw10\brdrcf15 \trbrdrl\brdrs\brdrw10\brdrcf15 \trbrdrb\brdrs\brdrw10\brdrcf15 \trbrdrr\brdrs\brdrw10\brdrcf15 \trbrdrh\brdrs\brdrw10\brdrcf15 \trbrdrv\brdrs\brdrw10\brdrcf15 
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx2187
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx8748
+\pard \widctlpar\intbl\adjustright
+{{\i email} \cell }{\cell }
+{\row }
+}
+{{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
+Returns\par}\pard\plain \s82\li720\widctlpar\ql\adjustright \fs20\cgrid {\s17 \sa60 \sb30
+\par
+}}}}
+{\xe \v StartDelivery\:StoreProduct.Web.Controllers.OrderController}
+{\xe \v StoreProduct.Web.Controllers.OrderController\:StartDelivery}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+async Task< IActionResult > StoreProduct.Web.Controllers.OrderController.StartDelivery (string  {\i serviceName})}}
+\par
+{\bkmkstart AAAAAAAAGA}
+{\bkmkend AAAAAAAAGA}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+\par
+{
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+\'D0\'BE\'D1\'84\'D0\'BE\'D1\'80\'D0\'BC\'D0\'BB\'D0\'B5\'D0\'BD\'D0\'B8\'D0\'B5 \'D0\'B7\'D0\'B0\'D0\'BA\'D0\'B0\'D0\'B7\'D0\'B0, \'D0\'BF\'D0\'BE \'D1\'8D\'D1\'82\'D0\'B0\'D0\'BF\'D0\'B0\'D0\'BC, \'D0\'B2\'D1\'8B\'D0\'B1\'D0\'BE\'D1\'80 \'D0\'BC\'D0\'B5\'D1\'81\'D1\'82\'D0\'B0 \'D0\'B4\'D0\'BE\'D1\'81\'D1\'82\'D0\'B0\'D0\'B2\'D0\'BA\'D0\'B8 \'D0\'B7\'D0\'B0\'D0\'BA\'D0\'B0\'D0\'B7\'D0\'B0 \'D0\'B2 \'D0\'BE\'D0\'B4\'D0\'BD\'D1\'83 \'D0\'B8\'D0\'B7 \'D0\'BF\'D1\'80\'D0\'B5\'D0\'B4\'D0\'BB\'D0\'BE\'D0\'B6\'D0\'B5\'D0\'BD\'D0\'BD\'D1\'8B\'D1\'85 \'D1\'82\'D0\'BE\'D1\'87\'D0\'B5\'D0\'BA }}\par
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+{\par
+{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
+Parameters\par}
+\pard\plain \s81\li360\widctlpar\ql\adjustright \fs20\cgrid \trowd \trgaph108\trleft426\tblind426\trbrdrt\brdrs\brdrw10\brdrcf15 \trbrdrl\brdrs\brdrw10\brdrcf15 \trbrdrb\brdrs\brdrw10\brdrcf15 \trbrdrr\brdrs\brdrw10\brdrcf15 \trbrdrh\brdrs\brdrw10\brdrcf15 \trbrdrv\brdrs\brdrw10\brdrcf15 
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx2187
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx8748
+\pard \widctlpar\intbl\adjustright
+{{\i serviceName} \cell }{\'D0\'B8\'D0\'BC\'D1\'8F \'D1\'81\'D0\'B5\'D1\'80\'D0\'B2\'D0\'B8\'D1\'81\'D0\'B0\cell }
+{\row }
+}
+{{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
+Returns\par}\pard\plain \s82\li720\widctlpar\ql\adjustright \fs20\cgrid {\s17 \sa60 \sb30
+\'D0\'BD\'D0\'B0\'D1\'87\'D0\'B0\'D0\'BB\'D1\'8C\'D0\'BD\'D0\'B0\'D1\'8F \'D1\'81\'D1\'82\'D1\'80\'D0\'B0\'D0\'BD\'D0\'B8\'D1\'86\'D0\'B0 \'D0\'BE\'D1\'84\'D0\'BE\'D1\'80\'D0\'BC\'D0\'BB\'D0\'B5\'D0\'BD\'D0\'B8\'D1\'8F \'D0\'B4\'D0\'BE\'D1\'81\'D1\'82\'D0\'B0\'D0\'B2\'D0\'BA\'D0\'B8\par
+}}}}
+{\xe \v StartPayment\:StoreProduct.Web.Controllers.OrderController}
+{\xe \v StoreProduct.Web.Controllers.OrderController\:StartPayment}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+async Task< IActionResult > StoreProduct.Web.Controllers.OrderController.StartPayment (string  {\i serviceName})}}
+\par
+{\bkmkstart AAAAAAAAGB}
+{\bkmkend AAAAAAAAGB}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+\par
+{
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+\'D0\'BD\'D0\'B0\'D1\'87\'D0\'B0\'D0\'BB\'D0\'BE \'D0\'B2\'D1\'8B\'D0\'B1\'D0\'BE\'D1\'80\'D0\'B0 \'D1\'81\'D0\'BF\'D0\'BE\'D1\'81\'D0\'BE\'D0\'B1\'D0\'B0 \'D0\'BE\'D0\'BF\'D0\'BB\'D0\'B0\'D1\'82\'D1\'8B \'D0\'B7\'D0\'B0\'D0\'BA\'D0\'B0\'D0\'B7\'D0\'B0 }}\par
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+{\par
+{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
+Parameters\par}
+\pard\plain \s81\li360\widctlpar\ql\adjustright \fs20\cgrid \trowd \trgaph108\trleft426\tblind426\trbrdrt\brdrs\brdrw10\brdrcf15 \trbrdrl\brdrs\brdrw10\brdrcf15 \trbrdrb\brdrs\brdrw10\brdrcf15 \trbrdrr\brdrs\brdrw10\brdrcf15 \trbrdrh\brdrs\brdrw10\brdrcf15 \trbrdrv\brdrs\brdrw10\brdrcf15 
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx2187
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx8748
+\pard \widctlpar\intbl\adjustright
+{{\i serviceName} \cell }{\'D0\'B8\'D0\'BC\'D1\'8F \'D1\'81\'D0\'B5\'D1\'80\'D0\'B2\'D0\'B8\'D1\'81\'D0\'B0\cell }
+{\row }
+}
+{{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
+Returns\par}\pard\plain \s82\li720\widctlpar\ql\adjustright \fs20\cgrid {\s17 \sa60 \sb30
+\'D0\'BD\'D0\'B0\'D1\'87\'D0\'B0\'D0\'BB\'D1\'8C\'D0\'BD\'D0\'B0\'D1\'8F \'D1\'81\'D1\'82\'D1\'80\'D0\'B0\'D0\'BD\'D0\'B8\'D1\'86\'D0\'B0 \'D0\'BE\'D1\'84\'D0\'BE\'D1\'80\'D0\'BC\'D0\'BB\'D0\'B5\'D0\'BD\'D0\'B8\'D1\'8F \'D0\'BE\'D0\'BF\'D0\'BB\'D0\'B0\'D1\'82\'D1\'8B \'D0\'B7\'D0\'B0\'D0\'BA\'D0\'B0\'D0\'B7\'D0\'B0\par
+}}}}
+{\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
+The documentation for this class was generated from the following file:{\par
+\pard\plain \s121\fi-360\li720\widctlpar\jclisttab\tx720{\*\pn \pnlvlbody\ilvl0\ls2\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+Controllers/OrderController.cs\par
+}\par \pard\plain 
+
+\pard\plain \sect\sbkpage
+\s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+\pard\plain \s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+StoreProduct.Web.Program Class Reference\par \pard\plain 
+{\tc\tcl2 \v StoreProduct.Web.Program}
+{\xe \v StoreProduct.Web.Program}
+{\bkmkstart AAAAAAAAEZ}
+{\bkmkend AAAAAAAAEZ}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Static Public Member Functions\par
+\pard\plain 
+
+{
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+static void {\b Main} (string[] args){\bkmkstart AAAAAAAAFA}
+{\bkmkend AAAAAAAAFA}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+static IHostBuilder {\b CreateHostBuilder} (string[] args){\bkmkstart AAAAAAAAFB}
+{\bkmkend AAAAAAAAFB}
+\par
+}
+{\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
+The documentation for this class was generated from the following file:{\par
+\pard\plain \s121\fi-360\li720\widctlpar\jclisttab\tx720{\*\pn \pnlvlbody\ilvl0\ls2\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+Program.cs\par
+}\par \pard\plain 
+
+\pard\plain \sect\sbkpage
+\s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+\pard\plain \s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+StoreProduct.Web.Controllers.SearchController Class Reference\par \pard\plain 
+{\tc\tcl2 \v StoreProduct.Web.Controllers.SearchController}
+{\xe \v StoreProduct.Web.Controllers.SearchController}
+{\bkmkstart AAAAAAAAGC}
+{\bkmkend AAAAAAAAGC}
+Inheritance diagram for StoreProduct.Web.Controllers.SearchController:{
+\pard\plain 
+\par\pard \qc {\field\flddirty {\*\fldinst INCLUDEPICTURE "class_store_product_1_1_web_1_1_controllers_1_1_search_controller.png" \\d \\*MERGEFORMAT}{\fldrslt IMAGE}}\par
+}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Public Member Functions\par
+\pard\plain 
+
+{
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+{\b SearchController} (ProductService productService){\bkmkstart AAAAAAAAGD}
+{\bkmkend AAAAAAAAGD}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+async Task< IActionResult > {\b Index} (string search)\par
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid {\i {\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+\'D0\'9F\'D0\'BE\'D0\'BB\'D1\'83\'D1\'87\'D0\'B5\'D0\'BD\'D0\'B8\'D0\'B5 \'D1\'81\'D0\'BF\'D0\'B8\'D1\'81\'D0\'BA\'D0\'B0 \'D0\'BF\'D1\'80\'D0\'BE\'D0\'B4\'D1\'83\'D0\'BA\'D1\'82\'D0\'BE\'D0\'B2 }{
+}\par
+}\par}
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+async Task< IActionResult > {\b GetAllProductsMakers} (int makerID)\par
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid {\i {\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+\'D0\'BF\'D0\'BE\'D0\'BB\'D1\'83\'D1\'87\'D0\'B5\'D0\'BD\'D0\'B8\'D0\'B5 \'D1\'81\'D0\'BF\'D0\'B8\'D1\'81\'D0\'BA\'D0\'B0 \'D0\'BF\'D1\'80\'D0\'BE\'D0\'B4\'D1\'83\'D0\'BA\'D1\'82\'D0\'BE\'D0\'B2 \'D0\'BF\'D0\'BE \'D0\'B8\'D0\'B4\'D0\'B5\'D0\'BD\'D1\'82\'D0\'B8\'D1\'84\'D0\'B8\'D0\'BA\'D0\'B0\'D1\'82\'D0\'BE\'D1\'80\'D1\'83 \'D0\'BF\'D1\'80\'D0\'BE\'D0\'B8\'D0\'B7\'D0\'B2\'D0\'BE\'D0\'B4\'D0\'B8\'D1\'82\'D0\'B5\'D0\'BB\'D1\'8F }{
+}\par
+}\par}
+}
+{\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Member Function Documentation\par
+\pard\plain 
+{\xe \v GetAllProductsMakers\:StoreProduct.Web.Controllers.SearchController}
+{\xe \v StoreProduct.Web.Controllers.SearchController\:GetAllProductsMakers}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+async Task< IActionResult > StoreProduct.Web.Controllers.SearchController.GetAllProductsMakers (int  {\i makerID})}}
+\par
+{\bkmkstart AAAAAAAAGE}
+{\bkmkend AAAAAAAAGE}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+\par
+{
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+\'D0\'BF\'D0\'BE\'D0\'BB\'D1\'83\'D1\'87\'D0\'B5\'D0\'BD\'D0\'B8\'D0\'B5 \'D1\'81\'D0\'BF\'D0\'B8\'D1\'81\'D0\'BA\'D0\'B0 \'D0\'BF\'D1\'80\'D0\'BE\'D0\'B4\'D1\'83\'D0\'BA\'D1\'82\'D0\'BE\'D0\'B2 \'D0\'BF\'D0\'BE \'D0\'B8\'D0\'B4\'D0\'B5\'D0\'BD\'D1\'82\'D0\'B8\'D1\'84\'D0\'B8\'D0\'BA\'D0\'B0\'D1\'82\'D0\'BE\'D1\'80\'D1\'83 \'D0\'BF\'D1\'80\'D0\'BE\'D0\'B8\'D0\'B7\'D0\'B2\'D0\'BE\'D0\'B4\'D0\'B8\'D1\'82\'D0\'B5\'D0\'BB\'D1\'8F }}\par
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+{\par
+{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
+Parameters\par}
+\pard\plain \s81\li360\widctlpar\ql\adjustright \fs20\cgrid \trowd \trgaph108\trleft426\tblind426\trbrdrt\brdrs\brdrw10\brdrcf15 \trbrdrl\brdrs\brdrw10\brdrcf15 \trbrdrb\brdrs\brdrw10\brdrcf15 \trbrdrr\brdrs\brdrw10\brdrcf15 \trbrdrh\brdrs\brdrw10\brdrcf15 \trbrdrv\brdrs\brdrw10\brdrcf15 
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx2187
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx8748
+\pard \widctlpar\intbl\adjustright
+{{\i makerID} \cell }{\'D0\'B8\'D0\'B4\'D0\'B5\'D0\'BD\'D1\'82\'D0\'B8\'D1\'84\'D0\'B8\'D0\'BA\'D0\'B0\'D1\'82\'D0\'BE\'D1\'80 \'D0\'BF\'D1\'80\'D0\'BE\'D0\'B8\'D0\'B7\'D0\'B2\'D0\'BE\'D0\'B4\'D0\'B8\'D1\'82\'D0\'B5\'D0\'BB\'D1\'8F\cell }
+{\row }
+}
+{{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
+Returns\par}\pard\plain \s82\li720\widctlpar\ql\adjustright \fs20\cgrid {\s17 \sa60 \sb30
+\'D1\'81\'D1\'82\'D1\'80\'D0\'B0\'D0\'BD\'D0\'B8\'D1\'86\'D0\'B0 \'D1\'81\'D0\'BF\'D0\'B8\'D1\'81\'D0\'BA\'D0\'B0 \'D0\'BF\'D1\'80\'D0\'BE\'D0\'B4\'D1\'83\'D0\'BA\'D1\'82\'D0\'BE\'D0\'B2\par
+}}}}
+{\xe \v Index\:StoreProduct.Web.Controllers.SearchController}
+{\xe \v StoreProduct.Web.Controllers.SearchController\:Index}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+async Task< IActionResult > StoreProduct.Web.Controllers.SearchController.Index (string  {\i search})}}
+\par
+{\bkmkstart AAAAAAAAGF}
+{\bkmkend AAAAAAAAGF}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+\par
+{
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+\'D0\'9F\'D0\'BE\'D0\'BB\'D1\'83\'D1\'87\'D0\'B5\'D0\'BD\'D0\'B8\'D0\'B5 \'D1\'81\'D0\'BF\'D0\'B8\'D1\'81\'D0\'BA\'D0\'B0 \'D0\'BF\'D1\'80\'D0\'BE\'D0\'B4\'D1\'83\'D0\'BA\'D1\'82\'D0\'BE\'D0\'B2 }}\par
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+{\par
+{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
+Parameters\par}
+\pard\plain \s81\li360\widctlpar\ql\adjustright \fs20\cgrid \trowd \trgaph108\trleft426\tblind426\trbrdrt\brdrs\brdrw10\brdrcf15 \trbrdrl\brdrs\brdrw10\brdrcf15 \trbrdrb\brdrs\brdrw10\brdrcf15 \trbrdrr\brdrs\brdrw10\brdrcf15 \trbrdrh\brdrs\brdrw10\brdrcf15 \trbrdrv\brdrs\brdrw10\brdrcf15 
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx2187
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx8748
+\pard \widctlpar\intbl\adjustright
+{{\i search} \cell }{\'D1\'81\'D1\'82\'D1\'80\'D0\'BE\'D0\'BA\'D0\'B0 \'D0\'BF\'D0\'BE\'D0\'B8\'D1\'81\'D0\'BA\'D0\'B0\cell }
+{\row }
+}
+{{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
+Returns\par}\pard\plain \s82\li720\widctlpar\ql\adjustright \fs20\cgrid {\s17 \sa60 \sb30
+\'D1\'81\'D1\'82\'D1\'80\'D0\'B0\'D0\'BD\'D0\'B8\'D1\'86\'D0\'B0 \'D1\'81\'D0\'BF\'D0\'B8\'D1\'81\'D0\'BA\'D0\'B0 \'D0\'BF\'D1\'80\'D0\'BE\'D0\'B4\'D1\'83\'D0\'BA\'D1\'82\'D0\'BE\'D0\'B2\par
+}}}}
+{\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
+The documentation for this class was generated from the following file:{\par
+\pard\plain \s121\fi-360\li720\widctlpar\jclisttab\tx720{\*\pn \pnlvlbody\ilvl0\ls2\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+Controllers/SearchController.cs\par
+}\par \pard\plain 
+
+\pard\plain \sect\sbkpage
+\s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+\pard\plain \s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+StoreProduct.Web.Startup Class Reference\par \pard\plain 
+{\tc\tcl2 \v StoreProduct.Web.Startup}
+{\xe \v StoreProduct.Web.Startup}
+{\bkmkstart AAAAAAAAFC}
+{\bkmkend AAAAAAAAFC}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Public Member Functions\par
+\pard\plain 
+
+{
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+{\b Startup} (IConfiguration configuration){\bkmkstart AAAAAAAAFD}
+{\bkmkend AAAAAAAAFD}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+void {\b ConfigureServices} (IServiceCollection services){\bkmkstart AAAAAAAAFE}
+{\bkmkend AAAAAAAAFE}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+void {\b Configure} (IApplicationBuilder app, IWebHostEnvironment env){\bkmkstart AAAAAAAAFF}
+{\bkmkend AAAAAAAAFF}
+\par
+}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Properties\par
+\pard\plain 
+
+{
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+IConfiguration {\b Configuration}{\f2  [get]}{\bkmkstart AAAAAAAAFG}
+{\bkmkend AAAAAAAAFG}
+\par
+}
+{\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
+The documentation for this class was generated from the following file:{\par
+\pard\plain \s121\fi-360\li720\widctlpar\jclisttab\tx720{\*\pn \pnlvlbody\ilvl0\ls2\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+Startup.cs\par
+}\par \pard\plain 
+
+\pard\plain \sect\sbkpage
+\s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+\pard\plain \s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+AspNetCore.Views__ViewImports Class Reference\par \pard\plain 
+{\tc\tcl2 \v AspNetCore.Views__ViewImports}
+{\xe \v AspNetCore.Views__ViewImports}
+{\bkmkstart AAAAAAAAAB}
+{\bkmkend AAAAAAAAAB}
+Inheritance diagram for AspNetCore.Views__ViewImports:{
+\pard\plain 
+\par\pard \qc {\field\flddirty {\*\fldinst INCLUDEPICTURE "class_asp_net_core_1_1_views_____view_imports.png" \\d \\*MERGEFORMAT}{\fldrslt IMAGE}}\par
+}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Public Member Functions\par
+\pard\plain 
+
+{
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+async override global::System.Threading.Tasks.Task {\b ExecuteAsync} (){\bkmkstart AAAAAAAAAC}
+{\bkmkend AAAAAAAAAC}
+\par
+}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Properties\par
+\pard\plain 
+
+{
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.ViewFeatures.IModelExpressionProvider {\b ModelExpressionProvider} = default!{\f2  [get]}{\bkmkstart AAAAAAAAAD}
+{\bkmkend AAAAAAAAAD}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.IUrlHelper {\b Url} = default!{\f2  [get]}{\bkmkstart AAAAAAAAAE}
+{\bkmkend AAAAAAAAAE}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.IViewComponentHelper {\b Component} = default!{\f2  [get]}{\bkmkstart AAAAAAAAAF}
+{\bkmkend AAAAAAAAAF}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.Rendering.IJsonHelper {\b Json} = default!{\f2  [get]}{\bkmkstart AAAAAAAAAG}
+{\bkmkend AAAAAAAAAG}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper< dynamic > {\b Html} = default!{\f2  [get]}{\bkmkstart AAAAAAAAAH}
+{\bkmkend AAAAAAAAAH}
+\par
+}
+{\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
+The documentation for this class was generated from the following file:{\par
+\pard\plain \s121\fi-360\li720\widctlpar\jclisttab\tx720{\*\pn \pnlvlbody\ilvl0\ls2\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+obj/Debug/net5.0/Razor/Views/_ViewImports.cshtml.g.cs\par
+}\par \pard\plain 
+
+\pard\plain \sect\sbkpage
+\s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+\pard\plain \s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+AspNetCore.Views__ViewStart Class Reference\par \pard\plain 
+{\tc\tcl2 \v AspNetCore.Views__ViewStart}
+{\xe \v AspNetCore.Views__ViewStart}
+{\bkmkstart AAAAAAAAAI}
+{\bkmkend AAAAAAAAAI}
+Inheritance diagram for AspNetCore.Views__ViewStart:{
+\pard\plain 
+\par\pard \qc {\field\flddirty {\*\fldinst INCLUDEPICTURE "class_asp_net_core_1_1_views_____view_start.png" \\d \\*MERGEFORMAT}{\fldrslt IMAGE}}\par
+}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Public Member Functions\par
+\pard\plain 
+
+{
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+async override global::System.Threading.Tasks.Task {\b ExecuteAsync} (){\bkmkstart AAAAAAAAAJ}
+{\bkmkend AAAAAAAAAJ}
+\par
+}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Properties\par
+\pard\plain 
+
+{
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.ViewFeatures.IModelExpressionProvider {\b ModelExpressionProvider} = default!{\f2  [get]}{\bkmkstart AAAAAAAAAK}
+{\bkmkend AAAAAAAAAK}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.IUrlHelper {\b Url} = default!{\f2  [get]}{\bkmkstart AAAAAAAAAL}
+{\bkmkend AAAAAAAAAL}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.IViewComponentHelper {\b Component} = default!{\f2  [get]}{\bkmkstart AAAAAAAAAM}
+{\bkmkend AAAAAAAAAM}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.Rendering.IJsonHelper {\b Json} = default!{\f2  [get]}{\bkmkstart AAAAAAAAAN}
+{\bkmkend AAAAAAAAAN}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper< dynamic > {\b Html} = default!{\f2  [get]}{\bkmkstart AAAAAAAAAO}
+{\bkmkend AAAAAAAAAO}
+\par
+}
+{\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
+The documentation for this class was generated from the following file:{\par
+\pard\plain \s121\fi-360\li720\widctlpar\jclisttab\tx720{\*\pn \pnlvlbody\ilvl0\ls2\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+obj/Debug/net5.0/Razor/Views/_ViewStart.cshtml.g.cs\par
+}\par \pard\plain 
+
+\pard\plain \sect\sbkpage
+\s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+\pard\plain \s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+AspNetCore.Views_Home_Index Class Reference\par \pard\plain 
+{\tc\tcl2 \v AspNetCore.Views_Home_Index}
+{\xe \v AspNetCore.Views_Home_Index}
+{\bkmkstart AAAAAAAAAP}
+{\bkmkend AAAAAAAAAP}
+Inheritance diagram for AspNetCore.Views_Home_Index:{
+\pard\plain 
+\par\pard \qc {\field\flddirty {\*\fldinst INCLUDEPICTURE "class_asp_net_core_1_1_views___home___index.png" \\d \\*MERGEFORMAT}{\fldrslt IMAGE}}\par
+}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Public Member Functions\par
+\pard\plain 
+
+{
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+async override global::System.Threading.Tasks.Task {\b ExecuteAsync} (){\bkmkstart AAAAAAAAAQ}
+{\bkmkend AAAAAAAAAQ}
+\par
+}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Properties\par
+\pard\plain 
+
+{
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.ViewFeatures.IModelExpressionProvider {\b ModelExpressionProvider} = default!{\f2  [get]}{\bkmkstart AAAAAAAAAR}
+{\bkmkend AAAAAAAAAR}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.IUrlHelper {\b Url} = default!{\f2  [get]}{\bkmkstart AAAAAAAAAS}
+{\bkmkend AAAAAAAAAS}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.IViewComponentHelper {\b Component} = default!{\f2  [get]}{\bkmkstart AAAAAAAAAT}
+{\bkmkend AAAAAAAAAT}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.Rendering.IJsonHelper {\b Json} = default!{\f2  [get]}{\bkmkstart AAAAAAAAAU}
+{\bkmkend AAAAAAAAAU}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper< dynamic > {\b Html} = default!{\f2  [get]}{\bkmkstart AAAAAAAAAV}
+{\bkmkend AAAAAAAAAV}
+\par
+}
+{\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
+The documentation for this class was generated from the following file:{\par
+\pard\plain \s121\fi-360\li720\widctlpar\jclisttab\tx720{\*\pn \pnlvlbody\ilvl0\ls2\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+obj/Debug/net5.0/Razor/Views/Home/Index.cshtml.g.cs\par
+}\par \pard\plain 
+
+\pard\plain \sect\sbkpage
+\s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+\pard\plain \s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+AspNetCore.Views_Info_InfoManufacture Class Reference\par \pard\plain 
+{\tc\tcl2 \v AspNetCore.Views_Info_InfoManufacture}
+{\xe \v AspNetCore.Views_Info_InfoManufacture}
+{\bkmkstart AAAAAAAAAW}
+{\bkmkend AAAAAAAAAW}
+Inheritance diagram for AspNetCore.Views_Info_InfoManufacture:{
+\pard\plain 
+\par\pard \qc {\field\flddirty {\*\fldinst INCLUDEPICTURE "class_asp_net_core_1_1_views___info___info_manufacture.png" \\d \\*MERGEFORMAT}{\fldrslt IMAGE}}\par
+}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Public Member Functions\par
+\pard\plain 
+
+{
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+async override global::System.Threading.Tasks.Task {\b ExecuteAsync} (){\bkmkstart AAAAAAAAAX}
+{\bkmkend AAAAAAAAAX}
+\par
+}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Properties\par
+\pard\plain 
+
+{
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.ViewFeatures.IModelExpressionProvider {\b ModelExpressionProvider} = default!{\f2  [get]}{\bkmkstart AAAAAAAAAY}
+{\bkmkend AAAAAAAAAY}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.IUrlHelper {\b Url} = default!{\f2  [get]}{\bkmkstart AAAAAAAAAZ}
+{\bkmkend AAAAAAAAAZ}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.IViewComponentHelper {\b Component} = default!{\f2  [get]}{\bkmkstart AAAAAAAABA}
+{\bkmkend AAAAAAAABA}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.Rendering.IJsonHelper {\b Json} = default!{\f2  [get]}{\bkmkstart AAAAAAAABB}
+{\bkmkend AAAAAAAABB}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper< Maker > {\b Html} = default!{\f2  [get]}{\bkmkstart AAAAAAAABC}
+{\bkmkend AAAAAAAABC}
+\par
+}
+{\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
+The documentation for this class was generated from the following file:{\par
+\pard\plain \s121\fi-360\li720\widctlpar\jclisttab\tx720{\*\pn \pnlvlbody\ilvl0\ls2\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+obj/Debug/net5.0/Razor/Views/Info/InfoManufacture.cshtml.g.cs\par
+}\par \pard\plain 
+
+\pard\plain \sect\sbkpage
+\s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+\pard\plain \s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+AspNetCore.Views_Info_InfoProduct Class Reference\par \pard\plain 
+{\tc\tcl2 \v AspNetCore.Views_Info_InfoProduct}
+{\xe \v AspNetCore.Views_Info_InfoProduct}
+{\bkmkstart AAAAAAAABD}
+{\bkmkend AAAAAAAABD}
+Inheritance diagram for AspNetCore.Views_Info_InfoProduct:{
+\pard\plain 
+\par\pard \qc {\field\flddirty {\*\fldinst INCLUDEPICTURE "class_asp_net_core_1_1_views___info___info_product.png" \\d \\*MERGEFORMAT}{\fldrslt IMAGE}}\par
+}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Public Member Functions\par
+\pard\plain 
+
+{
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+async override global::System.Threading.Tasks.Task {\b ExecuteAsync} (){\bkmkstart AAAAAAAABE}
+{\bkmkend AAAAAAAABE}
+\par
+}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Properties\par
+\pard\plain 
+
+{
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.ViewFeatures.IModelExpressionProvider {\b ModelExpressionProvider} = default!{\f2  [get]}{\bkmkstart AAAAAAAABF}
+{\bkmkend AAAAAAAABF}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.IUrlHelper {\b Url} = default!{\f2  [get]}{\bkmkstart AAAAAAAABG}
+{\bkmkend AAAAAAAABG}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.IViewComponentHelper {\b Component} = default!{\f2  [get]}{\bkmkstart AAAAAAAABH}
+{\bkmkend AAAAAAAABH}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.Rendering.IJsonHelper {\b Json} = default!{\f2  [get]}{\bkmkstart AAAAAAAABI}
+{\bkmkend AAAAAAAABI}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper< ProductModel > {\b Html} = default!{\f2  [get]}{\bkmkstart AAAAAAAABJ}
+{\bkmkend AAAAAAAABJ}
+\par
+}
+{\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
+The documentation for this class was generated from the following file:{\par
+\pard\plain \s121\fi-360\li720\widctlpar\jclisttab\tx720{\*\pn \pnlvlbody\ilvl0\ls2\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+obj/Debug/net5.0/Razor/Views/Info/InfoProduct.cshtml.g.cs\par
+}\par \pard\plain 
+
+\pard\plain \sect\sbkpage
+\s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+\pard\plain \s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+AspNetCore.Views_Order_Confirmation Class Reference\par \pard\plain 
+{\tc\tcl2 \v AspNetCore.Views_Order_Confirmation}
+{\xe \v AspNetCore.Views_Order_Confirmation}
+{\bkmkstart AAAAAAAABK}
+{\bkmkend AAAAAAAABK}
+Inheritance diagram for AspNetCore.Views_Order_Confirmation:{
+\pard\plain 
+\par\pard \qc {\field\flddirty {\*\fldinst INCLUDEPICTURE "class_asp_net_core_1_1_views___order___confirmation.png" \\d \\*MERGEFORMAT}{\fldrslt IMAGE}}\par
+}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Public Member Functions\par
+\pard\plain 
+
+{
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+async override global::System.Threading.Tasks.Task {\b ExecuteAsync} (){\bkmkstart AAAAAAAABL}
+{\bkmkend AAAAAAAABL}
+\par
+}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Properties\par
+\pard\plain 
+
+{
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.ViewFeatures.IModelExpressionProvider {\b ModelExpressionProvider} = default!{\f2  [get]}{\bkmkstart AAAAAAAABM}
+{\bkmkend AAAAAAAABM}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.IUrlHelper {\b Url} = default!{\f2  [get]}{\bkmkstart AAAAAAAABN}
+{\bkmkend AAAAAAAABN}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.IViewComponentHelper {\b Component} = default!{\f2  [get]}{\bkmkstart AAAAAAAABO}
+{\bkmkend AAAAAAAABO}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.Rendering.IJsonHelper {\b Json} = default!{\f2  [get]}{\bkmkstart AAAAAAAABP}
+{\bkmkend AAAAAAAABP}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper< OrderModel > {\b Html} = default!{\f2  [get]}{\bkmkstart AAAAAAAABQ}
+{\bkmkend AAAAAAAABQ}
+\par
+}
+{\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
+The documentation for this class was generated from the following file:{\par
+\pard\plain \s121\fi-360\li720\widctlpar\jclisttab\tx720{\*\pn \pnlvlbody\ilvl0\ls2\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+obj/Debug/net5.0/Razor/Views/Order/Confirmation.cshtml.g.cs\par
+}\par \pard\plain 
+
+\pard\plain \sect\sbkpage
+\s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+\pard\plain \s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+AspNetCore.Views_Order_DeliveryMethod Class Reference\par \pard\plain 
+{\tc\tcl2 \v AspNetCore.Views_Order_DeliveryMethod}
+{\xe \v AspNetCore.Views_Order_DeliveryMethod}
+{\bkmkstart AAAAAAAABR}
+{\bkmkend AAAAAAAABR}
+Inheritance diagram for AspNetCore.Views_Order_DeliveryMethod:{
+\pard\plain 
+\par\pard \qc {\field\flddirty {\*\fldinst INCLUDEPICTURE "class_asp_net_core_1_1_views___order___delivery_method.png" \\d \\*MERGEFORMAT}{\fldrslt IMAGE}}\par
+}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Public Member Functions\par
+\pard\plain 
+
+{
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+async override global::System.Threading.Tasks.Task {\b ExecuteAsync} (){\bkmkstart AAAAAAAABS}
+{\bkmkend AAAAAAAABS}
+\par
+}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Properties\par
+\pard\plain 
+
+{
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.ViewFeatures.IModelExpressionProvider {\b ModelExpressionProvider} = default!{\f2  [get]}{\bkmkstart AAAAAAAABT}
+{\bkmkend AAAAAAAABT}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.IUrlHelper {\b Url} = default!{\f2  [get]}{\bkmkstart AAAAAAAABU}
+{\bkmkend AAAAAAAABU}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.IViewComponentHelper {\b Component} = default!{\f2  [get]}{\bkmkstart AAAAAAAABV}
+{\bkmkend AAAAAAAABV}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.Rendering.IJsonHelper {\b Json} = default!{\f2  [get]}{\bkmkstart AAAAAAAABW}
+{\bkmkend AAAAAAAABW}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper< IReadOnlyDictionary< string, string > > {\b Html} = default!{\f2  [get]}{\bkmkstart AAAAAAAABX}
+{\bkmkend AAAAAAAABX}
+\par
+}
+{\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
+The documentation for this class was generated from the following file:{\par
+\pard\plain \s121\fi-360\li720\widctlpar\jclisttab\tx720{\*\pn \pnlvlbody\ilvl0\ls2\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+obj/Debug/net5.0/Razor/Views/Order/DeliveryMethod.cshtml.g.cs\par
+}\par \pard\plain 
+
+\pard\plain \sect\sbkpage
+\s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+\pard\plain \s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+AspNetCore.Views_Order_DeliveryStep Class Reference\par \pard\plain 
+{\tc\tcl2 \v AspNetCore.Views_Order_DeliveryStep}
+{\xe \v AspNetCore.Views_Order_DeliveryStep}
+{\bkmkstart AAAAAAAABY}
+{\bkmkend AAAAAAAABY}
+Inheritance diagram for AspNetCore.Views_Order_DeliveryStep:{
+\pard\plain 
+\par\pard \qc {\field\flddirty {\*\fldinst INCLUDEPICTURE "class_asp_net_core_1_1_views___order___delivery_step.png" \\d \\*MERGEFORMAT}{\fldrslt IMAGE}}\par
+}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Public Member Functions\par
+\pard\plain 
+
+{
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+async override global::System.Threading.Tasks.Task {\b ExecuteAsync} (){\bkmkstart AAAAAAAABZ}
+{\bkmkend AAAAAAAABZ}
+\par
+}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Properties\par
+\pard\plain 
+
+{
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.ViewFeatures.IModelExpressionProvider {\b ModelExpressionProvider} = default!{\f2  [get]}{\bkmkstart AAAAAAAACA}
+{\bkmkend AAAAAAAACA}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.IUrlHelper {\b Url} = default!{\f2  [get]}{\bkmkstart AAAAAAAACB}
+{\bkmkend AAAAAAAACB}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.IViewComponentHelper {\b Component} = default!{\f2  [get]}{\bkmkstart AAAAAAAACC}
+{\bkmkend AAAAAAAACC}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.Rendering.IJsonHelper {\b Json} = default!{\f2  [get]}{\bkmkstart AAAAAAAACD}
+{\bkmkend AAAAAAAACD}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper< Form > {\b Html} = default!{\f2  [get]}{\bkmkstart AAAAAAAACE}
+{\bkmkend AAAAAAAACE}
+\par
+}
+{\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
+The documentation for this class was generated from the following file:{\par
+\pard\plain \s121\fi-360\li720\widctlpar\jclisttab\tx720{\*\pn \pnlvlbody\ilvl0\ls2\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+obj/Debug/net5.0/Razor/Views/Order/DeliveryStep.cshtml.g.cs\par
+}\par \pard\plain 
+
+\pard\plain \sect\sbkpage
+\s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+\pard\plain \s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+AspNetCore.Views_Order_Empty Class Reference\par \pard\plain 
+{\tc\tcl2 \v AspNetCore.Views_Order_Empty}
+{\xe \v AspNetCore.Views_Order_Empty}
+{\bkmkstart AAAAAAAACF}
+{\bkmkend AAAAAAAACF}
+Inheritance diagram for AspNetCore.Views_Order_Empty:{
+\pard\plain 
+\par\pard \qc {\field\flddirty {\*\fldinst INCLUDEPICTURE "class_asp_net_core_1_1_views___order___empty.png" \\d \\*MERGEFORMAT}{\fldrslt IMAGE}}\par
+}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Public Member Functions\par
+\pard\plain 
+
+{
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+async override global::System.Threading.Tasks.Task {\b ExecuteAsync} (){\bkmkstart AAAAAAAACG}
+{\bkmkend AAAAAAAACG}
+\par
+}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Properties\par
+\pard\plain 
+
+{
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.ViewFeatures.IModelExpressionProvider {\b ModelExpressionProvider} = default!{\f2  [get]}{\bkmkstart AAAAAAAACH}
+{\bkmkend AAAAAAAACH}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.IUrlHelper {\b Url} = default!{\f2  [get]}{\bkmkstart AAAAAAAACI}
+{\bkmkend AAAAAAAACI}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.IViewComponentHelper {\b Component} = default!{\f2  [get]}{\bkmkstart AAAAAAAACJ}
+{\bkmkend AAAAAAAACJ}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.Rendering.IJsonHelper {\b Json} = default!{\f2  [get]}{\bkmkstart AAAAAAAACK}
+{\bkmkend AAAAAAAACK}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper< dynamic > {\b Html} = default!{\f2  [get]}{\bkmkstart AAAAAAAACL}
+{\bkmkend AAAAAAAACL}
+\par
+}
+{\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
+The documentation for this class was generated from the following file:{\par
+\pard\plain \s121\fi-360\li720\widctlpar\jclisttab\tx720{\*\pn \pnlvlbody\ilvl0\ls2\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+obj/Debug/net5.0/Razor/Views/Order/Empty.cshtml.g.cs\par
+}\par \pard\plain 
+
+\pard\plain \sect\sbkpage
+\s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+\pard\plain \s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+AspNetCore.Views_Order_Finish Class Reference\par \pard\plain 
+{\tc\tcl2 \v AspNetCore.Views_Order_Finish}
+{\xe \v AspNetCore.Views_Order_Finish}
+{\bkmkstart AAAAAAAACM}
+{\bkmkend AAAAAAAACM}
+Inheritance diagram for AspNetCore.Views_Order_Finish:{
+\pard\plain 
+\par\pard \qc {\field\flddirty {\*\fldinst INCLUDEPICTURE "class_asp_net_core_1_1_views___order___finish.png" \\d \\*MERGEFORMAT}{\fldrslt IMAGE}}\par
+}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Public Member Functions\par
+\pard\plain 
+
+{
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+async override global::System.Threading.Tasks.Task {\b ExecuteAsync} (){\bkmkstart AAAAAAAACN}
+{\bkmkend AAAAAAAACN}
+\par
+}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Properties\par
+\pard\plain 
+
+{
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.ViewFeatures.IModelExpressionProvider {\b ModelExpressionProvider} = default!{\f2  [get]}{\bkmkstart AAAAAAAACO}
+{\bkmkend AAAAAAAACO}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.IUrlHelper {\b Url} = default!{\f2  [get]}{\bkmkstart AAAAAAAACP}
+{\bkmkend AAAAAAAACP}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.IViewComponentHelper {\b Component} = default!{\f2  [get]}{\bkmkstart AAAAAAAACQ}
+{\bkmkend AAAAAAAACQ}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.Rendering.IJsonHelper {\b Json} = default!{\f2  [get]}{\bkmkstart AAAAAAAACR}
+{\bkmkend AAAAAAAACR}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper< OrderModel > {\b Html} = default!{\f2  [get]}{\bkmkstart AAAAAAAACS}
+{\bkmkend AAAAAAAACS}
+\par
+}
+{\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
+The documentation for this class was generated from the following file:{\par
+\pard\plain \s121\fi-360\li720\widctlpar\jclisttab\tx720{\*\pn \pnlvlbody\ilvl0\ls2\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+obj/Debug/net5.0/Razor/Views/Order/Finish.cshtml.g.cs\par
+}\par \pard\plain 
+
+\pard\plain \sect\sbkpage
+\s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+\pard\plain \s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+AspNetCore.Views_Order_Index Class Reference\par \pard\plain 
+{\tc\tcl2 \v AspNetCore.Views_Order_Index}
+{\xe \v AspNetCore.Views_Order_Index}
+{\bkmkstart AAAAAAAACT}
+{\bkmkend AAAAAAAACT}
+Inheritance diagram for AspNetCore.Views_Order_Index:{
+\pard\plain 
+\par\pard \qc {\field\flddirty {\*\fldinst INCLUDEPICTURE "class_asp_net_core_1_1_views___order___index.png" \\d \\*MERGEFORMAT}{\fldrslt IMAGE}}\par
+}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Public Member Functions\par
+\pard\plain 
+
+{
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+async override global::System.Threading.Tasks.Task {\b ExecuteAsync} (){\bkmkstart AAAAAAAACU}
+{\bkmkend AAAAAAAACU}
+\par
+}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Properties\par
+\pard\plain 
+
+{
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.ViewFeatures.IModelExpressionProvider {\b ModelExpressionProvider} = default!{\f2  [get]}{\bkmkstart AAAAAAAACV}
+{\bkmkend AAAAAAAACV}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.IUrlHelper {\b Url} = default!{\f2  [get]}{\bkmkstart AAAAAAAACW}
+{\bkmkend AAAAAAAACW}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.IViewComponentHelper {\b Component} = default!{\f2  [get]}{\bkmkstart AAAAAAAACX}
+{\bkmkend AAAAAAAACX}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.Rendering.IJsonHelper {\b Json} = default!{\f2  [get]}{\bkmkstart AAAAAAAACY}
+{\bkmkend AAAAAAAACY}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper< OrderModel > {\b Html} = default!{\f2  [get]}{\bkmkstart AAAAAAAACZ}
+{\bkmkend AAAAAAAACZ}
+\par
+}
+{\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
+The documentation for this class was generated from the following file:{\par
+\pard\plain \s121\fi-360\li720\widctlpar\jclisttab\tx720{\*\pn \pnlvlbody\ilvl0\ls2\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+obj/Debug/net5.0/Razor/Views/Order/Index.cshtml.g.cs\par
+}\par \pard\plain 
+
+\pard\plain \sect\sbkpage
+\s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+\pard\plain \s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+AspNetCore.Views_Order_PaymentMethod Class Reference\par \pard\plain 
+{\tc\tcl2 \v AspNetCore.Views_Order_PaymentMethod}
+{\xe \v AspNetCore.Views_Order_PaymentMethod}
+{\bkmkstart AAAAAAAADA}
+{\bkmkend AAAAAAAADA}
+Inheritance diagram for AspNetCore.Views_Order_PaymentMethod:{
+\pard\plain 
+\par\pard \qc {\field\flddirty {\*\fldinst INCLUDEPICTURE "class_asp_net_core_1_1_views___order___payment_method.png" \\d \\*MERGEFORMAT}{\fldrslt IMAGE}}\par
+}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Public Member Functions\par
+\pard\plain 
+
+{
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+async override global::System.Threading.Tasks.Task {\b ExecuteAsync} (){\bkmkstart AAAAAAAADB}
+{\bkmkend AAAAAAAADB}
+\par
+}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Properties\par
+\pard\plain 
+
+{
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.ViewFeatures.IModelExpressionProvider {\b ModelExpressionProvider} = default!{\f2  [get]}{\bkmkstart AAAAAAAADC}
+{\bkmkend AAAAAAAADC}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.IUrlHelper {\b Url} = default!{\f2  [get]}{\bkmkstart AAAAAAAADD}
+{\bkmkend AAAAAAAADD}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.IViewComponentHelper {\b Component} = default!{\f2  [get]}{\bkmkstart AAAAAAAADE}
+{\bkmkend AAAAAAAADE}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.Rendering.IJsonHelper {\b Json} = default!{\f2  [get]}{\bkmkstart AAAAAAAADF}
+{\bkmkend AAAAAAAADF}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper< IReadOnlyDictionary< string, string > > {\b Html} = default!{\f2  [get]}{\bkmkstart AAAAAAAADG}
+{\bkmkend AAAAAAAADG}
+\par
+}
+{\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
+The documentation for this class was generated from the following file:{\par
+\pard\plain \s121\fi-360\li720\widctlpar\jclisttab\tx720{\*\pn \pnlvlbody\ilvl0\ls2\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+obj/Debug/net5.0/Razor/Views/Order/PaymentMethod.cshtml.g.cs\par
+}\par \pard\plain 
+
+\pard\plain \sect\sbkpage
+\s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+\pard\plain \s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+AspNetCore.Views_Order_PaymentStep Class Reference\par \pard\plain 
+{\tc\tcl2 \v AspNetCore.Views_Order_PaymentStep}
+{\xe \v AspNetCore.Views_Order_PaymentStep}
+{\bkmkstart AAAAAAAADH}
+{\bkmkend AAAAAAAADH}
+Inheritance diagram for AspNetCore.Views_Order_PaymentStep:{
+\pard\plain 
+\par\pard \qc {\field\flddirty {\*\fldinst INCLUDEPICTURE "class_asp_net_core_1_1_views___order___payment_step.png" \\d \\*MERGEFORMAT}{\fldrslt IMAGE}}\par
+}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Public Member Functions\par
+\pard\plain 
+
+{
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+async override global::System.Threading.Tasks.Task {\b ExecuteAsync} (){\bkmkstart AAAAAAAADI}
+{\bkmkend AAAAAAAADI}
+\par
+}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Properties\par
+\pard\plain 
+
+{
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.ViewFeatures.IModelExpressionProvider {\b ModelExpressionProvider} = default!{\f2  [get]}{\bkmkstart AAAAAAAADJ}
+{\bkmkend AAAAAAAADJ}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.IUrlHelper {\b Url} = default!{\f2  [get]}{\bkmkstart AAAAAAAADK}
+{\bkmkend AAAAAAAADK}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.IViewComponentHelper {\b Component} = default!{\f2  [get]}{\bkmkstart AAAAAAAADL}
+{\bkmkend AAAAAAAADL}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.Rendering.IJsonHelper {\b Json} = default!{\f2  [get]}{\bkmkstart AAAAAAAADM}
+{\bkmkend AAAAAAAADM}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper< Form > {\b Html} = default!{\f2  [get]}{\bkmkstart AAAAAAAADN}
+{\bkmkend AAAAAAAADN}
+\par
+}
+{\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
+The documentation for this class was generated from the following file:{\par
+\pard\plain \s121\fi-360\li720\widctlpar\jclisttab\tx720{\*\pn \pnlvlbody\ilvl0\ls2\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+obj/Debug/net5.0/Razor/Views/Order/PaymentStep.cshtml.g.cs\par
+}\par \pard\plain 
+
+\pard\plain \sect\sbkpage
+\s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+\pard\plain \s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+AspNetCore.Views_Search_EmptySearch Class Reference\par \pard\plain 
+{\tc\tcl2 \v AspNetCore.Views_Search_EmptySearch}
+{\xe \v AspNetCore.Views_Search_EmptySearch}
+{\bkmkstart AAAAAAAADO}
+{\bkmkend AAAAAAAADO}
+Inheritance diagram for AspNetCore.Views_Search_EmptySearch:{
+\pard\plain 
+\par\pard \qc {\field\flddirty {\*\fldinst INCLUDEPICTURE "class_asp_net_core_1_1_views___search___empty_search.png" \\d \\*MERGEFORMAT}{\fldrslt IMAGE}}\par
+}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Public Member Functions\par
+\pard\plain 
+
+{
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+async override global::System.Threading.Tasks.Task {\b ExecuteAsync} (){\bkmkstart AAAAAAAADP}
+{\bkmkend AAAAAAAADP}
+\par
+}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Properties\par
+\pard\plain 
+
+{
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.ViewFeatures.IModelExpressionProvider {\b ModelExpressionProvider} = default!{\f2  [get]}{\bkmkstart AAAAAAAADQ}
+{\bkmkend AAAAAAAADQ}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.IUrlHelper {\b Url} = default!{\f2  [get]}{\bkmkstart AAAAAAAADR}
+{\bkmkend AAAAAAAADR}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.IViewComponentHelper {\b Component} = default!{\f2  [get]}{\bkmkstart AAAAAAAADS}
+{\bkmkend AAAAAAAADS}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.Rendering.IJsonHelper {\b Json} = default!{\f2  [get]}{\bkmkstart AAAAAAAADT}
+{\bkmkend AAAAAAAADT}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper< dynamic > {\b Html} = default!{\f2  [get]}{\bkmkstart AAAAAAAADU}
+{\bkmkend AAAAAAAADU}
+\par
+}
+{\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
+The documentation for this class was generated from the following file:{\par
+\pard\plain \s121\fi-360\li720\widctlpar\jclisttab\tx720{\*\pn \pnlvlbody\ilvl0\ls2\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+obj/Debug/net5.0/Razor/Views/Search/EmptySearch.cshtml.g.cs\par
+}\par \pard\plain 
+
+\pard\plain \sect\sbkpage
+\s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+\pard\plain \s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+AspNetCore.Views_Search_Index Class Reference\par \pard\plain 
+{\tc\tcl2 \v AspNetCore.Views_Search_Index}
+{\xe \v AspNetCore.Views_Search_Index}
+{\bkmkstart AAAAAAAADV}
+{\bkmkend AAAAAAAADV}
+Inheritance diagram for AspNetCore.Views_Search_Index:{
+\pard\plain 
+\par\pard \qc {\field\flddirty {\*\fldinst INCLUDEPICTURE "class_asp_net_core_1_1_views___search___index.png" \\d \\*MERGEFORMAT}{\fldrslt IMAGE}}\par
+}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Public Member Functions\par
+\pard\plain 
+
+{
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+async override global::System.Threading.Tasks.Task {\b ExecuteAsync} (){\bkmkstart AAAAAAAADW}
+{\bkmkend AAAAAAAADW}
+\par
+}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Properties\par
+\pard\plain 
+
+{
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.ViewFeatures.IModelExpressionProvider {\b ModelExpressionProvider} = default!{\f2  [get]}{\bkmkstart AAAAAAAADX}
+{\bkmkend AAAAAAAADX}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.IUrlHelper {\b Url} = default!{\f2  [get]}{\bkmkstart AAAAAAAADY}
+{\bkmkend AAAAAAAADY}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.IViewComponentHelper {\b Component} = default!{\f2  [get]}{\bkmkstart AAAAAAAADZ}
+{\bkmkend AAAAAAAADZ}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.Rendering.IJsonHelper {\b Json} = default!{\f2  [get]}{\bkmkstart AAAAAAAAEA}
+{\bkmkend AAAAAAAAEA}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper< List< ProductModel > > {\b Html} = default!{\f2  [get]}{\bkmkstart AAAAAAAAEB}
+{\bkmkend AAAAAAAAEB}
+\par
+}
+{\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
+The documentation for this class was generated from the following file:{\par
+\pard\plain \s121\fi-360\li720\widctlpar\jclisttab\tx720{\*\pn \pnlvlbody\ilvl0\ls2\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+obj/Debug/net5.0/Razor/Views/Search/Index.cshtml.g.cs\par
+}\par \pard\plain 
+
+\pard\plain \sect\sbkpage
+\s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+\pard\plain \s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+AspNetCore.Views_Shared__Layout Class Reference\par \pard\plain 
+{\tc\tcl2 \v AspNetCore.Views_Shared__Layout}
+{\xe \v AspNetCore.Views_Shared__Layout}
+{\bkmkstart AAAAAAAAEC}
+{\bkmkend AAAAAAAAEC}
+Inheritance diagram for AspNetCore.Views_Shared__Layout:{
+\pard\plain 
+\par\pard \qc {\field\flddirty {\*\fldinst INCLUDEPICTURE "class_asp_net_core_1_1_views___shared_____layout.png" \\d \\*MERGEFORMAT}{\fldrslt IMAGE}}\par
+}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Public Member Functions\par
+\pard\plain 
+
+{
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+async override global::System.Threading.Tasks.Task {\b ExecuteAsync} (){\bkmkstart AAAAAAAAED}
+{\bkmkend AAAAAAAAED}
+\par
+}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Properties\par
+\pard\plain 
+
+{
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.ViewFeatures.IModelExpressionProvider {\b ModelExpressionProvider} = default!{\f2  [get]}{\bkmkstart AAAAAAAAEE}
+{\bkmkend AAAAAAAAEE}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.IUrlHelper {\b Url} = default!{\f2  [get]}{\bkmkstart AAAAAAAAEF}
+{\bkmkend AAAAAAAAEF}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.IViewComponentHelper {\b Component} = default!{\f2  [get]}{\bkmkstart AAAAAAAAEG}
+{\bkmkend AAAAAAAAEG}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.Rendering.IJsonHelper {\b Json} = default!{\f2  [get]}{\bkmkstart AAAAAAAAEH}
+{\bkmkend AAAAAAAAEH}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper< dynamic > {\b Html} = default!{\f2  [get]}{\bkmkstart AAAAAAAAEI}
+{\bkmkend AAAAAAAAEI}
+\par
+}
+{\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
+The documentation for this class was generated from the following file:{\par
+\pard\plain \s121\fi-360\li720\widctlpar\jclisttab\tx720{\*\pn \pnlvlbody\ilvl0\ls2\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+obj/Debug/net5.0/Razor/Views/Shared/_Layout.cshtml.g.cs\par
+}\par \pard\plain 
+
+\pard\plain \sect\sbkpage
+\s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+\pard\plain \s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+AspNetCore.Views_Shared__ValidationScriptsPartial Class Reference\par \pard\plain 
+{\tc\tcl2 \v AspNetCore.Views_Shared__ValidationScriptsPartial}
+{\xe \v AspNetCore.Views_Shared__ValidationScriptsPartial}
+{\bkmkstart AAAAAAAAEJ}
+{\bkmkend AAAAAAAAEJ}
+Inheritance diagram for AspNetCore.Views_Shared__ValidationScriptsPartial:{
+\pard\plain 
+\par\pard \qc {\field\flddirty {\*\fldinst INCLUDEPICTURE "class_asp_net_core_1_1_views___shared_____validation_scripts_partial.png" \\d \\*MERGEFORMAT}{\fldrslt IMAGE}}\par
+}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Public Member Functions\par
+\pard\plain 
+
+{
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+async override global::System.Threading.Tasks.Task {\b ExecuteAsync} (){\bkmkstart AAAAAAAAEK}
+{\bkmkend AAAAAAAAEK}
+\par
+}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Properties\par
+\pard\plain 
+
+{
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.ViewFeatures.IModelExpressionProvider {\b ModelExpressionProvider} = default!{\f2  [get]}{\bkmkstart AAAAAAAAEL}
+{\bkmkend AAAAAAAAEL}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.IUrlHelper {\b Url} = default!{\f2  [get]}{\bkmkstart AAAAAAAAEM}
+{\bkmkend AAAAAAAAEM}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.IViewComponentHelper {\b Component} = default!{\f2  [get]}{\bkmkstart AAAAAAAAEN}
+{\bkmkend AAAAAAAAEN}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.Rendering.IJsonHelper {\b Json} = default!{\f2  [get]}{\bkmkstart AAAAAAAAEO}
+{\bkmkend AAAAAAAAEO}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper< dynamic > {\b Html} = default!{\f2  [get]}{\bkmkstart AAAAAAAAEP}
+{\bkmkend AAAAAAAAEP}
+\par
+}
+{\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
+The documentation for this class was generated from the following file:{\par
+\pard\plain \s121\fi-360\li720\widctlpar\jclisttab\tx720{\*\pn \pnlvlbody\ilvl0\ls2\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+obj/Debug/net5.0/Razor/Views/Shared/_ValidationScriptsPartial.cshtml.g.cs\par
+}\par \pard\plain 
+
+\pard\plain \sect\sbkpage
+\s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+\pard\plain \s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+AspNetCore.Views_Shared_Error Class Reference\par \pard\plain 
+{\tc\tcl2 \v AspNetCore.Views_Shared_Error}
+{\xe \v AspNetCore.Views_Shared_Error}
+{\bkmkstart AAAAAAAAEQ}
+{\bkmkend AAAAAAAAEQ}
+Inheritance diagram for AspNetCore.Views_Shared_Error:{
+\pard\plain 
+\par\pard \qc {\field\flddirty {\*\fldinst INCLUDEPICTURE "class_asp_net_core_1_1_views___shared___error.png" \\d \\*MERGEFORMAT}{\fldrslt IMAGE}}\par
+}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Public Member Functions\par
+\pard\plain 
+
+{
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+async override global::System.Threading.Tasks.Task {\b ExecuteAsync} (){\bkmkstart AAAAAAAAER}
+{\bkmkend AAAAAAAAER}
+\par
+}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Properties\par
+\pard\plain 
+
+{
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.ViewFeatures.IModelExpressionProvider {\b ModelExpressionProvider} = default!{\f2  [get]}{\bkmkstart AAAAAAAAES}
+{\bkmkend AAAAAAAAES}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.IUrlHelper {\b Url} = default!{\f2  [get]}{\bkmkstart AAAAAAAAET}
+{\bkmkend AAAAAAAAET}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.IViewComponentHelper {\b Component} = default!{\f2  [get]}{\bkmkstart AAAAAAAAEU}
+{\bkmkend AAAAAAAAEU}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.Rendering.IJsonHelper {\b Json} = default!{\f2  [get]}{\bkmkstart AAAAAAAAEV}
+{\bkmkend AAAAAAAAEV}
+\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+
+global::Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper< {\b ErrorViewModel} > {\b Html} = default!{\f2  [get]}{\bkmkstart AAAAAAAAEW}
+{\bkmkend AAAAAAAAEW}
+\par
+}
+{\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
+The documentation for this class was generated from the following file:{\par
+\pard\plain \s121\fi-360\li720\widctlpar\jclisttab\tx720{\*\pn \pnlvlbody\ilvl0\ls2\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+obj/Debug/net5.0/Razor/Views/Shared/Error.cshtml.g.cs\par
+}
+\pard\plain \sect\sbkpage
+\s1\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs36\kerning36\cgrid 
+\s1\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs36\kerning36\cgrid Index\par 
+\pard\plain 
+{\tc \v Index}
+{\field\fldedit {\*\fldinst INDEX \\c2 \\*MERGEFORMAT}{\fldrslt INDEX}}
+}

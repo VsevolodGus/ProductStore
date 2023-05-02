@@ -3,6 +3,9 @@ using System.Threading.Tasks;
 
 namespace Store
 {
+    /// <summary>
+    /// Интерфейс получения производителей из хранилища данных
+    /// </summary>
     public interface IMakerRepository
     {
         /// <summary>
