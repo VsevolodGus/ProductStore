@@ -7,6 +7,12 @@ namespace Store.Memory
 {
     public static class ServiceCollectionExtentsions
     {
+        /// <summary>
+        /// Добавление регистрация в DI для работы с ef core
+        /// </summary>
+        /// <param name="services">коллекция сервисов</param>
+        /// <param name="connectionString">строка подключения к БД</param>
+        /// <returns>коллекция сервисов</returns>
         public static IServiceCollection AddEfRepositories(this IServiceCollection services, string connectionString)
         {
             services.AddDbContext<StoreDbContext>(
@@ -18,10 +24,10 @@ namespace Store.Memory
             );
 
             services.AddScoped<Dictionary<Type,StoreDbContext>>();
-            services.AddSingleton<DbContextFactory>();
-            services.AddSingleton<IProductRepository, ProductRepository>();
-            services.AddSingleton<IMakerRepository, MakerRepository>();
-            services.AddSingleton<IOrderRepository, OrderRepository>();
+            services.AddScoped<DbContextFactory>();
+            services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<IMakerRepository, MakerRepository>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
 
             return services;
         }

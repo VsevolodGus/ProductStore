@@ -15,7 +15,11 @@ namespace StoreProduct.Web.Controllers
             this.makerService = makerService;
         }
 
-        // получание продукта из репозитория и вывод его полей, запрос по Id
+        /// <summary>
+        /// получение данных о продукте по идентификатору
+        /// </summary>
+        /// <param name="id">идентификатор продукта</param>
+        /// <returns>страница с информацией о продукте</returns>
         public async Task<IActionResult> InfoProduct(int id)
         {
             var model = await productService.GetByIdAsync(id);
@@ -23,7 +27,11 @@ namespace StoreProduct.Web.Controllers
             return View("InfoProduct", model);
         }
 
-        // получание производителя из репозитория и вывод его полей, запрос по Id
+        /// <summary>
+        /// получение данных о производителя по идентификатору
+        /// </summary>
+        /// <param name="id">идентификатор производителя</param>
+        /// <returns>страница с информацией о производителе</returns>
         public IActionResult InfoManufacture(int id)
         {
             var manufacture = makerService.GetById(id);

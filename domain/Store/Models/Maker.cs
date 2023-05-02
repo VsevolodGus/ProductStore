@@ -50,8 +50,8 @@ namespace Store
 
         public string Addres 
         {
-            get => dto.Addres;
-            set => dto.Addres = value;    
+            get => dto.Address;
+            set => dto.Address = value;    
         }
 
         public string Description 

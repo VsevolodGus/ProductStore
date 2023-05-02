@@ -38,14 +38,14 @@ namespace StoreProduct.Web
 
             services.AddEfRepositories(Configuration.GetConnectionString("Store"));
 
-            services.AddSingleton<INotificationService, DebugNotificationService>();
-            services.AddSingleton<IDeliveryService, DeliveryLocations>();
-            services.AddSingleton<IPaymentService, CashPaymentService>();
-            services.AddSingleton<IPaymentService, SberKassaPaymentService>();
-            services.AddSingleton<IWebContractorService, SberKassaPaymentService>();
-            services.AddSingleton<ProductService>();
-            services.AddSingleton<MakerService>();
-            services.AddSingleton<OrderService>();
+            services.AddScoped<INotificationService, DebugNotificationService>();
+            services.AddScoped<IDeliveryService, DeliveryLocations>();
+            services.AddScoped<IPaymentService, CashPaymentService>();
+            services.AddScoped<IPaymentService, SberKassaPaymentService>();
+            services.AddScoped<IWebContractorService, SberKassaPaymentService>();
+            services.AddScoped<ProductService>();
+            services.AddScoped<MakerService>();
+            services.AddScoped<OrderService>();
 
         }
 

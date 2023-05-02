@@ -35,15 +35,5 @@ namespace Store.Memory
 
             return Maker.Mapper.Map(maker);
         }
-
-        public async Task<Maker>  GetByTitleAsync(string title)
-        {
-            var dbContext = dbContextFactory.Create(typeof(MakerRepository));
-
-            var maker = await dbContext.Makers
-                                       .SingleAsync(m => m.Title.Contains(title));
-
-            return Maker.Mapper.Map(maker);
-        }
     }
 }

@@ -11,6 +11,11 @@ namespace ProductStore.Web.App
             this.makerRepository = makerRepository;
         }
 
+        /// <summary>
+        /// Получение производителя по идентификатору
+        /// </summary>
+        /// <param name="id">идентификатору производителя</param>
+        /// <returns>модель производителя</returns>
         public Maker GetById(int id)
         {
             return makerRepository.GetById(id);

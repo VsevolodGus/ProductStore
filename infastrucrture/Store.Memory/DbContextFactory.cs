@@ -15,6 +15,11 @@ namespace Store.Memory
             this.httpContextAccessor = httpContextAccessor;
         }
 
+        /// <summary>
+        /// Создание контекста БД
+        /// </summary>
+        /// <param name="repositoryType"></param>
+        /// <returns></returns>
         public StoreDbContext Create(Type repositoryType)
         {
             var services = httpContextAccessor.HttpContext.RequestServices;

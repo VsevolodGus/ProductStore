@@ -5,16 +5,46 @@ namespace Store
 {
     public interface IProductRepository
     {
+        /// <summary>
+        /// Получение продукта по идентификатору
+        /// </summary>
+        /// <param name="id">идентификатор продукта</param>
+        /// <returns>продукт</returns>
         Task<Product> GetByIdAsync(int id);
 
+        /// <summary>
+        /// Получение продуктов по массиву идентификатору продукта
+        /// </summary>
+        /// <param name="productIds">массив идентификаторов продуктов</param>
+        /// <returns>список продуктов</returns>
         Task<List<Product>> GetAllByIdsAsync(IEnumerable<int> productIds);
 
-        Task<List<Product>> GetAllByManufactureAsync(string title);
+        /// <summary>
+        /// Получение продуктов с поиском по имени производителя
+        /// </summary>
+        /// <param name="searchNameManufacturer">название производителя</param>
+        /// <returns>список продуктов</returns>
+        Task<List<Product>> GetAllByManufactureAsync(string searchNameManufacturer);
 
-        Task<List<Product>> GetAllByTitleAsync(string title);
+        /// <summary>
+        /// Получение продуктов с поиском по имени производителя
+        /// </summary>
+        /// <param name="searchName">строка поиска</param>
+        /// <returns>список продуктов</returns>
+        Task<List<Product>> GetAllByTitleAsync(string searchName);
 
-        Task<List<Product>> GetAllByCategoryAsync(string сategory);
+        /// <summary>
+        /// Получение продуктов с поиском по категории
+        /// </summary>
+        /// <param name="searchCategory">строка поиска по категории</param>
+        /// <returns>список продуктов</returns>
+        Task<List<Product>> GetAllByCategoryAsync(string searchCategory);
 
-        Task<List<Product>> GetAllByIdMakerAsync(int id);
+        /// <summary>
+        /// Получение продуктов по идентификатору производителя
+        /// </summary>
+        /// <param name="makerID">идентификатор производителя</param>
+        /// <returns>список продуктов</returns>
+        Task<List<Product>> GetAllByIdMakerAsync(int makerID);
     }
 }

@@ -4,15 +4,27 @@ using System.Text;
 
 namespace ProductStore.Web.App
 {
+    /// <summary>
+    /// Расширение для сессий
+    /// </summary>
     public static class SessionExtentions
     {
         private const string key = "cart";
 
+        /// <summary>
+        /// Удаление заказа из сессии
+        /// </summary>
+        /// <param name="session"></param>
         public static void RemoveCart(this ISession session)
         {
             session.Remove(key);
         }
 
+        /// <summary>
+        /// Запись заказа в сессию
+        /// </summary>
+        /// <param name="session">сессия</param>
+        /// <param name="value">заказ</param>
         public static void Set(this ISession session, Cart value)
         {
             if (value == null)
@@ -29,6 +41,12 @@ namespace ProductStore.Web.App
             }
         }
 
+        /// <summary>
+        /// Попытка получения заказа
+        /// </summary>
+        /// <param name="session">сессия</param>
+        /// <param name="value">инициализируемая модель корзины</param>
+        /// <returns>получилось инициализировать заказ или нет</returns>
         public static bool TryGetCart(this ISession session, out Cart value)
         {
             if (session.TryGetValue(key, out byte[] buffer))

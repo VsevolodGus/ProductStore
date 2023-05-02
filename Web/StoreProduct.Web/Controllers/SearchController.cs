@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 using ProductStore.Web.App;
 using System.Threading.Tasks;
-using System.Linq;
 
 namespace StoreProduct.Web.Controllers
 {
@@ -15,20 +13,28 @@ namespace StoreProduct.Web.Controllers
             this.productService = productService;
         }
 
-        // получение из репозитория список продуктов по запросу и вывод данных на страницу
-        public async Task<IActionResult> Index(string query)
+        /// <summary>
+        /// Получение списка продуктов
+        /// </summary>
+        /// <param name="search">строка поиска</param>
+        /// <returns>страница списка продуктов</returns>
+        public async Task<IActionResult> Index(string search)
         {
-            var model = await productService.GetAllByQueryAsync(query);
+            var model = await productService.GetAllByQueryAsync(search);
             if (model == null || model.Count == 0)
                 return View("EmptySearch");
 
             return View(model);
         }
 
-        // получение списка продуктов определнного производителя, по Id Maker/Manifacture
-        public async Task<IActionResult> GetAllProductsMakers(int queryMaker)
+        /// <summary>
+        /// получение списка продуктов по идентификатору производителя
+        /// </summary>
+        /// <param name="makerID">идентификатор производителя</param>
+        /// <returns>страница списка продуктов</returns>
+        public async Task<IActionResult> GetAllProductsMakers(int makerID)
         {
-            var model = await productService.GetAllByIdMakerAsync(queryMaker);
+            var model = await productService.GetAllByIdMakerAsync(makerID);
             if (model == null || model.Count == 0)
                 return View("EmptySearch");
 

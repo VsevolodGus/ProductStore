@@ -34,7 +34,10 @@ namespace ProductStore.Web.App
         }
 
         
-
+        /// <summary>
+        /// Попытка получение модели заказа
+        /// </summary>
+        /// <returns>инициализировано или нет, модель заказа</returns>
         public async Task<(bool hasValue, OrderModel model)> TryGetModelAsync()
         {
             var (hasValue, order) = await TryGetOrderAsync();
@@ -44,6 +47,10 @@ namespace ProductStore.Web.App
             return (false, null);
         }
 
+        /// <summary>
+        /// Получение сущности заказа
+        /// </summary>
+        /// <returns>инициализировано или нет, сущность заказа</returns>
         internal async Task<(bool hasValue, Order order)> TryGetOrderAsync()
         {
             if (Session.TryGetCart(out Cart cart))
@@ -56,6 +63,11 @@ namespace ProductStore.Web.App
             return (false, null);
         }
 
+        /// <summary>
+        /// Маппинг сущности в модель
+        /// </summary>
+        /// <param name="order">сущность</param>
+        /// <returns>модель</returns>
         internal async Task<OrderModel> MapAsync(Order order)
         {
             var products = await GetProductsAsync(order);
@@ -85,6 +97,12 @@ namespace ProductStore.Web.App
 
         }
 
+
+        /// <summary>
+        /// Получение продуктов по заказу
+        /// </summary>
+        /// <param name="order">заказ</param>
+        /// <returns>список продуктов</returns>
         internal async Task<IEnumerable<Product>> GetProductsAsync(Order order)
         {
             var bookIds = order.Items.Select(item => item.ProductId);
@@ -92,6 +110,12 @@ namespace ProductStore.Web.App
             return await productRepository.GetAllByIdsAsync(bookIds);
         }
 
+        /// <summary>
+        /// Добавление позиции в заказ
+        /// </summary>
+        /// <param name="productId">идентификатор продукта</param>
+        /// <param name="count">кол-во</param>
+        /// <returns>модель заказа</returns>
         public async Task<OrderModel> AddProductAsync(int productId, int count)
         {
             if (count < 1)
@@ -107,6 +131,12 @@ namespace ProductStore.Web.App
             return await MapAsync(order);
         }
 
+        /// <summary>
+        /// Добавление или обновление заказа
+        /// </summary>
+        /// <param name="order">заказ</param>
+        /// <param name="productId">идентификатор продукта</param>
+        /// <param name="count">кол-во добавляемой позиции</param>
         public async Task AddOrUpdateProductAsync(Order order, int productId,int count)
         {
             var product = await productRepository.GetByIdAsync(productId);
@@ -119,12 +149,20 @@ namespace ProductStore.Web.App
             await orderRepository.UpdateAsync(order);
         }
 
+        /// <summary>
+        /// Обновление заказа в сессии
+        /// </summary>
+        /// <param name="order">заказ</param>
         void UpdateSession(Order order)
         {
             var cart = new Cart(order.Id, order.TotalCount, order.TotalPrice);
             Session.Set(cart);
         }
 
+        /// <summary>
+        /// Получение заказа
+        /// </summary>
+        /// <returns>сущность заказа</returns>
         public async Task<Order> GetOrderAsync()
         {
             var (hasValue, order) = await TryGetOrderAsync();
@@ -135,6 +173,12 @@ namespace ProductStore.Web.App
             throw new InvalidOperationException("Empty session.");
         }
 
+        /// <summary>
+        /// Обновление позиций в заказе
+        /// </summary>
+        /// <param name="prodcutId">идентификатор позиции</param>
+        /// <param name="count">кол-во позиции</param>
+        /// <returns>модель заказа</returns>
         public async Task<OrderModel> UpdateProdurctAsync(int prodcutId, int count)
         {
             var order = await GetOrderAsync();
@@ -146,6 +190,11 @@ namespace ProductStore.Web.App
             return await MapAsync(order);
         }
 
+        /// <summary>
+        /// Удаление позиции из заказа
+        /// </summary>
+        /// <param name="productId">идентификатор позиции</param>
+        /// <returns>модель заказа</returns>
         public async Task<OrderModel>RemoveFullProductAsync(int productId) 
         {
             var order = await GetOrderAsync();
@@ -157,6 +206,11 @@ namespace ProductStore.Web.App
             return await MapAsync (order);
         }
 
+        /// <summary>
+        /// Удаление элемента из позиции заказа
+        /// </summary>
+        /// <param name="productId">идентификатор позиции</param>
+        /// <returns>модель заказа</returns>
         public async Task<OrderModel> RemoveItemAsync(int productId)
         {
             var order = await GetOrderAsync();
@@ -168,8 +222,12 @@ namespace ProductStore.Web.App
             return await MapAsync(order);
         }
 
-        
-
+        /// <summary>
+        /// Отправка кода подтверждения
+        /// </summary>
+        /// <param name="cellPhone">номер телефона который подтверждают</param>
+        /// <param name="email">почта которую подтверждают</param>
+        /// <returns>модель заказа</returns>
         public async Task<OrderModel> SendConfirmationAsync(string cellPhone,string email)
         {
             var order = await GetOrderAsync();
@@ -182,7 +240,7 @@ namespace ProductStore.Web.App
                 var confirmationCode = 1111; // здесь должен быть генератор кодов
                 model.CellPhone = formattedPhone;
                 Session.SetInt32(formattedPhone, confirmationCode);
-                notificationService.SendConfirmationCode(formattedPhone, confirmationCode);
+                notificationService.SendConfirmationCodeToPhone(formattedPhone, confirmationCode);
             }
             else
                 model.Errors["cellPhone"] = "Номер телефона не соответствует формату +79876543210";
@@ -197,6 +255,11 @@ namespace ProductStore.Web.App
             return model;
         }
 
+        /// <summary>
+        /// Повторная подтверждение телефона
+        /// </summary>
+        /// <param name="cellPhone">номер телефона</param>
+        /// <returns>модель заказа</returns>
         public async Task<OrderModel> AgainSendConfirmationAsync(string cellPhone)
         {
             var order = await GetOrderAsync();
@@ -208,7 +271,7 @@ namespace ProductStore.Web.App
                 var confirmationCode = 2002; // здесь должен быть генератор кодов
                 model.CellPhone = formattedPhone;
                 Session.SetInt32(formattedPhone, confirmationCode);
-                notificationService.SendConfirmationCode(formattedPhone, confirmationCode);
+                notificationService.SendConfirmationCodeToPhone(formattedPhone, confirmationCode);
             }
             else
                 model.Errors["cellPhone"] = "Номер телефона не соответствует формату +79876543210";
@@ -217,6 +280,12 @@ namespace ProductStore.Web.App
         }
         private readonly PhoneNumberUtil phoneNumberUtil = PhoneNumberUtil.GetInstance();
 
+        /// <summary>
+        /// Проверка формата телефона
+        /// </summary>
+        /// <param name="cellPhone"></param>
+        /// <param name="formattedPhone"></param>
+        /// <returns>подходит или нет</returns>
         private bool TryFormatPhone(string cellPhone, out string formattedPhone)
         {
             try
@@ -232,6 +301,12 @@ namespace ProductStore.Web.App
             }
         }
 
+        /// <summary>
+        /// Проверка кода подтверждения  телефона
+        /// </summary>
+        /// <param name="cellPhone">номер телефона который подтверждают</param>
+        /// <param name="confirmationCode">код подтверждения</param>
+        /// <returns>модель заказа</returns>
         public async Task<OrderModel> ConfirmCellPhoneAsync(string cellPhone, int confirmationCode)
         {
             int? storeCode = Session.GetInt32(cellPhone);
@@ -250,7 +325,7 @@ namespace ProductStore.Web.App
 
             if(storeCode != confirmationCode)
             {
-                model.Errors["code"] = "Невернвй код, проверьте код и попробуйте еще раз";
+                model.Errors["code"] = "Невернывй код, проверьте код и попробуйте еще раз";
 
                 return model;
             }
@@ -264,6 +339,11 @@ namespace ProductStore.Web.App
             return await MapAsync(order);
         }
 
+        /// <summary>
+        /// Установка доставки в заказе
+        /// </summary>
+        /// <param name="delivery">модель доставки заказа</param>
+        /// <returns>модель заказа</returns>
         public async Task<OrderModel> SetDeliveryAsync(OrderDelivery delivery)
         {
             var order = await GetOrderAsync();
@@ -274,6 +354,11 @@ namespace ProductStore.Web.App
             return await MapAsync(order);
         }
 
+        /// <summary>
+        /// Установка оплаты заказа
+        /// </summary>
+        /// <param name="payment">модель оплаты заказа</param>
+        /// <returns>модель заказа</returns>
         public async Task<OrderModel>SetPaymentAsync(OrderPayment payment)
         {
             var order = await GetOrderAsync();
@@ -286,13 +371,16 @@ namespace ProductStore.Web.App
             return await MapAsync(order);
         }
 
+        /// <summary>
+        /// Конец оформления заказа
+        /// </summary>
         private async Task Finish()
         {
             var order = await GetOrderAsync();
 
             await orderRepository.SendFileAsync(Order.Mapper.Map(order));            
             Session.RemoveCart();
-            notificationService.StrtProcces(order);
+            notificationService.SendOrderNotification(order);
         }
     }
 }

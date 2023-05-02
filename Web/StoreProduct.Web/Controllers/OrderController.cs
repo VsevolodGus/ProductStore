@@ -28,6 +28,11 @@ namespace StoreProduct.Web.Controllers
             this.orderService = orderService;
         }
 
+        /// <summary>
+        /// Получение страницы заказа
+        /// </summary>
+        /// <returns>страница заказа</returns>
+
         [HttpGet]
         public async Task<IActionResult> Index()
         {
@@ -38,6 +43,11 @@ namespace StoreProduct.Web.Controllers
             return View("Empty");
         }
 
+        /// <summary>
+        /// Добавление элемента в заказ
+        /// </summary>
+        /// <param name="id">идентификатор добавляемого продукта продукта</param>
+        /// <returns>страница информации</returns>
         [HttpPost]
         public async Task<IActionResult> AddItem(int id)
         {
@@ -46,6 +56,11 @@ namespace StoreProduct.Web.Controllers
             return RedirectToAction("InfoProduct", "Info", new { id = id });
         }
 
+        /// <summary>
+        /// Удаление элемента из заказа
+        /// </summary>
+        /// <param name="id">идентификатор элемента</param>
+        /// <returns>страница просмотра заказа</returns>
         [HttpPost]
         public async Task<IActionResult> RemoveItem(int id)
         {
@@ -54,19 +69,25 @@ namespace StoreProduct.Web.Controllers
             return View("Index", model);
         }
 
+        /// <summary>
+        /// Удаление позиции из заказа
+        /// </summary>
+        /// <param name="id">идентификатор продукта для удаления из заказа</param>
+        /// <returns>страница просмотра заказа</returns>
         [HttpPost]
         public async Task<IActionResult> RemoveProduct(int id)
         {
-            var model = await orderService .RemoveFullProductAsync(id);
+            var model = await orderService.RemoveFullProductAsync(id);
 
             return View("Index", model);
         }
 
-
-        //////////////////////////////////////////////
-        //////////////////////////////////////////////
-        //////////////////////////////////////////////
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="cellPhone"></param>
+        /// <param name="email"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> SendConfirmation(string cellPhone, string email)
         {
@@ -77,6 +98,12 @@ namespace StoreProduct.Web.Controllers
 
             return View("Confirmation", model);
         }
+        
+        /// <summary>
+        /// Повторное отправка кода
+        /// </summary>
+        /// <param name="cellPhone">номер телефона</param>
+        /// <returns>страница подтверждения</returns>
 
         [HttpPost]
         public async Task<IActionResult> AgainSendConfimation(string cellPhone)
@@ -85,6 +112,13 @@ namespace StoreProduct.Web.Controllers
 
             return View("Confirmation", model);
         }
+
+        /// <summary>
+        /// Подтверждение номера телефона
+        /// </summary>
+        /// <param name="cellPhone">номер телефона</param>
+        /// <param name="code">код</param>
+        /// <returns>следующий этап заказа, или страница повторного ввода кода</returns>
         [HttpPost]
         public async Task<IActionResult> ConfirmCellPhone(string cellPhone, int code)
         {
@@ -99,11 +133,11 @@ namespace StoreProduct.Web.Controllers
             return View("DeliveryMethod", deliveryMethods);
         }
 
-
-        //////////////////////////////////////////////
-        //////////////////////////////////////////////
-        //////////////////////////////////////////////
-
+        /// <summary>
+        /// Получение uri по методу 
+        /// </summary>
+        /// <param name="action">имя метода</param>
+        /// <returns>uri метода</returns>
         private Uri GetReturnUri(string action)
         {
             var builder = new UriBuilder(Request.Scheme, Request.Host.Host)
@@ -118,7 +152,11 @@ namespace StoreProduct.Web.Controllers
             return builder.Uri;
         }
 
-        //офромление заказа, по этапам, выбор места доставки заказа в одну из предложенных точек 
+        /// <summary>
+        /// оформление заказа, по этапам, выбор места доставки заказа в одну из предложенных точек 
+        /// </summary>
+        /// <param name="serviceName">имя сервиса</param>
+        /// <returns>начальная страница оформления доставки</returns>
 
         [HttpPost]
         public async Task<IActionResult> StartDelivery(string serviceName)
@@ -137,6 +175,13 @@ namespace StoreProduct.Web.Controllers
             return Redirect(redirectUri.ToString());
         }
 
+        /// <summary>
+        /// Поэтапное оформление доставки заказа
+        /// </summary>
+        /// <param name="serviceName">имя сервиса</param>
+        /// <param name="step">номер шага</param>
+        /// <param name="values">родительские значения</param>
+        /// <returns>страница оформления доставки</returns>
         [HttpPost]
         public async Task<IActionResult> NextDelivery(string serviceName, int step, Dictionary<string, string> values)
         {
@@ -155,7 +200,11 @@ namespace StoreProduct.Web.Controllers
             return View("PaymentMethod", paymentMethods);
         }
 
-        // оформление оплаты 
+        /// <summary>
+        /// начало выбора способа оплаты заказа
+        /// </summary>
+        /// <param name="serviceName">имя сервиса</param>
+        /// <returns>начальная страница оформления оплаты заказа</returns>
         [HttpPost]
         public async Task<IActionResult> StartPayment(string serviceName)
         {
@@ -173,7 +222,13 @@ namespace StoreProduct.Web.Controllers
             return Redirect(redirectUri.ToString());
         }
         
-
+        /// <summary>
+        /// Поэтапное оформление оплаты заказа
+        /// </summary>
+        /// <param name="serviceName">имя сервиса</param>
+        /// <param name="step">номер шага</param>
+        /// <param name="values">родительские значения</param>
+        /// <returns>страница оформления оплаты</returns>
         [HttpPost]
         public async Task<IActionResult> NextPayment(string serviceName, int step, Dictionary<string, string> values)
         {
