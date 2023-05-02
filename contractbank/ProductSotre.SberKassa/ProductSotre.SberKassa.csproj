@@ -10,6 +10,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Doxygen" Version="1.8.14">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Swashbuckle" Version="5.6.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\domain\Store\Store.csproj" />
     <ProjectReference Include="..\..\Web\IWebContractService\ProductStore.Web.Contract\ProductStore.Web.Contract.csproj" />
   </ItemGroup>
