@@ -13,19 +13,18 @@ namespace ProductStore.Web.App
 {
     public class OrderService
     {
-        private readonly IMakerRepository makerRepository;
         private readonly IOrderRepository orderRepository;
         private readonly INotificationService notificationService;
         private readonly IHttpContextAccessor httpContextAccessor;
         private readonly IReadonlyRepository<ProductEntity> _readonlyRepository;
+        private readonly IReadonlyRepository<MakerEntity> _makers;
+        private readonly IReadonlyRepository<OrderEntity> _orders;
         protected ISession Session => httpContextAccessor.HttpContext.Session;
 
-        public OrderService(IMakerRepository makerRepository,
-                            IOrderRepository orderRepository,
+        public OrderService(IOrderRepository orderRepository,
                             INotificationService notificationService,
                             IHttpContextAccessor httpContextAccessor)
         {
-            this.makerRepository = makerRepository;
             this.orderRepository = orderRepository;
             this.notificationService = notificationService;
             this.httpContextAccessor = httpContextAccessor;
@@ -49,13 +48,13 @@ namespace ProductStore.Web.App
         /// Получение сущности заказа
         /// </summary>
         /// <returns>инициализировано или нет, сущность заказа</returns>
-        internal async Task<(bool hasValue, Order order)> TryGetOrderAsync()
+        internal async Task<(bool hasValue, Order order)> TryGetOrderAsync(CancellationToken cancellationToken = default)
         {
             if (Session.TryGetCart(out Cart cart))
             {
-                var order = await orderRepository.GetOrderFromCashAsync();
+                var order = await _orders.FirstOrDefaultAsync(c=> c.Id == cart.OrderId, cancellationToken);
 
-                return (true, order);
+                return (true, Order.Mapper.Map(order));
             }
 
             return (false, null);
@@ -77,7 +76,7 @@ namespace ProductStore.Web.App
                             Title = product.Title,
                             Count = item.Count,
                             MakerId = product.MakerID,
-                            MakerTitle = makerRepository.GetById(product.MakerID).Title,
+                            MakerTitle = _makers.FirstOrDefaultAsync(c => c.Id == product.MakerID).Result.Title,
                             Price = product.Price,
                         };
 

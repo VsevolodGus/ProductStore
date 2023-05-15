@@ -12,12 +12,6 @@ namespace Store
         Task<Order> CreateAsync();
 
         /// <summary>
-        /// Получение заказа
-        /// </summary>
-        /// <returns>заказ</returns>
-        Task<Order> GetOrderFromCashAsync();
-
-        /// <summary>
         /// Обновление заказа
         /// </summary>
         /// <param name="order">обновленная сущность</param>

@@ -46,23 +46,6 @@ internal class OrderRepository : IOrderRepository
         return Order.Mapper.Map(order);
     }
 
-    public async Task<Order> GetOrderFromCashAsync()
-    {
-        var orderDto = Order.DtoFactory.Create();
-
-        using (StreamReader reader = File.OpenText(path))
-        {
-            var fileText = await reader.ReadToEndAsync();
-            orderDto = JsonConvert.DeserializeObject<OrderEntity>(fileText);
-            
-            if (orderDto == null)
-                orderDto = Order.DtoFactory.Create();
-            
-        }
-
-        return Order.Mapper.Map(orderDto);
-    }
-
     public async Task UpdateAsync(Order order)
     {
         using (StreamWriter writer = File.CreateText(path))
@@ -81,12 +64,6 @@ internal class OrderRepository : IOrderRepository
     {
         var dbContext = dbContextFactory.Create(typeof(OrderRepository));
         await dbContext.SaveChangesAsync();
-
-        using (StreamWriter writer = File.CreateText(path))
-        {
-            writer.Dispose();
-            writer.Write(string.Empty);
-        }
     }
 }
 
