@@ -11,13 +11,13 @@ namespace Store.Memory;
 public class StoreDbContext : DbContext
 {
 
-    public DbSet<ProductEntity> Products { get; set; }
+    public DbSet<ProductEntity> Products { get; init; }
 
-    public DbSet<MakerEntity> Makers { get; set; }
+    public DbSet<MakerEntity> Makers { get; init; }
 
-    public DbSet<OrderEntity> Orders { get; set; }
+    public DbSet<OrderEntity> Orders { get; init; }
 
-    public DbSet<OrderItemEntity> OrderItems { get; set; }
+    public DbSet<OrderItemEntity> OrderItems { get; init; }
 
     public StoreDbContext(DbContextOptions<StoreDbContext> options) : base(options)
     { }
@@ -66,20 +66,6 @@ public class StoreDbContext : DbContext
                                value => JsonConvert.SerializeObject(value),
                                value => JsonConvert.DeserializeObject<Dictionary<string, string>>(value))
                                .Metadata.SetValueComparer(DictionaryComparer);
-        });
-    }
-
-    private static void BuildModelOrderItems(ModelBuilder modelBuilder)
-    {
-        modelBuilder.Entity<OrderItemEntity>(action =>
-        {
-            action.Property(dto => dto.Price)
-                        .HasColumnType("money")
-                        .IsRequired();
-
-            action.HasOne(dto => dto.Order)
-                         .WithMany(dto=> dto.Items)
-                         .IsRequired();                             
         });
     }
 }
