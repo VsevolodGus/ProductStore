@@ -16,7 +16,6 @@ namespace Store.Memory
             this.dbContextFactory = dbContextFactory;
         }
 
-        // to do writting in cash brouser
         public async Task<Order> CreateAsync()
         { 
             var order = Order.DtoFactory.Create();

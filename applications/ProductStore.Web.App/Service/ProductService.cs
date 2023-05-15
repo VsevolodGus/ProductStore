@@ -1,4 +1,5 @@
-﻿using MoreLinq.Extensions;
+﻿using MoreLinq;
+using MoreLinq.Extensions;
 using Store;
 using System.Collections.Generic;
 using System.Linq;
@@ -55,8 +56,8 @@ namespace ProductStore.Web.App
 
 
             var list = listByTitle.Union(listByCategory)
-                                  .Union(listByManufacture)
-                                  .DistinctBy(item => item.Id);
+                                  .Union(listByManufacture);
+                                  //.DistinctBy(c => c.Id);
            
 
             return list.Select(Map).ToList();
