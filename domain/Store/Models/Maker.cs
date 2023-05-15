@@ -8,7 +8,7 @@ namespace Store
 {
     public class Maker
     {
-        private readonly MakerDto dto;
+        private readonly MakerEntity dto;
 
         public int Id => dto.Id;
 
@@ -60,7 +60,7 @@ namespace Store
             set => dto.Description = value;
         }
 
-        public Maker(MakerDto dto)
+        public Maker(MakerEntity dto)
         {
             this.dto = dto;
         }
@@ -91,9 +91,9 @@ namespace Store
 
         public static class Mapper
         {
-            public static Maker Map(MakerDto dto) => new Maker(dto);
+            public static Maker Map(MakerEntity dto) => new Maker(dto);
 
-            public static MakerDto Map(Maker domain) => domain.dto;
+            public static MakerEntity Map(Maker domain) => domain.dto;
         }
     }
 }

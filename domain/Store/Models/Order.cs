@@ -7,7 +7,7 @@ namespace Store
 {
     public class Order
     {
-        private readonly OrderDto dto;
+        private readonly OrderEntity dto;
         public int Id => dto.Id;
 
         public string CellPhone
@@ -91,7 +91,7 @@ namespace Store
             }
         }
         
-        public Order(OrderDto dto)
+        public Order(OrderEntity dto)
         {
             this.dto = dto;
 
@@ -100,15 +100,15 @@ namespace Store
 
         public static class DtoFactory
         {
-            public static OrderDto Create() => new OrderDto();
+            public static OrderEntity Create() => new OrderEntity();
         }
 
 
         public static class Mapper
         {
-            public static Order Map(OrderDto dto) => new Order(dto);
+            public static Order Map(OrderEntity dto) => new Order(dto);
 
-            public static OrderDto Map(Order domain) => domain.dto;
+            public static OrderEntity Map(Order domain) => domain.dto;
         }
     }
 }

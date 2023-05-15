@@ -5,7 +5,7 @@ namespace Store
 {
     public class Product
     {
-        private readonly ProductDto dto;
+        private readonly ProductOrderItemEntity dto;
 
         public int Id => dto.Id;
 
@@ -57,14 +57,14 @@ namespace Store
             set => dto.Description = value;
         }
 
-        internal Product(ProductDto dto) 
+        internal Product(ProductOrderItemEntity dto) 
         {
             this.dto = dto;
         }
 
         public static class DtoFactory
         {
-            public static ProductDto Create(int idMaker,
+            public static ProductOrderItemEntity Create(int idMaker,
                                          string category,
                                          string title,
                                          string description,
@@ -73,7 +73,7 @@ namespace Store
                 if (string.IsNullOrWhiteSpace(title))
                     throw new ArgumentException(nameof(title));
 
-                return new ProductDto
+                return new ProductOrderItemEntity
                 {
                     IdMaker = idMaker,
                     Title = title.Trim(),
@@ -86,9 +86,9 @@ namespace Store
 
         public static class Mapper
         {
-            public static Product Map(ProductDto dto) => new Product(dto);
+            public static Product Map(ProductOrderItemEntity dto) => new Product(dto);
 
-            public static ProductDto Map(Product domain) => domain.dto;
+            public static ProductOrderItemEntity Map(Product domain) => domain.dto;
         }
     }
 }

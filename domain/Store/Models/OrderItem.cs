@@ -5,7 +5,7 @@ namespace Store
 {
     public class OrderItem
     {
-        private readonly OrderItemDto dto;
+        private readonly OrderItemEntity dto;
 
         public int ProductId => dto.ProductId;
 
@@ -26,7 +26,7 @@ namespace Store
             set => dto.Price = value;
         }
 
-        public OrderItem(OrderItemDto dto)
+        public OrderItem(OrderItemEntity dto)
         {
             this.dto = dto;
         }
@@ -39,14 +39,14 @@ namespace Store
 
         public static class DtoFactory
         {
-            public static OrderItemDto Create(OrderDto order, int productId, int count, decimal price)
+            public static OrderItemEntity Create(OrderEntity order, int productId, int count, decimal price)
             {
                 ThrowExceptionForNoCorrectCount(count);
 
                 if (order == null)
                     throw new ArgumentNullException("is order null");
 
-                return new OrderItemDto
+                return new OrderItemEntity
                 {
                     ProductId = productId,
                     Count = count,
@@ -58,9 +58,9 @@ namespace Store
 
         public static class Mapper
         {
-            public static OrderItem Map(OrderItemDto dto) => new OrderItem(dto);
+            public static OrderItem Map(OrderItemEntity dto) => new OrderItem(dto);
 
-            public static OrderItemDto Map(OrderItem orderItem) => orderItem.dto;
+            public static OrderItemEntity Map(OrderItem orderItem) => orderItem.dto;
         }
     }
 }

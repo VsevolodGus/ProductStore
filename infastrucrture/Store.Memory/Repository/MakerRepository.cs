@@ -3,37 +3,36 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Store.Memory
+namespace Store.Memory;
+
+internal class MakerRepository : IMakerRepository
 {
-    public class MakerRepository : IMakerRepository
+    private readonly DbContextFactory dbContextFactory;
+
+    public MakerRepository(DbContextFactory dbContextFactory)
     {
-        private readonly DbContextFactory dbContextFactory;
+        this.dbContextFactory = dbContextFactory;
+    }
 
-        public MakerRepository(DbContextFactory dbContextFactory)
-        {
-            this.dbContextFactory = dbContextFactory;
-        }
+    public async Task<List<Maker>> GetAllByTitleAsync(string title)
+    {
+        var dbContext = dbContextFactory.Create(typeof(MakerRepository));
 
-        public async Task<List<Maker>> GetAllByTitleAsync(string title)
-        {
-            var dbContext = dbContextFactory.Create(typeof(MakerRepository));
+        var list = await dbContext.Makers
+                                  .Where(maker => maker.Title.Contains(title))
+                                  .ToListAsync(); ;
 
-            var list = await dbContext.Makers
-                                      .Where(maker => maker.Title.Contains(title))
-                                      .ToListAsync(); ;
+        return list.Select(Maker.Mapper.Map)
+                   .ToList();
+    }
 
-            return list.Select(Maker.Mapper.Map)
-                       .ToList();
-        }
+    public Maker GetById(int id)
+    {
+        var dbContext = dbContextFactory.Create(typeof(MakerRepository));
 
-        public Maker GetById(int id)
-        {
-            var dbContext = dbContextFactory.Create(typeof(MakerRepository));
+        var maker = dbContext.Makers
+                             .Single(m => m.Id == id);
 
-            var maker = dbContext.Makers
-                                 .Single(m => m.Id == id);
-
-            return Maker.Mapper.Map(maker);
-        }
+        return Maker.Mapper.Map(maker);
     }
 }

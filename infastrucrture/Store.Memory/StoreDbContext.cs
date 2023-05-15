@@ -12,13 +12,13 @@ namespace Store.Memory
     public class StoreDbContext : DbContext
     {
 
-        public DbSet<ProductDto> Products { get; set; }
+        public DbSet<ProductOrderItemEntity> Products { get; set; }
 
-        public DbSet<MakerDto> Makers { get; set; }
+        public DbSet<MakerEntity> Makers { get; set; }
 
-        public DbSet<OrderDto> Orders { get; set; }
+        public DbSet<OrderEntity> Orders { get; set; }
 
-        public DbSet<OrderItemDto> OrderItems { get; set; }
+        public DbSet<OrderItemEntity> OrderItems { get; set; }
 
         public StoreDbContext(DbContextOptions<StoreDbContext> options) : base(options)
         { }
@@ -42,7 +42,7 @@ namespace Store.Memory
 
         private static void BuildModelProducts(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<ProductDto>(action =>
+            modelBuilder.Entity<ProductOrderItemEntity>(action =>
             {
                 action.Property(dto => dto.Title)
                         .HasMaxLength(50)
@@ -59,7 +59,7 @@ namespace Store.Memory
                         .HasColumnType("money");
 
                 action.HasData(
-                    new ProductDto
+                    new ProductOrderItemEntity
                     {
                         Id = 1,
                         IdMaker = 1,
@@ -69,7 +69,7 @@ namespace Store.Memory
                         Price = 30m
                     },
                     //db.Products.Add(new Product("яйца", manufactures.GetById(1), "яйца", 10m, "куринные яйца, категории C0"));
-                    new ProductDto
+                    new ProductOrderItemEntity
                     {
                         Id = 2,
                         IdMaker = 2,
@@ -79,7 +79,7 @@ namespace Store.Memory
                         Price = 20m
                     },
                     //db.Products.Add(new Product("хлеб", manufactures.GetById(2), "выпечка", 20m, "хлебо-булочные изделия"));
-                    new ProductDto
+                    new ProductOrderItemEntity
                     {
                         Id = 3,
                         IdMaker = 3,
@@ -89,7 +89,7 @@ namespace Store.Memory
                         Price = 30m
                     },
                     //db.Products.Add(new Product("говядина", manufactures.GetById(3), "мясо", 30m, "мясо из говядины и телятины"));
-                    new ProductDto
+                    new ProductOrderItemEntity
                     {
                         Id = 4,
                         IdMaker = 4,
@@ -104,7 +104,7 @@ namespace Store.Memory
          
         private static void BuildModelMakers(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<MakerDto>(action =>
+            modelBuilder.Entity<MakerEntity>(action =>
             {
                 action.Property(dto => dto.Title)
                         .IsRequired()
@@ -117,7 +117,7 @@ namespace Store.Memory
                         .HasMaxLength(15);
 
                 action.HasData(
-                    new MakerDto
+                    new MakerEntity
                     {
                         Id = 1,
                         Title="Красная цена ",
@@ -128,7 +128,7 @@ namespace Store.Memory
                     },
                     //db.Makers.Add(new Maker("Красная Цена", "8937-216-76-11", "",
                     //    "ООО 'Красная Цена' Самара", "Название Красная Цена выбрано не случайно!"));
-                    new MakerDto
+                    new MakerEntity
                     {
                         Id = 2,
                         Title = "АЛМА",
@@ -139,7 +139,7 @@ namespace Store.Memory
                     },
                     //db.Makers.Add(new Maker("АЛМА", "8347-827-36-96", "",
                     //    "ул.Комарова, д.41;", "У нас вы найдете экологически чистые продукты по приятным ценам"));
-                    new MakerDto
+                    new MakerEntity
                     {
                         Id = 3,
                         Title = "Мясницкий ряд",
@@ -152,7 +152,7 @@ namespace Store.Memory
                     },
                     //db.Makers.Add(new Maker("Мясницкий ряд", " +7495-411-33-41", " zakupki@kolbasa.ru",
                     //    "Транспортный проезд д.7 г. Одинцово Московская область", ""));
-                    new MakerDto
+                    new MakerEntity
                     {
                         Id = 4,
                         Title = "Черкизово",
@@ -172,7 +172,7 @@ namespace Store.Memory
 
         private static void BuildModelOrders(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<OrderDto>(action =>
+            modelBuilder.Entity<OrderEntity>(action =>
             {
                 action.Property(dto => dto.CellPhone)
                                 .HasMaxLength(20);
@@ -205,7 +205,7 @@ namespace Store.Memory
 
         private static void BuildModelOrderItems(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<OrderItemDto>(action =>
+            modelBuilder.Entity<OrderItemEntity>(action =>
             {
                 action.Property(dto => dto.Price)
                             .HasColumnType("money")

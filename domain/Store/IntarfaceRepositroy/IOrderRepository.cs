@@ -28,6 +28,6 @@ namespace Store
         /// </summary>
         /// <param name="dto"></param>
         /// <returns></returns>
-        Task SendFileAsync(OrderDto dto);
+        Task SendFileAsync(OrderEntity dto);
     }
 }

@@ -10,13 +10,13 @@ namespace StoreTest
     {
         private static Order CreateTestOrder()
         {
-            return new Order(new OrderDto
+            return new Order(new OrderEntity
             {
                 Id = 1,
-                Items = new List<OrderItemDto>
+                Items = new List<OrderItemEntity>
                 {
-                    new OrderItemDto { ProductId = 1, Price = 10m, Count = 3},
-                    new OrderItemDto { ProductId = 2, Price = 100m, Count = 5},
+                    new OrderItemEntity { ProductId = 1, Price = 10m, Count = 3},
+                    new OrderItemEntity { ProductId = 2, Price = 100m, Count = 5},
                 }
             });
         }

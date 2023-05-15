@@ -12,75 +12,75 @@ using Store.Messages;
 using System;
 
 
-namespace StoreProduct.Web
+namespace StoreProduct.Web;
+
+public class Startup
 {
-    public class Startup
+    public Startup(IConfiguration configuration)
     {
-        public Startup(IConfiguration configuration)
+        Configuration = configuration;
+    }
+
+    public IConfiguration Configuration { get; }
+
+    // This method gets called by the runtime. Use this method to add services to the container.
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.AddControllersWithViews();
+        services.AddHttpContextAccessor();
+        services.AddDistributedMemoryCache();
+        services.AddSession(options =>
         {
-            Configuration = configuration;
-        }
+            options.IdleTimeout = TimeSpan.FromMinutes(30);
+            options.Cookie.IsEssential = true;
+            options.Cookie.HttpOnly = true;
+        });
 
-        public IConfiguration Configuration { get; }
+        services.AddEfRepositories(Configuration.GetConnectionString("Store"));
 
-        // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
+        services.AddScoped<INotificationService, DebugNotificationService>();
+        services.AddScoped<IDeliveryService, DeliveryLocations>();
+        services.AddScoped<IPaymentService, CashPaymentService>();
+        services.AddScoped<IPaymentService, SberKassaPaymentService>();
+        services.AddScoped<IWebContractorService, SberKassaPaymentService>();
+        
+        services.AddScoped<ProductService>();
+        services.AddScoped<MakerService>();
+        services.AddScoped<OrderService>();
+
+    }
+
+    // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+    {
+        if (env.IsDevelopment())
         {
-            services.AddControllersWithViews();
-            services.AddHttpContextAccessor();
-            services.AddDistributedMemoryCache();
-            services.AddSession(options =>
-            {
-                options.IdleTimeout = TimeSpan.FromMinutes(30);
-                options.Cookie.IsEssential = true;
-                options.Cookie.HttpOnly = true;
-            });
-
-            services.AddEfRepositories(Configuration.GetConnectionString("Store"));
-
-            services.AddScoped<INotificationService, DebugNotificationService>();
-            services.AddScoped<IDeliveryService, DeliveryLocations>();
-            services.AddScoped<IPaymentService, CashPaymentService>();
-            services.AddScoped<IPaymentService, SberKassaPaymentService>();
-            services.AddScoped<IWebContractorService, SberKassaPaymentService>();
-            services.AddScoped<ProductService>();
-            services.AddScoped<MakerService>();
-            services.AddScoped<OrderService>();
-
+            app.UseDeveloperExceptionPage();
         }
-
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        else
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-            else
-            {
-                app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
-            }
-            app.UseHttpsRedirection();
-            app.UseStaticFiles();
-
-            app.UseRouting();
-
-            app.UseAuthorization();
-
-            app.UseSession();
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllerRoute(
-                    name: "areas",
-                    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
-
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
-            });
+            app.UseExceptionHandler("/Home/Error");
+            // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+            app.UseHsts();
         }
+        app.UseHttpsRedirection();
+        app.UseStaticFiles();
+
+        app.UseRouting();
+
+        app.UseAuthorization();
+
+        app.UseSession();
+
+        app.UseEndpoints(endpoints =>
+        {
+            endpoints.MapControllerRoute(
+                name: "areas",
+                pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+
+            endpoints.MapControllerRoute(
+                name: "default",
+                pattern: "{controller=Home}/{action=Index}/{id?}");
+        });
     }
 }

@@ -1,8 +1,8 @@
 ﻿namespace Store.Data
 {
-    public class MakerDto
+    public class MakerEntity
     {
-        public int Id { get; set; }
+        public int Id { get; init; }
 
         public string Title { get; set; }
 

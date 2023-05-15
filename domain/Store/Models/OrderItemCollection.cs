@@ -9,10 +9,10 @@ namespace Store
 {
     public class OrderItemCollection : IReadOnlyCollection<OrderItem>
     {
-        private readonly OrderDto orderDto;
+        private readonly OrderEntity orderDto;
         private readonly List<OrderItem> items;
 
-        public OrderItemCollection(OrderDto orderDto)
+        public OrderItemCollection(OrderEntity orderDto)
         {
             if (orderDto== null)
                 throw new ArgumentNullException(nameof(orderDto));
