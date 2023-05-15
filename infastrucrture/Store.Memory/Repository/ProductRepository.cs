@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Store.Data;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,7 +10,7 @@ internal class ProductRepository : IProductRepository
 {
     private readonly IMakerRepository makerRepository;
     private readonly DbContextFactory dbContextFactory;
-
+    private IReadonlyRepository<ProductEntity> _readonlyRepository;
     public ProductRepository( IMakerRepository makerRepository,
                               DbContextFactory dbContextFactory)
     {
@@ -18,11 +19,7 @@ internal class ProductRepository : IProductRepository
     }
     public async Task<List<Product>> GetAllByCategoryAsync(string сategory)
     {
-        var dbContext = dbContextFactory.Create(typeof(ProductRepository));
-
-        var list = await  dbContext.Products
-                                   .Where(product => product.Category.Contains(сategory))
-                                   .ToListAsync();
+        var list = await _readonlyRepository.ToArrayAsync(product => product.Category.Contains(сategory));
 
         return list.Select(Product.Mapper.Map)
                    .ToList();
@@ -30,14 +27,9 @@ internal class ProductRepository : IProductRepository
 
     public async Task<List<Product>> GetAllByIdMakerAsync(int id)
     {
-        var dbContext = dbContextFactory.Create(typeof(ProductRepository));
+        var list = await _readonlyRepository.ToArrayAsync(product => product.MakerID == id);
 
-        var list = await dbContext.Products
-                                  .Where(product => product.IdMaker == id)
-                                  .ToListAsync();
-
-        return list.Select(Product.Mapper.Map)
-                   .ToList();
+        return list.Select(Product.Mapper.Map).ToList();
     }
 
     public async Task<List<Product>> GetAllByIdsAsync(IEnumerable<int> productIds)
@@ -54,6 +46,7 @@ internal class ProductRepository : IProductRepository
 
     public async Task<List<Product>> GetAllByManufactureAsync(string title)
     {
+
         var listMaker = await makerRepository.GetAllByTitleAsync(title);
         var idsMakers = listMaker.Select(maker => maker.Id);
 

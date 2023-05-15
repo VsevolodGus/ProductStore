@@ -12,7 +12,7 @@ namespace Store.Memory
     public class StoreDbContext : DbContext
     {
 
-        public DbSet<ProductOrderItemEntity> Products { get; set; }
+        public DbSet<ProductEntity> Products { get; set; }
 
         public DbSet<MakerEntity> Makers { get; set; }
 
@@ -42,7 +42,7 @@ namespace Store.Memory
 
         private static void BuildModelProducts(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<ProductOrderItemEntity>(action =>
+            modelBuilder.Entity<ProductEntity>(action =>
             {
                 action.Property(dto => dto.Title)
                         .HasMaxLength(50)
@@ -52,47 +52,47 @@ namespace Store.Memory
                         .HasMaxLength(50)
                         .IsRequired();
 
-                action.Property(dto => dto.IdMaker)
+                action.Property(dto => dto.MakerID)
                         .IsRequired();
 
                 action.Property(dto => dto.Price)
                         .HasColumnType("money");
 
                 action.HasData(
-                    new ProductOrderItemEntity
+                    new ProductEntity
                     {
                         Id = 1,
-                        IdMaker = 1,
+                        MakerID = 1,
                         Title = "яйца",
                         Category = "яйца",
                         Description = "куринные яйца, категории C0",
                         Price = 30m
                     },
                     //db.Products.Add(new Product("яйца", manufactures.GetById(1), "яйца", 10m, "куринные яйца, категории C0"));
-                    new ProductOrderItemEntity
+                    new ProductEntity
                     {
                         Id = 2,
-                        IdMaker = 2,
+                        MakerID = 2,
                         Title = "хлеб",
                         Category = "выпечка",
                         Description = "хлебо-булочные изделия",
                         Price = 20m
                     },
                     //db.Products.Add(new Product("хлеб", manufactures.GetById(2), "выпечка", 20m, "хлебо-булочные изделия"));
-                    new ProductOrderItemEntity
+                    new ProductEntity
                     {
                         Id = 3,
-                        IdMaker = 3,
+                        MakerID = 3,
                         Title = "говядина",
                         Category = "мясо",
                         Description = "мясо из говядины и телятины",
                         Price = 30m
                     },
                     //db.Products.Add(new Product("говядина", manufactures.GetById(3), "мясо", 30m, "мясо из говядины и телятины"));
-                    new ProductOrderItemEntity
+                    new ProductEntity
                     {
                         Id = 4,
-                        IdMaker = 4,
+                        MakerID = 4,
                         Title = "свинина",
                         Category = "мясо",
                         Description = "мясо из свинины",

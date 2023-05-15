@@ -1,4 +1,4 @@
-﻿namespace Store.Memory;
+﻿namespace Store;
 
 public interface IRepository<TEntity> : IReadonlyRepository<TEntity>
      where TEntity : class

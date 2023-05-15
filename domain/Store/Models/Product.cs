@@ -5,7 +5,7 @@ namespace Store
 {
     public class Product
     {
-        private readonly ProductOrderItemEntity dto;
+        private readonly ProductEntity dto;
 
         public int Id => dto.Id;
 
@@ -23,11 +23,11 @@ namespace Store
         
         public int IdMaker 
         {
-            get => dto.IdMaker;
+            get => dto.MakerID;
             set
             {
                 if (value > 0)
-                    dto.IdMaker = value;
+                    dto.MakerID = value;
 
                 throw new ArgumentException("no correct IdMaker from DB");
             }
@@ -57,14 +57,14 @@ namespace Store
             set => dto.Description = value;
         }
 
-        internal Product(ProductOrderItemEntity dto) 
+        internal Product(ProductEntity dto) 
         {
             this.dto = dto;
         }
 
         public static class DtoFactory
         {
-            public static ProductOrderItemEntity Create(int idMaker,
+            public static ProductEntity Create(int idMaker,
                                          string category,
                                          string title,
                                          string description,
@@ -73,9 +73,9 @@ namespace Store
                 if (string.IsNullOrWhiteSpace(title))
                     throw new ArgumentException(nameof(title));
 
-                return new ProductOrderItemEntity
+                return new ProductEntity
                 {
-                    IdMaker = idMaker,
+                    MakerID = idMaker,
                     Title = title.Trim(),
                     Category = category.Trim(),
                     Description = description,
@@ -86,9 +86,9 @@ namespace Store
 
         public static class Mapper
         {
-            public static Product Map(ProductOrderItemEntity dto) => new Product(dto);
+            public static Product Map(ProductEntity dto) => new Product(dto);
 
-            public static ProductOrderItemEntity Map(Product domain) => domain.dto;
+            public static ProductEntity Map(Product domain) => domain.dto;
         }
     }
 }

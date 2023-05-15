@@ -1,12 +1,12 @@
 ﻿namespace Store.Data
 {
-    public class ProductOrderItemEntity
+    public class ProductEntity
     {
         public int Id { get; init; }
 
         public string Title { get; set; }
 
-        public int IdMaker { get; set; }
+        public int MakerID { get; set; }
 
         public string Category { get; set; }
 
