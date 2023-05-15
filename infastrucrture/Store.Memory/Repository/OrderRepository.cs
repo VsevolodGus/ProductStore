@@ -8,12 +8,12 @@ namespace Store.Memory;
 
 internal class OrderRepository : IOrderRepository
 {
-    private readonly DbContextFactory dbContextFactory;
+    private readonly StoreDbContext storeDbContext;
     private readonly string path = $"{Environment.CurrentDirectory}\\OrderCash.json";
 
-    public OrderRepository(DbContextFactory dbContextFactory)
+    public OrderRepository(StoreDbContext storeDbContext)
     {
-        this.dbContextFactory = dbContextFactory;
+        this.storeDbContext = storeDbContext;
     }
 
     public async Task<Order> CreateAsync()
@@ -62,8 +62,7 @@ internal class OrderRepository : IOrderRepository
 
     public async Task SendFileAsync(OrderEntity dto)
     {
-        var dbContext = dbContextFactory.Create(typeof(OrderRepository));
-        await dbContext.SaveChangesAsync();
+        await storeDbContext.SaveChangesAsync();
     }
 }
 

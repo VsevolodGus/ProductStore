@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Store.Memory;
 
-public class ReadonlyRepository<TEntity> : IReadonlyRepository<TEntity>
+internal class ReadonlyRepository<TEntity> : IReadonlyRepository<TEntity>
     where TEntity : class
 {
     //TODO инъектить DbSet 

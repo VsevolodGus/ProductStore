@@ -7,7 +7,7 @@ internal class Repository<TEntity> : ReadonlyRepository<TEntity>, IRepository<TE
     
 
     public void InsertAsync(TEntity entity)
-        => _dbContext.Set<TEntity>().Update(entity);
+        => _dbContext.Set<TEntity>().Add(entity);
     
 
     public void UpdateAsync(TEntity entity)

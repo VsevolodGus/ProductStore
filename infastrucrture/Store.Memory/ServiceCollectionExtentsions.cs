@@ -24,9 +24,6 @@ public static class ServiceCollectionExtentsions
         );
 
         services.AddScoped(typeof(IReadonlyRepository<>), typeof(ReadonlyRepository<>));
-
-        services.AddScoped<Dictionary<Type,StoreDbContext>>();
-        services.AddScoped<DbContextFactory>();
         services.AddScoped<IOrderRepository, OrderRepository>();
 
         return services;

@@ -48,7 +48,7 @@ public class ProductService
     {
         var list = await _products.ToArrayAsync(c => c.Title.ToLower().Contains(search.ToLower())
                                                     || c.Category.ToLower().Contains(search.ToLower())
-                                //|| c.Ma.ToLower().Contains(search.ToLower())
+                                                    || c.Maker.Title.ToLower().Contains(search.ToLower())
                                 , cancellationToken);
        
 
