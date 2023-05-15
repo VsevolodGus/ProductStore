@@ -1,12 +1,11 @@
 ﻿using Microsoft.AspNetCore.Http;
 using PhoneNumbers;
-using System;
-using System.Linq;
-using System.Collections.Generic;
 using Store;
 using Store.Messages;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
-using System.Text.RegularExpressions;
 
 namespace ProductStore.Web.App
 {

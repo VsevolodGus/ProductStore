@@ -5,6 +5,7 @@
         public int Id { get; init; }
 
         public int ProductId { get; set; }
+        public int OrderID { get; set; }
 
         public decimal Price { get; set; }
 

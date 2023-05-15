@@ -1,17 +1,18 @@
-﻿namespace Store.Data
+﻿namespace Store.Data;
+
+public class ProductEntity
 {
-    public class ProductEntity
-    {
-        public int Id { get; init; }
+    public int Id { get; init; }
 
-        public string Title { get; set; }
+    public string Title { get; set; }
 
-        public int MakerID { get; set; }
+    public int MakerID { get; set; }
 
-        public string Category { get; set; }
+    public string Category { get; set; }
 
-        public decimal Price { get; set; }
+    public decimal Price { get; set; }
 
-        public string Description { get; set; }
-    }
+    public string Description { get; set; }
+
+    public virtual MakerEntity Maker { get; init; }
 }
