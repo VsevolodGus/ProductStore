@@ -1,6 +1,5 @@
 ﻿using Store;
 using Store.Data;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -9,14 +8,10 @@ namespace ProductStore.Web.App;
 
 public class ProductService
 {
-    private readonly IProductRepository products;
-    private readonly IMakerRepository makerRepository;
-    private IReadonlyRepository<ProductEntity> _readonlyRepository;
-    public ProductService(IProductRepository products,
-                          IMakerRepository makerRepository)
+    private readonly IReadonlyRepository<ProductEntity> _products;
+    private readonly IReadonlyRepository<MakerEntity> _makers;
+    public ProductService()
     {
-        this.products = products;
-        this.makerRepository = makerRepository;
     }
 
     /// <summary>
@@ -26,7 +21,7 @@ public class ProductService
     /// <returns>модель продукта</returns>
     public async Task<ProductModel> GetByIdAsync(int id, CancellationToken cancellationToken = default)
     {
-        var product = await _readonlyRepository.FirstOrDefaultAsync(c=> c.Id == id, cancellationToken);
+        var product = await _products.FirstOrDefaultAsync(c=> c.Id == id, cancellationToken);
 
         return Map(Product.Mapper.Map(product));
     }
@@ -38,7 +33,7 @@ public class ProductService
     /// <returns>список моделей продуктов</returns>
     public async Task<ProductModel[]> GetAllByIdMakerAsync(int makerID, CancellationToken cancellationToken = default)
     {
-        var list = await _readonlyRepository.ToArrayAsync(c => c.MakerID == makerID, cancellationToken);
+        var list = await _products.ToArrayAsync(c => c.MakerID == makerID, cancellationToken);
 
 
         return list.Select(Product.Mapper.Map).Select(Map).ToArray();
@@ -51,7 +46,7 @@ public class ProductService
     /// <returns>список моделей продуктов</returns>
     public async Task<ProductModel[]> GetAllByQueryAsync(string search, CancellationToken cancellationToken = default)
     {
-        var list = await _readonlyRepository.ToArrayAsync(c => c.Title.ToLower().Contains(search.ToLower())
+        var list = await _products.ToArrayAsync(c => c.Title.ToLower().Contains(search.ToLower())
                                                     || c.Category.ToLower().Contains(search.ToLower())
                                 //|| c.Ma.ToLower().Contains(search.ToLower())
                                 , cancellationToken);
@@ -70,9 +65,9 @@ public class ProductService
         return new ProductModel
         {
             ProductId = product.Id,
-            MakerId = product.IdMaker,
+            MakerId = product.MakerID,
             ProductTitle = product.Title,
-            MakerTitle = makerRepository.GetById(product.IdMaker).Title,
+            MakerTitle = _makers.FirstOrDefaultAsync(c=> c.Id == product.MakerID).Result.Title,
             Category = product.Category,
             Price = product.Price,
             Description = product.Description

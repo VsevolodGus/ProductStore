@@ -21,7 +21,7 @@ namespace Store
             }
         }
         
-        public int IdMaker 
+        public int MakerID 
         {
             get => dto.MakerID;
             set

@@ -1,31 +1,30 @@
 ﻿using Microsoft.AspNetCore.Http;
 using PhoneNumbers;
 using Store;
+using Store.Data;
 using Store.Messages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace ProductStore.Web.App
 {
     public class OrderService
     {
-        private readonly IProductRepository productRepository;
         private readonly IMakerRepository makerRepository;
         private readonly IOrderRepository orderRepository;
         private readonly INotificationService notificationService;
         private readonly IHttpContextAccessor httpContextAccessor;
-
+        private readonly IReadonlyRepository<ProductEntity> _readonlyRepository;
         protected ISession Session => httpContextAccessor.HttpContext.Session;
 
-        public OrderService(IProductRepository productRepository,
-                            IMakerRepository makerRepository,
+        public OrderService(IMakerRepository makerRepository,
                             IOrderRepository orderRepository,
                             INotificationService notificationService,
                             IHttpContextAccessor httpContextAccessor)
         {
-            this.productRepository = productRepository;
             this.makerRepository = makerRepository;
             this.orderRepository = orderRepository;
             this.notificationService = notificationService;
@@ -77,8 +76,8 @@ namespace ProductStore.Web.App
                             Id = product.Id,
                             Title = product.Title,
                             Count = item.Count,
-                            MakerId = product.IdMaker,
-                            MakerTitle = makerRepository.GetById(product.IdMaker).Title,
+                            MakerId = product.MakerID,
+                            MakerTitle = makerRepository.GetById(product.MakerID).Title,
                             Price = product.Price,
                         };
 
@@ -102,11 +101,11 @@ namespace ProductStore.Web.App
         /// </summary>
         /// <param name="order">заказ</param>
         /// <returns>список продуктов</returns>
-        internal async Task<IEnumerable<Product>> GetProductsAsync(Order order)
+        internal async Task<IEnumerable<Product>> GetProductsAsync(Order order, CancellationToken cancellationToken = default)
         {
             var bookIds = order.Items.Select(item => item.ProductId);
-
-            return await productRepository.GetAllByIdsAsync(bookIds);
+            var products = await _readonlyRepository.ToArrayAsync(c=> bookIds.Contains(c.Id), cancellationToken);
+            return products.Select(Product.Mapper.Map);
         }
 
         /// <summary>
@@ -136,14 +135,15 @@ namespace ProductStore.Web.App
         /// <param name="order">заказ</param>
         /// <param name="productId">идентификатор продукта</param>
         /// <param name="count">кол-во добавляемой позиции</param>
-        public async Task AddOrUpdateProductAsync(Order order, int productId,int count)
+        public async Task AddOrUpdateProductAsync(Order order, int productId,int count, CancellationToken cancellationToken = default)
         {
-            var product = await productRepository.GetByIdAsync(productId);
-
             if (order.Items.TryGet(productId, out OrderItem orderItem))
                 orderItem.Count += count;
             else
+            {
+                var product = await _readonlyRepository.FirstOrDefaultAsync(c => c.Id == productId, cancellationToken);
                 order.Items.Add(product.Id, product.Price, count);
+            }
 
             await orderRepository.UpdateAsync(order);
         }

@@ -1,14 +1,16 @@
 ﻿using Store;
+using Store.Data;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace ProductStore.Web.App
 {
     public class MakerService
     {
-        private readonly IMakerRepository makerRepository;
-
-        public MakerService(IMakerRepository makerRepository)
+        private readonly IReadonlyRepository<MakerEntity> _makers;
+        public MakerService(IReadonlyRepository<MakerEntity> makers)
         {
-            this.makerRepository = makerRepository;
+            _makers = makers;
         }
 
         /// <summary>
@@ -16,9 +18,10 @@ namespace ProductStore.Web.App
         /// </summary>
         /// <param name="id">идентификатору производителя</param>
         /// <returns>модель производителя</returns>
-        public Maker GetById(int id)
+        public async Task<Maker> GetByIdAsync(int id, CancellationToken cancellationToken)
         {
-            return makerRepository.GetById(id);
+            var maker = await _makers.FirstOrDefaultAsync(c=> c.Id == id, cancellationToken);
+            return Maker.Mapper.Map(maker);
         }
     }
 }

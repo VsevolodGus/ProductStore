@@ -27,7 +27,6 @@ public static class ServiceCollectionExtentsions
 
         services.AddScoped<Dictionary<Type,StoreDbContext>>();
         services.AddScoped<DbContextFactory>();
-        services.AddScoped<IProductRepository, ProductRepository>();
         services.AddScoped<IMakerRepository, MakerRepository>();
         services.AddScoped<IOrderRepository, OrderRepository>();
 
