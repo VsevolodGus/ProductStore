@@ -39,7 +39,7 @@ internal sealed class ProductConfiguration : IEntityTypeConfiguration<ProductEnt
             .WithMany()
             .HasForeignKey(c => c.MakerID)
             .OnDelete(DeleteBehavior.Cascade)
-            .HasConstraintName("FK_Maker");
+            .HasConstraintName("FK_PublishingHouses");
 
         builder.HasData(
             new ProductEntity

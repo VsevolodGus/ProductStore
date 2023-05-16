@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ProductStore.Web.App;
 using ProductStore.Web.App.Service;
 using System.Threading.Tasks;
 
@@ -21,7 +20,7 @@ public class SearchController : Controller
     /// <returns>страница списка продуктов</returns>
     public async Task<IActionResult> Index(string search)
     {
-        var models = await productService.GetAllByQueryAsync(search);
+        var models = await productService.GetAllByQueryAsync(search, HttpContext.RequestAborted);
         if (models == null || models.Length == 0)
             return View("EmptySearch");
 

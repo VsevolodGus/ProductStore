@@ -19,7 +19,7 @@ internal class OrderService : IOrderService
     private readonly INotificationService notificationService;
     private readonly IHttpContextAccessor httpContextAccessor;
     private readonly IReadonlyRepository<ProductEntity> _readonlyRepository;
-    private readonly IReadonlyRepository<MakerEntity> _makers;
+    private readonly IReadonlyRepository<PublishingHouseEntity> _makers;
     private readonly IRepository<OrderEntity> _orders;
     private readonly IUnitOfWork _unitOfWork;
     private ISession Session => httpContextAccessor.HttpContext.Session;

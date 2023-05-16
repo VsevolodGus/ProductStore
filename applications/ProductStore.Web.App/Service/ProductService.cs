@@ -10,9 +10,9 @@ namespace ProductStore.Web.App;
 internal class ProductService : IProductService
 {
     private readonly IReadonlyRepository<ProductEntity> _products;
-    private readonly IReadonlyRepository<MakerEntity> _makers;
+    private readonly IReadonlyRepository<PublishingHouseEntity> _makers;
     public ProductService(IReadonlyRepository<ProductEntity> products
-        , IReadonlyRepository<MakerEntity> makers)
+        , IReadonlyRepository<PublishingHouseEntity> makers)
     {
         _makers = makers;
         _products = products;

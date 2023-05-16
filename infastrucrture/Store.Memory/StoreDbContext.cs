@@ -10,7 +10,7 @@ public class StoreDbContext : DbContext, IUnitOfWork
 {
     public DbSet<ProductEntity> Products { get; init; }
 
-    public DbSet<MakerEntity> Makers { get; init; }
+    public DbSet<PublishingHouseEntity> Makers { get; init; }
 
     public DbSet<OrderEntity> Orders { get; init; }
 

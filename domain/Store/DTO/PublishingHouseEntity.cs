@@ -1,6 +1,6 @@
 ﻿namespace Store.Data
 {
-    public class MakerEntity
+    public class PublishingHouseEntity
     {
         public int ID { get; init; }
 

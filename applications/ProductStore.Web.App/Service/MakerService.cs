@@ -8,8 +8,8 @@ namespace ProductStore.Web.App;
 
 internal class MakerService : IMakerService
 {
-    private readonly IReadonlyRepository<MakerEntity> _makers;
-    public MakerService(IReadonlyRepository<MakerEntity> makers)
+    private readonly IReadonlyRepository<PublishingHouseEntity> _makers;
+    public MakerService(IReadonlyRepository<PublishingHouseEntity> makers)
     {
         _makers = makers;
     }

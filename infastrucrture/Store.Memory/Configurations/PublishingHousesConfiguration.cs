@@ -3,13 +3,13 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Store.Data;
 
 namespace Store.Memory.Configurations;
-internal sealed class MakerConfiguration : IEntityTypeConfiguration<MakerEntity>
+internal sealed class PublishingHousesConfiguration : IEntityTypeConfiguration<PublishingHouseEntity>
 {
-    public void Configure(EntityTypeBuilder<MakerEntity> builder)
+    public void Configure(EntityTypeBuilder<PublishingHouseEntity> builder)
     {
-        builder.ToTable("Makers", Options.Scheme);
+        builder.ToTable("PublishingHouses", Options.Scheme);
 
-        builder.HasKey(c => c.ID).HasName("PK_Makers");
+        builder.HasKey(c => c.ID).HasName("PK_PublishingHouses");
 
         builder.Property(c => c.ID).HasColumnName("ID")
             .ValueGeneratedOnAdd();
@@ -36,7 +36,7 @@ internal sealed class MakerConfiguration : IEntityTypeConfiguration<MakerEntity>
                 .HasColumnName("NumberPhone");
 
         builder.HasData(
-            new MakerEntity
+            new PublishingHouseEntity
             {
                 ID = 1,
                 Title = "Красная цена ",
@@ -47,7 +47,7 @@ internal sealed class MakerConfiguration : IEntityTypeConfiguration<MakerEntity>
             },
             //db.Makers.Add(new Maker("Красная Цена", "8937-216-76-11", "",
             //    "ООО 'Красная Цена' Самара", "Название Красная Цена выбрано не случайно!"));
-            new MakerEntity
+            new PublishingHouseEntity
             {
                 ID = 2,
                 Title = "АЛМА",
@@ -58,7 +58,7 @@ internal sealed class MakerConfiguration : IEntityTypeConfiguration<MakerEntity>
             },
             //db.Makers.Add(new Maker("АЛМА", "8347-827-36-96", "",
             //    "ул.Комарова, д.41;", "У нас вы найдете экологически чистые продукты по приятным ценам"));
-            new MakerEntity
+            new PublishingHouseEntity
             {
                 ID = 3,
                 Title = "Мясницкий ряд",
@@ -71,7 +71,7 @@ internal sealed class MakerConfiguration : IEntityTypeConfiguration<MakerEntity>
             },
             //db.Makers.Add(new Maker("Мясницкий ряд", " +7495-411-33-41", " zakupki@kolbasa.ru",
             //    "Транспортный проезд д.7 г. Одинцово Московская область", ""));
-            new MakerEntity
+            new PublishingHouseEntity
             {
                 ID = 4,
                 Title = "Черкизово",

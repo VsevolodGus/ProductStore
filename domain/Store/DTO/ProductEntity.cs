@@ -17,5 +17,5 @@ public class ProductEntity
 
     public string Description { get; set; }
 
-    public virtual MakerEntity Maker { get; init; }
+    public virtual PublishingHouseEntity Maker { get; init; }
 }
