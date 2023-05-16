@@ -7,6 +7,10 @@ internal sealed class MakerConfiguration : IEntityTypeConfiguration<MakerEntity>
 {
     public void Configure(EntityTypeBuilder<MakerEntity> builder)
     {
+        builder.ToTable("Makers", Options.Scheme);
+
+        builder.HasKey(c => c.ID).HasName("PK_Makers");
+
         builder.Property(dto => dto.Title)
                 .IsRequired()
                 .HasMaxLength(50);
@@ -20,7 +24,7 @@ internal sealed class MakerConfiguration : IEntityTypeConfiguration<MakerEntity>
         builder.HasData(
             new MakerEntity
             {
-                Id = 1,
+                ID = 1,
                 Title = "Красная цена ",
                 Email = "redPrice@gmail.com",
                 NumberPhone = "8937-216-76-11",
@@ -31,7 +35,7 @@ internal sealed class MakerConfiguration : IEntityTypeConfiguration<MakerEntity>
             //    "ООО 'Красная Цена' Самара", "Название Красная Цена выбрано не случайно!"));
             new MakerEntity
             {
-                Id = 2,
+                ID = 2,
                 Title = "АЛМА",
                 Email = "alma@mail.ru",
                 NumberPhone = "8347-827-36-96",
@@ -42,7 +46,7 @@ internal sealed class MakerConfiguration : IEntityTypeConfiguration<MakerEntity>
             //    "ул.Комарова, д.41;", "У нас вы найдете экологически чистые продукты по приятным ценам"));
             new MakerEntity
             {
-                Id = 3,
+                ID = 3,
                 Title = "Мясницкий ряд",
                 Email = "zakupki@kolbasa.ru",
                 NumberPhone = "+7495-411-33-41",
@@ -55,7 +59,7 @@ internal sealed class MakerConfiguration : IEntityTypeConfiguration<MakerEntity>
             //    "Транспортный проезд д.7 г. Одинцово Московская область", ""));
             new MakerEntity
             {
-                Id = 4,
+                ID = 4,
                 Title = "Черкизово",
                 Email = "sk@cherkizovo.com",
                 NumberPhone = "+7495-660-24-40",

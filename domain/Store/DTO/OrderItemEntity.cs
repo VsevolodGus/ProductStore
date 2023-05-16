@@ -2,7 +2,7 @@
 {
     public class OrderItemEntity
     {
-        public int Id { get; init; }
+        public int ID { get; init; }
 
         public int ProductId { get; set; }
         public int OrderID { get; set; }

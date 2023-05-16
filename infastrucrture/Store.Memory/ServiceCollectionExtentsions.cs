@@ -24,7 +24,6 @@ public static class ServiceCollectionExtentsions
         );
 
         services.AddScoped(typeof(IReadonlyRepository<>), typeof(ReadonlyRepository<>));
-        services.AddScoped<IOrderRepository, OrderRepository>();
 
         return services;
     }

@@ -2,6 +2,7 @@
 using PhoneNumbers;
 using Store;
 using Store.Data;
+using Store.IntarfaceRepositroy;
 using Store.Messages;
 using System;
 using System.Collections.Generic;
@@ -13,19 +14,18 @@ namespace ProductStore.Web.App
 {
     public class OrderService
     {
-        private readonly IOrderRepository orderRepository;
         private readonly INotificationService notificationService;
         private readonly IHttpContextAccessor httpContextAccessor;
         private readonly IReadonlyRepository<ProductEntity> _readonlyRepository;
         private readonly IReadonlyRepository<MakerEntity> _makers;
-        private readonly IReadonlyRepository<OrderEntity> _orders;
+        private readonly IRepository<OrderEntity> _orders;
+        private readonly IUnitOfWork _unitOfWork;
         protected ISession Session => httpContextAccessor.HttpContext.Session;
 
-        public OrderService(IOrderRepository orderRepository,
+        public OrderService(
                             INotificationService notificationService,
                             IHttpContextAccessor httpContextAccessor)
         {
-            this.orderRepository = orderRepository;
             this.notificationService = notificationService;
             this.httpContextAccessor = httpContextAccessor;
         }
@@ -76,7 +76,8 @@ namespace ProductStore.Web.App
                             Title = product.Title,
                             Count = item.Count,
                             MakerId = product.MakerID,
-                            MakerTitle = _makers.FirstOrDefaultAsync(c => c.Id == product.MakerID).Result.Title,
+                            //TODO избавить от await blabla().Result
+                            MakerTitle = _makers.FirstOrDefaultAsync(c => c.ID == product.MakerID).Result.Title,
                             Price = product.Price,
                         };
 
@@ -119,8 +120,9 @@ namespace ProductStore.Web.App
                 throw new InvalidOperationException("");
 
             var (hasValue, order) = await TryGetOrderAsync();
+            
             if (!hasValue)
-                order = await orderRepository.CreateAsync();
+                order = Order.Mapper.Map(Order.DtoFactory.Create());
 
             await AddOrUpdateProductAsync(order, productId, count);
             UpdateSession(order);
@@ -144,7 +146,8 @@ namespace ProductStore.Web.App
                 order.Items.Add(product.Id, product.Price, count);
             }
 
-            await orderRepository.UpdateAsync(order);
+            _orders.Update(Order.Mapper.Map(order));
+            await _unitOfWork.SaveChangeAsync(cancellationToken);
         }
 
         /// <summary>
@@ -177,12 +180,13 @@ namespace ProductStore.Web.App
         /// <param name="prodcutId">идентификатор позиции</param>
         /// <param name="count">кол-во позиции</param>
         /// <returns>модель заказа</returns>
-        public async Task<OrderModel> UpdateProdurctAsync(int prodcutId, int count)
+        public async Task<OrderModel> UpdateProdurctAsync(int prodcutId, int count, CancellationToken cancellationToken = default)
         {
             var order = await GetOrderAsync();
             order.Items.Get(prodcutId).Count = count;
 
-            await orderRepository.UpdateAsync(order);
+            _orders.Update(Order.Mapper.Map(order));
+            await _unitOfWork.SaveChangeAsync(cancellationToken);
             UpdateSession(order);
 
             return await MapAsync(order);
@@ -193,12 +197,13 @@ namespace ProductStore.Web.App
         /// </summary>
         /// <param name="productId">идентификатор позиции</param>
         /// <returns>модель заказа</returns>
-        public async Task<OrderModel>RemoveFullProductAsync(int productId) 
+        public async Task<OrderModel>RemoveFullProductAsync(int productId, CancellationToken cancellationToken = default) 
         {
             var order = await GetOrderAsync();
             order.Items.RemoveProduct(productId);
 
-            await orderRepository .UpdateAsync(order);
+            _orders.Update(Order.Mapper.Map(order));
+            await _unitOfWork.SaveChangeAsync(cancellationToken);
             UpdateSession(order);
 
             return await MapAsync (order);
@@ -209,12 +214,13 @@ namespace ProductStore.Web.App
         /// </summary>
         /// <param name="productId">идентификатор позиции</param>
         /// <returns>модель заказа</returns>
-        public async Task<OrderModel> RemoveItemAsync(int productId)
+        public async Task<OrderModel> RemoveItemAsync(int productId, CancellationToken cancellationToken = default)
         {
             var order = await GetOrderAsync();
             order.Items.RemoveItem(productId);
 
-            await orderRepository .UpdateAsync(order);
+            _orders.Update(Order.Mapper.Map(order));
+            await _unitOfWork.SaveChangeAsync(cancellationToken);
             UpdateSession(order);
 
             return await MapAsync(order);
@@ -226,7 +232,7 @@ namespace ProductStore.Web.App
         /// <param name="cellPhone">номер телефона который подтверждают</param>
         /// <param name="email">почта которую подтверждают</param>
         /// <returns>модель заказа</returns>
-        public async Task<OrderModel> SendConfirmationAsync(string cellPhone,string email)
+        public async Task<OrderModel> SendConfirmationAsync(string cellPhone,string email, CancellationToken cancellationToken = default)
         {
             var order = await GetOrderAsync();
             
@@ -248,7 +254,8 @@ namespace ProductStore.Web.App
             
             order.Email = email;
             UpdateSession(order);
-            await orderRepository.UpdateAsync(order);
+            _orders.Update(Order.Mapper.Map(order));
+            await _unitOfWork.SaveChangeAsync(cancellationToken);
 
             return model;
         }
@@ -330,7 +337,8 @@ namespace ProductStore.Web.App
 
             var order = await GetOrderAsync();
             order.CellPhone = cellPhone;
-            await orderRepository.UpdateAsync(order);
+            _orders.Update(Order.Mapper.Map(order));
+            await _unitOfWork.SaveChangeAsync();
 
             Session.Remove(cellPhone);
 
@@ -342,12 +350,13 @@ namespace ProductStore.Web.App
         /// </summary>
         /// <param name="delivery">модель доставки заказа</param>
         /// <returns>модель заказа</returns>
-        public async Task<OrderModel> SetDeliveryAsync(OrderDelivery delivery)
+        public async Task<OrderModel> SetDeliveryAsync(OrderDelivery delivery, CancellationToken cancellationToken = default)
         {
             var order = await GetOrderAsync();
             order.Delivery = delivery;
             
-            await orderRepository.UpdateAsync(order);
+            _orders.Update(Order.Mapper.Map(order));
+            await _unitOfWork.SaveChangeAsync(cancellationToken);
 
             return await MapAsync(order);
         }
@@ -357,12 +366,13 @@ namespace ProductStore.Web.App
         /// </summary>
         /// <param name="payment">модель оплаты заказа</param>
         /// <returns>модель заказа</returns>
-        public async Task<OrderModel>SetPaymentAsync(OrderPayment payment)
+        public async Task<OrderModel>SetPaymentAsync(OrderPayment payment, CancellationToken cancellationToken = default)
         {
             var order = await GetOrderAsync();
             order.Payment = payment;
-            
-            await orderRepository.UpdateAsync(order);
+
+            _orders.Update(Order.Mapper.Map(order));
+            await _unitOfWork.SaveChangeAsync(cancellationToken);
 
             await Finish();
            
@@ -376,7 +386,7 @@ namespace ProductStore.Web.App
         {
             var order = await GetOrderAsync();
 
-            await orderRepository.SendFileAsync(Order.Mapper.Map(order));            
+            await _unitOfWork.SaveChangeAsync();
             Session.RemoveCart();
             notificationService.SendOrderNotification(order);
         }

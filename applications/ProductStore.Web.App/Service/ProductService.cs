@@ -67,7 +67,7 @@ public class ProductService
             ProductId = product.Id,
             MakerId = product.MakerID,
             ProductTitle = product.Title,
-            MakerTitle = _makers.FirstOrDefaultAsync(c=> c.Id == product.MakerID).Result.Title,
+            MakerTitle = _makers.FirstOrDefaultAsync(c=> c.ID == product.MakerID).Result.Title,
             Category = product.Category,
             Price = product.Price,
             Description = product.Description

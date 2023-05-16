@@ -20,7 +20,7 @@ namespace ProductStore.Web.App
         /// <returns>модель производителя</returns>
         public async Task<Maker> GetByIdAsync(int id, CancellationToken cancellationToken)
         {
-            var maker = await _makers.FirstOrDefaultAsync(c=> c.Id == id, cancellationToken);
+            var maker = await _makers.FirstOrDefaultAsync(c=> c.ID == id, cancellationToken);
             return Maker.Mapper.Map(maker);
         }
     }

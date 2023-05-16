@@ -1,9 +1,13 @@
-﻿namespace Store;
+﻿using System.Threading;
+using System.Threading.Tasks;
+
+namespace Store;
 
 public interface IRepository<TEntity> : IReadonlyRepository<TEntity>
      where TEntity : class
 {
-    void InsertAsync(TEntity entity);
-    void UpdateAsync(TEntity entity);
-    void DeleteAsync(TEntity entity);
+    void Insert(TEntity entity);
+    ValueTask InsertAsync(TEntity entity, CancellationToken cancellationToken = default);
+    void Update(TEntity entity);
+    void Delete(TEntity entity);
 }

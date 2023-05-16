@@ -7,6 +7,10 @@ internal sealed class ProductConfiguration : IEntityTypeConfiguration<ProductEnt
 {
     public void Configure(EntityTypeBuilder<ProductEntity> builder)
     {
+        builder.ToTable("Products", Options.Scheme);
+
+        builder.HasKey(c=> c.Id).HasName("PK_Products");
+
         builder.Property(dto => dto.Title)
                 .HasMaxLength(50)
                 .IsRequired()
@@ -22,6 +26,12 @@ internal sealed class ProductConfiguration : IEntityTypeConfiguration<ProductEnt
 
         builder.Property(dto => dto.Price)
                 .HasColumnName("Price");
+
+        builder.HasOne(c => c.Maker)
+            .WithMany()
+            .HasForeignKey(c => c.MakerID)
+            .OnDelete(DeleteBehavior.Cascade)
+            .HasConstraintName("FK_Maker");
 
         builder.HasData(
             new ProductEntity

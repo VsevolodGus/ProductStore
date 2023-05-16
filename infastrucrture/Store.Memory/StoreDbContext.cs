@@ -2,13 +2,16 @@
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Newtonsoft.Json;
 using Store.Data;
+using Store.IntarfaceRepositroy;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Store.Memory;
 
-public class StoreDbContext : DbContext
+public class StoreDbContext : DbContext, IUnitOfWork
 {
 
     public DbSet<ProductEntity> Products { get; init; }
@@ -67,5 +70,15 @@ public class StoreDbContext : DbContext
                                value => JsonConvert.DeserializeObject<Dictionary<string, string>>(value))
                                .Metadata.SetValueComparer(DictionaryComparer);
         });
+    }
+
+    public async Task SaveChangeAsync(CancellationToken cancellationToken)
+    {
+        await SaveChangesAsync(cancellationToken);
+    }
+
+    public void SaveChange()
+    {
+        SaveChanges();
     }
 }
