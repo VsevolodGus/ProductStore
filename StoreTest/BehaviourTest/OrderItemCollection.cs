@@ -12,7 +12,7 @@ namespace StoreTest
         {
             return new Order(new OrderEntity
             {
-                Id = 1,
+                ID = 1,
                 Items = new List<OrderItemEntity>
                 {
                     new OrderItemEntity { ProductID = 1, Price = 10m, Count = 3},

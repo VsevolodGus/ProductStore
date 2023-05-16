@@ -8,7 +8,7 @@ namespace Store
     public class Order
     {
         private readonly OrderEntity dto;
-        public int Id => dto.Id;
+        public int Id => dto.ID;
 
         public string CellPhone
         {
@@ -78,7 +78,7 @@ namespace Store
 
                 return new OrderPayment(dto.PaymentUniqueCode, 
                                         dto.PaymentDescription,
-                                        dto.PaymentParametrs);
+                                        dto.PaymentParameters);
             }
             set
             {
@@ -87,7 +87,7 @@ namespace Store
 
                 dto.PaymentUniqueCode = value.UniqueCode;
                 dto.PaymentDescription = value.Description;
-                dto.PaymentParametrs = value.Parametrs.ToDictionary(p=> p.Key, p=> p.Value);
+                dto.PaymentParameters = value.Parametrs.ToDictionary(p=> p.Key, p=> p.Value);
             }
         }
         

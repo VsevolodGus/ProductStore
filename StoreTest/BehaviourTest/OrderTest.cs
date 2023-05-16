@@ -10,7 +10,7 @@ namespace StoreTest
         {
             return new Order(new OrderEntity
             {
-                Id = 1,
+                ID = 1,
                 Items = new OrderItemEntity[0]
             });
         }
@@ -34,7 +34,7 @@ namespace StoreTest
         {
             return new Order(new OrderEntity
             {
-                Id = 1,
+                ID = 1,
                 Items = new[]
                 {
                     new OrderItemEntity { ProductID = 1, Price = 10m, Count = 3},

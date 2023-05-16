@@ -4,7 +4,7 @@ namespace Store.Data;
 
 public class OrderEntity
 {
-    public int Id { get; init; }
+    public int ID { get; init; }
 
     public string CellPhone { get; set; }
 
@@ -22,7 +22,7 @@ public class OrderEntity
 
     public string PaymentDescription { get; set; }
 
-    public Dictionary<string, string> PaymentParametrs { get; set; }
+    public Dictionary<string, string> PaymentParameters { get; set; }
 
     public ICollection<OrderItemEntity> Items { get; set; } = new List<OrderItemEntity>();
 }
