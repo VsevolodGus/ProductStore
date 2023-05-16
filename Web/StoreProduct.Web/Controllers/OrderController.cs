@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace StoreProduct.Web.Controllers
 {
+    //TODO решить проблему с роутами, ибо сейчас все привязано к названию метода, так не должно быть!
     public class OrderController : Controller
     {
         private readonly IEnumerable<IDeliveryService> deliveryServices;
