@@ -21,7 +21,7 @@ public class ProductService
     /// <returns>модель продукта</returns>
     public async Task<ProductModel> GetByIdAsync(int id, CancellationToken cancellationToken = default)
     {
-        var product = await _products.FirstOrDefaultAsync(c=> c.Id == id, cancellationToken);
+        var product = await _products.FirstOrDefaultAsync(c=> c.ID == id, cancellationToken);
 
         return Map(Product.Mapper.Map(product));
     }

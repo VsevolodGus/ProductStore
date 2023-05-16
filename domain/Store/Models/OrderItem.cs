@@ -7,7 +7,7 @@ namespace Store
     {
         private readonly OrderItemEntity dto;
 
-        public int ProductId => dto.ProductId;
+        public int ProductId => dto.ProductID;
 
         public int Count
         {
@@ -48,7 +48,7 @@ namespace Store
 
                 return new OrderItemEntity
                 {
-                    ProductId = productId,
+                    ProductID = productId,
                     Count = count,
                     Price = price,
                     Order = order

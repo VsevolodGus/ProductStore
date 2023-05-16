@@ -1,8 +1,9 @@
 ﻿namespace Store.Data;
 
+//TODO переделать под книги
 public class ProductEntity
 {
-    public int Id { get; init; }
+    public int ID { get; init; }
 
     public string Title { get; set; }
 

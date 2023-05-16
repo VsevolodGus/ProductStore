@@ -104,7 +104,7 @@ namespace ProductStore.Web.App
         internal async Task<IEnumerable<Product>> GetProductsAsync(Order order, CancellationToken cancellationToken = default)
         {
             var bookIds = order.Items.Select(item => item.ProductId);
-            var products = await _readonlyRepository.ToArrayAsync(c=> bookIds.Contains(c.Id), cancellationToken);
+            var products = await _readonlyRepository.ToArrayAsync(c=> bookIds.Contains(c.ID), cancellationToken);
             return products.Select(Product.Mapper.Map);
         }
 
@@ -142,8 +142,8 @@ namespace ProductStore.Web.App
                 orderItem.Count += count;
             else
             {
-                var product = await _readonlyRepository.FirstOrDefaultAsync(c => c.Id == productId, cancellationToken);
-                order.Items.Add(product.Id, product.Price, count);
+                var product = await _readonlyRepository.FirstOrDefaultAsync(c => c.ID == productId, cancellationToken);
+                order.Items.Add(product.ID, product.Price, count);
             }
 
             _orders.Update(Order.Mapper.Map(order));

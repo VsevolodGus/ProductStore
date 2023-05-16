@@ -11,15 +11,29 @@ internal sealed class MakerConfiguration : IEntityTypeConfiguration<MakerEntity>
 
         builder.HasKey(c => c.ID).HasName("PK_Makers");
 
+        builder.Property(c => c.ID).HasColumnName("ID")
+            .ValueGeneratedOnAdd();
+
         builder.Property(dto => dto.Title)
                 .IsRequired()
-                .HasMaxLength(50);
+                .HasMaxLength(50)
+                .HasColumnName("Title");
 
         builder.Property(dto => dto.Email)
-                .HasMaxLength(100);
+                .HasMaxLength(100)
+                .HasColumnName("Email");
+        
+        builder.Property(dto => dto.Address)
+                .HasMaxLength(1000)
+                .HasColumnName("Address");
+        
+        builder.Property(dto => dto.Description)
+                .HasMaxLength(1000)
+                .HasColumnName("Description");
 
         builder.Property(dto => dto.NumberPhone)
-                .HasMaxLength(15);
+                .HasMaxLength(15)
+                .HasColumnName("NumberPhone");
 
         builder.HasData(
             new MakerEntity

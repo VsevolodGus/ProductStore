@@ -7,7 +7,7 @@ namespace Store
     {
         private readonly ProductEntity dto;
 
-        public int Id => dto.Id;
+        public int Id => dto.ID;
 
         public string Title 
         {

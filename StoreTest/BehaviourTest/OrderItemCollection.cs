@@ -15,8 +15,8 @@ namespace StoreTest
                 Id = 1,
                 Items = new List<OrderItemEntity>
                 {
-                    new OrderItemEntity { ProductId = 1, Price = 10m, Count = 3},
-                    new OrderItemEntity { ProductId = 2, Price = 100m, Count = 5},
+                    new OrderItemEntity { ProductID = 1, Price = 10m, Count = 3},
+                    new OrderItemEntity { ProductID = 2, Price = 100m, Count = 5},
                 }
             });
         }

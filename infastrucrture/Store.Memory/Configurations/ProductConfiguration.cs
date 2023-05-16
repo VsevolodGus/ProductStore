@@ -9,7 +9,11 @@ internal sealed class ProductConfiguration : IEntityTypeConfiguration<ProductEnt
     {
         builder.ToTable("Products", Options.Scheme);
 
-        builder.HasKey(c=> c.Id).HasName("PK_Products");
+        builder.HasKey(c=> c.ID).HasName("PK_Products");
+
+        builder.Property(dto => dto.ID).HasColumnName("ID").ValueGeneratedOnAdd();
+        builder.Property(dto => dto.Price).HasColumnName("Price");
+        builder.Property(dto => dto.MakerID).HasColumnName("MakerID");
 
         builder.Property(dto => dto.Title)
                 .HasMaxLength(50)
@@ -21,11 +25,12 @@ internal sealed class ProductConfiguration : IEntityTypeConfiguration<ProductEnt
                 .IsRequired()
                 .HasColumnName("Category");
 
-        builder.Property(dto => dto.MakerID)
-                .HasColumnName("MakerID");
+        builder.Property(dto => dto.Description)
+            .HasMaxLength(1000)
+            .HasColumnName("Description");
 
-        builder.Property(dto => dto.Price)
-                .HasColumnName("Price");
+        builder.Property(dto => dto.MakerID).HasColumnName("MakerID");
+        builder.Property(dto => dto.Price).HasColumnName("Price");
 
         builder.HasOne(c => c.Maker)
             .WithMany()
@@ -36,7 +41,7 @@ internal sealed class ProductConfiguration : IEntityTypeConfiguration<ProductEnt
         builder.HasData(
             new ProductEntity
             {
-                Id = 1,
+                ID = 1,
                 MakerID = 1,
                 Title = "яйца",
                 Category = "яйца",
@@ -46,7 +51,7 @@ internal sealed class ProductConfiguration : IEntityTypeConfiguration<ProductEnt
             //db.Products.Add(new Product("яйца", manufactures.GetById(1), "яйца", 10m, "куринные яйца, категории C0"));
             new ProductEntity
             {
-                Id = 2,
+                ID = 2,
                 MakerID = 2,
                 Title = "хлеб",
                 Category = "выпечка",
@@ -56,7 +61,7 @@ internal sealed class ProductConfiguration : IEntityTypeConfiguration<ProductEnt
             //db.Products.Add(new Product("хлеб", manufactures.GetById(2), "выпечка", 20m, "хлебо-булочные изделия"));
             new ProductEntity
             {
-                Id = 3,
+                ID = 3,
                 MakerID = 3,
                 Title = "говядина",
                 Category = "мясо",
@@ -66,7 +71,7 @@ internal sealed class ProductConfiguration : IEntityTypeConfiguration<ProductEnt
             //db.Products.Add(new Product("говядина", manufactures.GetById(3), "мясо", 30m, "мясо из говядины и телятины"));
             new ProductEntity
             {
-                Id = 4,
+                ID = 4,
                 MakerID = 4,
                 Title = "свинина",
                 Category = "мясо",
