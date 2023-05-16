@@ -23,11 +23,11 @@ namespace Store
         
         public int MakerID 
         {
-            get => dto.MakerID;
+            get => dto.PublishHousingID;
             set
             {
                 if (value > 0)
-                    dto.MakerID = value;
+                    dto.PublishHousingID = value;
 
                 throw new ArgumentException("no correct IdMaker from DB");
             }
@@ -75,7 +75,7 @@ namespace Store
 
                 return new ProductEntity
                 {
-                    MakerID = idMaker,
+                    PublishHousingID = idMaker,
                     Title = title.Trim(),
                     Category = category.Trim(),
                     Description = description,

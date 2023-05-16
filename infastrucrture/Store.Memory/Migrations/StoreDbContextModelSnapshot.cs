@@ -21,6 +21,54 @@ namespace Store.Memory.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("Store.DTO.Author", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("ID");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)")
+                        .HasColumnName("Description");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)")
+                        .HasColumnName("FirstName");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)")
+                        .HasColumnName("LastName");
+
+                    b.Property<string>("SecondName")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)")
+                        .HasColumnName("SecondName");
+
+                    b.HasKey("ID")
+                        .HasName("PK_Authors");
+
+                    b.ToTable("Authors", "dbo");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            Description = "куринные яйца, категории C0",
+                            FirstName = "Test",
+                            LastName = "Test",
+                            SecondName = "Test"
+                        });
+                });
+
             modelBuilder.Entity("Store.Data.OrderEntity", b =>
                 {
                     b.Property<int>("ID")
@@ -121,6 +169,10 @@ namespace Store.Memory.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
+                    b.Property<int>("AuthorID")
+                        .HasColumnType("int")
+                        .HasColumnName("AuthorID");
+
                     b.Property<string>("Category")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -137,13 +189,13 @@ namespace Store.Memory.Migrations
                         .HasColumnType("nvarchar(35)")
                         .HasColumnName("ISBN");
 
-                    b.Property<int>("MakerID")
-                        .HasColumnType("int")
-                        .HasColumnName("MakerID");
-
                     b.Property<decimal>("Price")
                         .HasColumnType("money")
                         .HasColumnName("Price");
+
+                    b.Property<int>("PublishHousingID")
+                        .HasColumnType("int")
+                        .HasColumnName("PublishHousingID");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -154,7 +206,9 @@ namespace Store.Memory.Migrations
                     b.HasKey("ID")
                         .HasName("PK_Products");
 
-                    b.HasIndex("MakerID");
+                    b.HasIndex("AuthorID");
+
+                    b.HasIndex("PublishHousingID");
 
                     b.HasIndex(new[] { "ISBN" }, "UI_ISBN_Books")
                         .IsUnique()
@@ -166,37 +220,41 @@ namespace Store.Memory.Migrations
                         new
                         {
                             ID = 1,
+                            AuthorID = 1,
                             Category = "яйца",
                             Description = "куринные яйца, категории C0",
-                            MakerID = 1,
                             Price = 30m,
+                            PublishHousingID = 1,
                             Title = "яйца"
                         },
                         new
                         {
                             ID = 2,
+                            AuthorID = 1,
                             Category = "выпечка",
                             Description = "хлебо-булочные изделия",
-                            MakerID = 2,
                             Price = 20m,
+                            PublishHousingID = 2,
                             Title = "хлеб"
                         },
                         new
                         {
                             ID = 3,
+                            AuthorID = 1,
                             Category = "мясо",
                             Description = "мясо из говядины и телятины",
-                            MakerID = 3,
                             Price = 30m,
+                            PublishHousingID = 3,
                             Title = "говядина"
                         },
                         new
                         {
                             ID = 4,
+                            AuthorID = 1,
                             Category = "мясо",
                             Description = "мясо из свинины",
-                            MakerID = 4,
                             Price = 40m,
+                            PublishHousingID = 4,
                             Title = "свинина"
                         });
                 });
@@ -303,14 +361,28 @@ namespace Store.Memory.Migrations
 
             modelBuilder.Entity("Store.Data.ProductEntity", b =>
                 {
-                    b.HasOne("Store.Data.PublishingHouseEntity", "Maker")
+                    b.HasOne("Store.DTO.Author", "Author")
+                        .WithMany("Books")
+                        .HasForeignKey("AuthorID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_Authors");
+
+                    b.HasOne("Store.Data.PublishingHouseEntity", "PublishHousing")
                         .WithMany()
-                        .HasForeignKey("MakerID")
+                        .HasForeignKey("PublishHousingID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("FK_PublishingHouses");
 
-                    b.Navigation("Maker");
+                    b.Navigation("Author");
+
+                    b.Navigation("PublishHousing");
+                });
+
+            modelBuilder.Entity("Store.DTO.Author", b =>
+                {
+                    b.Navigation("Books");
                 });
 
             modelBuilder.Entity("Store.Data.OrderEntity", b =>

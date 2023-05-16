@@ -37,7 +37,7 @@ internal class ProductService : IProductService
     /// <returns>список моделей продуктов</returns>
     public async Task<ProductModel[]> GetAllByIdMakerAsync(int makerID, CancellationToken cancellationToken = default)
     {
-        var list = await _products.ToArrayAsync(c => c.MakerID == makerID, cancellationToken);
+        var list = await _products.ToArrayAsync(c => c.PublishHousingID == makerID, cancellationToken);
 
 
         return list.Select(Product.Mapper.Map).Select(Map).ToArray();
@@ -56,7 +56,7 @@ internal class ProductService : IProductService
         else
             array = await _products.ToArrayAsync(c => c.Title.ToLower().Contains(search.ToLower())
                                                     || c.Category.ToLower().Contains(search.ToLower())
-                                                    || c.Maker.Title.ToLower().Contains(search.ToLower())
+                                                    || c.PublishHousing.Title.ToLower().Contains(search.ToLower())
                                 , cancellationToken);
 
         return array.Select(Product.Mapper.Map).Select(Map).ToArray();

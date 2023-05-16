@@ -7,7 +7,7 @@
 namespace Store.Memory.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class Init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -16,21 +16,20 @@ namespace Store.Memory.Migrations
                 name: "dbo");
 
             migrationBuilder.CreateTable(
-                name: "Makers",
+                name: "Authors",
                 schema: "dbo",
                 columns: table => new
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Title = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    NumberPhone = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    Address = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: true),
+                    FirstName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    SecondName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    LastName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Makers", x => x.ID);
+                    table.PrimaryKey("PK_Authors", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -56,6 +55,24 @@ namespace Store.Memory.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "PublishingHouses",
+                schema: "dbo",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Title = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    NumberPhone = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
+                    Address = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PublishingHouses", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Books",
                 schema: "dbo",
                 columns: table => new
@@ -63,9 +80,10 @@ namespace Store.Memory.Migrations
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    MakerID = table.Column<int>(type: "int", nullable: false),
+                    PublishHousingID = table.Column<int>(type: "int", nullable: false),
                     ISBN = table.Column<string>(type: "nvarchar(35)", maxLength: 35, nullable: true),
                     Category = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    AuthorID = table.Column<int>(type: "int", nullable: false),
                     Price = table.Column<decimal>(type: "money", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: true)
                 },
@@ -73,10 +91,17 @@ namespace Store.Memory.Migrations
                 {
                     table.PrimaryKey("PK_Products", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_Maker",
-                        column: x => x.MakerID,
+                        name: "FK_Authors",
+                        column: x => x.AuthorID,
                         principalSchema: "dbo",
-                        principalTable: "Makers",
+                        principalTable: "Authors",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_PublishingHouses",
+                        column: x => x.PublishHousingID,
+                        principalSchema: "dbo",
+                        principalTable: "PublishingHouses",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -114,7 +139,13 @@ namespace Store.Memory.Migrations
 
             migrationBuilder.InsertData(
                 schema: "dbo",
-                table: "Makers",
+                table: "Authors",
+                columns: new[] { "ID", "Description", "FirstName", "LastName", "SecondName" },
+                values: new object[] { 1, "куринные яйца, категории C0", "Test", "Test", "Test" });
+
+            migrationBuilder.InsertData(
+                schema: "dbo",
+                table: "PublishingHouses",
                 columns: new[] { "ID", "Address", "Description", "Email", "NumberPhone", "Title" },
                 values: new object[,]
                 {
@@ -127,20 +158,26 @@ namespace Store.Memory.Migrations
             migrationBuilder.InsertData(
                 schema: "dbo",
                 table: "Books",
-                columns: new[] { "ID", "Category", "Description", "ISBN", "MakerID", "Price", "Title" },
+                columns: new[] { "ID", "AuthorID", "Category", "Description", "ISBN", "Price", "PublishHousingID", "Title" },
                 values: new object[,]
                 {
-                    { 1, "яйца", "куринные яйца, категории C0", null, 1, 30m, "яйца" },
-                    { 2, "выпечка", "хлебо-булочные изделия", null, 2, 20m, "хлеб" },
-                    { 3, "мясо", "мясо из говядины и телятины", null, 3, 30m, "говядина" },
-                    { 4, "мясо", "мясо из свинины", null, 4, 40m, "свинина" }
+                    { 1, 1, "яйца", "куринные яйца, категории C0", null, 30m, 1, "яйца" },
+                    { 2, 1, "выпечка", "хлебо-булочные изделия", null, 20m, 2, "хлеб" },
+                    { 3, 1, "мясо", "мясо из говядины и телятины", null, 30m, 3, "говядина" },
+                    { 4, 1, "мясо", "мясо из свинины", null, 40m, 4, "свинина" }
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Books_MakerID",
+                name: "IX_Books_AuthorID",
                 schema: "dbo",
                 table: "Books",
-                column: "MakerID");
+                column: "AuthorID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Books_PublishHousingID",
+                schema: "dbo",
+                table: "Books",
+                column: "PublishHousingID");
 
             migrationBuilder.CreateIndex(
                 name: "UI_ISBN_Books",
@@ -179,7 +216,11 @@ namespace Store.Memory.Migrations
                 schema: "dbo");
 
             migrationBuilder.DropTable(
-                name: "Makers",
+                name: "Authors",
+                schema: "dbo");
+
+            migrationBuilder.DropTable(
+                name: "PublishingHouses",
                 schema: "dbo");
         }
     }

@@ -15,7 +15,8 @@ internal sealed class ProductConfiguration : IEntityTypeConfiguration<ProductEnt
 
         builder.Property(dto => dto.ID).HasColumnName("ID").ValueGeneratedOnAdd();
         builder.Property(dto => dto.Price).HasColumnName("Price").HasColumnType("money");
-        builder.Property(dto => dto.MakerID).HasColumnName("MakerID");
+        builder.Property(dto => dto.PublishHousingID).HasColumnName("PublishHousingID");
+        builder.Property(dto => dto.AuthorID).HasColumnName("AuthorID");
 
         builder.Property(dto => dto.Title)
                 .HasMaxLength(50)
@@ -35,19 +36,26 @@ internal sealed class ProductConfiguration : IEntityTypeConfiguration<ProductEnt
             .HasMaxLength(1000)
             .HasColumnName("Description");
 
-        builder.HasOne(c => c.Maker)
+        builder.HasOne(c => c.PublishHousing)
             .WithMany()
-            .HasForeignKey(c => c.MakerID)
+            .HasForeignKey(c => c.PublishHousingID)
             .OnDelete(DeleteBehavior.Cascade)
             .HasConstraintName("FK_PublishingHouses");
+
+        builder.HasOne(c => c.Author)
+                .WithMany(c => c.Books)
+                .HasForeignKey(c => c.AuthorID)
+                .OnDelete(DeleteBehavior.Cascade)
+                .HasConstraintName("FK_Authors");
 
         builder.HasData(
             new ProductEntity
             {
                 ID = 1,
-                MakerID = 1,
+                PublishHousingID = 1,
                 Title = "яйца",
                 Category = "яйца",
+                AuthorID = 1,
                 Description = "куринные яйца, категории C0",
                 Price = 30m
             },
@@ -55,9 +63,10 @@ internal sealed class ProductConfiguration : IEntityTypeConfiguration<ProductEnt
             new ProductEntity
             {
                 ID = 2,
-                MakerID = 2,
+                PublishHousingID = 2,
                 Title = "хлеб",
                 Category = "выпечка",
+                AuthorID = 1,
                 Description = "хлебо-булочные изделия",
                 Price = 20m
             },
@@ -65,9 +74,10 @@ internal sealed class ProductConfiguration : IEntityTypeConfiguration<ProductEnt
             new ProductEntity
             {
                 ID = 3,
-                MakerID = 3,
+                PublishHousingID = 3,
                 Title = "говядина",
                 Category = "мясо",
+                AuthorID = 1,
                 Description = "мясо из говядины и телятины",
                 Price = 30m
             },
@@ -75,8 +85,9 @@ internal sealed class ProductConfiguration : IEntityTypeConfiguration<ProductEnt
             new ProductEntity
             {
                 ID = 4,
-                MakerID = 4,
+                PublishHousingID = 4,
                 Title = "свинина",
+                AuthorID = 1,
                 Category = "мясо",
                 Description = "мясо из свинины",
                 Price = 40m

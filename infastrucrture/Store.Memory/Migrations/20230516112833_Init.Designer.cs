@@ -11,8 +11,8 @@ using Store.Memory;
 namespace Store.Memory.Migrations
 {
     [DbContext(typeof(StoreDbContext))]
-    [Migration("20230516105837_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20230516112833_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,7 +24,7 @@ namespace Store.Memory.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Store.Data.MakerEntity", b =>
+            modelBuilder.Entity("Store.DTO.Author", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -33,73 +33,42 @@ namespace Store.Memory.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
-                    b.Property<string>("Address")
-                        .HasMaxLength(1000)
-                        .HasColumnType("nvarchar(1000)")
-                        .HasColumnName("Address");
-
                     b.Property<string>("Description")
                         .HasMaxLength(1000)
                         .HasColumnType("nvarchar(1000)")
                         .HasColumnName("Description");
 
-                    b.Property<string>("Email")
+                    b.Property<string>("FirstName")
+                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)")
-                        .HasColumnName("Email");
+                        .HasColumnName("FirstName");
 
-                    b.Property<string>("NumberPhone")
-                        .HasMaxLength(15)
-                        .HasColumnType("nvarchar(15)")
-                        .HasColumnName("NumberPhone");
-
-                    b.Property<string>("Title")
+                    b.Property<string>("LastName")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)")
-                        .HasColumnName("Title");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)")
+                        .HasColumnName("LastName");
+
+                    b.Property<string>("SecondName")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)")
+                        .HasColumnName("SecondName");
 
                     b.HasKey("ID")
-                        .HasName("PK_Makers");
+                        .HasName("PK_Authors");
 
-                    b.ToTable("Makers", "dbo");
+                    b.ToTable("Authors", "dbo");
 
                     b.HasData(
                         new
                         {
                             ID = 1,
-                            Address = "ООО 'Красная Цена' Самара",
-                            Description = "Название Красная Цена выбрано не случайно!",
-                            Email = "redPrice@gmail.com",
-                            NumberPhone = "8937-216-76-11",
-                            Title = "Красная цена "
-                        },
-                        new
-                        {
-                            ID = 2,
-                            Address = "ул.Комарова, д.41;",
-                            Description = "У нас вы найдете экологически чистые продукты по приятным ценам",
-                            Email = "alma@mail.ru",
-                            NumberPhone = "8347-827-36-96",
-                            Title = "АЛМА"
-                        },
-                        new
-                        {
-                            ID = 3,
-                            Address = "Транспортный проезд д.7 г. Одинцово Московская область",
-                            Description = "Компания «Мясницкий ряд» основана в 2004 году на базе Первого Одинцовского мясокомбината. Наша компания активно растёт и развивается, регулярно расширяя ассортимент и повышая качество выпускаемой продукции.",
-                            Email = "zakupki@kolbasa.ru",
-                            NumberPhone = "+7495-411-33-41",
-                            Title = "Мясницкий ряд"
-                        },
-                        new
-                        {
-                            ID = 4,
-                            Address = "Москва 125047 Лесная улица 5Б, бизнес - центр «Белая площадь», 12 - й этаж",
-                            Description = "Мясное производство для нас не просто бизнес. Делать лучшие в стране продукты питания — наша страсть и призвание.",
-                            Email = "sk@cherkizovo.com",
-                            NumberPhone = "+7495-660-24-40",
-                            Title = "Черкизово"
+                            Description = "куринные яйца, категории C0",
+                            FirstName = "Test",
+                            LastName = "Test",
+                            SecondName = "Test"
                         });
                 });
 
@@ -203,6 +172,10 @@ namespace Store.Memory.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
+                    b.Property<int>("AuthorID")
+                        .HasColumnType("int")
+                        .HasColumnName("AuthorID");
+
                     b.Property<string>("Category")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -219,13 +192,13 @@ namespace Store.Memory.Migrations
                         .HasColumnType("nvarchar(35)")
                         .HasColumnName("ISBN");
 
-                    b.Property<int>("MakerID")
-                        .HasColumnType("int")
-                        .HasColumnName("MakerID");
-
                     b.Property<decimal>("Price")
                         .HasColumnType("money")
                         .HasColumnName("Price");
+
+                    b.Property<int>("PublishHousingID")
+                        .HasColumnType("int")
+                        .HasColumnName("PublishHousingID");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -236,7 +209,9 @@ namespace Store.Memory.Migrations
                     b.HasKey("ID")
                         .HasName("PK_Products");
 
-                    b.HasIndex("MakerID");
+                    b.HasIndex("AuthorID");
+
+                    b.HasIndex("PublishHousingID");
 
                     b.HasIndex(new[] { "ISBN" }, "UI_ISBN_Books")
                         .IsUnique()
@@ -248,38 +223,121 @@ namespace Store.Memory.Migrations
                         new
                         {
                             ID = 1,
+                            AuthorID = 1,
                             Category = "яйца",
                             Description = "куринные яйца, категории C0",
-                            MakerID = 1,
                             Price = 30m,
+                            PublishHousingID = 1,
                             Title = "яйца"
                         },
                         new
                         {
                             ID = 2,
+                            AuthorID = 1,
                             Category = "выпечка",
                             Description = "хлебо-булочные изделия",
-                            MakerID = 2,
                             Price = 20m,
+                            PublishHousingID = 2,
                             Title = "хлеб"
                         },
                         new
                         {
                             ID = 3,
+                            AuthorID = 1,
                             Category = "мясо",
                             Description = "мясо из говядины и телятины",
-                            MakerID = 3,
                             Price = 30m,
+                            PublishHousingID = 3,
                             Title = "говядина"
                         },
                         new
                         {
                             ID = 4,
+                            AuthorID = 1,
                             Category = "мясо",
                             Description = "мясо из свинины",
-                            MakerID = 4,
                             Price = 40m,
+                            PublishHousingID = 4,
                             Title = "свинина"
+                        });
+                });
+
+            modelBuilder.Entity("Store.Data.PublishingHouseEntity", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("ID");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<string>("Address")
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)")
+                        .HasColumnName("Address");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)")
+                        .HasColumnName("Description");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)")
+                        .HasColumnName("Email");
+
+                    b.Property<string>("NumberPhone")
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)")
+                        .HasColumnName("NumberPhone");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)")
+                        .HasColumnName("Title");
+
+                    b.HasKey("ID")
+                        .HasName("PK_PublishingHouses");
+
+                    b.ToTable("PublishingHouses", "dbo");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            Address = "ООО 'Красная Цена' Самара",
+                            Description = "Название Красная Цена выбрано не случайно!",
+                            Email = "redPrice@gmail.com",
+                            NumberPhone = "8937-216-76-11",
+                            Title = "Красная цена "
+                        },
+                        new
+                        {
+                            ID = 2,
+                            Address = "ул.Комарова, д.41;",
+                            Description = "У нас вы найдете экологически чистые продукты по приятным ценам",
+                            Email = "alma@mail.ru",
+                            NumberPhone = "8347-827-36-96",
+                            Title = "АЛМА"
+                        },
+                        new
+                        {
+                            ID = 3,
+                            Address = "Транспортный проезд д.7 г. Одинцово Московская область",
+                            Description = "Компания «Мясницкий ряд» основана в 2004 году на базе Первого Одинцовского мясокомбината. Наша компания активно растёт и развивается, регулярно расширяя ассортимент и повышая качество выпускаемой продукции.",
+                            Email = "zakupki@kolbasa.ru",
+                            NumberPhone = "+7495-411-33-41",
+                            Title = "Мясницкий ряд"
+                        },
+                        new
+                        {
+                            ID = 4,
+                            Address = "Москва 125047 Лесная улица 5Б, бизнес - центр «Белая площадь», 12 - й этаж",
+                            Description = "Мясное производство для нас не просто бизнес. Делать лучшие в стране продукты питания — наша страсть и призвание.",
+                            Email = "sk@cherkizovo.com",
+                            NumberPhone = "+7495-660-24-40",
+                            Title = "Черкизово"
                         });
                 });
 
@@ -306,14 +364,28 @@ namespace Store.Memory.Migrations
 
             modelBuilder.Entity("Store.Data.ProductEntity", b =>
                 {
-                    b.HasOne("Store.Data.MakerEntity", "Maker")
-                        .WithMany()
-                        .HasForeignKey("MakerID")
+                    b.HasOne("Store.DTO.Author", "Author")
+                        .WithMany("Books")
+                        .HasForeignKey("AuthorID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("FK_Maker");
+                        .HasConstraintName("FK_Authors");
 
-                    b.Navigation("Maker");
+                    b.HasOne("Store.Data.PublishingHouseEntity", "PublishHousing")
+                        .WithMany()
+                        .HasForeignKey("PublishHousingID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_PublishingHouses");
+
+                    b.Navigation("Author");
+
+                    b.Navigation("PublishHousing");
+                });
+
+            modelBuilder.Entity("Store.DTO.Author", b =>
+                {
+                    b.Navigation("Books");
                 });
 
             modelBuilder.Entity("Store.Data.OrderEntity", b =>
