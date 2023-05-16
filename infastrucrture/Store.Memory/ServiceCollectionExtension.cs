@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
+using Store.IntarfaceRepositroy;
 
 namespace Store.Memory;
 
@@ -24,6 +23,8 @@ public static class ServiceCollectionExtension
         );
 
         services.AddScoped(typeof(IReadonlyRepository<>), typeof(ReadonlyRepository<>));
+        services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+        services.AddScoped(typeof(IUnitOfWork), typeof(StoreDbContext));
 
         return services;
     }

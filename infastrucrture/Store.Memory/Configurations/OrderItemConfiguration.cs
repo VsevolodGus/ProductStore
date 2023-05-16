@@ -12,8 +12,8 @@ internal sealed class OrderItemConfiguration : IEntityTypeConfiguration<OrderIte
 
         builder.HasKey(c => c.ID).HasName("PK_OrderItems");
 
-        builder.Property(dto => dto.ID).HasColumnType("ID").ValueGeneratedOnAdd();
-        builder.Property(dto => dto.Price).HasColumnName("Price");
+        builder.Property(dto => dto.ID).HasColumnName("ID").ValueGeneratedOnAdd();
+        builder.Property(dto => dto.Price).HasColumnName("Price").HasColumnType("money");
         builder.Property(dto => dto.Count).HasColumnName("Count");
         builder.Property(dto => dto.OrderID).HasColumnName("OrderID");
         builder.Property(dto => dto.ProductID).HasColumnName("ProductID");

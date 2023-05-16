@@ -5,6 +5,9 @@ namespace Store.Memory;
 internal class Repository<TEntity> : ReadonlyRepository<TEntity>, IRepository<TEntity>
     where TEntity : class
 {
+
+    public Repository(StoreDbContext storeDbContext) : base(storeDbContext)
+    { }
     public void Delete(TEntity entity)
         => _dbContext.Set<TEntity>().Remove(entity);
     

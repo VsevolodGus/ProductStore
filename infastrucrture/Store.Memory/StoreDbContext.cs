@@ -8,7 +8,6 @@ namespace Store.Memory;
 
 public class StoreDbContext : DbContext, IUnitOfWork
 {
-
     public DbSet<ProductEntity> Products { get; init; }
 
     public DbSet<MakerEntity> Makers { get; init; }
@@ -18,7 +17,10 @@ public class StoreDbContext : DbContext, IUnitOfWork
     public DbSet<OrderItemEntity> OrderItems { get; init; }
 
     public StoreDbContext(DbContextOptions<StoreDbContext> options) : base(options)
-    { }
+    {
+        //Database.EnsureDeleted();   // удаляем бд со старой схемой
+        //Database.EnsureCreated();   // создаем бд с новой схемой    
+    }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

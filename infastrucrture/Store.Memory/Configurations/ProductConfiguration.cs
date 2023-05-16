@@ -12,7 +12,7 @@ internal sealed class ProductConfiguration : IEntityTypeConfiguration<ProductEnt
         builder.HasKey(c=> c.ID).HasName("PK_Products");
 
         builder.Property(dto => dto.ID).HasColumnName("ID").ValueGeneratedOnAdd();
-        builder.Property(dto => dto.Price).HasColumnName("Price");
+        builder.Property(dto => dto.Price).HasColumnName("Price").HasColumnType("money");
         builder.Property(dto => dto.MakerID).HasColumnName("MakerID");
 
         builder.Property(dto => dto.Title)
@@ -28,9 +28,6 @@ internal sealed class ProductConfiguration : IEntityTypeConfiguration<ProductEnt
         builder.Property(dto => dto.Description)
             .HasMaxLength(1000)
             .HasColumnName("Description");
-
-        builder.Property(dto => dto.MakerID).HasColumnName("MakerID");
-        builder.Property(dto => dto.Price).HasColumnName("Price");
 
         builder.HasOne(c => c.Maker)
             .WithMany()

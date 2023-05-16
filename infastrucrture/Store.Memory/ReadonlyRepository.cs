@@ -13,6 +13,12 @@ internal class ReadonlyRepository<TEntity> : IReadonlyRepository<TEntity>
     //TODO инъектить DbSet 
     protected readonly StoreDbContext _dbContext;
 
+    public ReadonlyRepository(StoreDbContext storeDbContext)
+    {
+        _dbContext = storeDbContext;
+    }
+
+
     private IQueryable<TEntity> query => _dbContext.Set<TEntity>().AsNoTracking();
     
     public Task<bool> AnyAsync(Expression<Func<TEntity, bool>> expression, CancellationToken cancellationToken = default)

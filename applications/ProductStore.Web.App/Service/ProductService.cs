@@ -11,8 +11,11 @@ internal class ProductService : IProductService
 {
     private readonly IReadonlyRepository<ProductEntity> _products;
     private readonly IReadonlyRepository<MakerEntity> _makers;
-    public ProductService()
+    public ProductService(IReadonlyRepository<ProductEntity> products
+        , IReadonlyRepository<MakerEntity> makers)
     {
+        _makers = makers;
+        _products = products;
     }
 
     /// <summary>
@@ -47,13 +50,16 @@ internal class ProductService : IProductService
     /// <returns>список моделей продуктов</returns>
     public async Task<ProductModel[]> GetAllByQueryAsync(string search, CancellationToken cancellationToken = default)
     {
-        var list = await _products.ToArrayAsync(c => c.Title.ToLower().Contains(search.ToLower())
+        ProductEntity[] array;
+        if(string.IsNullOrEmpty(search))
+            array = await _products.ToArrayAsync(cancellationToken);
+        else
+            array = await _products.ToArrayAsync(c => c.Title.ToLower().Contains(search.ToLower())
                                                     || c.Category.ToLower().Contains(search.ToLower())
                                                     || c.Maker.Title.ToLower().Contains(search.ToLower())
                                 , cancellationToken);
-       
 
-        return list.Select(Product.Mapper.Map).Select(Map).ToArray();
+        return array.Select(Product.Mapper.Map).Select(Map).ToArray();
     }
 
     /// <summary>

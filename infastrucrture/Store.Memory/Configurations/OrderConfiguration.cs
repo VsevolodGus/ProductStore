@@ -13,8 +13,10 @@ internal sealed class OrderConfiguration : IEntityTypeConfiguration<OrderEntity>
 {
     public void Configure(EntityTypeBuilder<OrderEntity> builder)
     {
+        builder.ToTable("Orders", Options.Scheme);
+
         builder.Property(c=> c.ID).ValueGeneratedOnAdd().HasColumnName("ID");
-        builder.Property(c => c.DeliveryPrice).HasColumnName("DeliveryPrice");
+        builder.Property(c => c.DeliveryPrice).HasColumnName("DeliveryPrice").HasColumnType("money");
         builder.Property(c => c.Email).HasMaxLength(50).HasColumnName("Email");
         builder.Property(c => c.CellPhone).HasMaxLength(20).HasColumnName("CellPhone");
         builder.Property(c => c.PaymentUniqueCode).HasMaxLength(30).HasColumnName("PaymentUniqueCode");

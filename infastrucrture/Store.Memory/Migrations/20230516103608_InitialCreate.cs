@@ -1,91 +1,118 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
+#nullable disable
+
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace Store.Memory.Migrations
 {
+    /// <inheritdoc />
     public partial class InitialCreate : Migration
     {
+        /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.EnsureSchema(
+                name: "dbo");
+
             migrationBuilder.CreateTable(
                 name: "Makers",
+                schema: "dbo",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     NumberPhone = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    Addres = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Address = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Makers", x => x.Id);
+                    table.PrimaryKey("PK_Makers", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Orders",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CellPhone = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     DeliveryUniqueCode = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: true),
-                    DeliveryDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DeliveryPrice = table.Column<decimal>(type: "money", nullable: false),
+                    DeliveryDescription = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: true),
+                    DeliveryPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     DeliveryParameters = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PaymentUniqueCode = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: true),
-                    PaymentDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PaymentParametrs = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    PaymentDescription = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: true),
+                    PaymentParameters = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Orders", x => x.Id);
+                    table.PrimaryKey("PK_Orders", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Products",
+                schema: "dbo",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    IdMaker = table.Column<int>(type: "int", nullable: false),
+                    MakerID = table.Column<int>(type: "int", nullable: false),
                     Category = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Price = table.Column<decimal>(type: "money", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Products", x => x.Id);
+                    table.PrimaryKey("PK_Products", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_Maker",
+                        column: x => x.MakerID,
+                        principalSchema: "dbo",
+                        principalTable: "Makers",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
                 name: "OrderItems",
+                schema: "dbo",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ProductId = table.Column<int>(type: "int", nullable: false),
-                    Price = table.Column<decimal>(type: "money", nullable: false),
-                    Count = table.Column<int>(type: "int", nullable: false),
-                    OrderId = table.Column<int>(type: "int", nullable: false)
+                    ProductID = table.Column<int>(type: "int", nullable: false),
+                    OrderID = table.Column<int>(type: "int", nullable: false),
+                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Count = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_OrderItems", x => x.Id);
+                    table.PrimaryKey("PK_OrderItems", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_OrderItems_Orders_OrderId",
-                        column: x => x.OrderId,
+                        name: "FK_Order",
+                        column: x => x.OrderID,
                         principalTable: "Orders",
-                        principalColumn: "Id",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Product",
+                        column: x => x.ProductID,
+                        principalSchema: "dbo",
+                        principalTable: "Products",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
+                schema: "dbo",
                 table: "Makers",
-                columns: new[] { "Id", "Addres", "Description", "Email", "NumberPhone", "Title" },
+                columns: new[] { "ID", "Address", "Description", "Email", "NumberPhone", "Title" },
                 values: new object[,]
                 {
                     { 1, "ООО 'Красная Цена' Самара", "Название Красная Цена выбрано не случайно!", "redPrice@gmail.com", "8937-216-76-11", "Красная цена " },
@@ -95,8 +122,9 @@ namespace Store.Memory.Migrations
                 });
 
             migrationBuilder.InsertData(
+                schema: "dbo",
                 table: "Products",
-                columns: new[] { "Id", "Category", "Description", "IdMaker", "Price", "Title" },
+                columns: new[] { "ID", "Category", "Description", "MakerID", "Price", "Title" },
                 values: new object[,]
                 {
                     { 1, "яйца", "куринные яйца, категории C0", 1, 30m, "яйца" },
@@ -106,24 +134,41 @@ namespace Store.Memory.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_OrderItems_OrderId",
+                name: "IX_OrderItems_OrderID",
+                schema: "dbo",
                 table: "OrderItems",
-                column: "OrderId");
+                column: "OrderID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_OrderItems_ProductID",
+                schema: "dbo",
+                table: "OrderItems",
+                column: "ProductID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Products_MakerID",
+                schema: "dbo",
+                table: "Products",
+                column: "MakerID");
         }
 
+        /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Makers");
-
-            migrationBuilder.DropTable(
-                name: "OrderItems");
-
-            migrationBuilder.DropTable(
-                name: "Products");
+                name: "OrderItems",
+                schema: "dbo");
 
             migrationBuilder.DropTable(
                 name: "Orders");
+
+            migrationBuilder.DropTable(
+                name: "Products",
+                schema: "dbo");
+
+            migrationBuilder.DropTable(
+                name: "Makers",
+                schema: "dbo");
         }
     }
 }
