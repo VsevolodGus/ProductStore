@@ -7,7 +7,7 @@ namespace ProductStore.Web.App
     /// <summary>
     /// Расширение для сессий
     /// </summary>
-    public static class SessionExtentions
+    public static class SessionExtension
     {
         private const string key = "cart";
 

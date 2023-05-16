@@ -1,4 +1,5 @@
-﻿using Store;
+﻿using ProductStore.Web.App.Service;
+using Store;
 using Store.Data;
 using System.Linq;
 using System.Threading;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ProductStore.Web.App;
 
-public class ProductService
+internal class ProductService : IProductService
 {
     private readonly IReadonlyRepository<ProductEntity> _products;
     private readonly IReadonlyRepository<MakerEntity> _makers;

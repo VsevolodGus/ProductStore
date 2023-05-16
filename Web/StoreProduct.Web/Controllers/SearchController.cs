@@ -1,14 +1,15 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProductStore.Web.App;
+using ProductStore.Web.App.Service;
 using System.Threading.Tasks;
 
 namespace StoreProduct.Web.Controllers;
 
 public class SearchController : Controller
 {
-    private readonly ProductService productService;
+    private readonly IProductService productService;
 
-    public SearchController(ProductService productService)
+    public SearchController(IProductService productService)
     {
         this.productService = productService;
     }
@@ -34,7 +35,7 @@ public class SearchController : Controller
     /// <returns>страница списка продуктов</returns>
     public async Task<IActionResult> GetAllProductsMakers(int makerID)
     {
-        var model = await productService.GetAllByIdMakerAsync(makerID);
+        var model = await productService.GetAllByIdMakerAsync(makerID, HttpContext.RequestAborted);
         if (model == null || model.Length == 0)
             return View("EmptySearch");
 

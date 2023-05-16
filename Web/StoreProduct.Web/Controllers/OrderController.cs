@@ -1,12 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Linq;
-using System.Collections.Generic;
-using Store.Contract;
+using ProductStore.Web.App.Service;
 using ProductStore.Web.Contract;
-using ProductStore.Web.App;
+using Store.Contract;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
-
 
 namespace StoreProduct.Web.Controllers
 {
@@ -15,12 +14,12 @@ namespace StoreProduct.Web.Controllers
         private readonly IEnumerable<IDeliveryService> deliveryServices;
         private readonly IEnumerable<IPaymentService> paymentServices;
         private readonly IEnumerable<IWebContractorService> webContractServices;
-        private readonly OrderService orderService;
+        private readonly IOrderService orderService;
 
         public OrderController(IEnumerable<IDeliveryService> deliveryServices,
                                IEnumerable<IPaymentService> paymentServices,
                                IEnumerable<IWebContractorService> webContractServices,
-                               OrderService orderService)
+                               IOrderService orderService)
         {
             this.deliveryServices = deliveryServices;
             this.paymentServices = paymentServices;
@@ -36,7 +35,7 @@ namespace StoreProduct.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var (hasValue, model) = await orderService.TryGetModelAsync();
+            var (hasValue, model) = await orderService.TryGetModelAsync(HttpContext.RequestAborted);
             if (hasValue)
                 return View(model);
 

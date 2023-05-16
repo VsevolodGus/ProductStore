@@ -1,15 +1,15 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ProductStore.Web.App;
+using ProductStore.Web.App.Service;
 using System.Threading.Tasks;
 
 namespace StoreProduct.Web.Controllers;
 
 public class InfoController : Controller
 {
-    private readonly ProductService productService;
-    private readonly MakerService makerService;
-    public InfoController(ProductService productService,
-                          MakerService makerService)
+    private readonly IProductService productService;
+    private readonly IMakerService makerService;
+    public InfoController(IProductService productService,
+                          IMakerService makerService)
     {
         this.productService = productService;
         this.makerService = makerService;

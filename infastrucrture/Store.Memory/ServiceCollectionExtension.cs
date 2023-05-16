@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Store.Memory;
 
-public static class ServiceCollectionExtentsions
+public static class ServiceCollectionExtension
 {
     /// <summary>
     /// Добавление регистрация в DI для работы с ef core

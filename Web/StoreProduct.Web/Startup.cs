@@ -36,6 +36,7 @@ public class Startup
             options.Cookie.HttpOnly = true;
         });
 
+        services.AddServices();
         services.AddEfRepositories(Configuration.GetConnectionString("Store"));
 
         services.AddScoped<INotificationService, DebugNotificationService>();
@@ -43,10 +44,7 @@ public class Startup
         services.AddScoped<IPaymentService, CashPaymentService>();
         services.AddScoped<IPaymentService, SberKassaPaymentService>();
         services.AddScoped<IWebContractorService, SberKassaPaymentService>();
-        
-        services.AddScoped<ProductService>();
-        services.AddScoped<MakerService>();
-        services.AddScoped<OrderService>();
+
 
     }
 
