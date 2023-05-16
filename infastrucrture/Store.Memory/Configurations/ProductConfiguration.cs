@@ -7,9 +7,11 @@ internal sealed class ProductConfiguration : IEntityTypeConfiguration<ProductEnt
 {
     public void Configure(EntityTypeBuilder<ProductEntity> builder)
     {
-        builder.ToTable("Products", Options.Scheme);
+        builder.ToTable("Books", Options.Scheme);
 
         builder.HasKey(c=> c.ID).HasName("PK_Products");
+
+        builder.HasIndex(c => c.ISBN, "UI_ISBN_Books").IsUnique();
 
         builder.Property(dto => dto.ID).HasColumnName("ID").ValueGeneratedOnAdd();
         builder.Property(dto => dto.Price).HasColumnName("Price").HasColumnType("money");
@@ -19,6 +21,10 @@ internal sealed class ProductConfiguration : IEntityTypeConfiguration<ProductEnt
                 .HasMaxLength(50)
                 .IsRequired()
                 .HasColumnName("Title");
+
+        builder.Property(dto => dto.ISBN)
+                .HasMaxLength(35)
+                .HasColumnName("ISBN");
 
         builder.Property(dto => dto.Category)
                 .HasMaxLength(50)

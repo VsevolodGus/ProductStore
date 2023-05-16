@@ -35,6 +35,7 @@ namespace Store.Memory.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Orders",
+                schema: "dbo",
                 columns: table => new
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
@@ -43,7 +44,7 @@ namespace Store.Memory.Migrations
                     Email = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     DeliveryUniqueCode = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: true),
                     DeliveryDescription = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: true),
-                    DeliveryPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    DeliveryPrice = table.Column<decimal>(type: "money", nullable: false),
                     DeliveryParameters = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PaymentUniqueCode = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: true),
                     PaymentDescription = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: true),
@@ -55,7 +56,7 @@ namespace Store.Memory.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Products",
+                name: "Books",
                 schema: "dbo",
                 columns: table => new
                 {
@@ -63,8 +64,9 @@ namespace Store.Memory.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     MakerID = table.Column<int>(type: "int", nullable: false),
+                    ISBN = table.Column<string>(type: "nvarchar(35)", maxLength: 35, nullable: true),
                     Category = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Price = table.Column<decimal>(type: "money", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: true)
                 },
                 constraints: table =>
@@ -88,7 +90,7 @@ namespace Store.Memory.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ProductID = table.Column<int>(type: "int", nullable: false),
                     OrderID = table.Column<int>(type: "int", nullable: false),
-                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Price = table.Column<decimal>(type: "money", nullable: false),
                     Count = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -97,6 +99,7 @@ namespace Store.Memory.Migrations
                     table.ForeignKey(
                         name: "FK_Order",
                         column: x => x.OrderID,
+                        principalSchema: "dbo",
                         principalTable: "Orders",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
@@ -104,7 +107,7 @@ namespace Store.Memory.Migrations
                         name: "FK_Product",
                         column: x => x.ProductID,
                         principalSchema: "dbo",
-                        principalTable: "Products",
+                        principalTable: "Books",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -123,15 +126,29 @@ namespace Store.Memory.Migrations
 
             migrationBuilder.InsertData(
                 schema: "dbo",
-                table: "Products",
-                columns: new[] { "ID", "Category", "Description", "MakerID", "Price", "Title" },
+                table: "Books",
+                columns: new[] { "ID", "Category", "Description", "ISBN", "MakerID", "Price", "Title" },
                 values: new object[,]
                 {
-                    { 1, "яйца", "куринные яйца, категории C0", 1, 30m, "яйца" },
-                    { 2, "выпечка", "хлебо-булочные изделия", 2, 20m, "хлеб" },
-                    { 3, "мясо", "мясо из говядины и телятины", 3, 30m, "говядина" },
-                    { 4, "мясо", "мясо из свинины", 4, 40m, "свинина" }
+                    { 1, "яйца", "куринные яйца, категории C0", null, 1, 30m, "яйца" },
+                    { 2, "выпечка", "хлебо-булочные изделия", null, 2, 20m, "хлеб" },
+                    { 3, "мясо", "мясо из говядины и телятины", null, 3, 30m, "говядина" },
+                    { 4, "мясо", "мясо из свинины", null, 4, 40m, "свинина" }
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Books_MakerID",
+                schema: "dbo",
+                table: "Books",
+                column: "MakerID");
+
+            migrationBuilder.CreateIndex(
+                name: "UI_ISBN_Books",
+                schema: "dbo",
+                table: "Books",
+                column: "ISBN",
+                unique: true,
+                filter: "[ISBN] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_OrderItems_OrderID",
@@ -144,12 +161,6 @@ namespace Store.Memory.Migrations
                 schema: "dbo",
                 table: "OrderItems",
                 column: "ProductID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Products_MakerID",
-                schema: "dbo",
-                table: "Products",
-                column: "MakerID");
         }
 
         /// <inheritdoc />
@@ -160,10 +171,11 @@ namespace Store.Memory.Migrations
                 schema: "dbo");
 
             migrationBuilder.DropTable(
-                name: "Orders");
+                name: "Orders",
+                schema: "dbo");
 
             migrationBuilder.DropTable(
-                name: "Products",
+                name: "Books",
                 schema: "dbo");
 
             migrationBuilder.DropTable(

@@ -11,7 +11,7 @@ using Store.Memory;
 namespace Store.Memory.Migrations
 {
     [DbContext(typeof(StoreDbContext))]
-    [Migration("20230516103608_InitialCreate")]
+    [Migration("20230516105837_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -127,7 +127,7 @@ namespace Store.Memory.Migrations
                         .HasColumnName("DeliveryParameters");
 
                     b.Property<decimal>("DeliveryPrice")
-                        .HasColumnType("decimal(18,2)")
+                        .HasColumnType("money")
                         .HasColumnName("DeliveryPrice");
 
                     b.Property<string>("DeliveryUniqueCode")
@@ -156,7 +156,7 @@ namespace Store.Memory.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Orders");
+                    b.ToTable("Orders", "dbo");
                 });
 
             modelBuilder.Entity("Store.Data.OrderItemEntity", b =>
@@ -177,7 +177,7 @@ namespace Store.Memory.Migrations
                         .HasColumnName("OrderID");
 
                     b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)")
+                        .HasColumnType("money")
                         .HasColumnName("Price");
 
                     b.Property<int>("ProductID")
@@ -214,12 +214,17 @@ namespace Store.Memory.Migrations
                         .HasColumnType("nvarchar(1000)")
                         .HasColumnName("Description");
 
+                    b.Property<string>("ISBN")
+                        .HasMaxLength(35)
+                        .HasColumnType("nvarchar(35)")
+                        .HasColumnName("ISBN");
+
                     b.Property<int>("MakerID")
                         .HasColumnType("int")
                         .HasColumnName("MakerID");
 
                     b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)")
+                        .HasColumnType("money")
                         .HasColumnName("Price");
 
                     b.Property<string>("Title")
@@ -233,7 +238,11 @@ namespace Store.Memory.Migrations
 
                     b.HasIndex("MakerID");
 
-                    b.ToTable("Products", "dbo");
+                    b.HasIndex(new[] { "ISBN" }, "UI_ISBN_Books")
+                        .IsUnique()
+                        .HasFilter("[ISBN] IS NOT NULL");
+
+                    b.ToTable("Books", "dbo");
 
                     b.HasData(
                         new

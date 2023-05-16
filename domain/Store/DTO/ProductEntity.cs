@@ -9,6 +9,8 @@ public class ProductEntity
 
     public int MakerID { get; set; }
 
+    public string ISBN { get; }
+
     public string Category { get; set; }
 
     public decimal Price { get; set; }
