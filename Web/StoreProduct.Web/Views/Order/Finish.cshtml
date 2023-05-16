@@ -23,7 +23,7 @@
             <tr>
                 <td>@(i+1)</td>
                 <td><a href="@Url.Action(nameof(InfoController.InfoProduct), new { id = Model.Items[i].Id })">@Model.Items[i].Title</a></td>
-                <td><a href="@Url.Action(nameof(InfoController.InfoManufactureAsync),new { id = Model.Items[i].MakerId })">@Model.Items[i].MakerTitle</a></td>
+                <td><a href="@Url.Action(nameof(InfoController.InfoManufacture),new { id = Model.Items[i].MakerId })">@Model.Items[i].MakerTitle</a></td>
                 <td>@Model.Items[i].Count</td>
                 <td>@Model.Items[i].Price</td>
                 <td>@(Model.Items[i].Count * Model.Items[i].Price)</td>

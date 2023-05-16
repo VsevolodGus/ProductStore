@@ -22,7 +22,7 @@ public class InfoController : Controller
     /// <returns>страница с информацией о продукте</returns>
     public async Task<IActionResult> InfoProduct(int id)
     {
-        var model = await productService.GetByIdAsync(id);
+        var model = await productService.GetByIdAsync(id,HttpContext.RequestAborted);
 
         return View("InfoProduct", model);
     }
@@ -32,9 +32,9 @@ public class InfoController : Controller
     /// </summary>
     /// <param name="id">идентификатор производителя</param>
     /// <returns>страница с информацией о производителе</returns>
-    public async Task<IActionResult> InfoManufactureAsync(int id)
+    public async Task<IActionResult> InfoManufacture(int id)
     {
-        var manufacture = makerService.GetByIdAsync(id, HttpContext.RequestAborted);
+        var manufacture = await makerService.GetByIdAsync(id, HttpContext.RequestAborted);
 
         return View("InfoManufacture", manufacture);
     }

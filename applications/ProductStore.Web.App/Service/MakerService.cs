@@ -6,8 +6,6 @@ using System.Threading.Tasks;
 
 namespace ProductStore.Web.App;
 
-
-
 internal class MakerService : IMakerService
 {
     private readonly IReadonlyRepository<MakerEntity> _makers;
