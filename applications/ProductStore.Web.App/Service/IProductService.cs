@@ -9,14 +9,14 @@ public interface IProductService
     /// </summary>
     /// <param name="id">идентификатор продукта</param>
     /// <returns>модель продукта</returns>
-    Task<ProductModel> GetByIdAsync(int id, CancellationToken cancellationToken = default);
+    Task<ProductModel> GetByIDAsync(int id, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Получение продуктов по идентификатору
     /// </summary>
     /// <param name="makerID">идентификатор производителя</param>
     /// <returns>список моделей продуктов</returns>
-    Task<ProductModel[]> GetAllByIdMakerAsync(int makerID, CancellationToken cancellationToken = default);
+    Task<ProductModel[]> GetAllByIDMakerAsync(int makerID, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Получение списка продуктов

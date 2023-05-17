@@ -10,11 +10,8 @@ namespace ProductStore.Web.App;
 internal class ProductService : IProductService
 {
     private readonly IReadonlyRepository<ProductEntity> _products;
-    private readonly IReadonlyRepository<PublishingHouseEntity> _makers;
-    public ProductService(IReadonlyRepository<ProductEntity> products
-        , IReadonlyRepository<PublishingHouseEntity> makers)
+    public ProductService(IReadonlyRepository<ProductEntity> products)
     {
-        _makers = makers;
         _products = products;
     }
 
@@ -23,9 +20,10 @@ internal class ProductService : IProductService
     /// </summary>
     /// <param name="id">идентификатор продукта</param>
     /// <returns>модель продукта</returns>
-    public async Task<ProductModel> GetByIdAsync(int id, CancellationToken cancellationToken = default)
+    public async Task<ProductModel> GetByIDAsync(int id, CancellationToken cancellationToken = default)
     {
-        var product = await _products.FirstOrDefaultAsync(c=> c.ID == id, cancellationToken);
+        var product = await _products.With(c=> c.PublishHousing)
+            .FirstOrDefaultAsync(c=> c.ID == id, cancellationToken);
 
         return Map(Product.Mapper.Map(product));
     }
@@ -35,10 +33,9 @@ internal class ProductService : IProductService
     /// </summary>
     /// <param name="makerID">идентификатор производителя</param>
     /// <returns>список моделей продуктов</returns>
-    public async Task<ProductModel[]> GetAllByIdMakerAsync(int makerID, CancellationToken cancellationToken = default)
+    public async Task<ProductModel[]> GetAllByIDMakerAsync(int makerID, CancellationToken cancellationToken = default)
     {
         var list = await _products.ToArrayAsync(c => c.PublishHousingID == makerID, cancellationToken);
-
 
         return list.Select(Product.Mapper.Map).Select(Map).ToArray();
     }
@@ -51,10 +48,11 @@ internal class ProductService : IProductService
     public async Task<ProductModel[]> GetAllByQueryAsync(string search, CancellationToken cancellationToken = default)
     {
         ProductEntity[] array;
-        if(string.IsNullOrEmpty(search))
-            array = await _products.ToArrayAsync(cancellationToken);
+        var query = _products.With(c => c.PublishHousing);
+        if (string.IsNullOrEmpty(search))
+            array = await query.ToArrayAsync(cancellationToken);
         else
-            array = await _products.ToArrayAsync(c => c.Title.ToLower().Contains(search.ToLower())
+            array = await query.ToArrayAsync(c => c.Title.ToLower().Contains(search.ToLower())
                                                     || c.Category.ToLower().Contains(search.ToLower())
                                                     || c.PublishHousing.Title.ToLower().Contains(search.ToLower())
                                 , cancellationToken);
@@ -68,16 +66,14 @@ internal class ProductService : IProductService
     /// <param name="product">сущность</param>
     /// <returns>модель</returns>
     private ProductModel Map(Product product)
-    {
-        return new ProductModel
+        => new ProductModel
         {
-            ProductId = product.Id,
-            MakerId = product.MakerID,
+            ProductId = product.ID,
+            MakerId = product.PublishHousingID,
             ProductTitle = product.Title,
-            MakerTitle = _makers.FirstOrDefaultAsync(c=> c.ID == product.MakerID).Result.Title,
+            MakerTitle = product.Maker.Title,
             Category = product.Category,
             Price = product.Price,
             Description = product.Description
         };
-    }
 }

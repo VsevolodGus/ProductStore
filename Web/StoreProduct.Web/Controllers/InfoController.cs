@@ -22,7 +22,7 @@ public class InfoController : Controller
     /// <returns>страница с информацией о продукте</returns>
     public async Task<IActionResult> InfoProduct(int id)
     {
-        var model = await productService.GetByIdAsync(id,HttpContext.RequestAborted);
+        var model = await productService.GetByIDAsync(id, HttpContext.RequestAborted);
 
         return View("InfoProduct", model);
     }

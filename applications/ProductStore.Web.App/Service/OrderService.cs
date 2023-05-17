@@ -19,7 +19,6 @@ internal class OrderService : IOrderService
     private readonly INotificationService notificationService;
     private readonly IHttpContextAccessor httpContextAccessor;
     private readonly IReadonlyRepository<ProductEntity> products;
-    private readonly IReadonlyRepository<PublishingHouseEntity> _makers;
     private readonly IRepository<OrderEntity> _orders;
     private readonly IUnitOfWork _unitOfWork;
     private ISession Session => httpContextAccessor.HttpContext.Session;
@@ -36,7 +35,6 @@ internal class OrderService : IOrderService
         this.httpContextAccessor = httpContextAccessor;
         this.products = products;
         _unitOfWork = unitOfWork; 
-        _makers = makers;
         _orders = orders;
     }
 
@@ -80,15 +78,14 @@ internal class OrderService : IOrderService
     {
         var products = await GetProductsAsync(order);
         var items = from item in order.Items
-                    join product in products on item.ProductId equals product.Id
+                    join product in products on item.ProductId equals product.ID
                     select new OrderItemModel
                     {
-                        Id = product.Id,
+                        ID = product.ID,
                         Title = product.Title,
                         Count = item.Count,
-                        MakerId = product.MakerID,
-                        //TODO избавить от await blabla().Result
-                        MakerTitle = _makers.FirstOrDefaultAsync(c => c.ID == product.MakerID).Result.Title,
+                        MakerID = product.PublishHousingID,
+                        MakerTitle = product.Maker.Title,
                         Price = product.Price,
                     };
 
@@ -96,6 +93,43 @@ internal class OrderService : IOrderService
         {
             Id = order.ID,
             Items = items.ToList(),
+            CellPhone = order.CellPhone,
+            TotalCount = order.TotalCount,
+            TotalPrice = order.TotalPrice,
+            DeliveryDescription = order.Delivery?.Description,
+            DeliveryPrice = order.Delivery?.PriceDelivery,
+            PaymentDescription = order.Payment?.Description
+        };
+
+    }
+
+    /// <summary>
+    /// Маппинг сущности в модель
+    /// </summary>
+    /// <param name="order">сущность</param>
+    /// <returns>модель</returns>
+    private async Task<OrderModel> GetFullDataOrderAsync(Guid orderID, CancellationToken cancellationToken)
+    {
+        var orderEntity = await _orders.WithMany(c=> c.Items)
+            .ThenWith(c=> c.Product)
+            .ThenWith(c=> c.PublishHousing)
+            .FirstOrDefaultAsync(c=> c.ID == orderID, cancellationToken);
+        var order = Order.Mapper.Map(orderEntity);
+
+        return new OrderModel
+        {
+            Id = order.ID,
+            Items = order.Items.Select(OrderItem.Mapper.Map)
+            .Select(c => new OrderItemModel
+            {
+                ID = c.ID,
+                Count = c.Count,
+                Price = c.Price,
+                Title = c.Product.Title,
+                MakerID = c.Product.PublishHousingID,
+                MakerTitle = c.Product.PublishHousing.Title,
+            })
+            .ToList(),
             CellPhone = order.CellPhone,
             TotalCount = order.TotalCount,
             TotalPrice = order.TotalPrice,
@@ -115,7 +149,8 @@ internal class OrderService : IOrderService
     private async Task<IEnumerable<Product>> GetProductsAsync(Order order, CancellationToken cancellationToken = default)
     {
         var bookIds = order.Items.Select(item => item.ProductId);
-        var products = await this.products.ToArrayAsync(c=> bookIds.Contains(c.ID), cancellationToken);
+        var products = await this.products.With(c=> c.PublishHousing)
+                                          .ToArrayAsync(c=> bookIds.Contains(c.ID), cancellationToken);
         return products.Select(Product.Mapper.Map);
     }
 
@@ -135,9 +170,7 @@ internal class OrderService : IOrderService
         if (!hasValue)
         {
             order = Order.Mapper.Map(Order.DtoFactory.Create());
-            //await _orders.InsertAsync(Order.Mapper.Map(order));
             _orders.Insert(Order.Mapper.Map(order));
-            await _unitOfWork.SaveChangeAsync();
         }
 
         await AddOrUpdateProductAsync(order, productId, count);
@@ -163,7 +196,6 @@ internal class OrderService : IOrderService
         }
 
         _orders.Update(Order.Mapper.Map(order));
-        await _unitOfWork.SaveChangeAsync(cancellationToken);
     }
 
     /// <summary>

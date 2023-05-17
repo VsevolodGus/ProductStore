@@ -15,19 +15,19 @@
         {
         <tr>
             <td class="text-right">@(i+1)</td>
-            <td><a  href="@Url.Action(nameof(InfoController.InfoProduct),"Info", new { id = Model.Items[i].Id })">@Model.Items[i].Title</a></td>
-            <td><a href="@Url.Action(nameof(InfoController.InfoManufacture),"Info",new { id = Model.Items[i].MakerId })">@Model.Items[i].MakerTitle</a></td>
+            <td><a  href="@Url.Action(nameof(InfoController.InfoProduct),"Info", new { id = Model.Items[i].ID })">@Model.Items[i].Title</a></td>
+            <td><a href="@Url.Action(nameof(InfoController.InfoManufacture),"Info",new { id = Model.Items[i].MakerID })">@Model.Items[i].MakerTitle</a></td>
             <td class="text-center">@Model.Items[i].Count</td>
             <td class="text-right">@Model.Items[i].Price</td>
             <td class="form-in">
                 <form class="col-form-inline" action="@Url.Action(nameof(OrderController.RemoveItem),"Order")" method="post">
-                    <input type="hidden" name="id" value="@Model.Items[i].Id" />
+                    <input type="hidden" name="id" value="@Model.Items[i].ID" />
                     <button class="btn btn-danger" type="submit">Удалить</button>
                 </form>
             </td>
             <td class="form-in">
                 <form class="col-form-inline" action="@Url.Action(nameof(OrderController.RemoveProduct),"Order")" method="post">
-                    <input type="hidden" name="id" value="@Model.Items[i].Id" />
+                    <input type="hidden" name="id" value="@Model.Items[i].ID" />
                     <button class="btn btn-danger" type="submit">Удалить всё</button>
                 </form>
             </td>

@@ -34,7 +34,7 @@ public class SearchController : Controller
     /// <returns>страница списка продуктов</returns>
     public async Task<IActionResult> GetAllProductsMakers(int makerID)
     {
-        var model = await productService.GetAllByIdMakerAsync(makerID, HttpContext.RequestAborted);
+        var model = await productService.GetAllByIDMakerAsync(makerID, HttpContext.RequestAborted);
         if (model == null || model.Length == 0)
             return View("EmptySearch");
 
