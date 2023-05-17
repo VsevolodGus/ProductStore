@@ -1,5 +1,4 @@
-﻿using Store.Entities;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace Store.Entities;
 public class Author
@@ -10,5 +9,4 @@ public class Author
     public string LastName { get; init; }
     public string Description { get; init; }
     public virtual ICollection<ProductEntity> Books { get; init; }
-
 }
