@@ -62,7 +62,8 @@ internal class OrderService : IOrderService
     {
         if (Session.TryGetCart(out Cart cart))
         {
-            var order = await _orders.FirstOrDefaultAsync(c=> c.ID == cart.OrderID, cancellationToken);
+            var order = await _orders.WithMany(c=> c.Items)
+                .FirstOrDefaultAsync(c=> c.ID == cart.OrderID, cancellationToken);
 
             return (true, Order.Mapper.Map(order));
         }
