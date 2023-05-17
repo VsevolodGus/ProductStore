@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Query;
+using Store.InterfaceRepository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -48,53 +48,9 @@ internal class ReadonlyRepository<TEntity> : IReadonlyRepository<TEntity>
 
     #region Include
     public IIncludeRepository<TEntity, TProperty> With<TProperty>(Expression<Func<TEntity, TProperty>> expression)
-        => new IncludeReferencesRepository<TProperty>(Set, Query.Include(expression));
+        => new IncludeReferencesRepository<TEntity, TProperty>(Set, Query.Include(expression));
 
     public IIncludeRepository<TEntity, TProperty> WithMany<TProperty>(Expression<Func<TEntity, IEnumerable<TProperty>>> expression)
-        => new IncludeCollectionReferencesRepository<TProperty>(Set, Query.Include(expression));
-
-    private class IncludeReferencesRepository<TProperty> : ReadonlyRepository<TEntity>
-        , IIncludeRepository<TEntity, TProperty>
-    {
-        private readonly IIncludableQueryable<TEntity, TProperty> _query;
-
-        public IncludeReferencesRepository(DbSet<TEntity> entities
-            , IIncludableQueryable<TEntity, TProperty> query)
-            : base(entities, query)
-        {
-            _query = query;
-        }
-
-        public IIncludeRepository<TEntity, TNext> ThenWith<TNext>(Expression<Func<TProperty, TNext>> expression)
-            => new IncludeReferencesRepository<TNext>(Set, _query.ThenInclude(expression));
-
-        public IIncludeRepository<TEntity, TNext> ThenWithMany<TNext>(Expression<Func<TProperty, IEnumerable<TNext>>> expression)
-            => new IncludeCollectionReferencesRepository<TNext>(
-                Set
-                , _query.ThenInclude(expression));
-    }
-
-
-    private class IncludeCollectionReferencesRepository<TProperty> : ReadonlyRepository<TEntity>, IIncludeRepository<TEntity, TProperty>
-    {
-        private readonly IIncludableQueryable<TEntity, IEnumerable<TProperty>> _query;
-
-        public IncludeCollectionReferencesRepository(DbSet<TEntity> entities
-            , IIncludableQueryable<TEntity, IEnumerable<TProperty>> query)
-            : base(entities, query)
-        {
-            _query = query;
-        }
-
-        public IIncludeRepository<TEntity, TNext> ThenWith<TNext>(Expression<Func<TProperty, TNext>> expression)
-            => new IncludeReferencesRepository<TNext>(
-                Set
-                , _query.ThenInclude(expression));
-
-        public IIncludeRepository<TEntity, TNext> ThenWithMany<TNext>(Expression<Func<TProperty, IEnumerable<TNext>>> expression)
-            => new IncludeCollectionReferencesRepository<TNext>(
-                Set
-                , _query.ThenInclude(expression));
-    }
+        => new IncludeCollectionReferencesRepository<TEntity, TProperty>(Set, Query.Include(expression));
     #endregion
 }

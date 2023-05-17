@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 
-namespace Store.IntarfaceRepositroy;
+namespace Store.InterfaceRepository;
 public interface IUnitOfWork
 {
     public Task SaveChangeAsync(CancellationToken cancellationToken = default);

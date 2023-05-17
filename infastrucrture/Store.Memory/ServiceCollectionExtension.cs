@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Store.Entities;
-using Store.IntarfaceRepositroy;
+using Store.InterfaceRepository;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Store.InterfaceRepository;
+using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading;
@@ -15,11 +16,4 @@ public interface IReadonlyRepository<TEntity> where TEntity : class
     Task<bool> AnyAsync(CancellationToken cancellationToken = default);
     IIncludeRepository<TEntity, TProperty> With<TProperty>(Expression<Func<TEntity, TProperty>> expression);
     IIncludeRepository<TEntity, TProperty> WithMany<TProperty>(Expression<Func<TEntity, IEnumerable<TProperty>>> expression);
-}
-
-public interface IIncludeRepository<TEntity, TProperty> : IReadonlyRepository<TEntity> 
-    where TEntity : class
-{
-    IIncludeRepository<TEntity, TNext> ThenWith<TNext>(Expression<Func<TProperty, TNext>> expression);
-    IIncludeRepository<TEntity, TNext> ThenWithMany<TNext>(Expression<Func<TProperty, IEnumerable<TNext>>> expression);
 }

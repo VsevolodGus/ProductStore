@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Store.Entities;
-using Store.IntarfaceRepositroy;
+using Store.InterfaceRepository;
 using System.Threading;
 using System.Threading.Tasks;
 
