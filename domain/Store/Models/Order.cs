@@ -8,7 +8,7 @@ namespace Store
     public class Order
     {
         private readonly OrderEntity dto;
-        public int Id => dto.ID;
+        public Guid ID => dto.ID;
 
         public string CellPhone
         {

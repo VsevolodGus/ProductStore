@@ -1,5 +1,6 @@
 ﻿using Store;
 using Store.Entities;
+using System;
 using Xunit;
 
 namespace StoreTest
@@ -10,7 +11,7 @@ namespace StoreTest
         {
             return new Order(new OrderEntity
             {
-                ID = 1,
+                ID = Guid.NewGuid(),
                 Items = new OrderItemEntity[0]
             });
         }
@@ -32,13 +33,14 @@ namespace StoreTest
         }
         private static Order CreateTestOrder()
         {
+            var id = Guid.NewGuid();
             return new Order(new OrderEntity
             {
-                ID = 1,
+                ID = Guid.NewGuid(),
                 Items = new[]
                 {
-                    new OrderItemEntity { ProductID = 1, Price = 10m, Count = 3},
-                    new OrderItemEntity { ProductID = 2, Price = 100m, Count = 5},
+                    new OrderItemEntity { ProductID = 1, OrderID = id, Price = 10m, Count = 3},
+                    new OrderItemEntity { ProductID = 2, OrderID = id, Price = 100m, Count = 5},
                 }
             });
         }

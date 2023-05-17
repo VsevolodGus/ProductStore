@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -7,7 +8,7 @@
 namespace Store.Memory.Migrations
 {
     /// <inheritdoc />
-    public partial class Init : Migration
+    public partial class INIT : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -37,8 +38,7 @@ namespace Store.Memory.Migrations
                 schema: "dbo",
                 columns: table => new
                 {
-                    ID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CellPhone = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     DeliveryUniqueCode = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: true),
@@ -47,7 +47,8 @@ namespace Store.Memory.Migrations
                     DeliveryParameters = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PaymentUniqueCode = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: true),
                     PaymentDescription = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: true),
-                    PaymentParameters = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    PaymentParameters = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    StatusOrder = table.Column<short>(type: "smallint", nullable: false, defaultValue: (short)0)
                 },
                 constraints: table =>
                 {
@@ -114,7 +115,7 @@ namespace Store.Memory.Migrations
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ProductID = table.Column<int>(type: "int", nullable: false),
-                    OrderID = table.Column<int>(type: "int", nullable: false),
+                    OrderID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Price = table.Column<decimal>(type: "money", nullable: false),
                     Count = table.Column<int>(type: "int", nullable: false)
                 },

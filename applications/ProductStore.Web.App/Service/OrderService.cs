@@ -18,7 +18,7 @@ internal class OrderService : IOrderService
 {
     private readonly INotificationService notificationService;
     private readonly IHttpContextAccessor httpContextAccessor;
-    private readonly IReadonlyRepository<ProductEntity> _readonlyRepository;
+    private readonly IReadonlyRepository<ProductEntity> products;
     private readonly IReadonlyRepository<PublishingHouseEntity> _makers;
     private readonly IRepository<OrderEntity> _orders;
     private readonly IUnitOfWork _unitOfWork;
@@ -26,10 +26,18 @@ internal class OrderService : IOrderService
 
     public OrderService(
                         INotificationService notificationService,
-                        IHttpContextAccessor httpContextAccessor)
+                        IHttpContextAccessor httpContextAccessor,
+                        IReadonlyRepository<ProductEntity> products,
+                        IReadonlyRepository<PublishingHouseEntity> makers,
+                        IRepository<OrderEntity> orders,
+                        IUnitOfWork unitOfWork)
     {
         this.notificationService = notificationService;
         this.httpContextAccessor = httpContextAccessor;
+        this.products = products;
+        _unitOfWork = unitOfWork; 
+        _makers = makers;
+        _orders = orders;
     }
 
     
@@ -54,7 +62,7 @@ internal class OrderService : IOrderService
     {
         if (Session.TryGetCart(out Cart cart))
         {
-            var order = await _orders.FirstOrDefaultAsync(c=> c.ID == cart.OrderId, cancellationToken);
+            var order = await _orders.FirstOrDefaultAsync(c=> c.ID == cart.OrderID, cancellationToken);
 
             return (true, Order.Mapper.Map(order));
         }
@@ -85,7 +93,7 @@ internal class OrderService : IOrderService
 
         return new OrderModel
         {
-            Id = order.Id,
+            Id = order.ID,
             Items = items.ToList(),
             CellPhone = order.CellPhone,
             TotalCount = order.TotalCount,
@@ -106,7 +114,7 @@ internal class OrderService : IOrderService
     private async Task<IEnumerable<Product>> GetProductsAsync(Order order, CancellationToken cancellationToken = default)
     {
         var bookIds = order.Items.Select(item => item.ProductId);
-        var products = await _readonlyRepository.ToArrayAsync(c=> bookIds.Contains(c.ID), cancellationToken);
+        var products = await this.products.ToArrayAsync(c=> bookIds.Contains(c.ID), cancellationToken);
         return products.Select(Product.Mapper.Map);
     }
 
@@ -124,7 +132,12 @@ internal class OrderService : IOrderService
         var (hasValue, order) = await TryGetOrderAsync();
         
         if (!hasValue)
+        {
             order = Order.Mapper.Map(Order.DtoFactory.Create());
+            //await _orders.InsertAsync(Order.Mapper.Map(order));
+            _orders.Insert(Order.Mapper.Map(order));
+            await _unitOfWork.SaveChangeAsync();
+        }
 
         await AddOrUpdateProductAsync(order, productId, count);
         UpdateSession(order);
@@ -144,7 +157,7 @@ internal class OrderService : IOrderService
             orderItem.Count += count;
         else
         {
-            var product = await _readonlyRepository.FirstOrDefaultAsync(c => c.ID == productId, cancellationToken);
+            var product = await products.FirstOrDefaultAsync(c => c.ID == productId, cancellationToken);
             order.Items.Add(product.ID, product.Price, count);
         }
 
@@ -158,7 +171,7 @@ internal class OrderService : IOrderService
     /// <param name="order">заказ</param>
     private void UpdateSession(Order order)
     {
-        var cart = new Cart(order.Id, order.TotalCount, order.TotalPrice);
+        var cart = new Cart(order.ID, order.TotalCount, order.TotalPrice);
         Session.Set(cart);
     }
 

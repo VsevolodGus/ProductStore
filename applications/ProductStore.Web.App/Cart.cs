@@ -1,18 +1,19 @@
-﻿namespace ProductStore.Web.App
+﻿using System;
+
+namespace ProductStore.Web.App;
+
+public class Cart
 {
-    public class Cart
+    public Guid OrderID;
+
+    public int TotalCount;
+
+    public decimal TotalPrice;
+
+    public Cart(Guid orderID, int totalCount, decimal totalPrice)
     {
-        public int OrderId;
-
-        public int TotalCount;
-
-        public decimal TotalPrice;
-
-        public Cart(int id, int totalCount, decimal totalPrice)
-        {
-            OrderId = id;
-            TotalCount = totalCount;
-            TotalPrice = totalPrice;
-        }
+        OrderID = orderID;
+        TotalCount = totalCount;
+        TotalPrice = totalPrice;
     }
 }

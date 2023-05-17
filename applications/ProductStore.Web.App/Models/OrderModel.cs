@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace ProductStore.Web.App
 {
     public class OrderModel
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         public List<OrderItemModel> Items = new List<OrderItemModel>();
 

@@ -67,7 +67,7 @@ namespace Store.Contract
         public Form FirstForm(Order order)
         {
             return Form.CreateFirst(Name)
-                       .AddParameter("orderId", order.Id.ToString())
+                       .AddParameter("orderId", order.ID.ToString())
                        .AddField(new SelectionField("Город", "city", "1", cities));
         }
 

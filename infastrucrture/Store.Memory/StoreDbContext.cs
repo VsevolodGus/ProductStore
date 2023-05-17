@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Store.Entities;
 using Store.IntarfaceRepositroy;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -33,4 +34,15 @@ public class StoreDbContext : DbContext, IUnitOfWork
     public void SaveChange()
         => SaveChanges();
     
+    //private static EntityState[] ModifiedStates = new EntityState[] { EntityState.Added, EntityState.Modified, EntityState.Deleted };
+    //private async Task AttachEntriesAsync()
+    //{
+    //    foreach (var entry in ChangeTracker.Entries().Where(c => ModifiedStates.Contains(c.State)))
+    //    {
+    //        foreach(var visitor in )
+
+    //    }
+
+
+    //}
 }

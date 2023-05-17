@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.IO;
 using System.Text;
 
@@ -33,7 +34,7 @@ namespace ProductStore.Web.App
             using (var stream = new MemoryStream())
             using (var writer = new BinaryWriter(stream, Encoding.UTF8, true))
             {
-                writer.Write(value.OrderId);
+                writer.Write(value.OrderID.ToString());
                 writer.Write(value.TotalCount);
                 writer.Write(value.TotalPrice);
 
@@ -54,11 +55,11 @@ namespace ProductStore.Web.App
                 using (var stream = new MemoryStream(buffer))
                 using (var reader = new BinaryReader(stream, Encoding.UTF8, true))
                 {
-                    var orderId = reader.ReadInt32();
+                    var orderID = Guid.Parse(reader.ReadString());
                     var totalCount = reader.ReadInt32();
                     var totalPrice = reader.ReadDecimal();
 
-                    value = new Cart(orderId, totalCount, totalPrice);
+                    value = new Cart(orderID, totalCount, totalPrice);
                         
                     return true;
                 }

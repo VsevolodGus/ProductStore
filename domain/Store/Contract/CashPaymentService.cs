@@ -13,7 +13,7 @@ namespace Store.Contract
         public Form FirstForm(Order order)
         {
             return Form.CreateFirst(Name)
-                       .AddParameter("orderId", order.Id.ToString());
+                       .AddParameter("orderId", order.ID.ToString());
         }
 
         public OrderPayment GetPayment(Form form)

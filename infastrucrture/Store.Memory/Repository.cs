@@ -6,19 +6,36 @@ namespace Store.Memory;
 internal class Repository<TEntity> : ReadonlyRepository<TEntity>, IRepository<TEntity>
     where TEntity : class
 {
+    private readonly StoreDbContext _context; 
 
-    public Repository(DbSet<TEntity> entities) : base(entities)
-    { }
+    public Repository(StoreDbContext dbContext, DbSet<TEntity> entities) : base(entities)
+    {
+        _context = dbContext;
+    }
     public void Delete(TEntity entity)
-        => _entities.Remove(entity);
+    {
+        _context.Remove(entity);
+        _context.SaveChanges();
+    }
 
     public void Insert(TEntity entity)
-        => _entities.Add(entity);
+    {
+        _context.Add(entity);
+        _context.SaveChanges();
+    }
+
 
     public async ValueTask InsertAsync(TEntity entity, CancellationToken cancellationToken = default)
-        => await _entities.AddAsync(entity, cancellationToken);
+    {
+        await _context.AddAsync(entity, cancellationToken);
+        await _context.SaveChangesAsync(cancellationToken);
+    }
+    
 
     public void Update(TEntity entity)
-        => _entities.Update(entity);
-    
+    {
+        _context.Update(entity);
+        _context.SaveChanges();
+    }
+
 }
