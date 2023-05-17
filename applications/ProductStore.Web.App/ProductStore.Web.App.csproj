@@ -22,4 +22,8 @@
     <ProjectReference Include="..\..\domain\Store\Store.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="html\" />
+  </ItemGroup>
+
 </Project>

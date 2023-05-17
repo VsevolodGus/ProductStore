@@ -27,7 +27,6 @@ internal class OrderService : IOrderService
                         INotificationService notificationService,
                         IHttpContextAccessor httpContextAccessor,
                         IReadonlyRepository<ProductEntity> products,
-                        IReadonlyRepository<PublishingHouseEntity> makers,
                         IRepository<OrderEntity> orders,
                         IUnitOfWork unitOfWork)
     {
