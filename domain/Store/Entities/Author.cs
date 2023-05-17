@@ -1,7 +1,7 @@
-﻿using Store.Data;
+﻿using Store.Entities;
 using System.Collections.Generic;
 
-namespace Store.DTO;
+namespace Store.Entities;
 public class Author
 {
     public int ID { get; init; }

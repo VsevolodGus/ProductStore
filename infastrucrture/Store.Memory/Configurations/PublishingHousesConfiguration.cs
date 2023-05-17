@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Store.Data;
+using Store.Entities;
 
 namespace Store.Memory.Configurations;
 internal sealed class PublishingHousesConfiguration : IEntityTypeConfiguration<PublishingHouseEntity>

@@ -10,16 +10,13 @@ namespace Store.Memory;
 internal class ReadonlyRepository<TEntity> : IReadonlyRepository<TEntity>
     where TEntity : class
 {
-    //TODO инъектить DbSet 
-    protected readonly StoreDbContext _dbContext;
-
-    public ReadonlyRepository(StoreDbContext storeDbContext)
+    protected readonly DbSet<TEntity> _entities;
+    public ReadonlyRepository(DbSet<TEntity> entities)
     {
-        _dbContext = storeDbContext;
+        _entities = entities;
     }
 
-
-    private IQueryable<TEntity> query => _dbContext.Set<TEntity>().AsNoTracking();
+    private IQueryable<TEntity> query => _entities.AsNoTracking();
     
     public Task<bool> AnyAsync(Expression<Func<TEntity, bool>> expression, CancellationToken cancellationToken = default)
         => query.AnyAsync(expression, cancellationToken);

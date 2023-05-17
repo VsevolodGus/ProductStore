@@ -1,8 +1,4 @@
-﻿using Store.DTO;
-using System;
-using System.Net.Security;
-
-namespace Store.Data;
+﻿namespace Store.Entities;
 
 //TODO переделать под книги
 public class ProductEntity

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Store.Data;
+namespace Store.Entities;
 
 public class OrderEntity
 {

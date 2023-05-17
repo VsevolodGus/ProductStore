@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Newtonsoft.Json;
-using Store.Data;
+using Store.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;

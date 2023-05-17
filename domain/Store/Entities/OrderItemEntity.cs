@@ -1,4 +1,4 @@
-﻿namespace Store.Data
+﻿namespace Store.Entities
 {
     public class OrderItemEntity
     {

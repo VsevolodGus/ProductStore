@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Store.Data;
+using Store.Entities;
 using Store.IntarfaceRepositroy;
 using System.Threading;
 using System.Threading.Tasks;

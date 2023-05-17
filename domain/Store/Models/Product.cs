@@ -1,4 +1,4 @@
-﻿using Store.Data;
+﻿using Store.Entities;
 using System;
 
 namespace Store

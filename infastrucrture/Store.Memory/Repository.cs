@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using Microsoft.EntityFrameworkCore;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Store.Memory;
@@ -6,19 +7,18 @@ internal class Repository<TEntity> : ReadonlyRepository<TEntity>, IRepository<TE
     where TEntity : class
 {
 
-    public Repository(StoreDbContext storeDbContext) : base(storeDbContext)
+    public Repository(DbSet<TEntity> entities) : base(entities)
     { }
     public void Delete(TEntity entity)
-        => _dbContext.Set<TEntity>().Remove(entity);
-    
+        => _entities.Remove(entity);
 
     public void Insert(TEntity entity)
-        => _dbContext.Set<TEntity>().Add(entity);
+        => _entities.Add(entity);
 
     public async ValueTask InsertAsync(TEntity entity, CancellationToken cancellationToken = default)
-        => await _dbContext.AddAsync(entity, cancellationToken);
+        => await _entities.AddAsync(entity, cancellationToken);
 
     public void Update(TEntity entity)
-        => _dbContext.Set<TEntity>().Update(entity);
+        => _entities.Update(entity);
     
 }

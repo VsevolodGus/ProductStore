@@ -2,7 +2,7 @@
 using PhoneNumbers;
 using ProductStore.Web.App.Service;
 using Store;
-using Store.Data;
+using Store.Entities;
 using Store.IntarfaceRepositroy;
 using Store.Messages;
 using System;

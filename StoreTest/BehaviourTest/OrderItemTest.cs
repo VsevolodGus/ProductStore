@@ -1,5 +1,5 @@
 ﻿using Store;
-using Store.Data;
+using Store.Entities;
 using System;
 using Xunit;
 
